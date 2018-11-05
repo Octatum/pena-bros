@@ -3,3 +3,15 @@ backend:
 
 media_folder: static/assets
 public_folder: assets
+
+collections:
+  - name: "services"
+    label: "Offered Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Service Image", name: "image", widget: "image"}
+      - {label: "Service Description", name: "description", widget: "string"}
