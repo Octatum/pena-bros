@@ -23,8 +23,8 @@ const Navbar = () => (
     <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>the Shop</Text>
     <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>Products</Text>
     <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>Gallery</Text>
-    <Text as={Link} to="/Contact" white="true" bold="true" size={1.5}>Contact Us</Text>
-    <p style={{fontSize: "20px"}}>SIZE TEST</p>
+    <Text as={Link} to="/Contact" white="true" bold="true" size={1.5}>Get Directions</Text>
+
   </NavbarContainer>
 )
 

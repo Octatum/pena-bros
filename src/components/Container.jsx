@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 function displayType(props) {
-  if(props.flex) {
+  const flex = { props } || false;
+  if(flex) {
     return {
-      display: "flex",
+      "display": "flex",
       "flex-direction": 'column',
       "align-items": 'center',
       "justify-content": 'space-evenly',
@@ -12,6 +13,7 @@ function displayType(props) {
 }
 
 export const Container = styled.div`
+  width: 100%;
   padding: 1em;
   box-sizing: border-box;
   background: ${props => props.green ? props.theme.color.green : "transparent"};
