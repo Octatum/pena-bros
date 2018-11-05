@@ -5,6 +5,14 @@ import styled, { ThemeProvider } from 'styled-components'
 
 import './layout.css';
 import { globalTheme } from './Theme';
+import Navbar from '../navbar/'
+
+import PenaLogo from '../../assets/PenaLogo.jpg';
+
+const Logo = styled.img`
+  max-height: 200px;
+  margin: 10px auto;
+`;
 
 const Layout = styled.div`
   display: flex;
@@ -15,6 +23,8 @@ const Layout = styled.div`
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
+      <Logo src={PenaLogo} />
+      <Navbar />
       <Helmet
         titleTemplate="%s | Peña Bros"
         meta={[
