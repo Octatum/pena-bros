@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Helmet from 'react-helmet';
 
-import Layout from '../components/layout';
+import Layout from '../components/PageLayout';
 
 const IndexPage = () => (
   <Layout>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Helmet title="Home" />
   </Layout>
 );
 
