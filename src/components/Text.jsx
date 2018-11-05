@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../utils/device'
 
 const defaultSize = 1;
 const increments = {
@@ -24,9 +25,20 @@ function setColor({ theme, green, white }) {
 export const Text = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main}, sans-serif;
   font-weight: ${({ bold }) => bold ? '700' : 'initial'};
-  font-size: ${props => setFontSize(props, increments.default)};
   text-align: ${({ align }) => align ? align : 'left'};
   line-height: 1.2em;
   color: ${setColor};
   text-decoration: none;
+
+  font-size: ${props => setFontSize(props, increments.default)};
+
+  ${device.laptop} {
+    font-size: ${props => setFontSize(props, increments.laptop)};
+  }
+  ${device.tablet} {
+    font-size: ${props => setFontSize(props, increments.tablet)};
+  }
+  ${device.mobile} {
+    font-size: ${props => setFontSize(props, increments.mobile)};
+  }
 `;
