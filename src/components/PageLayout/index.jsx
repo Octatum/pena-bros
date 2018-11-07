@@ -8,11 +8,8 @@ import { globalTheme } from './Theme';
 import Navbar from '../navbar/';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';
-
-const Logo = styled.img`
-  max-height: 200px;
-  margin: 10px auto;
-`;
+import { Image } from '../Image';
+import { Container } from '../Container';
 
 const Layout = styled.div`
   display: flex;
@@ -23,7 +20,9 @@ const Layout = styled.div`
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
-      <Logo src={PenaLogo} />
+      <Container flex row>
+        <Image src={PenaLogo} width="200px" />
+      </Container>
       <Navbar />
       <Helmet
         titleTemplate="%s | Peña Bros"

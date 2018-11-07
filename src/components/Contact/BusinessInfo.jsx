@@ -5,12 +5,12 @@ import { Text } from '../Text';
 import { Image } from '../Image';
 
 import location from './assets/location.png';
-import mail from './assets/mail.png';
+//import mail from './assets/mail.png';
 import phone from './assets/phone.png';
 
 const BusinessInfo = () => (
   <Container padding={[2, 1]}>
-    <Container flex margin={[0, 0, 0, 'auto']}>
+    <Container flex width="60%">
       <Container flex row>
         <Text align="right" size={2.5}>
           (210) 647-4200
@@ -19,15 +19,9 @@ const BusinessInfo = () => (
       </Container>
       <Container flex row>
         <Text align="right" size={2.5}>
-          (210) 647-4200
+          5305 Bandera Road San Antonio, TX 78238
         </Text>
         <Image src={location} width="40px" />
-      </Container>
-      <Container flex row>
-        <Text align="right" size={2.5}>
-          (210) 647-4200
-        </Text>
-        <Image src={mail} width="40px" />
       </Container>
     </Container>
   </Container>

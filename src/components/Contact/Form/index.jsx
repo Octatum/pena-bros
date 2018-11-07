@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Container } from '../Container';
+import { Container } from '../../Container';
 import { Formik } from 'formik';
 import { string, object, mixed } from 'yup';
 import { navigateTo } from 'gatsby';
+import Question from './Question';
 
 const inputValidation = object().shape({
   name: string().required('Required'),
@@ -44,6 +45,8 @@ function encode(data) {
         })
     }
 */
+
+
 const GetInTouch = () => (
   <Formik
     initialValues={{
@@ -55,8 +58,10 @@ const GetInTouch = () => (
     }}
     validationSchema={inputValidation}
     onSubmit={values => console.log(values)}
-    render={({ handleSubmit, handleChange, handleBlur, values, errors }) => (
+    render={({ handleSubmit, handleChange, handleBlur, values }) => (
       <Container
+        margin={[2, 15, 4, 20]}
+        width="40%"
         as="form"
         name="contact"
         method="post"
@@ -72,47 +77,51 @@ const GetInTouch = () => (
             <input name="bot-field" onChange={handleChange} />
           </label>
         </p>
-
-        <input
-          type="text"
+        <Question
+          size={3}
+          question="Name: "
+          inputType="text"
           name="name"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.name}
         />
-        {errors.name && <div>{errors.name}</div>}
-        <input
-          type="text"
+        <Question
+          size={3}
+          question="Phone: "
+          inputType="text"
           name="phone"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.phone}
         />
-        {errors.phone && <div>{errors.phone}</div>}
-        <input
-          type="text"
+        <Question
+          size={3}
+          question="Email: "
+          inputType="text"
           name="mail"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.mail}
         />
-        {errors.mail && <div>{errors.mail}</div>}
-        <input
-          type="file"
+        <Question
+          size={3}
+          question=""
+          inputType="file"
           name="image"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.image}
         />
-        {errors.image && <div>{errors.image}</div>}
-        <input
-          type="textarea"
+        <Question
+          size={3}
+          question="Message: "
+          inputType="text"
           name="message"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.message}
         />
-        {errors.message && <div>{errors.message}</div>}
 
         <button type="submit">Submit</button>
       </Container>

@@ -8,6 +8,8 @@ import { Container } from '../Container';
 const NavbarContainer = styled(Container)`
   justify-content: space-evenly;
   position: sticky;
+  top: 0;
+  z-index: 10;
 
   ${Text} {
     text-transform: uppercase;
@@ -15,7 +17,7 @@ const NavbarContainer = styled(Container)`
 `;
 
 const Navbar = () => (
-  <NavbarContainer flex row green padding={[0.7]}>
+  <NavbarContainer flex row green padding={[0.7, 5]}>
     <Text as={Link} to="/" white="true" bold="true" size={1.5}>
       Home
     </Text>

@@ -6,7 +6,7 @@ import BusinessInfo from './BusinessInfo';
 import Form from './Form';
 
 const Contact = () => (
-  <Container>
+  <Container flex align="flex-start">
     <Form />
     <Map />
     <BusinessInfo />
