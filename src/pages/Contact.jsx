@@ -8,6 +8,6 @@ const ContactPage = () => (
     <Helmet title="Get Directions" />
     <Contact />
   </PageLayout>
-)
+);
 
 export default ContactPage;

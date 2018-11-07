@@ -1,19 +1,36 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import { Container } from '../Container';
 import { Text } from '../Text';
+import { Image } from '../Image';
 
-const TextContainer = styled(Container)`
-  width: 60%;
-  margin: 2.5em 2em 2.5em auto;
-`;
+import location from './assets/location.png';
+import mail from './assets/mail.png';
+import phone from './assets/phone.png';
 
 const BusinessInfo = () => (
-  <Container>
-    <TextContainer>
-      <Text align="right" size={2.5}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </Text>
-    </TextContainer>
+  <Container padding={[2, 1]}>
+    <Container flex margin={[0, 0, 0, 'auto']}>
+      <Container flex row>
+        <Text align="right" size={2.5}>
+          (210) 647-4200
+        </Text>
+        <Image src={phone} width="40px" />
+      </Container>
+      <Container flex row>
+        <Text align="right" size={2.5}>
+          (210) 647-4200
+        </Text>
+        <Image src={location} width="40px" />
+      </Container>
+      <Container flex row>
+        <Text align="right" size={2.5}>
+          (210) 647-4200
+        </Text>
+        <Image src={mail} width="40px" />
+      </Container>
+    </Container>
   </Container>
-)
+);
 
 export default BusinessInfo;

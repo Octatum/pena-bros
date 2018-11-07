@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components';
 
 import './layout.css';
 import { globalTheme } from './Theme';
-import Navbar from '../navbar/'
+import Navbar from '../navbar/';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';
 
@@ -34,12 +34,9 @@ const PageLayout = ({ children }) => (
       >
         <html lang="en" />
       </Helmet>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </Layout>
   </ThemeProvider>
-
 );
 
 PageLayout.propTypes = {

@@ -11,6 +11,6 @@ const Contact = () => (
     <Map />
     <BusinessInfo />
   </Container>
-)
+);
 
 export default Contact;

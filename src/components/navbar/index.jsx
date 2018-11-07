@@ -6,8 +6,7 @@ import { Text } from '../Text';
 import { Container } from '../Container';
 
 const NavbarContainer = styled(Container)`
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   position: sticky;
 
   ${Text} {
@@ -16,16 +15,29 @@ const NavbarContainer = styled(Container)`
 `;
 
 const Navbar = () => (
-  <NavbarContainer flex green> 
-    <Text as={Link} to="/" white="true" bold="true" size={1.5}>Home</Text>
-    <Text as={Link} to="/" white="true" bold="true" size={1.5}>About</Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>Services</Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>the Shop</Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>Products</Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>Gallery</Text>
-    <Text as={Link} to="/Contact" white="true" bold="true" size={1.5}>Get Directions</Text>
-
+  <NavbarContainer flex row green padding={[0.7]}>
+    <Text as={Link} to="/" white="true" bold="true" size={1.5}>
+      Home
+    </Text>
+    <Text as={Link} to="/" white="true" bold="true" size={1.5}>
+      About
+    </Text>
+    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+      Services
+    </Text>
+    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+      the Shop
+    </Text>
+    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+      Products
+    </Text>
+    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+      Gallery
+    </Text>
+    <Text as={Link} to="/Contact" white="true" bold="true" size={1.5}>
+      Get Directions
+    </Text>
   </NavbarContainer>
-)
+);
 
 export default Navbar;
