@@ -29,6 +29,7 @@ export const Text = styled.div`
   line-height: 1.2em;
   color: ${setColor};
   text-decoration: none;
+  font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 
   font-size: ${props => setFontSize(props, increments.default)};
 

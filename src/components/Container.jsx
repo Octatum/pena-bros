@@ -42,6 +42,7 @@ export const Container = styled.div`
   background: ${props =>
     props.green ? props.theme.color.green : 'transparent'};
   width: ${props => (props.width ? props.width : '100%')};
+  height: ${props => (props.height ? props.height : '100%')};
 
   ${displayType}
   ${padding}

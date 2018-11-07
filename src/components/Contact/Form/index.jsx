@@ -46,7 +46,6 @@ function encode(data) {
     }
 */
 
-
 const GetInTouch = () => (
   <Formik
     initialValues={{
