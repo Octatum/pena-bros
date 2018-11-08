@@ -37,7 +37,7 @@ function margin({ margin }) {
 }
 
 function background({backColor = 'transparent', theme}) {
-  const color = backColor == 'green' ? theme.color.green : backColor;
+  const color = backColor === 'green' ? theme.color.green : backColor;
   return {
     'background-color': color
   }
