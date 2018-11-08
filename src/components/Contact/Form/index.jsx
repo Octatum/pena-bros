@@ -59,7 +59,7 @@ const GetInTouch = () => (
     onSubmit={values => console.log(values)}
     render={({ handleSubmit, handleChange, handleBlur, values }) => (
       <Container
-        margin={[2, 15, 4, 20]}
+        margin={[2, 0, 4, 20]}
         width="40%"
         as="form"
         name="contact"
