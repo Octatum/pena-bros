@@ -36,14 +36,20 @@ function margin({ margin }) {
   }
 }
 
+function background({backColor = 'transparent', theme}) {
+  const color = backColor == 'green' ? theme.color.green : backColor;
+  return {
+    'background-color': color
+  }
+}
+
 export const Container = styled.div`
   position: relative;
   box-sizing: border-box;
-  background: ${props =>
-    props.green ? props.theme.color.green : 'transparent'};
   width: ${props => (props.width ? props.width : '100%')};
   height: ${props => (props.height ? props.height : '100%')};
 
+  ${background}
   ${displayType}
   ${padding}
   ${margin}
