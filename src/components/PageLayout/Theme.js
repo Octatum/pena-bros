@@ -3,6 +3,6 @@ export const globalTheme = {
     green: '#37A802',
   },
   fontFamily: {
-    main: 'Raleway',
+    main: 'Open Sans',
   },
 };

@@ -24,9 +24,9 @@ function setColor({ theme, green, white }) {
 
 export const Text = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main}, sans-serif;
-  font-weight: ${({ bold }) => (bold ? '700' : 'initial')};
+  font-weight: ${({ bold }) => (bold ? '900' : 'initial')};
   text-align: ${({ align }) => (align ? align : 'left')};
-  line-height: 1.2em;
+  line-height: 1.3em;
   color: ${setColor};
   text-decoration: none;
   font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};

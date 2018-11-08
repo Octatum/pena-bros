@@ -10,7 +10,7 @@ const TextGreenEdge = styled(Text)`
     content: "";
     position: absolute;
     height: 100%;
-    width: 0.4em;
+    width: 0.275em;
     left: 0;
     top: 0;
     background-color: ${({theme}) => theme.color.green};  
