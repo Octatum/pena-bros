@@ -6,6 +6,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import './layout.css';
 import { globalTheme } from './Theme';
 import Navbar from '../navbar/';
+import LocationBanner from './../LocationBanner';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';
 import { Image } from '../Image';
@@ -24,6 +25,7 @@ const PageLayout = ({ children }) => (
         <Image src={PenaLogo} width="200px" />
       </Container>
       <Navbar />
+      <LocationBanner />
       <Helmet
         titleTemplate="%s | Peña Bros"
         meta={[
