@@ -33,12 +33,17 @@ const ArrowRight = styled.div`
 `;
 
 const Arrow = ({ left, handleClick }) => (
-  <Circle flex backColor="green" width="auto" padding={[0.25]} margin={[0.25]} height="2.5em" width="2.5em"  onClick={handleClick}>
-    {left ? (
-      <ArrowLeft />
-    ) : (
-      <ArrowRight />
-    )}
+  <Circle
+    flex
+    backColor="green"
+    width="auto"
+    padding={[0.25]}
+    margin={[0.25]}
+    height="2.5em"
+    width="2.5em"
+    onClick={handleClick}
+  >
+    {left ? <ArrowLeft /> : <ArrowRight />}
   </Circle>
 );
 

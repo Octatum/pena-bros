@@ -31,7 +31,7 @@ const ArrowContainer = styled(Container)`
 `;
 
 const InfoContainer = styled(Container)`
-  display: ${({show}) => show ? 'block' : 'none'};
+  display: ${({ show }) => (show ? 'block' : 'none')};
 `;
 
 class Presentation extends Component {
@@ -46,28 +46,31 @@ class Presentation extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
   handleClick() {
-    const next = this.state.currentSlide + 1 >= this.totalSlides ? 0 : this.state.currentSlide + 1;
+    const next =
+      this.state.currentSlide + 1 >= this.totalSlides
+        ? 0
+        : this.state.currentSlide + 1;
     this.setState({
-      currentSlide: next
-    })
+      currentSlide: next,
+    });
   }
 
   render() {
     return (
-      <Container
-        width="100%"
-        className={this.props.className}
-      >
-        <InfoContainer padding={[3, 5, 7, 5]} align="flex-start" show={this.state.currentSlide === 0}>
+      <Container width="100%" className={this.props.className}>
+        <InfoContainer
+          padding={[3, 5, 7, 5]}
+          align="flex-start"
+          show={this.state.currentSlide === 0}
+        >
           <BackImage src={placeholder} width="100%" height="100%" />
           <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-        </Text>
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
           <Button
             as={Link}
             to="/"
@@ -79,17 +82,21 @@ class Presentation extends Component {
             width="auto"
           >
             About us
-        </Button>
+          </Button>
         </InfoContainer>
 
-        <InfoContainer padding={[3, 5, 7, 5]} align="flex-start" show={this.state.currentSlide === 1}>
+        <InfoContainer
+          padding={[3, 5, 7, 5]}
+          align="flex-start"
+          show={this.state.currentSlide === 1}
+        >
           <BackImage src={placeholder2} width="100%" height="100%" />
           <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-        </Text>
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
           <Button
             as={Link}
             to="/"
@@ -101,17 +108,21 @@ class Presentation extends Component {
             width="auto"
           >
             About us
-        </Button>
+          </Button>
         </InfoContainer>
 
-        <InfoContainer padding={[3, 5, 7, 5]} align="flex-start" show={this.state.currentSlide === 2}>
+        <InfoContainer
+          padding={[3, 5, 7, 5]}
+          align="flex-start"
+          show={this.state.currentSlide === 2}
+        >
           <BackImage src={placeholder3} width="100%" height="100%" />
           <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-        </Text>
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
           <Button
             as={Link}
             to="/"
@@ -123,10 +134,8 @@ class Presentation extends Component {
             width="auto"
           >
             About us
-        </Button>
+          </Button>
         </InfoContainer>
-
-
 
         <ArrowContainer flex row width="auto" height="auto" justify="flex-end">
           <Arrows handleClick={this.handleClick} />
