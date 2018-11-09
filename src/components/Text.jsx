@@ -22,6 +22,26 @@ function setColor({ theme, green, white }) {
   return white ? 'white' : 'black';
 }
 
+function padding({ padding }) {
+  const measure =
+    padding &&
+    padding.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
+
+  if (padding) {
+    return { padding: measure };
+  }
+}
+
+function margin({ margin }) {
+  const measure =
+    margin &&
+    margin.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
+
+  if (margin) {
+    return { margin: measure };
+  }
+}
+
 export const Text = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main}, sans-serif;
   font-weight: ${({ bold }) => (bold ? '900' : 'initial')};
@@ -32,6 +52,9 @@ export const Text = styled.div`
   font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 
   font-size: ${props => setFontSize(props, increments.default)};
+
+  ${padding}
+  ${margin}
 
   ${device.laptop} {
     font-size: ${props => setFontSize(props, increments.laptop)};

@@ -1,12 +1,17 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 import { Container } from '../Container';
+import Presentation from './Presentation';
+
+const PresentationComp = styled(Presentation)`
+  min-height: 60vh;
+`;
 
 const HomePage = () => (
   <Container flex>
-    <Helmet title="Home" />
+    <PresentationComp />
   </Container>
-)
+);
 
 export default HomePage;

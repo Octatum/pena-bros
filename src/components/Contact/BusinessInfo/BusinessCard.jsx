@@ -10,12 +10,12 @@ const ImageMarg = styled(Image)`
 `;
 
 const BusinessCard = ({ image, children }) => (
-  <Container flex row justify="flex-end" margin={[1,0]}>
+  <Container flex row justify="flex-end" margin={[1, 0]}>
     <Text align="right" size={2.5} margin={[0, 2, 0, 0]}>
       {children}
     </Text>
     <ImageMarg src={image} width="40px" />
   </Container>
-)
+);
 
 export default BusinessCard;

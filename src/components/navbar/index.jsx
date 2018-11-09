@@ -17,7 +17,7 @@ const NavbarContainer = styled(Container)`
 `;
 
 const Navbar = () => (
-  <NavbarContainer flex row backColor='green' padding={[0.7, 5]}>
+  <NavbarContainer flex row backColor="green" padding={[0.7, 5]}>
     <Text as={Link} to="/" white="true" bold="true" size={1.5}>
       Home
     </Text>

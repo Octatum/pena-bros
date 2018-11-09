@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 function displayType(props) {
-  const flex = { props } || false;
+  const flex = props.flex || false;
   const direction = props.row ? 'row' : 'column';
   const alignment = props.align ? props.align : 'center';
   const justify = props.justify ? props.justify : 'space-evenly';
@@ -36,11 +36,11 @@ function margin({ margin }) {
   }
 }
 
-function background({backColor = 'transparent', theme}) {
+function background({ backColor = 'transparent', theme }) {
   const color = backColor === 'green' ? theme.color.green : backColor;
   return {
-    'background-color': color
-  }
+    'background-color': color,
+  };
 }
 
 export const Container = styled.div`

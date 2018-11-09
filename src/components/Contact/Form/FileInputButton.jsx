@@ -5,7 +5,7 @@ import { Container } from '../../Container';
 
 const FileInputButton = ({ children, ...props }) => (
   <Container flex row {...props} justify="flex-start">
-    <Container backColor='green' padding={[0.5]} width="40%">
+    <Container backColor="green" padding={[0.5]} width="40%">
       <Text white bold>
         Attach Image
       </Text>
