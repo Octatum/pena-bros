@@ -7,6 +7,12 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify-cms',
     {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: []
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/services`,
