@@ -14,6 +14,11 @@ function isFile({ type }) {
       opacity: 0,
       width: '100%',
       height: '100%',
+      top: 0,
+      left: 0,
+      cursor: 'pointer',
+      margin: 0,
+      'min-width': 0,
     };
   }
 }
@@ -45,7 +50,7 @@ const Question = ({
       as={Container}
       flex
       row
-      justify="space-between"
+      justify="flex-start"
       margin={[0.5, 0]}
       bold
       {...props}

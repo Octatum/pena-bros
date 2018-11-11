@@ -1,10 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { Container } from '../../Container';
+import { Text } from '../../Text';
 import { Formik } from 'formik';
 import { string, object, mixed } from 'yup';
 import { navigateTo } from 'gatsby';
 import Question from './Question';
+
+const SubmitButton = styled(Text)`
+  background-color: ${({ theme }) => theme.color.green};
+  border: none;
+  cursor: pointer;
+  float: right;
+`;
 
 const inputValidation = object().shape({
   name: string().required('Required'),
@@ -59,8 +68,8 @@ const GetInTouch = () => (
     onSubmit={values => console.log(values)}
     render={({ handleSubmit, handleChange, handleBlur, values }) => (
       <Container
-        margin={[2, 0, 4, 20]}
-        width="40%"
+        margin={[5, 'auto']}
+        width="70%"
         as="form"
         name="contact"
         method="post"
@@ -122,7 +131,17 @@ const GetInTouch = () => (
           value={values.message}
         />
 
-        <button type="submit">Submit</button>
+        <SubmitButton
+          as="button"
+          type="submit"
+          bold
+          white
+          size={2.75}
+          padding={[0.35, 1.25]}
+          align="center"
+        >
+          Submit
+        </SubmitButton>
       </Container>
     )}
   />
