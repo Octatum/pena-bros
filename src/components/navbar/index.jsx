@@ -21,19 +21,19 @@ const Navbar = () => (
     <Text as={Link} to="/" white="true" bold="true" size={1.5}>
       Home
     </Text>
-    <Text as={Link} to="/" white="true" bold="true" size={1.5}>
+    <Text as={Link} to="/about" white="true" bold="true" size={1.5}>
       About
     </Text>
     <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
       Services
     </Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+    <Text as={Link} to="/shop" white="true" bold="true" size={1.5}>
       the Shop
     </Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+    <Text as={Link} to="/products" white="true" bold="true" size={1.5}>
       Products
     </Text>
-    <Text as={Link} to="/Services" white="true" bold="true" size={1.5}>
+    <Text as={Link} to="/gallery" white="true" bold="true" size={1.5}>
       Gallery
     </Text>
     <Text as={Link} to="/Contact" white="true" bold="true" size={1.5}>

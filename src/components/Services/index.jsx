@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from '../Container';
 import { StaticQuery, graphql } from 'gatsby';
 
-import QuoteFooter from '../QuoteFooter';
+import QuoteAction from '../QuoteAction';
 import ServicesPresentation from './Presentation';
 
 const Services = () => (
@@ -30,7 +30,7 @@ const Services = () => (
         <ServicesPresentation data={data.allMarkdownRemark.edges} />
       )}
     />
-    <QuoteFooter />
+    <QuoteAction />
   </Container>
 );
 

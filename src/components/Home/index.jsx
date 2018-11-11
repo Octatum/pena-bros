@@ -6,7 +6,7 @@ import SubTitle from '../SubTitle';
 import Presentation from './Presentation';
 import Quote from './Quote';
 import WorksPreview from './WorksPrev';
-import QuoteFooter from '../QuoteFooter';
+import QuoteAction from '../QuoteAction';
 
 const PresentationComp = styled(Presentation)`
   min-height: 60vh;
@@ -35,7 +35,7 @@ const HomePage = () => (
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     </Quote>
     <WorksPreview />
-    <QuoteFooter />
+    <QuoteAction />
   </Container>
 );
 

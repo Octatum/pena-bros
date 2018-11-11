@@ -7,7 +7,7 @@ const Quote = styled(Text)`
   align-self: flex-end;
 `;
 
-const Footer = () => (
+const QuoteAction = () => (
   <Container flex>
     <Quote
       size={9}
@@ -27,4 +27,4 @@ const Footer = () => (
   </Container>
 );
 
-export default Footer;
+export default QuoteAction;
