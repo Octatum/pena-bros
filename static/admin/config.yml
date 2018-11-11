@@ -17,3 +17,25 @@ collections:
       - {label: "Service Name", name: "title", widget: "string"}
       - {label: "Service Image", name: "image", widget: "image"}
       - {label: "Service Description", name: "description", widget: "string"}
+
+  - name: "works"
+    label: "Our Works"
+    folder: "content/works"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "works"}
+      - {label: "Work's Name", name: "name", widget: "string"}
+      - {label: "Work's Title", name: "title", widget: "string"}
+      - {label: "Work's Image", name: "image", widget: "string"}
+      - {label: "Work's Description", name: "description", widget: "string"}
+
+  - name: "reviews"
+    label: "User Reviews"
+    folder: "content/reviews"
+    create: true
+    slug: "{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "review"}
+      - {label: "Author", name: "title", widget: "string"}
+      - {label: "Review", name: "review", widget: "string"} 
