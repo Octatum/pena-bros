@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 import './layout.css';
 import { globalTheme } from './Theme';
-import Navbar from '../navbar/';
+import Navbar from '../Navbar';
 import LocationBanner from './../LocationBanner';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';

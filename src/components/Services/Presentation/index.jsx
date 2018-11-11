@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import ServiceNames from './ServiceNames';
-
 import { Container } from '../../Container';
-import { Text } from '../../Text';
+import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
 
 const ServiceNameColumn = styled(ServiceNames)`

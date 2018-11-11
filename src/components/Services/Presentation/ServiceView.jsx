@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { Container } from '../../Container';
-import SubTitle from '../../SubTitle';
 import { Image } from '../../Image';
+import SubTitle from '../../SubTitle';
 
 const View = styled(Container)`
   display: ${({ display }) => (display ? 'flex' : 'none')};
