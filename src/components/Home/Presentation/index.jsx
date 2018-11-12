@@ -26,8 +26,9 @@ const Button = styled(Text)`
 `;
 
 const ArrowContainer = styled(Container)`
-  right: 5em;
-  bottom: 3.5em;
+  position: absolute; 
+  left: 7em;
+  top: 1em;
 `;
 
 const InfoContainer = styled(Container)`
@@ -47,10 +48,7 @@ class Presentation extends Component {
   }
 
   handleClick() {
-    const next =
-      this.state.currentSlide + 1 >= this.totalSlides
-        ? 0
-        : this.state.currentSlide + 1;
+    const next = (this.state.currentSlide + 1) % 3;
     this.setState({
       currentSlide: next,
     });
@@ -60,7 +58,7 @@ class Presentation extends Component {
     return (
       <Container width="100%" className={this.props.className}>
         <InfoContainer
-          padding={[3, 5, 7, 5]}
+          padding={[5, 5, 7, 5]}
           align="flex-start"
           show={this.state.currentSlide === 0}
         >
@@ -86,7 +84,7 @@ class Presentation extends Component {
         </InfoContainer>
 
         <InfoContainer
-          padding={[3, 5, 7, 5]}
+          padding={[5, 5, 7, 5]}
           align="flex-start"
           show={this.state.currentSlide === 1}
         >
@@ -112,7 +110,7 @@ class Presentation extends Component {
         </InfoContainer>
 
         <InfoContainer
-          padding={[3, 5, 7, 5]}
+          padding={[5, 5, 7, 5]}
           align="flex-start"
           show={this.state.currentSlide === 2}
         >
