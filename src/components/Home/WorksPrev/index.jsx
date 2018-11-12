@@ -14,15 +14,8 @@ const RightALign = styled(Text)`
 `;
 
 const WorksPreview = () => (
-  <Container padding={[3, 0]} flex>
-    <RightALign
-      as={Container}
-      width="50%"
-      bold
-      size={9}
-      padding={[0, 2, 0, 0]}
-      align="right"
-    >
+  <Container margin={[3, 0]} flex width="80%">
+    <RightALign as={Container} width="50%" bold="800" size={9} align="right">
       Lorem Ipsum is simply dummy text
     </RightALign>
     <ImageSlider images={[placeholder1, placeholder2, placeholder3]} />

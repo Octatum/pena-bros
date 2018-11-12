@@ -13,10 +13,10 @@ const NotFoundPage = () => (
   <Layout>
     <Helmet title="404 Page Not Found" />
     <BottomCont flex height="100%">
-      <Text bold size={9} align="center">
+      <Text bold="800" size={9} align="center">
         We are under construction
       </Text>
-      <Text bold size={7} align="center">
+      <Text bold="800" size={7} align="center">
         Thanks for your patience
       </Text>
     </BottomCont>

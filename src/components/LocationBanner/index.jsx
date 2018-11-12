@@ -5,11 +5,11 @@ import { Text } from '../Text';
 const Banner = () => (
   <Container backColor="black" flex padding={[1]}>
     <Text white size={2.5}>
-      <Text as="span" white bold>
+      <Text as="span" white bold="bold">
         Call Us Today!{' '}
       </Text>
       (210) 647-4200
-      <Text as="span" white bold>
+      <Text as="span" white bold="bold">
         {' '}
         We are located at:{' '}
       </Text>

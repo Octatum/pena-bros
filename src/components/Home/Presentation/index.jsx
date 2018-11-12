@@ -72,7 +72,7 @@ class Presentation extends Component {
           <Button
             as={Link}
             to="/"
-            bold="true"
+            bold="bold"
             size={2.5}
             white="true"
             margin={[0, 1]}
@@ -98,7 +98,7 @@ class Presentation extends Component {
           <Button
             as={Link}
             to="/"
-            bold="true"
+            bold="bold"
             size={2.5}
             white="true"
             margin={[0, 1]}
@@ -124,7 +124,7 @@ class Presentation extends Component {
           <Button
             as={Link}
             to="/"
-            bold="true"
+            bold="bold"
             size={2.5}
             white="true"
             margin={[0, 1]}

@@ -43,7 +43,7 @@ class ServicesPresentation extends Component {
       current: 0,
     };
 
-    this.names = props.data.map(data => data.node.frontmatter.name)
+    this.names = props.data.map(data => data.node.frontmatter.name);
     this.hoverInterval = null;
 
     this.handleHover = this.handleHover.bind(this);

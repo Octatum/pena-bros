@@ -19,10 +19,10 @@ const TextGreenEdge = styled(Text)`
 
 const SubTitle = ({ children, title, size = 1, ...props }) => (
   <Container flex align="flex-start" height="auto" width="auto" {...props}>
-    <Text bold size={size * 3} width="85%">
+    <Text bold="800" size={size * 3} width="85%">
       {title}
     </Text>
-    <TextGreenEdge size={size} padding={[0, 1]} as={Container}>
+    <TextGreenEdge size={size} padding={[0, 1]} as={Container} bold="lighter">
       {children}
     </TextGreenEdge>
   </Container>

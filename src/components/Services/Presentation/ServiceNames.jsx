@@ -20,7 +20,7 @@ const ServiceNames = ({ names, current, handleHover, ...props }) => (
           isCurrent={current === index}
           onMouseEnter={event => handleHover(event, index)}
           align="center"
-          bold
+          bold="800"
           size={9}
           padding={[0.5, 1]}
           key={index}

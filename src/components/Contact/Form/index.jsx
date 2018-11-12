@@ -134,7 +134,7 @@ const GetInTouch = () => (
         <SubmitButton
           as="button"
           type="submit"
-          bold
+          bold="bold"
           white
           size={2.75}
           padding={[0.35, 1.25]}

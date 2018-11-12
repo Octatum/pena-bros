@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { Container } from '../../Container';
 import { Text } from '../../Text';
 
-import inicial from './assets/comilla_inicial.png';
-import final from './assets/comilla_final.png';
+import inicial from './assets/initial.svg';
+import final from './assets/final.svg';
 import { Image } from '../../Image';
 
 const LeftMark = styled(Image)`
   position: absolute;
-  max-width: 10em;
   max-height: 60%;
   top: 0;
   left: 2em;
@@ -17,7 +16,6 @@ const LeftMark = styled(Image)`
 
 const RightMark = styled(Image)`
   position: absolute;
-  max-width: 10em;
   max-height: 50%;
   bottom: 0;
   right: 2em;
@@ -27,10 +25,17 @@ const Quote = ({ author, children, size, ...props }) => (
   <Container flex row backColor="green" {...props} padding={[2, 13]}>
     <LeftMark src={inicial} />
     <Container flex justify="space-between">
-      <Text white bold size={2 * size} margin={[0, 0, 0.5, 0]}>
+      <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
       </Text>
-      <Text size={size} as={Container} white align="right" width="90%">
+      <Text
+        size={size}
+        as={Container}
+        white
+        align="right"
+        width="90%"
+        bold="lighter"
+      >
         {children}
       </Text>
     </Container>

@@ -46,7 +46,7 @@ const QuoteAction = () => (
       size={9}
       width="auto"
       as={Container}
-      bold
+      bold="800"
       white
       backColor="green"
       padding={[0.1, 2, 0.1, 0.75]}
@@ -54,7 +54,7 @@ const QuoteAction = () => (
       <ActionLink to="/Contact" />
       Get a quote
     </Quote>
-    <Text size={4} as={Container} width="60%" margin={[1.5, 0]}>
+    <Text size={4} as={Container} width="60%" margin={[1.5, 0]} bold="lighter">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     </Text>
   </Container>

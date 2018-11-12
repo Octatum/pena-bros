@@ -21,7 +21,7 @@ const Layout = styled.div`
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
-      <Container flex row>
+      <Container flex row margin={[0.5, 0]}>
         <Image src={PenaLogo} width="200px" />
       </Container>
       <Navbar />

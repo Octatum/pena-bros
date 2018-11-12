@@ -15,9 +15,12 @@ function setFontSize({ size }, increment) {
   return `${defaultSize + increment * (size - 1)}em`;
 }
 
-function setColor({ theme, green, white }) {
+function setColor({ theme, green, gray, white }) {
   if (green) {
     return theme.color.green;
+  }
+  if (gray) {
+    return 'gray';
   }
   return white ? 'white' : 'black';
 }
@@ -44,7 +47,7 @@ function margin({ margin }) {
 
 export const Text = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main}, sans-serif;
-  font-weight: ${({ bold }) => (bold ? '900' : 'initial')};
+  font-weight: ${({ bold }) => (bold ? bold : 'normal')};
   text-align: ${({ align }) => (align ? align : 'left')};
   line-height: 1.3em;
   color: ${setColor};

@@ -52,7 +52,7 @@ const Question = ({
       row
       justify="flex-start"
       margin={[0.5, 0]}
-      bold
+      bold="bold"
       {...props}
     >
       {question}
