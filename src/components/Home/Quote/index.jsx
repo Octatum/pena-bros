@@ -16,7 +16,7 @@ const RightMark = styled(Image)`
 `;
 
 const Quote = ({ author, children, size, ...props }) => (
-  <Container flex row backColor="green" {...props} >
+  <Container flex row backColor="green" {...props}>
     <LeftMark src={inicial} />
     <Container flex justify="space-between" margin={[1.5, 1]}>
       <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>

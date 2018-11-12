@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 
 import { Container } from '../../Container';
@@ -32,9 +31,9 @@ const ArrowContainer = styled(Container)`
 `;
 
 const InfoContainer = styled(Container).attrs({
-  style: ({show}) => ({
-    display: show ? 'block' : 'none'
-  })
+  style: ({ show }) => ({
+    display: show ? 'block' : 'none',
+  }),
 })``;
 
 class Presentation extends Component {
