@@ -27,7 +27,7 @@ const HomePage = () => (
       make a type specimen book.
     </SubTitle>
     <Quote
-      padding={[1, 5]}
+      padding={[0, 2]}
       margin={[5, 0]}
       size={4}
       author="Lorenzo Chapa Hernández"

@@ -8,23 +8,17 @@ import final from './assets/final.svg';
 import { Image } from '../../Image';
 
 const LeftMark = styled(Image)`
-  position: absolute;
-  max-height: 60%;
-  top: 0;
-  left: 2em;
+  align-self: flex-start;
 `;
 
 const RightMark = styled(Image)`
-  position: absolute;
-  max-height: 50%;
-  bottom: 0;
-  right: 2em;
+  align-self: flex-end;
 `;
 
 const Quote = ({ author, children, size, ...props }) => (
-  <Container flex row backColor="green" {...props} padding={[2, 13]}>
+  <Container flex row backColor="green" {...props} >
     <LeftMark src={inicial} />
-    <Container flex justify="space-between">
+    <Container flex justify="space-between" margin={[1.5, 1]}>
       <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
       </Text>
