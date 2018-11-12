@@ -88,19 +88,16 @@ class ServicesPresentation extends Component {
             names={this.names}
             height="800px"
           />
-          {this.names.length > 5 ? (
-            <Container
-              padding={[1]}
-              backColor="black"
-              onMouseOver={this.handleHoverScroll}
-              onClick={this.handleHoverClick}
-              onMouseLeave={this.handleStopInterval}
-            >
-              <Arrow />
-            </Container>
-          ) : (
-            ''
-          )}
+
+          <Container
+            padding={[1]}
+            backColor="black"
+            onMouseOver={this.handleHoverScroll}
+            onClick={this.handleHoverClick}
+            onMouseLeave={this.handleStopInterval}
+          >
+            <Arrow />
+          </Container>
         </Container>
         {this.props.data.map((data, index) => {
           return (
