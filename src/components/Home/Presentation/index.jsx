@@ -31,9 +31,11 @@ const ArrowContainer = styled(Container)`
   top: 1em;
 `;
 
-const InfoContainer = styled(Container)`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-`;
+const InfoContainer = styled(Container).attrs({
+  style: ({show}) => ({
+    display: show ? 'block' : 'none'
+  })
+})``;
 
 class Presentation extends Component {
   constructor(props) {
