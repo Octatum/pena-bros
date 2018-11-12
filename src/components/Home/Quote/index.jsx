@@ -27,10 +27,10 @@ const Quote = ({ author, children, size, ...props }) => (
   <Container flex row backColor="green" {...props} padding={[2, 13]}>
     <LeftMark src={inicial} />
     <Container flex justify="space-between">
-      <Text white bold size={2 * size}>
+      <Text white bold size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
       </Text>
-      <Text size={size} white align="right">
+      <Text size={size} as={Container} white align="right" width="90%">
         {children}
       </Text>
     </Container>

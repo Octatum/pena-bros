@@ -26,7 +26,7 @@ const Button = styled(Text)`
 `;
 
 const ArrowContainer = styled(Container)`
-  position: absolute; 
+  position: absolute;
   left: 7em;
   top: 1em;
 `;

@@ -10,7 +10,7 @@ const Quote = styled(Text)`
   transition: all 0.75s ease-out 0s;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     transition: all 0.75s ease-out 0s;
     z-index: -1;
@@ -19,9 +19,10 @@ const Quote = styled(Text)`
     left: 0;
     right: 100%;
 
-    background-color: ${({theme}) => theme.color.green};
+    background-color: ${({ theme }) => theme.color.green};
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
 
     ::after {
