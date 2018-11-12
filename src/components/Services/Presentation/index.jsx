@@ -44,28 +44,19 @@ class ServicesPresentation extends Component {
     };
 
     this.names = props.data.map(data => data.node.frontmatter.name);
-    this.hoverInterval = null;
 
-    this.handleHover = this.handleHover.bind(this);
-    this.handleHoverScroll = this.handleHoverScroll.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    
     this.handleHoverClick = this.handleHoverClick.bind(this);
-    this.handleStopInterval = this.handleStopInterval.bind(this);
+    
   }
 
-  handleHover(event, index) {
+  handleClick(event, index) {
     this.setState({
       current: index,
     });
   }
 
-  handleHoverScroll() {
-    this.hoverInterval = setInterval(() => {
-      const next = (this.state.current + 1) % this.names.length;
-      this.setState({
-        current: next,
-      });
-    }, 1000);
-  }
 
   handleHoverClick() {
     const next = (this.state.current + 1) % this.names.length;
@@ -74,27 +65,24 @@ class ServicesPresentation extends Component {
     });
   }
 
-  handleStopInterval() {
-    clearInterval(this.hoverInterval);
-  }
+
 
   render() {
     return (
       <Container flex row justify="flex-start" margin={[0, 0, 5, 0]}>
         <Container width="30%">
           <ServiceNameColumn
-            handleHover={this.handleHover}
+            handleClick={this.handleClick}
             current={this.state.current}
             names={this.names}
-            height="800px"
+            height="90vh"
           />
 
           <Container
             padding={[1]}
             backColor="black"
-            onMouseOver={this.handleHoverScroll}
             onClick={this.handleHoverClick}
-            onMouseLeave={this.handleStopInterval}
+            height="10vh"
           >
             <Arrow />
           </Container>
@@ -103,7 +91,7 @@ class ServicesPresentation extends Component {
           return (
             <ViewComponent
               serviceData={data.node.frontmatter}
-              height="800px"
+              height="90vh"
               show={index === this.state.current}
               key={index}
             />

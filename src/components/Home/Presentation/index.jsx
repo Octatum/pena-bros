@@ -64,7 +64,7 @@ class Presentation extends Component {
           show={this.state.currentSlide === 0}
         >
           <BackImage src={placeholder} width="100%" height="100%" />
-          <Text white size={2.5} padding={[1]} width="30%">
+          <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -90,7 +90,7 @@ class Presentation extends Component {
           show={this.state.currentSlide === 1}
         >
           <BackImage src={placeholder2} width="100%" height="100%" />
-          <Text white size={2.5} padding={[1]} width="30%">
+          <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -116,7 +116,7 @@ class Presentation extends Component {
           show={this.state.currentSlide === 2}
         >
           <BackImage src={placeholder3} width="100%" height="100%" />
-          <Text white size={2.5} padding={[1]} width="30%">
+          <Text white size={2.5} as={Container} padding={[1]} width="30%">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type

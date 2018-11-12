@@ -22,7 +22,7 @@ const SubTitle = ({ children, title, size = 1, ...props }) => (
     <Text bold="800" size={size * 3} width="85%">
       {title}
     </Text>
-    <TextGreenEdge size={size} padding={[0, 1]} bold="lighter">
+    <TextGreenEdge size={size} padding={[0, 1]} as={Container} bold="lighter">
       {children}
     </TextGreenEdge>
   </Container>

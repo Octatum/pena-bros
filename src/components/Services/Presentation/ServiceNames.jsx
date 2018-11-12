@@ -11,14 +11,14 @@ const Name = styled(Text)`
   }
 `;
 
-const ServiceNames = ({ names, current, handleHover, ...props }) => (
+const ServiceNames = ({ names, current, handleClick, ...props }) => (
   <Container {...props} backColor="black">
     {names.map((name, index) => {
       return (
         <Name
           white
           isCurrent={current === index}
-          onMouseEnter={event => handleHover(event, index)}
+          onClick={event => handleClick(event, index)}
           align="center"
           bold="800"
           size={9}
