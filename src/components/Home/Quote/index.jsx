@@ -1,40 +1,76 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+
 import { Container } from '../../Container';
-import { Text } from '../../Text';
+import IndivQuote from './IndivQuote';
 
-import inicial from './assets/initial.svg';
-import final from './assets/final.svg';
-import { Image } from '../../Image';
+class Quote extends Component {
+  constructor(props) {
+    super(props);
 
-const LeftMark = styled(Image)`
-  align-self: flex-start;
-`;
+    this.state = {
+      current: 0,
+      next: 1,
+    };
 
-const RightMark = styled(Image)`
-  align-self: flex-end;
-`;
+    this.dataLength = 0;
+    this.interval = null;
+  }
 
-const Quote = ({ author, children, size, ...props }) => (
-  <Container flex row backColor="green" {...props}>
-    <LeftMark src={inicial} />
-    <Container flex justify="space-between" margin={[1.5, 1]}>
-      <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
-        {author}
-      </Text>
-      <Container
-        size={size}
-        as={Text}
-        white
-        align="right"
-        width="90%"
-        bold="lighter"
-      >
-        {children}
-      </Container>
-    </Container>
-    <RightMark src={final} />
-  </Container>
-);
+  componentDidMount() {
+    const next = (this.state.current + 1) % this.dataLength;
+    const nextNext = (next + 1) % this.dataLength;
+    this.interval = setInterval(() => {
+      this.setState({
+        current: next,
+        next: nextNext,
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <StaticQuery
+        query={graphql`
+          query GetQuotes {
+            allMarkdownRemark(
+              filter: { frontmatter: { layout: { eq: "review" } } }
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    title
+                    review
+                  }
+                }
+              }
+            }
+          }
+        `}
+        render={data => {
+          this.dataLength = data.allMarkdownRemark.edges.length;
+          return (
+            <Container {...this.props}>
+              {data.allMarkdownRemark.edges.map((data, index) => (
+                <IndivQuote
+                  author={data.node.frontmatter.title}
+                  key={index}
+                  size={this.props.size}
+                  padding={[0, 2]}
+                >
+                  {data.node.frontmatter.review}
+                </IndivQuote>
+              ))}
+            </Container>
+          );
+        }}
+      />
+    );
+  }
+}
 
 export default Quote;

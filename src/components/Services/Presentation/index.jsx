@@ -46,9 +46,8 @@ class ServicesPresentation extends Component {
     this.names = props.data.map(data => data.node.frontmatter.name);
 
     this.handleClick = this.handleClick.bind(this);
-    
+
     this.handleHoverClick = this.handleHoverClick.bind(this);
-    
   }
 
   handleClick(event, index) {
@@ -57,15 +56,12 @@ class ServicesPresentation extends Component {
     });
   }
 
-
   handleHoverClick() {
     const next = (this.state.current + 1) % this.names.length;
     this.setState({
       current: next,
     });
   }
-
-
 
   render() {
     return (

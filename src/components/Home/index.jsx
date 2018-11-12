@@ -26,14 +26,7 @@ const HomePage = () => (
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book.
     </SubTitle>
-    <Quote
-      padding={[0, 2]}
-      margin={[5, 0]}
-      size={4}
-      author="Lorenzo Chapa Hernández"
-    >
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </Quote>
+    <Quote margin={[5, 0]} size={4} />
     <WorksPreview />
     <QuoteAction />
   </Container>

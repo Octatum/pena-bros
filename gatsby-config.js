@@ -19,5 +19,12 @@ module.exports = {
         name: 'services'
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/reviews`,
+        name: 'reviews'
+      },
+    },
   ],
 }
