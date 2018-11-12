@@ -7,6 +7,27 @@ import { Text } from '../Text';
 
 const Quote = styled(Text)`
   align-self: flex-end;
+  transition: all 0.75s ease-out 0s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    transition: all 0.75s ease-out 0s;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+
+    background-color: ${({theme}) => theme.color.green};
+  }
+  &:hover, &:focus {
+    background-color: transparent;
+
+    ::after {
+      right: 0;
+    }
+  }
 `;
 
 const ActionLink = styled(Link)`
@@ -22,7 +43,6 @@ const QuoteAction = () => (
   <Container flex>
     <Quote
       size={9}
-      align="right"
       width="auto"
       as={Container}
       bold

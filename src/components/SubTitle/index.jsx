@@ -28,7 +28,7 @@ const SubTitle = ({ children, title, size = 1, ...props }) => (
   </Container>
 );
 
-SubTitle.PropTypes = {
+SubTitle.propTypes = {
   title: PropTypes.string.isRequired,
   size: PropTypes.number,
 };

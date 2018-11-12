@@ -36,7 +36,6 @@ const Arrow = ({ left, handleClick }) => (
   <Circle
     flex
     backColor="green"
-    width="auto"
     padding={[0.25]}
     margin={[0.25]}
     height="2.5em"

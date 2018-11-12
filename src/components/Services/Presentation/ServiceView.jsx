@@ -20,7 +20,7 @@ const ImageCenter = styled(Image)`
 const ServiceView = ({ serviceData, show, ...props }) => (
   <View
     {...props}
-    display={show}
+    display={show ? 1 : 0}
     flex
     align="flex-start"
     justify="space-between"
@@ -33,7 +33,7 @@ const ServiceView = ({ serviceData, show, ...props }) => (
 );
 
 ServiceView.propTypes = {
-  serviceData: PropTypes.array.isRequired,
+  serviceData: PropTypes.object.isRequired,
   show: PropTypes.bool.isRequired,
 };
 ServiceView.defaultProps = {
