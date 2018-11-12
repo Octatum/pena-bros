@@ -46,8 +46,8 @@ const Question = ({
   ...props
 }) => {
   return (
-    <Text
-      as={Container}
+    <Container
+      as={Text}
       flex
       row
       justify="flex-start"
@@ -75,7 +75,7 @@ const Question = ({
           />
         </FileInputButton>
       )}
-    </Text>
+    </Container>
   );
 };
 

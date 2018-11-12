@@ -9,13 +9,13 @@ import placeholder2 from './assets/placeholder2.png';
 import placeholder3 from './assets/placeholder3.png';
 import ImageSlider from './ImageSlider';
 
-const RightALign = styled(Text)`
+const RightALign = styled(Container)`
   align-self: flex-end;
 `;
 
 const WorksPreview = () => (
   <Container margin={[3, 0]} flex width="80%">
-    <RightALign as={Container} width="50%" bold="800" size={9} align="right">
+    <RightALign as={Text} width="50%" bold="800" size={9} align="right">
       Lorem Ipsum is simply dummy text
     </RightALign>
     <ImageSlider images={[placeholder1, placeholder2, placeholder3]} />

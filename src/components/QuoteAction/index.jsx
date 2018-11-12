@@ -5,9 +5,10 @@ import Link from 'gatsby-link';
 import { Container } from '../Container';
 import { Text } from '../Text';
 
-const Quote = styled(Text)`
+const Quote = styled(Container)`
   align-self: flex-end;
   transition: all 0.75s ease-out 0s;
+  width: auto;
 
   &::after {
     content: '';
@@ -45,7 +46,7 @@ const QuoteAction = () => (
     <Quote
       size={9}
       width="auto"
-      as={Container}
+      as={Text}
       bold="800"
       white
       backColor="green"
@@ -54,9 +55,9 @@ const QuoteAction = () => (
       <ActionLink to="/Contact" />
       Get a quote
     </Quote>
-    <Text size={4} as={Container} width="60%" margin={[1.5, 0]} bold="lighter">
+    <Container size={4} as={Text} width="60%" margin={[1.5, 0]} bold="lighter">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </Text>
+    </Container>
   </Container>
 );
 

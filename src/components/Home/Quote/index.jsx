@@ -22,16 +22,16 @@ const Quote = ({ author, children, size, ...props }) => (
       <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
       </Text>
-      <Text
+      <Container
         size={size}
-        as={Container}
+        as={Text}
         white
         align="right"
         width="90%"
         bold="lighter"
       >
         {children}
-      </Text>
+      </Container>
     </Container>
     <RightMark src={final} />
   </Container>
