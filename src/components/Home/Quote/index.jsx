@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import { Container } from '../../Container';
 import IndivQuote from './IndivQuote';
+
+const AllQuoteContainer = styled(Container)`
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
 
 class Quote extends Component {
   constructor(props) {
@@ -12,20 +17,19 @@ class Quote extends Component {
       current: 0,
       next: 1,
     };
-
-    this.dataLength = 0;
+    this.dataLength = props.data.allMarkdownRemark.edges.length;
     this.interval = null;
   }
 
   componentDidMount() {
-    const next = (this.state.current + 1) % this.dataLength;
-    const nextNext = (next + 1) % this.dataLength;
     this.interval = setInterval(() => {
+      const next = (this.state.current + 1) % this.dataLength;
+      const nextNext = (next + 1) % this.dataLength;
       this.setState({
         current: next,
         next: nextNext,
       });
-    }, 1000);
+    }, 5000);
   }
 
   componentWillUnmount() {
@@ -34,43 +38,41 @@ class Quote extends Component {
 
   render() {
     return (
-      <StaticQuery
-        query={graphql`
-          query GetQuotes {
-            allMarkdownRemark(
-              filter: { frontmatter: { layout: { eq: "review" } } }
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    title
-                    review
-                  }
-                }
-              }
-            }
-          }
-        `}
-        render={data => {
-          this.dataLength = data.allMarkdownRemark.edges.length;
+      <AllQuoteContainer {...this.props}>
+        {this.props.data.allMarkdownRemark.edges.map((data, index) => {
           return (
-            <Container {...this.props}>
-              {data.allMarkdownRemark.edges.map((data, index) => (
-                <IndivQuote
-                  author={data.node.frontmatter.title}
-                  key={index}
-                  size={this.props.size}
-                  padding={[0, 2]}
-                >
-                  {data.node.frontmatter.review}
-                </IndivQuote>
-              ))}
-            </Container>
-          );
-        }}
-      />
+            <IndivQuote
+              key={index}
+              size={this.props.size}
+              padding={[0, 2]}
+              author={data.node.frontmatter.title}
+              isCurrent={this.state.current === index}
+              isNext={this.state.next === index}
+            >
+              {data.node.frontmatter.review}
+            </IndivQuote>
+          )
+        })}
+      </AllQuoteContainer>
     );
   }
 }
 
 export default Quote;
+
+/*
+{this.props.data.allMarkdownRemark.edges.map((data, index) => {
+          return (
+            <IndivQuote
+              key={index}
+              size={this.props.size}
+              padding={[0, 2]}
+              author={data.node.frontmatter.title}
+              isCurrent={this.state.current === index}
+              isNext={this.state.next === index}
+            >
+              {data.node.frontmatter.review}
+            </IndivQuote>
+          )
+        })}
+*/
