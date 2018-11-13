@@ -1,58 +1,52 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Glide from '@glidejs/glide';
+
 import { Container } from '../../Container';
 import IndivQuote from './IndivQuote';
 
 const AllQuoteContainer = styled(Container)`
   flex-wrap: wrap;
-  flex-direction: row;
+  overflow: hidden;
 `;
 
 class Quote extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      current: 0,
-      next: 1,
-    };
-    this.dataLength = props.data.allMarkdownRemark.edges.length;
-    this.interval = null;
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => {
-      const next = (this.state.current + 1) % this.dataLength;
-      const nextNext = (next + 1) % this.dataLength;
-      this.setState({
-        current: next,
-        next: nextNext,
-      });
-    }, 5000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
+    new Glide('.glide', {
+      type: 'slider',
+      startAt: 0,
+      perView: 1,
+      gap: 0,
+      autoplay: 5000,
+      hoverpause: false,
+    }).mount();
   }
 
   render() {
     return (
-      <AllQuoteContainer {...this.props}>
-        {this.props.data.allMarkdownRemark.edges.map((data, index) => {
-          return (
-            <IndivQuote
-              key={index}
-              size={this.props.size}
-              padding={[0, 2]}
-              author={data.node.frontmatter.title}
-              isCurrent={this.state.current === index}
-              isNext={this.state.next === index}
-            >
-              {data.node.frontmatter.review}
-            </IndivQuote>
-          )
-        })}
+      <AllQuoteContainer {...this.props} className="glide">
+        <div data-glide-el="track" className="glide__track">
+          <ul className="glide__slides">
+            {this.props.data.allMarkdownRemark.edges.map((data, index) => {
+              return (
+                <IndivQuote
+                  key={index}
+                  size={this.props.size}
+                  padding={[0, 2]}
+                  className="glide__slide"
+                  author={data.node.frontmatter.title}
+                >
+                  {data.node.frontmatter.review}
+                </IndivQuote>
+              );
+            })}
+          </ul>
+        </div>
       </AllQuoteContainer>
     );
   }
