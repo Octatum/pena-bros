@@ -78,7 +78,7 @@ class ServicesPresentation extends Component {
             padding={[1]}
             backColor="black"
             onClick={this.handleHoverClick}
-            height="10vh"
+            height="auto"
           >
             <Arrow />
           </Container>

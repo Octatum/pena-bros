@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { Container } from '../../Container';
 import { Text } from '../../Text';
 import { Formik } from 'formik';
-import { string, object, mixed } from 'yup';
+
 import { navigateTo } from 'gatsby';
 import Question from './Question';
+import { validation } from '../../../utils/validation';
 
 const SubmitButton = styled(Text)`
   background-color: ${({ theme }) => theme.color.green};
@@ -15,24 +16,12 @@ const SubmitButton = styled(Text)`
   float: right;
 `;
 
-const inputValidation = object().shape({
-  name: string().required('Required'),
-  phone: string()
-    .min(6, 'Phone number to short')
-    .required('Required'),
-  mail: string()
-    .email('Email address not valid')
-    .required('Required'),
-  image: mixed().required('Image required'),
-  message: string().required('Required'),
-});
-/*
 function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
 }
-
+/*
 (values, actions) => {
       console.log(values)
       fetch('/', {
@@ -64,8 +53,27 @@ const GetInTouch = () => (
       image: '',
       message: '',
     }}
-    validationSchema={inputValidation}
-    onSubmit={values => console.log(values)}
+    validationSchema={validation}
+    onSubmit={(values, actions) => {
+      console.log(values)
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'Contact',
+          values
+        }),
+      })
+        .then(() => {
+          alert('Your message was sent!');
+          actions.setSubmitting(false);
+          navigateTo('/')
+        })
+        .catch(() => {
+          actions.setSubmitting(false);
+          return error => alert(error);
+        })
+    }}
     render={({ handleSubmit, handleChange, handleBlur, values }) => (
       <Container
         margin={[5, 'auto']}
@@ -140,7 +148,7 @@ const GetInTouch = () => (
           padding={[0.35, 1.25]}
           align="center"
         >
-          Submit
+          Send
         </SubmitButton>
       </Container>
     )}

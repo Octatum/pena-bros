@@ -7,14 +7,11 @@ import { Container } from '../../Container';
 import IndivQuote from './IndivQuote';
 
 const AllQuoteContainer = styled(Container)`
-  flex-wrap: wrap;
   overflow: hidden;
 `;
 
 class Quote extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   componentDidMount() {
     new Glide('.glide', {
@@ -23,13 +20,13 @@ class Quote extends Component {
       perView: 1,
       gap: 0,
       autoplay: 5000,
-      hoverpause: false,
+      hoverpause: true,
     }).mount();
   }
 
   render() {
     return (
-      <AllQuoteContainer {...this.props} className="glide">
+      <AllQuoteContainer {...this.props} className="glide" backColor="green">
         <div data-glide-el="track" className="glide__track">
           <ul className="glide__slides">
             {this.props.data.allMarkdownRemark.edges.map((data, index) => {
@@ -53,20 +50,3 @@ class Quote extends Component {
 }
 
 export default Quote;
-
-/*
-{this.props.data.allMarkdownRemark.edges.map((data, index) => {
-          return (
-            <IndivQuote
-              key={index}
-              size={this.props.size}
-              padding={[0, 2]}
-              author={data.node.frontmatter.title}
-              isCurrent={this.state.current === index}
-              isNext={this.state.next === index}
-            >
-              {data.node.frontmatter.review}
-            </IndivQuote>
-          )
-        })}
-*/

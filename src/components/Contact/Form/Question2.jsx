@@ -23,6 +23,10 @@ function isFile({ type }) {
   }
 }
 
+const Button = styled(FileInputButton)`
+  grid-area: ${({ position }) => position};
+`;
+
 const Input = styled.input`
   font-size: 0.75em;
   border: none;
@@ -31,10 +35,11 @@ const Input = styled.input`
   max-width: 30em;
   min-width: 15em;
   margin-left: 1em;
-  
+  grid-area: ${({ position }) => position};
 
   ${isFile};
 `;
+
 
 const Question = ({
   question,
@@ -43,20 +48,10 @@ const Question = ({
   handleChange,
   handleBlur,
   value,
-  error,
-  ...props
-}) => {
-  return (
-    <Container
-      as={Text}
-      flex
-      row
-      justify="flex-start"
-      margin={[0.5, 0]}
-      bold="bold"
-      {...props}
-    >
-      {question}
+  gridPosition
+}) => (
+    <Fragment>
+      <Text as="label" weight="bold" margin={[0.5, 0]} position={gridPosition}>{question}</Text>
       {inputType !== 'file' ? (
         <Input
           type={inputType}
@@ -64,21 +59,21 @@ const Question = ({
           onChange={handleChange}
           onBlur={handleBlur}
           defaultValue={value}
+          position={`${gridPosition}-input`}
         />
       ) : (
-        <FileInputButton>
-          <Input
-            type={inputType}
-            name={name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            defaultValue={value}
-          />
-        </FileInputButton>
-      )}
-    </Container>
-  );
-};
+          <Button position={gridPosition}>
+            <Input
+              type={inputType}
+              name={name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              defaultValue={value}
+            />
+          </Button>
+        )}
+    </Fragment>
+  )
 
 Question.propTypes = {
   question: PropTypes.string.isRequired,
@@ -87,7 +82,6 @@ Question.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   value: PropTypes.any.isRequired,
-  error: PropTypes.object,
 };
 
 Question.defaultProps = {

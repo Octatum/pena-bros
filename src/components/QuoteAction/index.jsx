@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// eslint-disable-next-line
 import Link from 'gatsby-link';
 import { Container } from '../Container';
 import { Text } from '../Text';
 
 const Quote = styled(Container)`
   align-self: flex-end;
-  transition: all 0.75s ease-out 0s;
   width: auto;
+  /* transition: all 0.75s ease-out 0s;
 
   &::after {
     content: '';
@@ -29,17 +30,17 @@ const Quote = styled(Container)`
     ::after {
       right: 0;
     }
-  }
+  } */
 `;
 
-const ActionLink = styled(Link)`
+/* const ActionLink = styled(Link)`
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-`;
+`; */
 
 const QuoteAction = () => (
   <Container flex>
@@ -52,7 +53,7 @@ const QuoteAction = () => (
       backColor="green"
       padding={[0.1, 2, 0.1, 0.75]}
     >
-      <ActionLink to="/Contact" />
+      {/* <ActionLink to="/Contact" /> */}
       Get a quote
     </Quote>
     <Container size={4} as={Text} width="60%" margin={[1.5, 0]} bold="lighter">

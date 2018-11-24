@@ -27,3 +27,25 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "review"}
       - {label: "Author", name: "title", widget: "string"}
       - {label: "Review", name: "review", widget: "string"}
+
+  - name: "homePresentation"
+    label: "Home Presentation Slides"
+    files: 
+      - name: "pres1"
+        label: "First Slide"
+        file: "content/homeSlides/firstSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "string"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
+      - name: "pres2"
+        label: "Second Slide"
+        file: "content/homeSlides/secondSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "string"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
+      - name: "pres3"
+        label: "Third Slide"
+        file: "content/homeSlides/thirdSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "string"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}

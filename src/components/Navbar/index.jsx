@@ -34,7 +34,7 @@ const Navbar = () => (
       Products
     </Text>
     <Text as={Link} to="/Contact" white="true" bold="bold" size={1.5}>
-      Get Directions
+      Contact
     </Text>
   </NavbarContainer>
 );
