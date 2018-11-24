@@ -5,5 +5,6 @@ description: >-
   when an unknown printer took a galley of type and scrambled it to make a type
   specimen book. 
 link: About Us
+image: /assets/placeholder3.png
 ---
 
