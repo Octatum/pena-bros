@@ -69,6 +69,7 @@ class Presentation extends Component {
                       frontmatter{
                         description
                         link
+                        image
                       }
                     }
                   }
@@ -82,7 +83,8 @@ class Presentation extends Component {
             return <InfoContainer
               padding={[5, 5, 7, 5]}
               algin="flex-start"
-              show={this.state.currentSlide === index}>
+              show={this.state.currentSlide === index}
+              key={index}>
               <BackImage
                 src={frontmatter.image}
                 width="100%"
@@ -92,7 +94,7 @@ class Presentation extends Component {
               </Text>
               <Button
                 as={Link}
-                to={frontmatter.link === "About Us" ? 'about us' : "\\"}
+                to={frontmatter.link === "About Us" ? '/about' : "/"}
                 bold="bold"
                 size={2.5}
                 white="true"
