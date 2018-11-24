@@ -34,11 +34,11 @@ const PageLayout = ({ children }) => (
         ]}
       >
         <html lang="en" />
+        <link
+          href="https://fastcdn.org/Glide.js/2.0.4/css/glide.core.min.css"
+          rel="stylesheet"
+        />
       </Helmet>
-      <link
-        href="https://fastcdn.org/Glide.js/2.0.4/css/glide.core.min.css"
-        rel="stylesheet"
-      />
       <div>{children}</div>
     </Layout>
   </ThemeProvider>

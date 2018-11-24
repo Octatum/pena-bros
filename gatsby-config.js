@@ -26,5 +26,12 @@ module.exports = {
         name: 'reviews'
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/homeSlides`,
+        name: 'homeSlides'
+      },
+    },
   ],
 }

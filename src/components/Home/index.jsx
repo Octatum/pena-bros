@@ -15,7 +15,30 @@ const PresentationComp = styled(Presentation)`
 
 const HomePage = () => (
   <Container flex>
-    <PresentationComp />
+    <StaticQuery
+      query={graphql`
+        query getSlides	{
+          allFile(
+            filter:{sourceInstanceName: {eq: "homeSlides"}}
+          ){
+            edges{
+              node{
+                name
+                relativePath
+                childMarkdownRemark {
+                  frontmatter{
+                    description
+                    link
+                  }
+                }
+              }
+            }
+          }	
+        }
+    `}
+    render={data => <PresentationComp slideData={data}/>}
+    />
+    
     <SubTitle
       size={2.5}
       title="Lorem Ipsum is simply dummy text"
