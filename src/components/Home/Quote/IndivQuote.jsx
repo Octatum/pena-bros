@@ -9,16 +9,9 @@ const Quote = ({ author, children, size, width, ...props }) => (
       <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
       </Text>
-      <Container
-        size={size}
-        as={Text}
-        white
-        align="right"
-        bold="lighter"
-      >
+      <Container size={size} as={Text} white align="right" bold="lighter">
         {children}
       </Container>
-
     </Container>
   </Container>
 );

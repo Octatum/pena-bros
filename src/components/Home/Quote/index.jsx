@@ -31,8 +31,6 @@ const RightMark = styled(Image)`
 `;
 
 class Quote extends Component {
-
-
   componentDidMount() {
     new Glide('.glide', {
       type: 'slider',

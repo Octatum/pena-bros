@@ -11,7 +11,7 @@ import phone from './../assets/phone.svg';
 const BusinessInfo = () => (
   <Container flex padding={[2, 1]} width="75%" margin={['auto']}>
     <BusinessCard image={phone}>(210) 647-4200</BusinessCard>
-    <BusinessCard image={location} >
+    <BusinessCard image={location}>
       5305 Bandera Road San Antonio, TX 78238
     </BusinessCard>
   </Container>

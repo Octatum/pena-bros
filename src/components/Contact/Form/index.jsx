@@ -7,13 +7,30 @@ import { Formik } from 'formik';
 
 import { navigateTo } from 'gatsby';
 import Question from './Question';
+import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
+
+const FormContainer = styled(Container)`
+  display: grid;
+  grid-template-columns: 10em auto;
+  grid-template-areas:
+    'name name-input'
+    'phone phone-input'
+    'mail mail-input'
+    'image image'
+    'message message-input'
+    'submit submit';
+  gap: 1.25em;
+`;
 
 const SubmitButton = styled(Text)`
   background-color: ${({ theme }) => theme.color.green};
   border: none;
   cursor: pointer;
   float: right;
+  grid-area: submit;
+  width: auto;
+  justify-self: end;
 `;
 
 function encode(data) {
@@ -55,27 +72,27 @@ const GetInTouch = () => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-      console.log(values)
+      console.log(values);
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'Contact',
-          values
+          values,
         }),
       })
         .then(() => {
           alert('Your message was sent!');
           actions.setSubmitting(false);
-          navigateTo('/')
+          navigateTo('/');
         })
         .catch(() => {
           actions.setSubmitting(false);
           return error => alert(error);
-        })
+        });
     }}
     render={({ handleSubmit, handleChange, handleBlur, values }) => (
-      <Container
+      <FormContainer
         margin={[5, 'auto']}
         width="70%"
         as="form"
@@ -96,7 +113,6 @@ const GetInTouch = () => (
         <Question
           size={3}
           question="Name: "
-          inputType="text"
           name="name"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -105,7 +121,6 @@ const GetInTouch = () => (
         <Question
           size={3}
           question="Phone: "
-          inputType="text"
           name="phone"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -114,25 +129,24 @@ const GetInTouch = () => (
         <Question
           size={3}
           question="Email: "
-          inputType="text"
           name="mail"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.mail}
         />
-        <Question
+        <FileUpload
           size={3}
-          question=""
-          inputType="file"
+          text="Attach Image"
+          message="send us a foto of your car's interior"
           name="image"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.image}
+          style={{ gridArea: 'image' }}
         />
         <Question
           size={3}
           question="Message: "
-          inputType="text"
           name="message"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -150,7 +164,7 @@ const GetInTouch = () => (
         >
           Send
         </SubmitButton>
-      </Container>
+      </FormContainer>
     )}
   />
 );
