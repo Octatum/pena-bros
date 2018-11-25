@@ -37,7 +37,7 @@ const FileUpload = ({
         defaultValue={value}
       />
     </Container>
-    <Text italic size={0.15} margin={[0, 5]} align="left" gray size={0.15}>
+    <Text italic size={0.15} margin={[0, 5]} align="left" gray>
       {message}
     </Text>
   </Container>

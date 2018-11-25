@@ -32,7 +32,7 @@ const RightMark = styled(Image)`
 
 class Quote extends Component {
   componentDidMount() {
-    new Glide('.glide', {
+    new Glide('.quoteGlide', {
       type: 'slider',
       startAt: 0,
       perView: 1,
@@ -44,7 +44,11 @@ class Quote extends Component {
 
   render() {
     return (
-      <AllQuoteContainer {...this.props} className="glide" backColor="green">
+      <AllQuoteContainer
+        {...this.props}
+        className="quoteGlide"
+        backColor="green"
+      >
         <LeftMark src={inicial} />
         <div data-glide-el="track" className="glide__track">
           <Container flex row className="glide__slides">

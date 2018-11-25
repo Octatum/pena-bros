@@ -15,7 +15,7 @@ const PresentationComp = styled(Presentation)`
 
 const HomePage = () => (
   <Container flex>
-    <PresentationComp />
+    <PresentationComp directory="homeSlides"/>
     <SubTitle
       size={2.5}
       title="Lorem Ipsum is simply dummy text"

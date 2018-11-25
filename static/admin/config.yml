@@ -52,3 +52,28 @@ collections:
           - {label: "Text", name: "description", widget: "text"}
           - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
           - {label: "Background Image", name: "image", widget: "image"}
+      
+    - name: "aboutUsPresentation"
+    label: "About Us Presentation Slides"
+    files: 
+      - name: "pres1"
+        label: "First Slide"
+        file: "content/aboutPres/firstSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "text"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
+          - {label: "Background Image", name: "image", widget: "image"}
+      - name: "pres2"
+        label: "Second Slide"
+        file: "content/aboutPres/secondSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "text"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
+          - {label: "Background Image", name: "image", widget: "image"}
+      - name: "pres3"
+        label: "Third Slide"
+        file: "content/aboutPres/thirdSlide.md"
+        fields: 
+          - {label: "Text", name: "description", widget: "text"}
+          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
+          - {label: "Background Image", name: "image", widget: "image"}
