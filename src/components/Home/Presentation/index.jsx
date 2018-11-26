@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import { graphql, StaticQuery } from 'gatsby';
+import Glide from '@glidejs/glide';
 
 import { Container } from '../../Container';
 import { Image } from '../../Image';
 import { Text } from '../../Text';
 
 import Arrows from './Arrows';
+
+const Slider = styled(Container)`
+  overflow: hidden;
+`;
 
 const BackImage = styled(Image)`
   position: absolute;
@@ -27,36 +32,25 @@ const ArrowContainer = styled(Container)`
   top: 1em;
 `;
 
-const InfoContainer = styled(Container).attrs({
-  style: ({ show }) => ({
-    display: show ? 'block' : 'none',
-  }),
-})``;
-
 class Presentation extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    this.state = {
-      currentSlide: 0,
-    };
-    this.totalSlides = 3;
-
-    this.handleClick = this.handleClick.bind(this);
+    this.glide = null;
   }
 
-  handleClick() {
-    const next = (this.state.currentSlide + 1) % 3;
-    this.setState({
-      currentSlide: next,
-    });
+  componentDidMount() {
+    this.glide = new Glide('#HomePres', {
+      startAt: 0,
+      perView: 1,
+      gap: 0,
+    }).mount();
   }
 
   render() {
     return (
-      <Container width="100%" className={this.props.className}>
-        <StaticQuery
-          query={graphql`
+      <StaticQuery
+        query={graphql`
             query getSlides {
               allFile(filter: { sourceInstanceName: { eq: "homeSlides" } }) {
                 edges {
@@ -75,52 +69,57 @@ class Presentation extends Component {
               }
             }
           `}
-          render={data => {
-            return data.allFile.edges.map((_, index) => {
-              const { frontmatter } = _.node.childMarkdownRemark;
-              return (
-                <InfoContainer
-                  padding={[5, 5, 7, 5]}
-                  algin="flex-start"
-                  show={this.state.currentSlide === index}
-                  key={index}
-                >
-                  <BackImage
-                    src={frontmatter.image}
-                    width="100%"
-                    height="100%"
-                  />
-                  <Text
-                    white
-                    size={2.5}
-                    as={Container}
-                    padding={[1]}
-                    width="30%"
-                  >
-                    {frontmatter.description}
-                  </Text>
-                  <Button
-                    as={Link}
-                    to={frontmatter.link === 'About Us' ? '/about' : '/'}
-                    bold="bold"
-                    size={2.5}
-                    white="true"
-                    margin={[0, 1]}
-                    padding={[0.25, 1.25]}
-                    width="auto"
-                  >
-                    {frontmatter.link}
-                  </Button>
-                </InfoContainer>
-              );
-            });
-          }}
-        />
-        <ArrowContainer flex row width="auto" height="auto" justify="flex-end">
-          <Arrows handleClick={this.handleClick} />
-          <Arrows left handleClick={this.handleClick} />
-        </ArrowContainer>
-      </Container>
+        render={data => {
+          return (
+            <Slider id="HomePres" {...this.props}>
+              <div data-glide-el="track" className="glide__track">
+                <Container className="glide__slides">
+                  {
+                    data.allFile.edges.map((_, index) => {
+                      const { frontmatter } = _.node.childMarkdownRemark;
+                      return (
+                        <Container className="glide__slide" flex align="flex-start" key={index} padding={[5, 5, 7, 5]}>
+                          <BackImage
+                            src={frontmatter.image}
+                            width="100%"
+                            height="100%"
+                          />
+                          <Text
+                            white
+                            size={2.5}
+                            as={Container}
+                            padding={[1]}
+                            width="30%"
+                            align="left"
+                          >
+                            {frontmatter.description}
+                          </Text>
+                          <Button
+                            as={Link}
+                            to={frontmatter.link === 'About Us' ? '/about' : '/'}
+                            bold="bold"
+                            size={2.5}
+                            white="true"
+                            margin={[0, 1]}
+                            padding={[0.25, 1.25]}
+                            width="auto"
+                          >
+                            {frontmatter.link}
+                          </Button>
+                        </Container>
+                      )
+                    })
+                  }
+                </Container>
+              </div>
+              <ArrowContainer flex row width="auto" height="auto" justify="flex-end">
+                <Arrows handleClick={() => this.glide.go('<')} />
+                <Arrows left handleClick={() => this.glide.go('>')} />
+              </ArrowContainer>
+            </Slider>
+          )
+        }}
+      />
     );
   }
 }

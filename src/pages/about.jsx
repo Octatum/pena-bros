@@ -8,7 +8,7 @@ import About from '../components/About';
 const AboutPage = () => (
   <PageLayout>
     <Helmet title="About Us" />
-    <About />
+    <About margin={[0,0,10,0]} />
     <QuoteAction />
   </PageLayout>
 );

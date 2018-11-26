@@ -10,6 +10,9 @@ import { Container } from '../Container';
 import { Text } from '../Text';
 import { Image } from '../Image';
 
+const Slider = styled(Container)`
+  overflow: hidden;
+`;
 
 const BackImage = styled(Image)`
   position: absolute;
@@ -25,19 +28,21 @@ const Button = styled(Text)`
 
 const ArrowContainer = styled(Container)`
   position: absolute;
-  left: 7em;
-  top: 1em;
+  right: 7em;
+  top: 2em;
 `;
 
 class About extends Component {
+  constructor() {
+    super();
+    this.glide = null;
+  }
+
   componentDidMount() {
-    new Glide('.AboutUsPres', {
-      type: 'slider',
+    this.glide = new Glide('#AboutUsPres', {
       startAt: 0,
       perView: 1,
       gap: 0,
-      autoplay: 5000,
-      hoverpause: true,
     }).mount();
   }
 
@@ -65,14 +70,14 @@ class About extends Component {
         `}
         render={data => {
           return (
-            <Container className="AboutUsPres" {...this.props}>
+            <Slider id="AboutUsPres" {...this.props}>
               <div data-glide-el="track" className="glide__track">
                 <Container className="glide__slides">
                   {
                     data.allFile.edges.map((_, index) => {
                       const { frontmatter } = _.node.childMarkdownRemark;
                       return (
-                        <Container className="glide__slide" key={index}>
+                        <Container className="glide__slide" flex align="flex-end" key={index} padding={[5, 5, 7, 5]}>
                           <BackImage
                             src={frontmatter.image}
                             width="100%"
@@ -84,6 +89,7 @@ class About extends Component {
                             as={Container}
                             padding={[1]}
                             width="30%"
+                            align="right"
                           >
                             {frontmatter.description}
                           </Text>
@@ -103,14 +109,13 @@ class About extends Component {
                       )
                     })
                   }
-                  }
                 </Container>
               </div>
               <ArrowContainer flex row width="auto" height="auto" justify="flex-end">
-                <Arrows handleClick={this.handleClick} />
-                <Arrows left handleClick={this.handleClick} />
+                <Arrows handleClick={() => this.glide.go('<')} />
+                <Arrows left handleClick={() => this.glide.go('>')} />
               </ArrowContainer>
-            </Container>
+            </Slider>
           )
         }}
       />

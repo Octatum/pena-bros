@@ -7,10 +7,10 @@ import { Container } from '../../Container';
 const Circle = styled(Container)`
   border: none;
   border-radius: 50%;
-  cursor: pointer;
 `;
 
 const ArrowLeft = styled.div`
+  cursor: pointer;
   width: 0;
   height: 0;
   border-top: 0.9em solid transparent;
@@ -22,6 +22,7 @@ const ArrowLeft = styled.div`
 `;
 
 const ArrowRight = styled.div`
+  cursor: pointer;
   width: 0;
   height: 0;
   border-top: 0.9em solid transparent;
@@ -39,9 +40,9 @@ const Arrow = ({ left, handleClick }) => (
     margin={[0]}
     height="2.5em"
     width="2.5em"
-    onClick={handleClick}
+
   >
-    {left ? <ArrowLeft /> : <ArrowRight />}
+    {left ? <ArrowLeft onClick={handleClick} /> : <ArrowRight onClick={handleClick} />}
   </Circle>
 );
 
