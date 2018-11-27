@@ -5,7 +5,7 @@ import Contact from '../components/Contact';
 
 const ContactPage = () => (
   <PageLayout>
-    <Helmet title="Get Directions" />
+    <Helmet title="Contact Us" />
     <Contact />
   </PageLayout>
 );

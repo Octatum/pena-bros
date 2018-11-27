@@ -24,6 +24,9 @@ time, mark, audio, video {
 html, body {
 	min-height: 100vh;
 }
+div {
+	box-sizing: border-box;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {

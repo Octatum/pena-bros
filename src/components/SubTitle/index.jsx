@@ -13,16 +13,16 @@ const TextGreenEdge = styled(Text)`
     width: 0.275em;
     left: 0;
     top: 0;
-    background-color: ${({ theme }) => theme.color.green};
+    background-color: ${({ theme, edgeColor }) => theme.color[edgeColor]};
   }
 `;
 
-const SubTitle = ({ children, title, size = 1, ...props }) => (
+const SubTitle = ({ children, title, size, edgeColor, ...props }) => (
   <Container flex align="flex-start" height="auto" width="auto" {...props}>
     <Text bold="800" size={size * 3} width="85%">
       {title}
     </Text>
-    <TextGreenEdge size={size} padding={[0, 1]} as={Container} bold="lighter">
+    <TextGreenEdge size={size} padding={[0, 1]} as={Container} bold="lighter" edgeColor={edgeColor} >
       {children}
     </TextGreenEdge>
   </Container>
@@ -31,6 +31,12 @@ const SubTitle = ({ children, title, size = 1, ...props }) => (
 SubTitle.propTypes = {
   title: PropTypes.string.isRequired,
   size: PropTypes.number,
+  edgeColor: PropTypes.string,
 };
+
+SubTitle.defaultProps = {
+  size: 1,
+  edgeColor: 'green'
+}
 
 export default SubTitle;

@@ -43,7 +43,7 @@ const Quote = styled(Container)`
 `; */
 
 const QuoteAction = () => (
-  <Container flex>
+  <Container flex height="auto">
     <Quote
       size={9}
       width="auto"
@@ -56,7 +56,7 @@ const QuoteAction = () => (
       {/* <ActionLink to="/Contact" /> */}
       Get a quote
     </Quote>
-    <Container size={4} as={Text} width="60%" margin={[1.5, 0]} bold="lighter">
+    <Container size={4} as={Text} width="60%" margin={[1.5, 0]} bold="lighter" >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     </Container>
   </Container>

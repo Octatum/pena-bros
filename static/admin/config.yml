@@ -27,6 +27,17 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "review"}
       - {label: "Author", name: "title", widget: "string"}
       - {label: "Review", name: "review", widget: "string"}
+  
+  - name: "products"
+    label: "Our Products"
+    folder: "content/products"
+    create: true
+    slug: "{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Preview Image", name: "preview", widget: "image"}
+      - {label: "Product Description", name: "description", widget: "text"}
+      - {label: "Product Image", name: "image", widget: "image"}
 
   - name: "homePresentation"
     label: "Home Presentation Slides"

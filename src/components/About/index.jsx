@@ -8,18 +8,16 @@ import Arrows from './Arrows';
 
 import { Container } from '../Container';
 import { Text } from '../Text';
-import { Image } from '../Image';
 
 const Slider = styled(Container)`
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
-const BackImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: -1;
+const SlideCont = styled(Container)`
+  background-image: url(${({image}) => image});
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 `;
 
 const Button = styled(Text)`
@@ -70,19 +68,14 @@ class About extends Component {
         `}
         render={data => {
           return (
-            <Slider id="AboutUsPres" {...this.props}>
+            <Slider id="AboutUsPres" {...this.props} height="auto">
               <div data-glide-el="track" className="glide__track">
-                <Container className="glide__slides">
+                <Container className="glide__slides" height="100%" >
                   {
                     data.allFile.edges.map((_, index) => {
                       const { frontmatter } = _.node.childMarkdownRemark;
                       return (
-                        <Container className="glide__slide" flex align="flex-end" key={index} padding={[5, 5, 7, 5]}>
-                          <BackImage
-                            src={frontmatter.image}
-                            width="100%"
-                            height="100%"
-                          />
+                        <SlideCont image={frontmatter.image} className="glide__slide" flex align="flex-end" key={index} padding={[5, 5, 7, 5]}>
                           <Text
                             white
                             size={2.5}
@@ -105,7 +98,7 @@ class About extends Component {
                           >
                             {frontmatter.link}
                           </Button>
-                        </Container>
+                        </SlideCont>
                       )
                     })
                   }

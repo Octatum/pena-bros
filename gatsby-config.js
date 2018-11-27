@@ -40,5 +40,12 @@ module.exports = {
         name: 'aboutUsSlides'
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/products`,
+        name: 'OurProducts'
+      },
+    },
   ],
 }

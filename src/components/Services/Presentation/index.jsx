@@ -6,6 +6,7 @@ import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
 
 const ServiceNameColumn = styled(ServiceNames)`
+  min-height: 100%;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -33,6 +34,10 @@ const Arrow = styled(Container)`
   border-top: 1.5em solid white;
 
   margin: auto;
+`;
+
+const TempC = styled(Container)`
+  align-items: stretch;
 `;
 
 class ServicesPresentation extends Component {
@@ -65,15 +70,13 @@ class ServicesPresentation extends Component {
 
   render() {
     return (
-      <Container flex row justify="flex-start" margin={[0, 0, 5, 0]}>
-        <Container width="30%">
+      <TempC flex row justify="flex-start" margin={[0, 0, 5, 0]} height="auto">
+        <Container width="30%" height="auto">
           <ServiceNameColumn
             handleClick={this.handleClick}
             current={this.state.current}
             names={this.names}
-            height="90vh"
-          />
-
+            />
           <Container
             padding={[1]}
             backColor="black"
@@ -87,13 +90,13 @@ class ServicesPresentation extends Component {
           return (
             <ViewComponent
               serviceData={data.node.frontmatter}
-              height="90vh"
+              
               show={index === this.state.current}
               key={index}
             />
           );
         })}
-      </Container>
+      </TempC>
     );
   }
 }

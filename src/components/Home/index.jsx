@@ -14,7 +14,7 @@ const PresentationComp = styled(Presentation)`
 `;
 
 const HomePage = () => (
-  <Container flex>
+  <Container flex height="auto">
     <PresentationComp />
     <SubTitle
       size={2.5}
