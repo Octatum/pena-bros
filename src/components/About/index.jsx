@@ -14,7 +14,7 @@ const Slider = styled(Container)`
 `;
 
 const SlideCont = styled(Container)`
-  background-image: url(${({image}) => image});
+  background-image: url(${({ image }) => image});
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -70,46 +70,57 @@ class About extends Component {
           return (
             <Slider id="AboutUsPres" {...this.props} height="auto">
               <div data-glide-el="track" className="glide__track">
-                <Container className="glide__slides" height="100%" >
-                  {
-                    data.allFile.edges.map((_, index) => {
-                      const { frontmatter } = _.node.childMarkdownRemark;
-                      return (
-                        <SlideCont image={frontmatter.image} className="glide__slide" flex align="flex-end" key={index} padding={[5, 5, 7, 5]}>
-                          <Text
-                            white
-                            size={2.5}
-                            as={Container}
-                            padding={[1]}
-                            width="30%"
-                            align="right"
-                          >
-                            {frontmatter.description}
-                          </Text>
-                          <Button
-                            as={Link}
-                            to={frontmatter.link === 'About Us' ? '/about' : '/'}
-                            bold="bold"
-                            size={2.5}
-                            white="true"
-                            margin={[0, 1]}
-                            padding={[0.25, 1.25]}
-                            width="auto"
-                          >
-                            {frontmatter.link}
-                          </Button>
-                        </SlideCont>
-                      )
-                    })
-                  }
+                <Container className="glide__slides" height="100%">
+                  {data.allFile.edges.map((_, index) => {
+                    const { frontmatter } = _.node.childMarkdownRemark;
+                    return (
+                      <SlideCont
+                        image={frontmatter.image}
+                        className="glide__slide"
+                        flex
+                        align="flex-end"
+                        key={index}
+                        padding={[5, 5, 7, 5]}
+                      >
+                        <Text
+                          white
+                          size={2.5}
+                          as={Container}
+                          padding={[1]}
+                          width="30%"
+                          align="right"
+                        >
+                          {frontmatter.description}
+                        </Text>
+                        <Button
+                          as={Link}
+                          to={frontmatter.link === 'About Us' ? '/about' : '/'}
+                          bold="bold"
+                          size={2.5}
+                          white="true"
+                          margin={[0, 1]}
+                          padding={[0.25, 1.25]}
+                          width="auto"
+                        >
+                          {frontmatter.link}
+                        </Button>
+                      </SlideCont>
+                    );
+                  })}
                 </Container>
               </div>
-              <ArrowContainer flex row width="auto" height="auto" justify="flex-end">
+              <ArrowContainer
+                flex
+                row
+                width="auto"
+                height="auto"
+                justify="flex-end"
+              >
                 <Arrows handleClick={() => this.glide.go('<')} />
                 <Arrows left handleClick={() => this.glide.go('>')} />
               </ArrowContainer>
             </Slider>
-          )
+          );
         }}
       />
     );

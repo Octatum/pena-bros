@@ -9,41 +9,49 @@ import { Text } from '../Text';
 const Quote = styled(Container)`
   align-self: flex-end;
   width: auto;
-  /* transition: all 0.75s ease-out 0s;
-
-  &::after {
-    content: '';
-    position: absolute;
-    transition: all 0.75s ease-out 0s;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 100%;
-
-    background-color: ${({ theme }) => theme.color.green};
-  }
-  &:hover,
-  &:focus {
-    background-color: transparent;
-
-    ::after {
-      right: 0;
-    }
-  } */
 `;
 
-/* const ActionLink = styled(Link)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-`; */
+const ActionLink = styled(Text)`
+  position: relative;
+  display: flex;
+
+  span {
+    position: absolute;
+
+    left: 0;
+    overflow: hidden;
+    width: 0;
+    font-size: 1em;
+    color: ${({ theme }) => theme.color.green};
+    transition: all 0.45s ease-in;
+    display: inline-block;
+  }
+
+  :hover {
+    span {
+      width: 100%;
+    }
+  }
+`;
+
+const ArrowLine = styled.div`
+  width: 1.25em;
+  height: 0.15em;
+  background-color: black;
+`;
+
+const ArrowPoint = styled(Container)`
+  width: 0;
+  height: 0;
+  border-top: 0.4em solid transparent;
+  border-bottom: 0.4em solid transparent;
+  position: relative;
+
+  border-left: 0.7em solid black;
+`;
 
 const QuoteAction = () => (
-  <Container flex height="auto">
+  <Container flex height="auto" margin={[0, 0, 5, 0]}>
     <Quote
       size={9}
       width="auto"
@@ -53,11 +61,30 @@ const QuoteAction = () => (
       backColor="green"
       padding={[0.1, 2, 0.1, 0.75]}
     >
-      {/* <ActionLink to="/Contact" /> */}
       Get a quote
     </Quote>
-    <Container size={4} as={Text} width="60%" margin={[1.5, 0]} bold="lighter" >
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    <Container width="auto">
+      <Container
+        size={4}
+        as={Text}
+        margin={[1.5, 0, 0, 0]}
+        bold="lighter"
+        height="auto"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry.
+      </Container>
+      <Container flex row justify="flex-start" align="center" height="auto">
+        <ActionLink to="/Contact" as={Link} bold="bolder" size={2.5}>
+          Start!
+          <span>Start!</span>
+        </ActionLink>
+
+        <Container flex row justify="flex-start" margin={[0, 0.5]}>
+          <ArrowLine />
+          <ArrowPoint />
+        </Container>
+      </Container>
     </Container>
   </Container>
 );

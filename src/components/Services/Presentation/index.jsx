@@ -76,7 +76,7 @@ class ServicesPresentation extends Component {
             handleClick={this.handleClick}
             current={this.state.current}
             names={this.names}
-            />
+          />
           <Container
             padding={[1]}
             backColor="black"
@@ -90,7 +90,6 @@ class ServicesPresentation extends Component {
           return (
             <ViewComponent
               serviceData={data.node.frontmatter}
-              
               show={index === this.state.current}
               key={index}
             />
