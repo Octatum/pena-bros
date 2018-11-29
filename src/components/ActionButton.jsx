@@ -15,10 +15,11 @@ const ActionLink = styled(Text)`
 
     left: 0;
     overflow: hidden;
+    height: 100%;
     width: 0;
     font-size: 1em;
     color: ${({ theme }) => theme.color.green};
-    transition: all 0.45s ease-in;
+    transition: all 0.5s ease-in;
     display: inline-block;
   }
 
@@ -45,13 +46,13 @@ const ArrowPoint = styled(Container)`
   border-left: 0.7em solid black;
 `;
 
-const ActionButton = ({ linkTo, name }) => (
-  <Container flex row justify="flex-start" align="center" height="auto">
+const ActionButton = ({ linkTo, name, ...props }) => (
+  <Container flex row justify="flex-start" align="center" height="auto" {...props}>
     <ActionLink to={linkTo} as={Link} bold="bolder" size={2.5}>
       {name}
       <span>{name}</span>
     </ActionLink>
-    <Container flex row justify="flex-start" margin={[0, 0.5]}>
+    <Container flex row justify="flex-start" margin={[0, 0.5]} width="auto" height="1em">
       <ArrowLine />
       <ArrowPoint />
     </Container>

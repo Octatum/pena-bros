@@ -35,7 +35,7 @@ const QuoteAction = () => (
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry.
       </Container>
-      <ActionButton name="Contact" linkTo="/Contact" />
+      <ActionButton name="Start!" linkTo="/Contact" />
     </Container>
   </Container>
 );

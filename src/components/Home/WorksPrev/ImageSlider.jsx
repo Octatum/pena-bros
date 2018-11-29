@@ -7,8 +7,8 @@ const ImageContainer = styled(Container)`
   overflow-x: hidden;
 `;
 
-const ImageSlider = ({ images }) => (
-  <ImageContainer flex row justify="space-between" margin={[5, 0]}>
+const ImageSlider = ({ images, ...props }) => (
+  <ImageContainer flex row justify="space-between" {...props}>
     {images.map((data, index) => {
       return <Image src={data} key={index} />;
     })}
