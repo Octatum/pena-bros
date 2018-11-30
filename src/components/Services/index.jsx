@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Container } from '../Container';
 import { StaticQuery, graphql } from 'gatsby';
 
 import QuoteAction from '../QuoteAction';
 import ServicesPresentation from './Presentation';
+import Comparison from './Comparison';
 
 const Services = () => (
   <Container>
@@ -27,7 +28,10 @@ const Services = () => (
         }
       `}
       render={data => (
-        <ServicesPresentation data={data.allMarkdownRemark.edges} />
+        <Fragment>
+          <ServicesPresentation data={data.allMarkdownRemark.edges} />
+          <Comparison height="auto" margin={[0, 0, 7, 0]} />
+        </Fragment>
       )}
     />
     <QuoteAction />

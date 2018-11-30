@@ -25,7 +25,7 @@ const ActionLink = styled(Text)`
 
   :hover {
     span {
-      width: 100%;
+      width: ${({ animate }) => (animate ? 0 : 100)}%;
     }
   }
 `;
@@ -33,7 +33,7 @@ const ActionLink = styled(Text)`
 const ArrowLine = styled.div`
   width: 1.25em;
   height: 0.15em;
-  background-color: black;
+  background-color: ${({ white }) => (white ? 'white' : 'black')};
 `;
 
 const ArrowPoint = styled(Container)`
@@ -43,10 +43,10 @@ const ArrowPoint = styled(Container)`
   border-bottom: 0.4em solid transparent;
   position: relative;
 
-  border-left: 0.7em solid black;
+  border-left: 0.7em solid ${({ white }) => (white ? 'white' : 'black')};
 `;
 
-const ActionButton = ({ linkTo, name, ...props }) => (
+const ActionButton = ({ linkTo, name, textColor, noAnimate, ...props }) => (
   <Container
     flex
     row
@@ -55,7 +55,14 @@ const ActionButton = ({ linkTo, name, ...props }) => (
     height="auto"
     {...props}
   >
-    <ActionLink to={linkTo} as={Link} bold="bolder" size={2.5}>
+    <ActionLink
+      to={linkTo}
+      as={Link}
+      animate={noAnimate}
+      white={textColor === 'white'}
+      bold="bolder"
+      size={2.5}
+    >
       {name}
       <span>{name}</span>
     </ActionLink>
@@ -67,8 +74,8 @@ const ActionButton = ({ linkTo, name, ...props }) => (
       width="auto"
       height="1em"
     >
-      <ArrowLine />
-      <ArrowPoint />
+      <ArrowLine white={textColor === 'white'} />
+      <ArrowPoint white={textColor === 'white'} />
     </Container>
   </Container>
 );
@@ -76,6 +83,13 @@ const ActionButton = ({ linkTo, name, ...props }) => (
 ActionButton.propTypes = {
   linkTo: PropTypes.string,
   name: PropTypes.string,
+  textColor: PropTypes.string,
+  noAnimate: PropTypes.bool,
+};
+
+ActionButton.defaultProps = {
+  textColor: 'black',
+  noAnimate: false,
 };
 
 export default ActionButton;
