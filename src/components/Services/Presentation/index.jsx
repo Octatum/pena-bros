@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Container } from '../../Container';
 import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
-import ActionButton from "../../ActionButton";
+import ActionButton from '../../ActionButton';
 
 const ServiceNameColumn = styled(ServiceNames)`
   min-height: 100%;
@@ -78,7 +78,13 @@ class ServicesPresentation extends Component {
 
   render() {
     return (
-      <PresContainer flex row justify="flex-start" margin={[0, 0, 5, 0]} height="auto">
+      <PresContainer
+        flex
+        row
+        justify="flex-start"
+        margin={[0, 0, 5, 0]}
+        height="auto"
+      >
         <Action name="go to our works" linkTo="/our-works" />
         <Container width="30%" height="auto">
           <ServiceNameColumn

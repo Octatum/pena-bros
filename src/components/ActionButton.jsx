@@ -47,17 +47,31 @@ const ArrowPoint = styled(Container)`
 `;
 
 const ActionButton = ({ linkTo, name, ...props }) => (
-  <Container flex row justify="flex-start" align="center" height="auto" {...props}>
+  <Container
+    flex
+    row
+    justify="flex-start"
+    align="center"
+    height="auto"
+    {...props}
+  >
     <ActionLink to={linkTo} as={Link} bold="bolder" size={2.5}>
       {name}
       <span>{name}</span>
     </ActionLink>
-    <Container flex row justify="flex-start" margin={[0, 0.5]} width="auto" height="1em">
+    <Container
+      flex
+      row
+      justify="flex-start"
+      margin={[0, 0.5]}
+      width="auto"
+      height="1em"
+    >
       <ArrowLine />
       <ArrowPoint />
     </Container>
   </Container>
-)
+);
 
 ActionButton.propTypes = {
   linkTo: PropTypes.string,

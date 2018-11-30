@@ -24,7 +24,10 @@ const WorksPreview = () => (
     <RightAlign as={Text} width="50%" bold="800" size={9} align="right">
       Lorem Ipsum is simply dummy text
     </RightAlign>
-    <ImageSlider images={[placeholder1, placeholder2, placeholder3]} margin={[0,0,2,0]} />
+    <ImageSlider
+      images={[placeholder1, placeholder2, placeholder3]}
+      margin={[0, 0, 2, 0]}
+    />
     <Action name="go to our works" linkTo="our-works" width="auto" />
   </Container>
 );

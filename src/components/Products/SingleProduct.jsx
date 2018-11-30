@@ -8,49 +8,39 @@ import SubTitle from '../SubTitle';
 
 const Banner = styled(Container)`
   position: absolute;
-  
+
   left: 0;
-  /* display: ${({ show }) => (show ? 'flex' : 'none')}; */
-  display: none;
+  display: ${({ show }) => (show ? 'flex' : 'none')};
 `;
 
-const ProdCont = styled(Container)`
-  position: initial;
-
-  &:hover {
-    ${Banner} {
-      display: flex;
-    }
-    background-color: black;
-  }
-`;
-
-const IndivProd = ({
-  title,
-  preview,
-  image,
-  description,
-  index,
-  show,
-  ...props
-}) => (
-  <ProdCont key={`${title}-${index}`} backColor="green" flex {...props}>
-    <Image src={preview} width="70%" margin="auto" />
-    <Banner flex show={show} backColor="green" height="auto">
-      <SubTitle size={3} title={title} white edgeColor="black">
-        {description}
-      </SubTitle>
+const IndivProd = ({ title, image, description, show, ...props }) => (
+  <Banner flex show={show} height="auto" {...props}>
+    <SubTitle
+      size={3}
+      title={title}
+      white
+      edgeColor="black"
+      width="60%"
+      margin={[4, 0]}
+    >
+      {description}
+    </SubTitle>
+    <Container
+      flex
+      backColor="white"
+      padding={[2, 8]}
+      width="95%"
+      margin={[0, 0, 3, 'auto']}
+    >
       <Image src={image} />
-    </Banner>
-  </ProdCont>
+    </Container>
+  </Banner>
 );
 
 IndivProd.propTypes = {
   title: PropTypes.string,
-  preview: PropTypes.string,
   image: PropTypes.string,
   description: PropTypes.string,
-  index: PropTypes.number,
   show: PropTypes.bool,
 };
 
