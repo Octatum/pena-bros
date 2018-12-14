@@ -39,6 +39,16 @@ collections:
       - {label: "Product Description", name: "description", widget: "text"}
       - {label: "Product Image", name: "image", widget: "image"}
 
+  - name: "ourWorks"
+    label: "Our Works"
+    folder: "content/ourWorks"
+    create: true
+    slug: "{{month}}-{{day}}-{{slug}}"
+    fields: 
+    - {label: "Work Title", name: "title", widget: "string"}
+    - {label: "Work Description", name: "description", widget: "text"}
+    - {label: "Work Images", name: "images", widget: "image", media_library: {config: {multiple: true}}}
+
   - name: "homePresentation"
     label: "Home Presentation Slides"
     files: 
