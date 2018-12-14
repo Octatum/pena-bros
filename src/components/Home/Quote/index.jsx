@@ -9,6 +9,7 @@ import IndivQuote from './IndivQuote';
 
 import inicial from './assets/initial.svg';
 import final from './assets/final.svg';
+import { throws } from 'assert';
 
 const AllQuoteContainer = styled(Container)`
   overflow: hidden;
@@ -52,16 +53,16 @@ class Quote extends Component {
         <LeftMark src={inicial} />
         <div data-glide-el="track" className="glide__track">
           <Container flex row className="glide__slides">
-            {this.props.data.allMarkdownRemark.edges.map((data, index) => {
+            {this.props.data.allFile.edges.map((data, index) => {
               return (
                 <IndivQuote
                   key={index}
                   size={this.props.size}
                   className="glide__slide"
-                  author={data.node.frontmatter.title}
+                  author={data.node.childMarkdownRemark.frontmatter.title}
                   width="calc(100% - 25em)"
                 >
-                  {data.node.frontmatter.review}
+                  {data.node.childMarkdownRemark.frontmatter.review}
                 </IndivQuote>
               );
             })}

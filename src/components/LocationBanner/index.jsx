@@ -4,7 +4,7 @@ import { Text } from '../Text';
 
 const Banner = () => (
   <Container backColor="black" flex padding={[1]}>
-    <Text white size={2.5}>
+    <Text white size={2.5} align="center">
       <Text as="span" white bold="bold">
         Call Us Today!{' '}
       </Text>

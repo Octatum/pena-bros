@@ -58,8 +58,8 @@ const ActionButton = ({ linkTo, name, textColor, noAnimate, ...props }) => (
     <ActionLink
       to={linkTo}
       as={Link}
-      animate={noAnimate}
-      white={textColor === 'white'}
+      animate={noAnimate ? 1 : 0}
+      white={textColor === 'white' ? 1 : 0}
       bold="bolder"
       size={2.5}
     >

@@ -10,17 +10,19 @@ const Services = () => (
   <Container>
     <StaticQuery
       query={graphql`
-        query GetServices {
-          allMarkdownRemark(
-            filter: { frontmatter: { layout: { eq: "service" } } }
-          ) {
+        query getServices {
+          allFile(filter: { sourceInstanceName: { eq: "services" } name: { ne: ".gitkeep" }}) {
             edges {
               node {
-                frontmatter {
-                  name
-                  title
-                  image
-                  description
+                name
+                relativePath
+                childMarkdownRemark {
+                  frontmatter {
+                    name
+                    title
+                    image
+                    description
+                  }
                 }
               }
             }
@@ -29,7 +31,7 @@ const Services = () => (
       `}
       render={data => (
         <Fragment>
-          <ServicesPresentation data={data.allMarkdownRemark.edges} />
+          <ServicesPresentation data={data.allFile.edges} />
           <Comparison height="auto" margin={[0, 0, 7, 0]} />
         </Fragment>
       )}

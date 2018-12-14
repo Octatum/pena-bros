@@ -50,7 +50,7 @@ class Presentation extends Component {
       <StaticQuery
         query={graphql`
           query getSlides {
-            allFile(filter: { sourceInstanceName: { eq: "homeSlides" } }) {
+            allFile(filter: { sourceInstanceName: { eq: "homeSlides" } name: { ne: ".gitkeep" }}) {
               edges {
                 node {
                   name

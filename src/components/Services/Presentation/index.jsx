@@ -56,7 +56,7 @@ class ServicesPresentation extends Component {
       current: 0,
     };
 
-    this.names = props.data.map(data => data.node.frontmatter.name);
+    this.names = props.data.map(data => data.node.childMarkdownRemark.frontmatter.name);
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -104,7 +104,7 @@ class ServicesPresentation extends Component {
         {this.props.data.map((data, index) => {
           return (
             <ViewComponent
-              serviceData={data.node.frontmatter}
+              serviceData={data.node.childMarkdownRemark.frontmatter}
               show={index === this.state.current}
               key={index}
             />

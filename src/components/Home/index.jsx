@@ -20,7 +20,7 @@ const HomePage = () => (
       size={2.5}
       title="Lorem Ipsum is simply dummy text"
       margin={[2, 'auto']}
-      width="50%"
+      width="75%"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -29,15 +29,17 @@ const HomePage = () => (
     </SubTitle>
     <StaticQuery
       query={graphql`
-        query GetQuotes {
-          allMarkdownRemark(
-            filter: { frontmatter: { layout: { eq: "review" } } }
-          ) {
+        query getQuotes {
+          allFile(filter: { sourceInstanceName: { eq: "reviews" } name: { ne: ".gitkeep" }}) {
             edges {
               node {
-                frontmatter {
-                  title
-                  review
+                name
+                relativePath
+                childMarkdownRemark {
+                  frontmatter {
+                    title
+                    review
+                  }
                 }
               }
             }

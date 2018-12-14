@@ -16,10 +16,20 @@ const TextGreenEdge = styled(Text)`
     background-color: ${({ theme, edgeColor }) => theme.color[edgeColor]};
   }
 `;
+/*
+  - name: "ourWorks"
+    label: "Our Works"
+    folder: "content/ourWorks"
+    create: true
+    slug: "{{month}}-{{day}}-{{slug}}"
+    fields: 
+    - {label: }
+*/
+
 
 const SubTitle = ({ children, title, size, edgeColor, white, ...props }) => (
   <Container flex align="flex-start" height="auto" width="auto" {...props}>
-    <Text bold="800" size={size * 3} width="85%" white={white}>
+    <Text bold="800" size={size * 3} width="75%" white={white} as={Container}>
       {title}
     </Text>
     <TextGreenEdge

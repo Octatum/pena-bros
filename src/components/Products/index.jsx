@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
 import { Container } from '../Container';
@@ -28,7 +27,7 @@ class Products extends Component {
       <StaticQuery
         query={graphql`
           query getProducts {
-            allFile(filter: { sourceInstanceName: { eq: "OurProducts" } }) {
+            allFile(filter: { sourceInstanceName: { eq: "OurProducts" } name: { ne: ".gitkeep" }}) {
               edges {
                 node {
                   childMarkdownRemark {
@@ -58,11 +57,16 @@ class Products extends Component {
                       backColor={
                         this.state.currentViewed === index ? 'green' : 'black'
                       }
-                      padding={[2, 3]}
+                      padding={[1, 2.5]}
                       width="auto"
                       height="auto"
+                      style={{ cursor: 'pointer' }}
                     >
-                      <Image src={frontmatter.preview} width="80%" />
+                      <Image
+                        src={frontmatter.preview}
+                        width="90%"
+                        height="15em"
+                      />
                     </Container>
                   );
                 })}

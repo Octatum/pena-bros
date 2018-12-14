@@ -49,7 +49,7 @@ class About extends Component {
       <StaticQuery
         query={graphql`
           query getAboutUsSlides {
-            allFile(filter: { sourceInstanceName: { eq: "aboutUsSlides" } }) {
+            allFile(filter: { sourceInstanceName: { eq: "aboutUsSlides" } name: { ne: ".gitkeep" }}) {
               edges {
                 node {
                   name
