@@ -47,8 +47,8 @@ collections:
     fields: 
     - {label: "Work Title", name: "title", widget: "string"}
     - {label: "Work Description", name: "description", widget: "text"}
-    #- {label: "Work Images", name: "images", widget: "image", media_library: {config: {multiple: true}}}
     - {label: "Work Images", name: "allImages", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+    - {label: "Creation Date", name: "createDate", widget: "date", format: "MMM-YY"}
 
   - name: "homePresentation"
     label: "Home Presentation Slides"
