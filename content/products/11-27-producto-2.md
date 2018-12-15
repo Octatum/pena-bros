@@ -1,5 +1,5 @@
 ---
-title: product 3
+title: product 2
 preview: /assets/product2.png
 description: >+
   It is a long established fact that a reader will be distracted by the readable

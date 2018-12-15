@@ -8,6 +8,7 @@ import Subtitle from '../components/SubTitle';
 import { Container } from '../components/Container';
 import { Text } from '../components/Text';
 import { Image } from '../components/Image';
+import QuoteAction from '../components/QuoteAction';
 
 const LeftArrow = styled(Arrows)`
   position: absolute;
@@ -138,6 +139,8 @@ class IndivWork extends Component {
           >
             {description}
           </Subtitle>
+
+          <QuoteAction margin={[5, 0]} />
         </Container>
       </PageLayout>
     );

@@ -6,8 +6,10 @@ import SubTitle from '../components/SubTitle';
 import PageLayout from '../components/PageLayout';
 import { Container } from '../components/Container';
 import { Image } from '../components/Image';
+import Arrow from '../components/Arrows';
+import QuoteAction from '../components/QuoteAction';
 
-const PreviewLink = styled(Link)`
+const ContLink = styled(Link)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -25,7 +27,7 @@ const OurWorks = ({ pathContext, ...props }) => {
 
   return (
     <PageLayout>
-      <Container margin={[5, 0]}>
+      <Container margin={[5, 0, 0, 0]}>
         <Container
           flex
           row
@@ -36,16 +38,29 @@ const OurWorks = ({ pathContext, ...props }) => {
           {group.map(element => {
             const { frontmatter } = element.node;
             return (
-              <Container width="30%" height="auto" key={element.numericId}>
+              <Container
+                width="25%"
+                height="auto"
+                key={element.numericId}
+                margin={[0, 2]}
+              >
                 <Image src={frontmatter.allImages[0]} width="100%" />
-                <PreviewLink to={`our-works/works/${element.numericId}`} />
+                <ContLink to={`our-works/works/${element.numericId}`} />
               </Container>
             );
           })}
         </Container>
 
-        <Link to={pathPrefix + '/' + previousUrl}>Previous</Link>
-        <Link to={pathPrefix + '/' + nextUrl}>Next</Link>
+        <Container flex row width="auto" height="auto">
+          <Container width="auto">
+            <Arrow color="black" left />
+            <ContLink to={pathPrefix + '/' + previousUrl} />
+          </Container>
+          <Container width="auto">
+            <Arrow color="black" />
+            <ContLink to={pathPrefix + '/' + nextUrl} />
+          </Container>
+        </Container>
 
         <SubTitle title="What is Lorem Ipsum?" size={3} margin={[0, 10]}>
           It is a long established fact that a reader will be distracted by the
@@ -54,6 +69,8 @@ const OurWorks = ({ pathContext, ...props }) => {
           letters, as opposed to using 'Content here, content here', making it
           look like readable English.
         </SubTitle>
+
+        <QuoteAction margin={[5, 0, 0, 0]} />
       </Container>
     </PageLayout>
   );

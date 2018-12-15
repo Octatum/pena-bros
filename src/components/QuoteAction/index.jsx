@@ -10,8 +10,8 @@ const Quote = styled(Container)`
   width: auto;
 `;
 
-const QuoteAction = () => (
-  <Container flex height="auto" margin={[0, 0, 5, 0]}>
+const QuoteAction = ({ ...props }) => (
+  <Container flex height="auto" margin={[0, 0, 5, 0]} {...props}>
     <Quote
       size={9}
       width="auto"

@@ -49,8 +49,12 @@ class Products extends Component {
           }
         `}
         render={data => {
+          const current =
+            data.allFile.edges[this.state.currentViewed].node
+              .childMarkdownRemark.frontmatter;
+
           return (
-            <Container margin={[5, 3]} width="auto">
+            <Container margin={[5, 3]} width="auto" height="auto">
               <Container flex row justify="space-between" height="auto">
                 {data.allFile.edges.map((_, index) => {
                   const { frontmatter } = _.node.childMarkdownRemark;
@@ -77,22 +81,14 @@ class Products extends Component {
                 })}
               </Container>
 
-              <Container height="auto">
-                {data.allFile.edges.map((_, index) => {
-                  const { frontmatter } = _.node.childMarkdownRemark;
-                  return (
-                    <SingleProduct
-                      title={frontmatter.title}
-                      preview={frontmatter.preview}
-                      image={frontmatter.image}
-                      description={frontmatter.description}
-                      key={index}
-                      backColor="green"
-                      show={this.state.currentViewed === index}
-                    />
-                  );
-                })}
-              </Container>
+              <SingleProduct
+                height="auto"
+                title={current.title}
+                preview={current.preview}
+                image={current.image}
+                description={current.description}
+                backColor="green"
+              />
             </Container>
           );
         }}
