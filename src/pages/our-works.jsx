@@ -3,9 +3,9 @@ import Helmet from 'react-helmet';
 import PageLayout from '../components/PageLayout';
 
 import QuoteAction from '../components/QuoteAction';
-import OurWorks from '../components/OurWorks';
+import OurWorks from '../templates/ourWorks';
 
-const AboutPage = () => (
+const AllWorks = () => (
   <PageLayout>
     <Helmet title="Our Works" />
     <OurWorks />
@@ -13,4 +13,4 @@ const AboutPage = () => (
   </PageLayout>
 );
 
-export default AboutPage;
+export default AllWorks;

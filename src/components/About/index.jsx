@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 import { graphql, StaticQuery } from 'gatsby';
 import Glide from '@glidejs/glide';
 
-import Arrows from './Arrows';
+import Arrows from '../Arrows';
 
 import { Container } from '../Container';
 import { Text } from '../Text';
@@ -49,7 +49,12 @@ class About extends Component {
       <StaticQuery
         query={graphql`
           query getAboutUsSlides {
-            allFile(filter: { sourceInstanceName: { eq: "aboutUsSlides" } name: { ne: ".gitkeep" }}) {
+            allFile(
+              filter: {
+                sourceInstanceName: { eq: "aboutUsSlides" }
+                name: { ne: ".gitkeep" }
+              }
+            ) {
               edges {
                 node {
                   name
@@ -116,8 +121,8 @@ class About extends Component {
                 height="auto"
                 justify="flex-end"
               >
-                <Arrows handleClick={() => this.glide.go('<')} />
-                <Arrows left handleClick={() => this.glide.go('>')} />
+                <Arrows left handleClick={() => this.glide.go('<')} />
+                <Arrows handleClick={() => this.glide.go('>')} />
               </ArrowContainer>
             </Slider>
           );

@@ -56,7 +56,9 @@ class ServicesPresentation extends Component {
       current: 0,
     };
 
-    this.names = props.data.map(data => data.node.childMarkdownRemark.frontmatter.name);
+    this.names = props.data.map(
+      data => data.node.childMarkdownRemark.frontmatter.name
+    );
 
     this.handleClick = this.handleClick.bind(this);
 

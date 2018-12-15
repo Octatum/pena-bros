@@ -27,7 +27,12 @@ class Products extends Component {
       <StaticQuery
         query={graphql`
           query getProducts {
-            allFile(filter: { sourceInstanceName: { eq: "OurProducts" } name: { ne: ".gitkeep" }}) {
+            allFile(
+              filter: {
+                sourceInstanceName: { eq: "OurProducts" }
+                name: { ne: ".gitkeep" }
+              }
+            ) {
               edges {
                 node {
                   childMarkdownRemark {

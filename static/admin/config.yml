@@ -31,7 +31,7 @@ collections:
   - name: "products"
     label: "Our Products"
     folder: "content/products"
-    create: true
+    create: false
     slug: "{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Product Name", name: "title", widget: "string"}

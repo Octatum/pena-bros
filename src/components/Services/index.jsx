@@ -11,7 +11,12 @@ const Services = () => (
     <StaticQuery
       query={graphql`
         query getServices {
-          allFile(filter: { sourceInstanceName: { eq: "services" } name: { ne: ".gitkeep" }}) {
+          allFile(
+            filter: {
+              sourceInstanceName: { eq: "services" }
+              name: { ne: ".gitkeep" }
+            }
+          ) {
             edges {
               node {
                 name

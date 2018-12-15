@@ -30,7 +30,12 @@ const HomePage = () => (
     <StaticQuery
       query={graphql`
         query getQuotes {
-          allFile(filter: { sourceInstanceName: { eq: "reviews" } name: { ne: ".gitkeep" }}) {
+          allFile(
+            filter: {
+              sourceInstanceName: { eq: "reviews" }
+              name: { ne: ".gitkeep" }
+            }
+          ) {
             edges {
               node {
                 name

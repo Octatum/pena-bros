@@ -7,7 +7,7 @@ import Glide from '@glidejs/glide';
 import { Container } from '../../Container';
 import { Text } from '../../Text';
 
-import Arrows from './Arrows';
+import Arrows from '../../Arrows';
 
 const Slider = styled(Container)`
   overflow-x: hidden;
@@ -50,7 +50,12 @@ class Presentation extends Component {
       <StaticQuery
         query={graphql`
           query getSlides {
-            allFile(filter: { sourceInstanceName: { eq: "homeSlides" } name: { ne: ".gitkeep" }}) {
+            allFile(
+              filter: {
+                sourceInstanceName: { eq: "homeSlides" }
+                name: { ne: ".gitkeep" }
+              }
+            ) {
               edges {
                 node {
                   name
@@ -117,8 +122,8 @@ class Presentation extends Component {
                 height="auto"
                 justify="flex-end"
               >
-                <Arrows handleClick={() => this.glide.go('<')} />
-                <Arrows left handleClick={() => this.glide.go('>')} />
+                <Arrows left handleClick={() => this.glide.go('<')} />
+                <Arrows handleClick={() => this.glide.go('>')} />
               </ArrowContainer>
             </Slider>
           );

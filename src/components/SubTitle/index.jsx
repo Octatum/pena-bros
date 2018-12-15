@@ -36,7 +36,7 @@ const SubTitle = ({ children, title, size, edgeColor, white, ...props }) => (
 );
 
 SubTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   size: PropTypes.number,
   edgeColor: PropTypes.string,
   white: PropTypes.bool,
