@@ -23,7 +23,7 @@ const ServiceNames = ({ names, current, handleClick, ...props }) => (
           bold="800"
           size={9}
           padding={[0.5, 1]}
-          key={index}
+          key={name}
         >
           {name}
         </Name>

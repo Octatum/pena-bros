@@ -18,10 +18,23 @@ const SlideCont = styled(Container)`
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+
+  height: 40em;
+
+  ::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  }
 `;
 
 const Button = styled(Text)`
   background-color: ${({ theme }) => theme.color.green};
+  z-index: 0;
 `;
 
 const ArrowContainer = styled(Container)`
@@ -85,7 +98,7 @@ class Presentation extends Component {
                         image={frontmatter.image}
                         flex
                         align="flex-start"
-                        key={index}
+                        key={frontmatter.image}
                         padding={[5, 5, 7, 5]}
                       >
                         <Text

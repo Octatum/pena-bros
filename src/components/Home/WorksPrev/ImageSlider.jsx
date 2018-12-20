@@ -10,7 +10,7 @@ const ImageContainer = styled(Container)`
 const ImageSlider = ({ images, ...props }) => (
   <ImageContainer flex row justify="space-between" {...props}>
     {images.map((data, index) => {
-      return <Image src={data} key={index} />;
+      return <Image src={data} key={data} />;
     })}
   </ImageContainer>
 );

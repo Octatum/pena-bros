@@ -9,13 +9,11 @@ import Quote from './Quote';
 import WorksPreview from './WorksPrev';
 import QuoteAction from '../QuoteAction';
 
-const PresentationComp = styled(Presentation)`
-  min-height: 60vh;
-`;
+
 
 const HomePage = () => (
   <Container flex height="auto">
-    <PresentationComp />
+    <Presentation />
     <SubTitle
       size={2.5}
       title="Lorem Ipsum is simply dummy text"

@@ -54,15 +54,16 @@ class Quote extends Component {
         <div data-glide-el="track" className="glide__track">
           <Container flex row className="glide__slides">
             {this.props.data.allFile.edges.map((data, index) => {
+              const { frontmatter } = data.node.childMarkdownRemark;
               return (
                 <IndivQuote
-                  key={index}
+                  key={frontmatter.title}
                   size={this.props.size}
                   className="glide__slide"
-                  author={data.node.childMarkdownRemark.frontmatter.title}
+                  author={frontmatter.title}
                   width="calc(100% - 25em)"
                 >
-                  {data.node.childMarkdownRemark.frontmatter.review}
+                  {frontmatter.review}
                 </IndivQuote>
               );
             })}

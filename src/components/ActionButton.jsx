@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Container } from './Container';
 import { Text } from './Text';
+import Arrows from './Arrows';
 
 const ActionLink = styled(Text)`
   position: relative;
@@ -28,22 +29,6 @@ const ActionLink = styled(Text)`
       width: ${({ animate }) => (animate ? 0 : 100)}%;
     }
   }
-`;
-
-const ArrowLine = styled.div`
-  width: 1.25em;
-  height: 0.15em;
-  background-color: ${({ white }) => (white ? 'white' : 'black')};
-`;
-
-const ArrowPoint = styled(Container)`
-  width: 0;
-  height: 0;
-  border-top: 0.4em solid transparent;
-  border-bottom: 0.4em solid transparent;
-  position: relative;
-
-  border-left: 0.7em solid ${({ white }) => (white ? 'white' : 'black')};
 `;
 
 const ActionButton = ({ linkTo, name, textColor, noAnimate, ...props }) => (
@@ -74,8 +59,7 @@ const ActionButton = ({ linkTo, name, textColor, noAnimate, ...props }) => (
       width="auto"
       height="1em"
     >
-      <ArrowLine white={textColor === 'white'} />
-      <ArrowPoint white={textColor === 'white'} />
+      <Arrows color={textColor} />
     </Container>
   </Container>
 );

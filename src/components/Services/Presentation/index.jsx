@@ -104,11 +104,12 @@ class ServicesPresentation extends Component {
           </Container>
         </Container>
         {this.props.data.map((data, index) => {
+          const { frontmatter } = data.node.childMarkdownRemark;
           return (
             <ViewComponent
-              serviceData={data.node.childMarkdownRemark.frontmatter}
+              serviceData={frontmatter}
               show={index === this.state.current}
-              key={index}
+              key={frontmatter.title}
             />
           );
         })}

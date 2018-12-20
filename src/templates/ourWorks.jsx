@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
-
+import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
+
 import SubTitle from '../components/SubTitle';
 import PageLayout from '../components/PageLayout';
 import { Container } from '../components/Container';
+import { Text } from '../components/Text';
 import { Image } from '../components/Image';
 import Arrow from '../components/Arrows';
 import QuoteAction from '../components/QuoteAction';
@@ -17,8 +19,15 @@ const ContLink = styled(Link)`
   left: 0;
 `;
 
+const PaginationNumber = styled(Text)`
+background-color: ${({theme, selected}) => selected ? theme.color.green : ''};
+color: ${({theme, selected}) => selected ? theme.color.white : 'initial'};
+`;
+
 const OurWorks = ({ pathContext, ...props }) => {
-  console.log(pathContext);
+  if (!pathContext) return (<Fragment> </Fragment>);
+  console.log(props);
+  console.log("our works", '\n');
   const { group, index, pageCount, pathPrefix } = pathContext;
 
   const previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
@@ -27,6 +36,7 @@ const OurWorks = ({ pathContext, ...props }) => {
 
   return (
     <PageLayout>
+      <Helmet title="Our Works" />
       <Container margin={[5, 0, 0, 0]}>
         <Container
           flex
@@ -51,12 +61,23 @@ const OurWorks = ({ pathContext, ...props }) => {
           })}
         </Container>
 
-        <Container flex row width="auto" height="auto">
-          <Container width="auto">
+        <Container flex row width="auto" height="auto" justify="center">
+          <Container margin={[0, 0.5]} width="auto">
             <Arrow color="black" left />
             <ContLink to={pathPrefix + '/' + previousUrl} />
           </Container>
-          <Container width="auto">
+          
+          <PaginationNumber selected={index === 1} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/`}>1</PaginationNumber>
+
+          {Array.from(new Array(pathContext.pageCount - 2), (x,i) => i + 2).map((number) => {
+            return (
+              <PaginationNumber selected={index === number} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${number}`} key={number}>{number}</PaginationNumber>
+            )
+          })}
+
+          <PaginationNumber selected={index === pathContext.pageCount} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${pathContext.pageCount}`}>{pathContext.pageCount}</PaginationNumber>
+
+          <Container margin={[0, 0.5]} width="auto">
             <Arrow color="black" />
             <ContLink to={pathPrefix + '/' + nextUrl} />
           </Container>

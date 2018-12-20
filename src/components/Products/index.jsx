@@ -55,13 +55,13 @@ class Products extends Component {
 
           return (
             <Container margin={[5, 3]} width="auto" height="auto">
-              <Container flex row justify="space-between" height="auto">
+              <Container flex row justify="flex-start" height="auto">
                 {data.allFile.edges.map((_, index) => {
                   const { frontmatter } = _.node.childMarkdownRemark;
                   return (
                     <Container
                       flex
-                      key={index}
+                      key={frontmatter.preview}
                       onClick={e => this.clickSelection(e, index)}
                       backColor={
                         this.state.currentViewed === index ? 'green' : 'black'

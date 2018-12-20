@@ -57,11 +57,13 @@ exports.createPages = ({
           numericId += 1;
         })
 
+        console.log(edgesWithId)
+
         createPaginatedPages({
           edges: edgesWithId,
           createPage: createPage,
           pageTemplate: "src/templates/ourWorks.jsx",
-          pageLength: 3,
+          pageLength: 2,
           pathPrefix: "our-works",
           context: {}
         });
