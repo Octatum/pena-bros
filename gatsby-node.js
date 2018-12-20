@@ -63,7 +63,7 @@ exports.createPages = ({
           edges: edgesWithId,
           createPage: createPage,
           pageTemplate: "src/templates/ourWorks.jsx",
-          pageLength: 2,
+          pageLength: 9,
           pathPrefix: "our-works",
           context: {}
         });
