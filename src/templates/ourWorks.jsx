@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
@@ -27,7 +27,7 @@ color: ${({theme, selected}) => selected ? theme.color.white : 'initial'};
 const GridComponent = styled.div`
   width: auto;
   height: auto;
-  margin: 5em;
+  margin: 5em 10em;
 
   display: grid;
   grid-template: repeat(3, minmax(10em, 1fr)) / 1fr 1fr 1fr;
@@ -38,9 +38,6 @@ const GridComponent = styled.div`
 `;
 
 const OurWorks = ({ pathContext, ...props }) => {
-  if (!pathContext) return (<Fragment> </Fragment>);
-  console.log(props);
-  console.log("our works", '\n');
   const { group, index, pageCount, pathPrefix } = pathContext;
 
   const previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
@@ -71,14 +68,14 @@ const OurWorks = ({ pathContext, ...props }) => {
             <Arrow color="black" left />
             <ContLink to={pathPrefix + '/' + previousUrl} />
           </Container>
-          
+
           <PaginationNumber selected={index === 1} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/`}>1</PaginationNumber>
 
-          {/* Array.from(new Array(pathContext.pageCount - 2), (x,i) => i + 2).map((number) => {
+          {Array.from(new Array(pathContext.pageCount - 2 > 0 ? pathContext.pageCount : 0), (x,i) => i + 2).map((number) => {
             return (
               <PaginationNumber selected={index === number} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${number}`} key={number}>{number}</PaginationNumber>
             )
-          }) */}
+          })}
 
           <PaginationNumber selected={index === pathContext.pageCount} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${pathContext.pageCount}`}>{pathContext.pageCount}</PaginationNumber>
 
