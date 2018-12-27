@@ -29,6 +29,27 @@ const ArrowLink = styled(Link)`
   height: 100%;
   opacity: 0;
 `;
+const ImagesContainer = styled(Container)`
+  overflow-x: auto;
+
+  & > div {
+    transition: transform 1s ease;
+
+    transform: ${({ current }) => `translateX(-${current*16}em)`};
+
+    :last-child {
+      margin-right: 0;
+    }
+
+  }
+`;
+const Images = styled(Image)`
+  height: 15em;
+  width: 15em;
+  cursor: pointer;
+  float: left;
+  margin-right: 1em;
+`;
 
 class IndivWork extends Component {
   constructor() {
@@ -115,19 +136,20 @@ class IndivWork extends Component {
                 left
                 color="white"
               />
-              <Container>
-                {allImages.map((data, index) => {
-                  return (
-                    <Image
-                      style={{ cursor: 'pointer' }}
-                      height="15em"
-                      src={data}
-                      key={data}
-                      onClick={e => console.log(e)}
-                    />
-                  );
-                })}
-              </Container>
+              <ImagesContainer current={this.state.currentImage}>
+                <div>
+                  {allImages.map((data, index) => {
+                    return (
+                      <Images
+                        src={data}
+                        key={data}
+                        onClick={e => this.handleImageClick(e, index)}
+                      />
+                    );
+                  })}
+
+                </div>
+              </ImagesContainer>
               <RightArrow
                 handleClick={e => this.handleNextImage(e, true)}
                 color="white"
