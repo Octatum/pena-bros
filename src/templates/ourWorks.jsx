@@ -40,9 +40,12 @@ const GridComponent = styled.div`
 const OurWorks = ({ pathContext, ...props }) => {
   const { group, index, pageCount, pathPrefix } = pathContext;
 
-  const previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
-  const nextUrl =
+  let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
+  let nextUrl =
     index + 1 >= pageCount ? pageCount.toString() : (index + 1).toString();
+
+  if(previousUrl === "1") {previousUrl = ""}
+  if(nextUrl === "1") {nextUrl = ""}
 
   return (
     <PageLayout>
@@ -65,8 +68,8 @@ const OurWorks = ({ pathContext, ...props }) => {
 
         <Container flex row width="auto" height="auto" justify="center">
           <Container margin={[0, 0.5]} width="auto">
-            <Arrow color="black" left />
-            <ContLink to={pathPrefix + '/' + previousUrl} />
+            <Arrow color={index !== 1 ? "black" : "grey"} left />
+            {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
           </Container>
 
           <PaginationNumber selected={index === 1} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/`}>1</PaginationNumber>
@@ -77,11 +80,11 @@ const OurWorks = ({ pathContext, ...props }) => {
             )
           })}
 
-          <PaginationNumber selected={index === pathContext.pageCount} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${pathContext.pageCount}`}>{pathContext.pageCount}</PaginationNumber>
+          {pathContext.pageCount > 1 && <PaginationNumber selected={index === pathContext.pageCount} margin={[0, 0.1]} padding={[0.25, 0.5]} bold="bold" size={2.5} as={Link} to={`/our-works/${pathContext.pageCount}`}>{pathContext.pageCount}</PaginationNumber>}
 
           <Container margin={[0, 0.5]} width="auto">
-            <Arrow color="black" />
-            <ContLink to={pathPrefix + '/' + nextUrl} />
+            <Arrow color={index < pathContext.pageCount ? "black" : "grey"} />
+            {index < pathContext.pageCount && <ContLink to={pathPrefix + '/' + nextUrl} />}
           </Container>
         </Container>
 
