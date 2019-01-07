@@ -19,22 +19,22 @@ const CollapsibleMenu = styled.div`
 `;
 
 const MenuIcon = styled.div`
-  width: 4em;
+  max-width: 3em;
   margin-left: auto;
-  margin-right: 3em;
+  margin-right: 1.5em;
 `;
 const Bar = styled.div`
-  width: 100%;
+  width: 3em;
   height: 0.45em;
   background-color: white;
 
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
 
   transition: all 0.5s ease;
 `;
 const Bar1 = styled(Bar)`
-  transform: ${({ display }) => (display ? 'rotate(45deg)' : 'rotate(0deg)')};
-  transform-origin: 0 0.15em;
+  transform: ${({ display }) => (display ? 'rotate(45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)')};
+  transform-origin: 0% 0%;
 `;
 const Bar2 = styled(Bar)`
   transform: ${({ display }) =>
@@ -42,8 +42,8 @@ const Bar2 = styled(Bar)`
   opacity: ${({ display }) => (display ? 0 : 1)};
 `;
 const Bar3 = styled(Bar)`
-  transform: ${({ display }) => (display ? 'rotate(-45deg)' : 'rotate(0deg)')};
-  transform-origin: 0.15em 0;
+  transform: ${({ display }) => (display ? 'rotate(-45deg) translate(0, -0.025em)' : 'rotate(0deg)')};
+  transform-origin: 0% 100%;
 `;
 
 const NavbarContainer = styled(Container)`
