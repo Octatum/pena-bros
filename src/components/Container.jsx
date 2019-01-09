@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../utils/device';
 
 function displayType(props) {
   const flex = props.flex || false;
@@ -16,7 +17,7 @@ function displayType(props) {
   }
 }
 
-function padding({ padding }) {
+function setPadding(padding) {
   const measure =
     padding &&
     padding.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
@@ -26,7 +27,7 @@ function padding({ padding }) {
   }
 }
 
-function margin({ margin }) {
+function setMargin(margin) {
   const measure =
     margin &&
     margin.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
@@ -51,6 +52,20 @@ export const Container = styled.div`
 
   ${background};
   ${displayType};
-  ${padding};
-  ${margin};
+  ${({ padding }) => setPadding(padding)};
+  ${({ margin }) => setMargin(margin)};
+
+  ${device.tablet} {
+    ${({ tMargin }) => setMargin(tMargin)};
+    ${({ tPadding }) => setPadding(tPadding)};
+    ${({ tWidth }) => tWidth ? {width: tWidth} : ''};
+    ${({ tHeight }) => tHeight ? {height: tHeight} : ''};
+  }
+
+  ${device.mobile} {
+    ${({ mMargin }) => setMargin(mMargin)};
+    ${({ mPadding }) => setPadding(mPadding)};
+    ${({ mWidth }) => mWidth ? {width: mWidth} : ''};
+    ${({ mHeight }) => mHeight ? {height: mHeight} : ''};
+  }
 `;

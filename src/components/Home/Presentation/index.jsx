@@ -8,6 +8,7 @@ import { Container } from '../../Container';
 import { Text } from '../../Text';
 
 import Arrows from '../../Arrows';
+import { device } from '../../../utils/device';
 
 const Slider = styled(Container)`
   overflow-x: hidden;
@@ -30,6 +31,13 @@ const SlideCont = styled(Container)`
     left: 0;
     background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
   }
+
+  ${device.tablet} {
+    ::before {
+      background-image: none;
+      background-color: rgba(0,0,0,0.5);
+    }
+  }
 `;
 
 const Button = styled(Text)`
@@ -41,6 +49,10 @@ const ArrowContainer = styled(Container)`
   position: absolute;
   left: 7em;
   top: 1em;
+
+  ${device.tablet} {
+    left: 1em;
+  }
 `;
 
 class Presentation extends Component {
@@ -100,6 +112,7 @@ class Presentation extends Component {
                         align="flex-start"
                         key={frontmatter.image}
                         padding={[5, 5, 7, 5]}
+                        tPadding={[3, 0, 2, 0]}
                       >
                         <Text
                           white
@@ -107,6 +120,7 @@ class Presentation extends Component {
                           as={Container}
                           padding={[1]}
                           width="30%"
+                          tWidth="100%"
                           align="left"
                         >
                           {frontmatter.description}

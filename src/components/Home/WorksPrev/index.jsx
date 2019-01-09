@@ -8,18 +8,27 @@ import { Text } from '../../Text';
 import ImageSlider from './ImageSlider';
 
 import ActionButton from '../../ActionButton';
+import { device } from '../../../utils/device';
 
 const RightAlign = styled(Container)`
   align-self: flex-end;
+
+  ${device.tablet} {
+    text-align: center;
+  }
 `;
 
 const Action = styled(ActionButton)`
   align-self: flex-end;
+
+  ${device.tablet} {
+    display: none;
+  }
 `;
 
 const WorksPreview = () => (
-  <Container margin={[5, 0]} flex width="80%">
-    <RightAlign as={Text} width="50%" bold="800" size={9} align="right">
+  <Container margin={[5, 0]} flex width="80%" tWidth="100%">
+    <RightAlign as={Text} width="50%" tWidth="100%" bold="800" size={9} align="right" height="auto">
       Lorem Ipsum is simply dummy text
     </RightAlign>
     <StaticQuery 

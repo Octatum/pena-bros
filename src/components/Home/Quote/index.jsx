@@ -9,7 +9,7 @@ import IndivQuote from './IndivQuote';
 
 import inicial from './assets/initial.svg';
 import final from './assets/final.svg';
-import { throws } from 'assert';
+import { device } from '../../../utils/device';
 
 const AllQuoteContainer = styled(Container)`
   overflow: hidden;
@@ -21,6 +21,10 @@ const LeftMark = styled(Image)`
   position: absolute;
   left: 1em;
   top: 0;
+
+  ${device.tablet} {
+    display: none;
+  }
 `;
 
 const RightMark = styled(Image)`
@@ -29,6 +33,12 @@ const RightMark = styled(Image)`
   position: absolute;
   right: 1em;
   bottom: 0;
+
+  ${device.tablet} {
+    position: absolute;
+    left: calc(100% - 12em);
+    bottom: -1em;
+  }
 `;
 
 class Quote extends Component {
@@ -52,7 +62,7 @@ class Quote extends Component {
       >
         <LeftMark src={inicial} />
         <div data-glide-el="track" className="glide__track">
-          <Container flex row className="glide__slides">
+          <Container flex row align="flex-start" height="auto" tMargin={[0,0,6,0]} className="glide__slides">
             {this.props.data.allFile.edges.map((data, index) => {
               const { frontmatter } = data.node.childMarkdownRemark;
               return (
@@ -62,6 +72,8 @@ class Quote extends Component {
                   className="glide__slide"
                   author={frontmatter.title}
                   width="calc(100% - 25em)"
+                  tWidth="100%"
+                  height="auto"
                 >
                   {frontmatter.review}
                 </IndivQuote>

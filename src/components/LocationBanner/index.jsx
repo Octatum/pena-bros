@@ -4,26 +4,37 @@ import { Text } from '../Text';
 
 const Banner = () => (
   <Container backColor="black" flex padding={[1]}>
-    <Text white size={2.5} align="center">
-      <Text as="span" white bold="bold">
+    <Text align="center">
+      <Text 
+        size={2.5}
+        as="span" 
+        white 
+        bold="bold"
+      >
         Call Us Today!{' '}
       </Text>
       <Text
+        size={2.5}
         as="span"
         white
         onClick={() => {
           window.open(`tel:2106474200`);
         }}
       >
-        (210) 647-4200
+        (210) 647-4200{' '}
       </Text>
-      <Text as="span" white bold="bold">
-        {' '}
+      <Text 
+        size={2.5}
+        as="span" 
+        white 
+        bold="bold"
+      >
         We are located at:{' '}
       </Text>
       <Text
-        white
+        size={2.5}
         as="span"
+        white
         onClick={() => {
           window.open('https://goo.gl/maps/U2PqXeHfHcJ2', '_blank');
         }}

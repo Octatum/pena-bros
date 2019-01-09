@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
 import { Container } from '../Container';
@@ -19,6 +18,7 @@ const HomePage = () => (
       title="Lorem Ipsum is simply dummy text"
       margin={[2, 'auto']}
       width="75%"
+      tWidth="90%"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -49,7 +49,7 @@ const HomePage = () => (
           }
         }
       `}
-      render={data => <Quote margin={[5, 0]} size={4} data={data} />}
+      render={data => <Quote margin={[5, 0]} tMargin={[0]} size={4} data={data} />}
     />
     <WorksPreview />
     <QuoteAction />

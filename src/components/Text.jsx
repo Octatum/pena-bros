@@ -25,7 +25,7 @@ function setColor({ theme, green, gray, white }) {
   return white ? 'white' : 'black';
 }
 
-function padding({ padding }) {
+function setPadding(padding) {
   const measure =
     padding &&
     padding.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
@@ -35,7 +35,7 @@ function padding({ padding }) {
   }
 }
 
-function margin({ margin }) {
+function setMargin(margin) {
   const measure =
     margin &&
     margin.map(value => (value !== 'auto' ? value + 'em' : 'auto')).join(' ');
@@ -49,23 +49,29 @@ export const Text = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main}, sans-serif;
   font-weight: ${({ bold }) => (bold ? bold : 'normal')};
   text-align: ${({ align }) => (align ? align : 'left')};
-  line-height: 1.3em;
   color: ${setColor};
   text-decoration: none;
   font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 
   font-size: ${props => setFontSize(props, increments.default)};
 
-  ${padding}
-  ${margin}
+  ${({ padding }) => setPadding(padding)};
+  ${({ margin }) => setMargin(margin)};
 
   ${device.laptop} {
     font-size: ${props => setFontSize(props, increments.laptop)};
   }
   ${device.tablet} {
+    ${({ tMargin }) => setMargin(tMargin)};
+    ${({ tPadding }) => setPadding(tPadding)};
     font-size: ${props => setFontSize(props, increments.tablet)};
   }
   ${device.mobile} {
+    ${({ mMargin }) => setMargin(mMargin)};
+    ${({ mPadding }) => setPadding(mPadding)};
     font-size: ${props => setFontSize(props, increments.mobile)};
   }
+
+  line-height: 1.3em;
+  
 `;
