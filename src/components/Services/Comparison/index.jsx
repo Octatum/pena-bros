@@ -23,7 +23,10 @@ const ComparisonContainer = styled(Container)`
 `;
 
 const Comparison = ({ data, ...props }) => {
-  const isMobile = window && window.innerWidth < numberValues.tablet;
+  let isMobile = false;
+  if (typeof window !== 'undefined') {
+    isMobile = window.innerWidth <= numberValues.laptop;
+  }
 
   return (
     <ComparisonContainer flex row {...props}>

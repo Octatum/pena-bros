@@ -107,7 +107,10 @@ class ServicesPresentation extends Component {
   }
 
   render() {
-    const isMobile = window && window.innerWidth <= numberValues.laptop;
+    let isMobile = false;
+    if (typeof window !== 'undefined') {
+      isMobile = window.innerWidth <= numberValues.laptop;
+    }
 
     return (
       <PresContainer
@@ -124,21 +127,21 @@ class ServicesPresentation extends Component {
             current={!isMobile ? this.state.current : 0}
             names={!isMobile ? this.names : [this.names[this.state.current]]}
           />
-          {!isMobile ? 
-          <Container
-            padding={[1]}
-            backColor="black"
-            onClick={this.handleHoverClick}
-            height="auto"
-          >
-            <Arrow />
-          </Container> 
-          : 
-          <ArrowsContainer height="auto" padding={[0, 1]} flex row justify="space-between">
-            <Arrows left onClick={this.handleHoverClickPrev} />
-            <Arrows onClick={this.handleHoverClick} />
-          </ArrowsContainer>
-        }
+          {!isMobile ?
+            <Container
+              padding={[1]}
+              backColor="black"
+              onClick={this.handleHoverClick}
+              height="auto"
+            >
+              <Arrow />
+            </Container>
+            :
+            <ArrowsContainer height="auto" padding={[0, 1]} flex row justify="space-between">
+              <Arrows left onClick={this.handleHoverClickPrev} />
+              <Arrows onClick={this.handleHoverClick} />
+            </ArrowsContainer>
+          }
         </Container>
         {this.props.data.map((data, index) => {
           const { frontmatter } = data.node.childMarkdownRemark;
