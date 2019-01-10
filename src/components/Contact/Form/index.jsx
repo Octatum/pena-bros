@@ -9,6 +9,7 @@ import { navigateTo } from 'gatsby';
 import Question from './Question';
 import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
+import { device } from '../../../utils/device';
 
 const FormContainer = styled(Container)`
   display: grid;
@@ -21,6 +22,20 @@ const FormContainer = styled(Container)`
     'message message-input'
     'submit submit';
   gap: 1.25em;
+
+  ${device.tablet} {
+    grid-template-columns: 7em auto;
+    gap: 0.5em;
+    align-items: center;
+    justify-items: start;
+  }
+`;
+
+const FileUploadComp = styled(FileUpload)`
+  ${device.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const SubmitButton = styled(Text)`
@@ -38,30 +53,8 @@ function encode(data) {
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
 }
-/*
-(values, actions) => {
-      console.log(values)
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'Contact',
-          values
-        }),
-      })
-        .then(() => {
-          alert('Your message was sent!');
-          actions.setSubmitting(false);
-          navigateTo('/')
-        })
-        .catch(() => {
-          actions.setSubmitting(false);
-          return error => alert(error);
-        })
-    }
-*/
 
-const GetInTouch = () => (
+const GetInTouch = ({...props}) => (
   <Formik
     initialValues={{
       name: '',
@@ -94,7 +87,9 @@ const GetInTouch = () => (
     render={({ handleSubmit, handleChange, handleBlur, values }) => (
       <FormContainer
         margin={[5, 'auto']}
+        tMargin={[2.5, 'auto']}
         width="70%"
+        tWidth="100%"
         as="form"
         name="contact"
         method="post"
@@ -102,6 +97,7 @@ const GetInTouch = () => (
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
+        {...props}
       >
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
@@ -134,7 +130,7 @@ const GetInTouch = () => (
           onBlur={handleBlur}
           value={values.mail}
         />
-        <FileUpload
+        <FileUploadComp
           size={3}
           text="Attach Image"
           message="send us a foto of your car's interior"

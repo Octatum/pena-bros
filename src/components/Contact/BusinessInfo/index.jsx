@@ -12,6 +12,7 @@ const BusinessInfo = () => (
     flex
     padding={[2, 1]}
     width="75%"
+    tWidth="auto"
     margin={['auto']}
     align="flex-end"
   >

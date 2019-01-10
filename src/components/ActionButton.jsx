@@ -32,7 +32,7 @@ const ActionLink = styled(Text)`
   }
 
   ${device.tablet} {
-    order: ${({ isReversed }) => {console.log(isReversed); return isReversed ? 1 : 0}};
+    order: ${({ isReversed }) => isReversed ? 1 : 0};
 
     span {
       display: none;

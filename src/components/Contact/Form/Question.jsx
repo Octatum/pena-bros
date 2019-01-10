@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 import { Text } from '../../Text';
+import { device } from '../../../utils/device';
 
 const Input = styled.input`
   font-size: ${({ size }) => size * 0.75 + 'em'};
@@ -11,7 +12,12 @@ const Input = styled.input`
   width: 100%;
   max-width: 25em;
   min-width: 15em;
-  grid-area: ${({ position }) => position};
+
+  ${device.tablet} {
+    min-width: initial;
+    max-width: initial;
+    width: calc(100% - 1em);
+  }
 `;
 
 const Question = ({
@@ -20,10 +26,10 @@ const Question = ({
   handleChange,
   handleBlur,
   value,
-  size,
+  size
 }) => (
   <Fragment>
-    <Text bold="bold" size={size}>
+    <Text bold="bold" size={size} >
       {question}
     </Text>
     <Input
