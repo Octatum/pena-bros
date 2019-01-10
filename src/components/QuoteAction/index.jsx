@@ -12,7 +12,7 @@ const Quote = styled(Container)`
 `;
 
 const QuoteAction = ({ ...props }) => {
-  const isMobile = window.innerWidth <= numberValues.laptop;
+  const isMobile = window && window.innerWidth <= numberValues.laptop;
   return (
     <Container flex width="auto" height="auto" margin={[0, 0, 5, 0]} tMargin={[0, 1.5, 5, 1.5]} {...props}>
       <Quote

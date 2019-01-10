@@ -77,6 +77,7 @@ class ServicesPresentation extends Component {
     this.names = props.data.map(
       data => data.node.childMarkdownRemark.frontmatter.name
     );
+    this.isMobile = false;
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -106,7 +107,7 @@ class ServicesPresentation extends Component {
   }
 
   render() {
-    const isMobile = window.innerWidth <= numberValues.laptop;
+    const isMobile = window && window.innerWidth <= numberValues.laptop;
 
     return (
       <PresContainer

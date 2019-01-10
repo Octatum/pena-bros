@@ -23,7 +23,7 @@ const ComparisonContainer = styled(Container)`
 `;
 
 const Comparison = ({ data, ...props }) => {
-  const isMobile = window.innerWidth < numberValues.tablet;
+  const isMobile = window && window.innerWidth < numberValues.tablet;
 
   return (
     <ComparisonContainer flex row {...props}>
