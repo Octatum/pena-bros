@@ -32,7 +32,7 @@ const ActionLink = styled(Text)`
   }
 
   ${device.tablet} {
-    order: 2;
+    order: ${({ isReversed }) => {console.log(isReversed); return isReversed ? 1 : 0}};
 
     span {
       display: none;
@@ -51,6 +51,7 @@ const ActionButton = ({ linkTo, name, textColor, noAnimate, reverse, ...props })
       {...props}
     >
       <ActionLink
+        isReversed={reverse}
         to={linkTo}
         as={Link}
         animate={noAnimate ? 1 : 0}

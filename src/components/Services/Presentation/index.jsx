@@ -5,6 +5,8 @@ import { Container } from '../../Container';
 import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
 import ActionButton from '../../ActionButton';
+import { numberValues, device } from '../../../utils/device';
+import Arrows from '../../Arrows';
 
 const ServiceNameColumn = styled(ServiceNames)`
   min-height: 100%;
@@ -26,6 +28,12 @@ const Action = styled(ActionButton)`
   left: 85%;
   top: 100%;
   width: auto;
+
+  ${device.tablet} {
+    left: initial;
+    right: 5%;
+    top: 100.5%;
+  }
 `;
 
 const ViewComponent = styled(ServiceView)`
@@ -46,6 +54,16 @@ const Arrow = styled(Container)`
 
 const PresContainer = styled(Container)`
   align-items: stretch;
+  ${device.tablet} {
+    flex-direction: column;
+  }
+`;
+
+const ArrowsContainer = styled(Container)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 `;
 
 class ServicesPresentation extends Component {
@@ -63,6 +81,7 @@ class ServicesPresentation extends Component {
     this.handleClick = this.handleClick.bind(this);
 
     this.handleHoverClick = this.handleHoverClick.bind(this);
+    this.handleHoverClickPrev = this.handleHoverClickPrev.bind(this);
   }
 
   handleClick(event, index) {
@@ -78,7 +97,17 @@ class ServicesPresentation extends Component {
     });
   }
 
+  handleHoverClickPrev() {
+    const prev = (this.state.current - 1) < 0 ? this.names.length - 1 : this.state.current - 1;
+
+    this.setState({
+      current: prev,
+    })
+  }
+
   render() {
+    const isMobile = window.innerWidth <= numberValues.laptop;
+
     return (
       <PresContainer
         flex
@@ -87,13 +116,14 @@ class ServicesPresentation extends Component {
         margin={[0, 0, 5, 0]}
         height="auto"
       >
-        <Action name="go to our works" linkTo="/our-works" />
-        <Container width="30%" height="auto">
+        <Action reverse={isMobile} name="go to our works" linkTo="/our-works" />
+        <Container width="30%" tWidth="100%" height="auto">
           <ServiceNameColumn
             handleClick={this.handleClick}
-            current={this.state.current}
-            names={this.names}
+            current={!isMobile ? this.state.current : 0}
+            names={!isMobile ? this.names : [this.names[this.state.current]]}
           />
+          {!isMobile ? 
           <Container
             padding={[1]}
             backColor="black"
@@ -101,7 +131,13 @@ class ServicesPresentation extends Component {
             height="auto"
           >
             <Arrow />
-          </Container>
+          </Container> 
+          : 
+          <ArrowsContainer height="auto" padding={[0, 1]} flex row justify="space-between">
+            <Arrows left onClick={this.handleHoverClickPrev} />
+            <Arrows onClick={this.handleHoverClick} />
+          </ArrowsContainer>
+        }
         </Container>
         {this.props.data.map((data, index) => {
           const { frontmatter } = data.node.childMarkdownRemark;
