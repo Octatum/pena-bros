@@ -9,6 +9,7 @@ import { Container } from '../components/Container';
 import { Image } from '../components/Image';
 
 import stop from '../assets/stop.svg';
+import { device } from '../utils/device';
 
 const BottomCont = styled(Container)`
   margin-top: 10%;
@@ -16,6 +17,12 @@ const BottomCont = styled(Container)`
 
   ${Image} {
     margin-bottom: 3em;
+  }
+
+  ${device.tablet} {
+    ${Image} {
+      width: 10em;
+    }
   }
 `;
 
