@@ -136,8 +136,8 @@ class IndivWork extends Component {
                 left
                 color="white"
               />
-              <ImagesContainer current={this.state.currentImage}>
-                <div>
+              <ImagesContainer current={this.state.currentImage} >
+                <Container width={`${16*allImages.length}em`}>
                   {allImages.map((data, index) => {
                     return (
                       <Images
@@ -147,8 +147,7 @@ class IndivWork extends Component {
                       />
                     );
                   })}
-
-                </div>
+                </Container>
               </ImagesContainer>
               <RightArrow
                 handleClick={e => this.handleNextImage(e, true)}

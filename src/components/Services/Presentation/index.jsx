@@ -109,7 +109,7 @@ class ServicesPresentation extends Component {
   render() {
     let isMobile = false;
     if (typeof window !== 'undefined') {
-      isMobile = window.innerWidth <= numberValues.laptop;
+      isMobile = window.innerWidth <= numberValues.tablet;
     }
 
     return (

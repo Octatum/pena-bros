@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../utils/device';
 
 export const Image = styled.img`
   width: ${props => (props.width ? props.width : 'auto')};
@@ -8,4 +9,14 @@ export const Image = styled.img`
   max-height: 100%;
   object-fit: contain;
   box-sizing: border-box;
+
+  ${device.tablet} {
+    ${({ tWidth }) => tWidth ? {width: tWidth} : ''};
+    ${({ tHeight }) => tHeight ? {height: tHeight} : ''};
+  }
+  
+  ${device.mobile} {
+    ${({ mWidth }) => mWidth ? {width: mWidth} : ''};
+    ${({ mHeight }) => mHeight ? {height: mHeight} : ''};
+  }
 `;

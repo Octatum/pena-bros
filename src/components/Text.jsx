@@ -9,10 +9,8 @@ const increments = {
   mobile: 0.2,
 };
 
-function setFontSize({ size }, increment) {
-  size = size || 1;
-
-  return `${defaultSize + increment * (size - 1)}em`;
+function setFontSize({ size = 0 }, increment) {
+  return `${defaultSize + increment * size}em`;
 }
 
 function setColor({ theme, green, gray, white }) {

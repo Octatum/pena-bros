@@ -14,7 +14,7 @@ const Quote = styled(Container)`
 const QuoteAction = ({ ...props }) => {
   let isMobile = false;
   if (typeof window !== 'undefined') {
-    isMobile = window.innerWidth <= numberValues.laptop;
+    isMobile = window.innerWidth <= numberValues.tablet;
   }
 
   return (

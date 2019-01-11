@@ -25,7 +25,7 @@ const ComparisonContainer = styled(Container)`
 const Comparison = ({ data, ...props }) => {
   let isMobile = false;
   if (typeof window !== 'undefined') {
-    isMobile = window.innerWidth <= numberValues.laptop;
+    isMobile = window.innerWidth <= numberValues.tablet;
   }
 
   return (

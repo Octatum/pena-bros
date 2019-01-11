@@ -1,8 +1,7 @@
 export const numberValues = {
-  mobile: 540,
-  tablet: 720,
-  laptop: 1024,
-  laptopL: 1440,
+  mobile: 764,
+  tablet: 1024,
+  laptop: 1440,
   desktop: 2560,
 };
 
