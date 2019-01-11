@@ -36,9 +36,11 @@ const Tabs = styled(Container)`
   width: calc(100% - 14em);
 
   & > div {
-    transition: transform 1s ease;
+    ${device.tablet} {
+      transition: transform 1s ease;
 
-    transform: ${({ current, total }) => `translateX(-${current/total*100}%)`};
+      transform: ${({ current, total }) => `translateX(-${current/total*100}%)`};
+    }
 
   }
 `;
