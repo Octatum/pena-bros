@@ -25,7 +25,14 @@ const ServiceView = ({ serviceData, show, ...props }) => (
     align="flex-start"
     justify="space-between"
   >
-    <SubTitle size={2.5} title={serviceData.title} width="70%" tWidth="auto" tMargin={[1]} margin={[4, 7]}>
+    <SubTitle
+      size={2.5}
+      title={serviceData.title}
+      width="70%"
+      tWidth="auto"
+      tMargin={[1]}
+      margin={[4, 7]}
+    >
       {serviceData.description}
     </SubTitle>
     <ImageCenter src={serviceData.image} />

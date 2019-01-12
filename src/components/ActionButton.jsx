@@ -32,7 +32,7 @@ const ActionLink = styled(Text)`
   }
 
   ${device.tablet} {
-    order: ${({ isreversed }) => isreversed ? 1 : 0};
+    order: ${({ isreversed }) => (isreversed ? 1 : 0)};
 
     span {
       display: none;
@@ -40,7 +40,14 @@ const ActionLink = styled(Text)`
   }
 `;
 
-const ActionButton = ({ linkTo, name, textColor, noAnimate, reverse, ...props }) => {
+const ActionButton = ({
+  linkTo,
+  name,
+  textColor,
+  noAnimate,
+  reverse,
+  ...props
+}) => {
   return (
     <Container
       flex
@@ -75,7 +82,7 @@ const ActionButton = ({ linkTo, name, textColor, noAnimate, reverse, ...props })
       </Container>
     </Container>
   );
-}
+};
 
 ActionButton.propTypes = {
   linkTo: PropTypes.string,

@@ -62,7 +62,14 @@ class Quote extends Component {
       >
         <LeftMark src={inicial} />
         <div data-glide-el="track" className="glide__track">
-          <Container flex row align="flex-start" height="auto" tMargin={[0,0,6,0]} className="glide__slides">
+          <Container
+            flex
+            row
+            align="flex-start"
+            height="auto"
+            tMargin={[0, 0, 6, 0]}
+            className="glide__slides"
+          >
             {this.props.data.allFile.edges.map((data, index) => {
               const { frontmatter } = data.node.childMarkdownRemark;
               return (

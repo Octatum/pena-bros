@@ -12,13 +12,12 @@ const Action = styled(ActionButton)`
   ${device.tablet} {
     position: absolute;
     top: calc(100% + 0.75em);
-    
   }
 `;
 
 const ComparisonContainer = styled(Container)`
   ${device.tablet} {
-    flex-direction: column
+    flex-direction: column;
   }
 `;
 
@@ -30,7 +29,7 @@ const Comparison = ({ data, ...props }) => {
 
   return (
     <ComparisonContainer flex row {...props}>
-      <Container flex backColor="green" padding={[3]} tMargin={[0,0,5,0]} >
+      <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]}>
         <SubTitle title="What is Lorem Ipsum?" edgeColor="black" white size={3}>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
@@ -39,7 +38,7 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor={!isMobile ? "white" : "black"}
+          textColor={!isMobile ? 'white' : 'black'}
           linkTo="our-works"
           name="go to our works"
         />
@@ -53,13 +52,13 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor={!isMobile ? "white" : "black"}
+          textColor={!isMobile ? 'white' : 'black'}
           linkTo="our-works"
           name="go to our works"
         />
       </Container>
     </ComparisonContainer>
   );
-}
+};
 
 export default Comparison;

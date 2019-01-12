@@ -71,5 +71,4 @@ export const Text = styled.div`
   }
 
   line-height: 1.3em;
-  
 `;

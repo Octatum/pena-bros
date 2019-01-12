@@ -18,7 +18,14 @@ const QuoteAction = ({ ...props }) => {
   }
 
   return (
-    <Container flex width="auto" height="auto" margin={[0, 0, 5, 0]} tMargin={[0, 1.5, 5, 1.5]} {...props}>
+    <Container
+      flex
+      width="auto"
+      height="auto"
+      margin={[0, 0, 5, 0]}
+      tMargin={[0, 1.5, 5, 1.5]}
+      {...props}
+    >
       <Quote
         size={9}
         as={Text}
@@ -41,10 +48,15 @@ const QuoteAction = ({ ...props }) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </Container>
-        <ActionButton tMargin={[0.5, 0]} reverse={isMobile} name="Start!" linkTo="/Contact" />
+        <ActionButton
+          tMargin={[0.5, 0]}
+          reverse={isMobile}
+          name="Start!"
+          linkTo="/Contact"
+        />
       </Container>
     </Container>
   );
-}
+};
 
 export default QuoteAction;

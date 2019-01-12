@@ -11,12 +11,12 @@ export const Image = styled.img`
   box-sizing: border-box;
 
   ${device.tablet} {
-    ${({ tWidth }) => tWidth ? {width: tWidth} : ''};
-    ${({ tHeight }) => tHeight ? {height: tHeight} : ''};
+    ${({ tWidth }) => (tWidth ? { width: tWidth } : '')};
+    ${({ tHeight }) => (tHeight ? { height: tHeight } : '')};
   }
-  
+
   ${device.mobile} {
-    ${({ mWidth }) => mWidth ? {width: mWidth} : ''};
-    ${({ mHeight }) => mHeight ? {height: mHeight} : ''};
+    ${({ mWidth }) => (mWidth ? { width: mWidth } : '')};
+    ${({ mHeight }) => (mHeight ? { height: mHeight } : '')};
   }
 `;

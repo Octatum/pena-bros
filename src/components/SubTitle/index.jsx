@@ -34,7 +34,15 @@ const Title = styled(Text)`
 
 const SubTitle = ({ children, title, size, edgeColor, white, ...props }) => (
   <Container flex align="flex-start" height="auto" width="auto" {...props}>
-    <Title bold="800" size={size * 3} width="75%" tWidth="100%" white={white} as={Container} tMargin={[0,0,1,0]}>
+    <Title
+      bold="800"
+      size={size * 3}
+      width="75%"
+      tWidth="100%"
+      white={white}
+      as={Container}
+      tMargin={[0, 0, 0.5, 0]}
+    >
       {title}
     </Title>
     <TextGreenEdge

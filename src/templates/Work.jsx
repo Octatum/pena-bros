@@ -35,12 +35,11 @@ const ImagesContainer = styled(Container)`
   & > div {
     transition: transform 1s ease;
 
-    transform: ${({ current }) => `translateX(-${current*16}em)`};
+    transform: ${({ current }) => `translateX(-${current * 16}em)`};
 
     :last-child {
       margin-right: 0;
     }
-
   }
 `;
 const Images = styled(Image)`
@@ -136,8 +135,8 @@ class IndivWork extends Component {
                 left
                 color="white"
               />
-              <ImagesContainer current={this.state.currentImage} >
-                <Container width={`${16*allImages.length}em`}>
+              <ImagesContainer current={this.state.currentImage}>
+                <Container width={`${16 * allImages.length}em`}>
                   {allImages.map((data, index) => {
                     return (
                       <Images

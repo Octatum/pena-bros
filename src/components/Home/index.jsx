@@ -8,8 +8,6 @@ import Quote from './Quote';
 import WorksPreview from './WorksPrev';
 import QuoteAction from '../QuoteAction';
 
-
-
 const HomePage = () => (
   <Container flex height="auto">
     <Presentation />
@@ -49,7 +47,9 @@ const HomePage = () => (
           }
         }
       `}
-      render={data => <Quote margin={[5, 0]} tMargin={[0]} size={4} data={data} />}
+      render={data => (
+        <Quote margin={[5, 0]} tMargin={[0]} size={4} data={data} />
+      )}
     />
     <WorksPreview />
     <QuoteAction />

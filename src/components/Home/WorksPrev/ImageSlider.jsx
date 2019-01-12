@@ -45,13 +45,13 @@ const SingleBullet = styled.button`
   transition: background-color 0.5s ease;
 
   &.glide__bullet--active {
-    background-color: ${({theme}) => theme.color.green}
+    background-color: ${({ theme }) => theme.color.green};
   }
 `;
 
 class ImageSlider extends Component {
   constructor() {
-    super()
+    super();
 
     this.glide = null;
   }
@@ -66,16 +66,20 @@ class ImageSlider extends Component {
         [breakPoint]: {
           perView: 1,
           gap: 0,
-        }
-      }
-    }).mount()
+        },
+      },
+    }).mount();
   }
 
   render() {
     const { images, ...props } = this.props;
     return (
       <ImageContainer id="HomeWorksPreviewSlider" {...props} height="auto">
-        <div data-glide-el="track" className="glide__track" style={{ height: "auto" }}>
+        <div
+          data-glide-el="track"
+          className="glide__track"
+          style={{ height: 'auto' }}
+        >
           <Container className="glide__slides" height="auto">
             {images.map((data, index) => {
               return (
@@ -88,10 +92,15 @@ class ImageSlider extends Component {
           </Container>
         </div>
 
-        <Bullets className="glide__bullets" data-glide-el="controls[nav]" height="auto" width="auto">
-          <SingleBullet className="glide__bullet" data-glide-dir="=0"></SingleBullet>
-          <SingleBullet className="glide__bullet" data-glide-dir="=1"></SingleBullet>
-          <SingleBullet className="glide__bullet" data-glide-dir="=2"></SingleBullet>
+        <Bullets
+          className="glide__bullets"
+          data-glide-el="controls[nav]"
+          height="auto"
+          width="auto"
+        >
+          <SingleBullet className="glide__bullet" data-glide-dir="=0" />
+          <SingleBullet className="glide__bullet" data-glide-dir="=1" />
+          <SingleBullet className="glide__bullet" data-glide-dir="=2" />
         </Bullets>
       </ImageContainer>
     );

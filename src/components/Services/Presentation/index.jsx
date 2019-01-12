@@ -99,11 +99,14 @@ class ServicesPresentation extends Component {
   }
 
   handleHoverClickPrev() {
-    const prev = (this.state.current - 1) < 0 ? this.names.length - 1 : this.state.current - 1;
+    const prev =
+      this.state.current - 1 < 0
+        ? this.names.length - 1
+        : this.state.current - 1;
 
     this.setState({
       current: prev,
-    })
+    });
   }
 
   render() {
@@ -127,7 +130,7 @@ class ServicesPresentation extends Component {
             current={!isMobile ? this.state.current : 0}
             names={!isMobile ? this.names : [this.names[this.state.current]]}
           />
-          {!isMobile ?
+          {!isMobile ? (
             <Container
               padding={[1]}
               backColor="black"
@@ -136,12 +139,18 @@ class ServicesPresentation extends Component {
             >
               <Arrow />
             </Container>
-            :
-            <ArrowsContainer height="auto" padding={[0, 1]} flex row justify="space-between">
+          ) : (
+            <ArrowsContainer
+              height="auto"
+              padding={[0, 1]}
+              flex
+              row
+              justify="space-between"
+            >
               <Arrows left onClick={this.handleHoverClickPrev} />
               <Arrows onClick={this.handleHoverClick} />
             </ArrowsContainer>
-          }
+          )}
         </Container>
         {this.props.data.map((data, index) => {
           const { frontmatter } = data.node.childMarkdownRemark;

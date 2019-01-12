@@ -58,14 +58,14 @@ export const Container = styled.div`
   ${device.tablet} {
     ${({ tMargin }) => setMargin(tMargin)};
     ${({ tPadding }) => setPadding(tPadding)};
-    ${({ tWidth }) => tWidth ? {width: tWidth} : ''};
-    ${({ tHeight }) => tHeight ? {height: tHeight} : ''};
+    ${({ tWidth }) => (tWidth ? { width: tWidth } : '')};
+    ${({ tHeight }) => (tHeight ? { height: tHeight } : '')};
   }
 
   ${device.mobile} {
     ${({ mMargin }) => setMargin(mMargin)};
     ${({ mPadding }) => setPadding(mPadding)};
-    ${({ mWidth }) => mWidth ? {width: mWidth} : ''};
-    ${({ mHeight }) => mHeight ? {height: mHeight} : ''};
+    ${({ mWidth }) => (mWidth ? { width: mWidth } : '')};
+    ${({ mHeight }) => (mHeight ? { height: mHeight } : '')};
   }
 `;

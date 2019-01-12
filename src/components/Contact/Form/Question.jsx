@@ -26,10 +26,10 @@ const Question = ({
   handleChange,
   handleBlur,
   value,
-  size
+  size,
 }) => (
   <Fragment>
-    <Text bold="bold" size={size} >
+    <Text bold="bold" size={size}>
       {question}
     </Text>
     <Input

@@ -17,12 +17,11 @@ const BusinnessContainer = styled(Container)`
       text-align: left;
     }
   }
-
 `;
 
 const BusinessCard = ({ image, children }) => (
   <BusinnessContainer flex row justify="flex-end" margin={[1, 0]}>
-    <Text align="right" size={2.5} margin={[0, 2, 0, 0]} tMargin={[0,0,0,2]}>
+    <Text align="right" size={2.5} margin={[0, 2, 0, 0]} tMargin={[0, 0, 0, 2]}>
       {children}
     </Text>
     <ImageComp src={image} />

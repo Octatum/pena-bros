@@ -8,7 +8,7 @@ import { numberValues } from '../../utils/device';
 
 const IndivProd = ({ title, image, description, show, ...props }) => {
   let isMobile = false;
-  if(typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     isMobile = window.innerWidth <= numberValues.tablet;
   }
 
@@ -18,7 +18,7 @@ const IndivProd = ({ title, image, description, show, ...props }) => {
         size={3}
         title={title}
         white={!isMobile}
-        edgeColor={isMobile ? "green" : "black"}
+        edgeColor={isMobile ? 'green' : 'black'}
         height="auto"
         width="60%"
         tWidth="80%"
@@ -42,7 +42,7 @@ const IndivProd = ({ title, image, description, show, ...props }) => {
       </Container>
     </Container>
   );
-}
+};
 
 IndivProd.propTypes = {
   title: PropTypes.string,

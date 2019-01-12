@@ -5,7 +5,7 @@ import { Container } from '../../Container';
 import { Text } from '../../Text';
 import { Formik } from 'formik';
 
-import { navigateTo } from 'gatsby';
+import { navigate } from 'gatsby';
 import Question from './Question';
 import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
@@ -54,7 +54,7 @@ function encode(data) {
     .join('&');
 }
 
-const GetInTouch = ({...props}) => (
+const GetInTouch = ({ ...props }) => (
   <Formik
     initialValues={{
       name: '',
@@ -77,7 +77,7 @@ const GetInTouch = ({...props}) => (
         .then(() => {
           alert('Your message was sent!');
           actions.setSubmitting(false);
-          navigateTo('/');
+          navigate('/');
         })
         .catch(() => {
           actions.setSubmitting(false);

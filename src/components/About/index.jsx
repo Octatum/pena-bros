@@ -23,19 +23,23 @@ const SlideCont = styled(Container)`
   height: 40em;
 
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to left, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0)
+    );
   }
 
   ${device.tablet} {
     ::before {
       background-image: none;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 `;

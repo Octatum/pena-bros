@@ -33,7 +33,8 @@ const Bar = styled.div`
   transition: all 0.5s ease;
 `;
 const Bar1 = styled(Bar)`
-  transform: ${({ display }) => (display ? 'rotate(45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)')};
+  transform: ${({ display }) =>
+    display ? 'rotate(45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)'};
   transform-origin: 0% 0%;
 `;
 const Bar2 = styled(Bar)`
@@ -42,7 +43,8 @@ const Bar2 = styled(Bar)`
   opacity: ${({ display }) => (display ? 0 : 1)};
 `;
 const Bar3 = styled(Bar)`
-  transform: ${({ display }) => (display ? 'rotate(-45deg) translate(0, -0.025em)' : 'rotate(0deg)')};
+  transform: ${({ display }) =>
+    display ? 'rotate(-45deg) translate(0, -0.025em)' : 'rotate(0deg)'};
   transform-origin: 0% 100%;
 `;
 
