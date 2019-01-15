@@ -5,8 +5,8 @@ const defaultSize = 1;
 const increments = {
   default: 0.4,
   laptop: 0.35,
-  tablet: 0.3,
-  mobile: 0.2,
+  tablet: 0.2,
+  mobile: 0.1,
 };
 
 function setFontSize({ size = 0 }, increment) {

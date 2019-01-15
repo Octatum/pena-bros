@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 
+import Glide from '@glidejs/glide';
 import PageLayout from '../components/PageLayout';
 import Arrows from '../components/Arrows';
 import Subtitle from '../components/SubTitle';
@@ -10,16 +11,29 @@ import { Container } from '../components/Container';
 import { Text } from '../components/Text';
 import { Image } from '../components/Image';
 import QuoteAction from '../components/QuoteAction';
+import { numberValues, device } from '../utils/device';
 
 const LeftArrow = styled(Arrows)`
   position: absolute;
   left: -3em;
   top: 50%;
+
+  ${device.tablet} {
+    top: initial;
+    bottom: 1em;
+    left: 1em;
+
+    transform: scale(1.25);
+  }
 `;
-const RightArrow = styled(Arrows)`
-  position: absolute;
+const RightArrow = styled(LeftArrow)`
+  left: initial;
   right: -3em;
-  top: 50%;
+
+  ${device.tablet} {
+    right: initial;
+    left: 3.5em;
+  }
 `;
 const ArrowLink = styled(Link)`
   position: absolute;
@@ -29,25 +43,36 @@ const ArrowLink = styled(Link)`
   height: 100%;
   opacity: 0;
 `;
-const ImagesContainer = styled(Container)`
-  overflow-x: auto;
 
-  & > div {
-    transition: transform 1s ease;
+const Images = styled(Image)`
+  width: 100%;
+`;
 
-    transform: ${({ current }) => `translateX(-${current * 16}em)`};
+const Slider = styled(Container)`
+  overflow-x: hidden;
+`;
 
-    :last-child {
-      margin-right: 0;
+const WorkDescription = styled(Container)`
+  > ${Image} {
+    ${device.tablet} {
+      display: none;
+    }
+  }
+
+  ${device.tablet} {
+    background-color: transparent;
+  }
+
+  & ~ * {
+    ${device.tablet} {
+      top: -3px;
     }
   }
 `;
-const Images = styled(Image)`
-  height: 15em;
-  width: 15em;
-  cursor: pointer;
-  float: left;
-  margin-right: 1em;
+const ArrowsContainer = styled(Container)`
+  ${device.tablet} {
+    display: none;
+  }
 `;
 
 class IndivWork extends Component {
@@ -56,34 +81,45 @@ class IndivWork extends Component {
 
     this.state = {
       currentImage: 0,
+      slider: null,
     };
 
-    this.handleImageClick = this.handleImageClick.bind(this);
     this.handleNextImage = this.handleNextImage.bind(this);
   }
 
-  handleNextImage(e, isNext) {
-    const allImagesLength = this.props.data.markdownRemark.frontmatter.allImages
-      .length;
-    let next = isNext
-      ? this.state.currentImage + 1
-      : this.state.currentImage - 1;
-
-    next = next < 0 ? allImagesLength - 1 : next;
-    next = next >= allImagesLength ? 0 : next;
+  handleNextImage(move) {
+    const next = this.state.slider.index;
 
     this.setState({
       currentImage: next,
     });
   }
 
-  handleImageClick(e, index) {
+  componentDidMount() {
+    const glide = new Glide('#IndividualWorkImages', {
+      startAt: 0,
+      perView: 4,
+      gap: 50,
+      breakpoints: {
+        [numberValues.tablet]: {
+          perView: 1,
+          gap: 0,
+        },
+      },
+    });
+
+    glide.on(['run.after'], this.handleNextImage);
+
+    glide.mount();
+
     this.setState({
-      currentImage: index,
+      slider: glide,
     });
   }
 
   render() {
+    console.log(this.state.slider);
+
     const {
       title,
       description,
@@ -98,7 +134,7 @@ class IndivWork extends Component {
       <PageLayout>
         <Helmet title={title} />
         <Container>
-          <Container
+          <ArrowsContainer
             flex
             row
             width="auto"
@@ -114,51 +150,68 @@ class IndivWork extends Component {
               <Arrows color="black" />
               <ArrowLink to={`our-works/works/${next}`} />
             </Container>
-          </Container>
+          </ArrowsContainer>
 
-          <Text bold="bold" size={9} margin={[0, 4.714]}>
+          <Text
+            bold="bold"
+            size={9}
+            margin={[0, 4.714]}
+            tMargin={[1, 0.75, 0, 'auto']}
+            align="right"
+          >
             {title}
           </Text>
 
-          <Container
+          <WorkDescription
             flex
             backColor="green"
             height="auto"
             width="auto"
             padding={[0, 20]}
+            tPadding={[0]}
             margin={[1, 0, 0, 0]}
+            tMargin={[1, 0, 0, 0]}
           >
             <Image src={allImages[this.state.currentImage]} width="100%" />
-            <Container flex row justify="space-between" margin={[2, 0]}>
+            <Container
+              flex
+              row
+              justify="space-between"
+              margin={[2, 0]}
+              tMargin={[0]}
+            >
+              <Slider id="IndividualWorkImages" height="auto">
+                <div data-glide-el="track" className="glide__track">
+                  <Container className="glide__slides" height="auto">
+                    {allImages.map((data, _) => {
+                      return (
+                        <Container className="glide__slide">
+                          <Images src={data} key={data} />
+                        </Container>
+                      );
+                    })}
+                  </Container>
+                </div>
+              </Slider>
+
               <LeftArrow
-                handleClick={e => this.handleNextImage(e, false)}
+                onClick={() => this.state.slider.go('<')}
                 left
                 color="white"
               />
-              <ImagesContainer current={this.state.currentImage}>
-                <Container width={`${16 * allImages.length}em`}>
-                  {allImages.map((data, index) => {
-                    return (
-                      <Images
-                        src={data}
-                        key={data}
-                        onClick={e => this.handleImageClick(e, index)}
-                      />
-                    );
-                  })}
-                </Container>
-              </ImagesContainer>
               <RightArrow
-                handleClick={e => this.handleNextImage(e, true)}
+                onClick={() => this.state.slider.go('>')}
                 color="white"
               />
             </Container>
-          </Container>
+          </WorkDescription>
 
           <Subtitle
             bold="lighter"
             size={3}
             margin={[0, 19.8]}
+            tMargin={[0, 3, 5, 'auto']}
+            width="80%"
             edgeColor="green"
           >
             {description}
