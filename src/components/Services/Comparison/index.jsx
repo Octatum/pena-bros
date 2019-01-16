@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SubTitle from '../../SubTitle';
 import { Container } from '../../Container';
 import ActionButton from '../../ActionButton';
-import { device, numberValues } from '../../../utils/device';
+import { device } from '../../../utils/device';
 
 const Action = styled(ActionButton)`
   align-self: flex-end;
@@ -12,6 +12,11 @@ const Action = styled(ActionButton)`
   ${device.tablet} {
     position: absolute;
     top: calc(100% + 0.75em);
+    align-self: flex-start;
+
+    * { 
+      color: ${({ theme }) => theme.color.black};
+    }
   }
 `;
 
@@ -22,11 +27,6 @@ const ComparisonContainer = styled(Container)`
 `;
 
 const Comparison = ({ data, ...props }) => {
-  let isMobile = false;
-  if (typeof window !== 'undefined') {
-    isMobile = window.innerWidth <= numberValues.tablet;
-  }
-
   return (
     <ComparisonContainer flex row {...props}>
       <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]}>
@@ -38,9 +38,11 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor={!isMobile ? 'white' : 'black'}
+          textColor='white'
           linkTo="our-works"
           name="go to our works"
+          onMobileReverse={false}
+          arrowColors={['white', 'black']}
         />
       </Container>
       <Container flex backColor="black" padding={[3]}>
@@ -52,9 +54,11 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor={!isMobile ? 'white' : 'black'}
+          textColor='white'
           linkTo="our-works"
           name="go to our works"
+          onMobileReverse={false}
+          arrowColors={['white', 'black']}
         />
       </Container>
     </ComparisonContainer>

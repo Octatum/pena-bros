@@ -21,11 +21,21 @@ const ServiceNameColumn = styled(ServiceNames)`
   ::-webkit-scrollbar-track {
     background: #333;
   }
+
+  ${device.tablet} {
+    display: none;
+  }
+`;
+const ServiceNameColumnMobile = styled(ServiceNames)`
+  display: none;
+  ${device.tablet} {
+    display: initial;
+  }
 `;
 
 const Action = styled(ActionButton)`
   position: absolute;
-  left: 85%;
+  left: 80%;
   top: 100%;
   width: auto;
 
@@ -40,7 +50,7 @@ const ViewComponent = styled(ServiceView)`
   align-self: flex-start;
 `;
 
-const Arrow = styled(Container)`
+const BottomArrow = styled(Container)`
   width: 0;
   height: 0;
   left: -0.1em;
@@ -59,11 +69,21 @@ const PresContainer = styled(Container)`
   }
 `;
 
-const ArrowsContainer = styled(Container)`
+const ArrowContainer = styled(Container)`
+  ${device.tablet} {
+    display: none;
+  }
+`;
+const ArrowsContainerMobile = styled(Container)`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+  display: none;
+
+  ${device.tablet} {
+    display: flex;
+  }
 `;
 
 class ServicesPresentation extends Component {
@@ -77,7 +97,7 @@ class ServicesPresentation extends Component {
     this.names = props.data.map(
       data => data.node.childMarkdownRemark.frontmatter.name
     );
-    this.isMobile = false;
+    
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -110,11 +130,6 @@ class ServicesPresentation extends Component {
   }
 
   render() {
-    let isMobile = false;
-    if (typeof window !== 'undefined') {
-      isMobile = window.innerWidth <= numberValues.tablet;
-    }
-
     return (
       <PresContainer
         flex
@@ -123,34 +138,38 @@ class ServicesPresentation extends Component {
         margin={[0, 0, 5, 0]}
         height="auto"
       >
-        <Action reverse={isMobile} name="go to our works" linkTo="/our-works" />
+        <Action name="go to our works" linkTo="/our-works" />
         <Container width="30%" tWidth="100%" height="auto">
           <ServiceNameColumn
             handleClick={this.handleClick}
-            current={!isMobile ? this.state.current : 0}
-            names={!isMobile ? this.names : [this.names[this.state.current]]}
+            current={this.state.current}
+            names={this.names}
           />
-          {!isMobile ? (
-            <Container
-              padding={[1]}
-              backColor="black"
-              onClick={this.handleHoverClick}
-              height="auto"
-            >
-              <Arrow />
-            </Container>
-          ) : (
-            <ArrowsContainer
-              height="auto"
-              padding={[0, 1]}
-              flex
-              row
-              justify="space-between"
-            >
-              <Arrows left onClick={this.handleHoverClickPrev} />
-              <Arrows onClick={this.handleHoverClick} />
-            </ArrowsContainer>
-          )}
+          <ServiceNameColumnMobile
+            handleClick={this.handleClick}
+            current={0}
+            names={[this.names[this.state.current]]}
+          />
+
+          <ArrowContainer
+            padding={[1]}
+            backColor="black"
+            onClick={this.handleHoverClick}
+            height="auto"
+          >
+            <BottomArrow />
+          </ArrowContainer>
+          <ArrowsContainerMobile
+            height="auto"
+            padding={[0, 1]}
+            flex
+            row
+            justify="space-between"
+          >
+            <Arrows left onClick={this.handleHoverClickPrev} arrowColors={['white', 'white']} />
+            <Arrows onClick={this.handleHoverClick} arrowColors={['white', 'white']} />
+          </ArrowsContainerMobile>
+
         </Container>
         {this.props.data.map((data, index) => {
           const { frontmatter } = data.node.childMarkdownRemark;

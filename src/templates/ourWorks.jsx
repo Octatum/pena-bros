@@ -18,6 +18,25 @@ const ContLink = styled(Link)`
   height: 100%;
   top: 0;
   left: 0;
+
+  ${device.tablet} {
+    display: none;
+  }
+`;
+
+const SubTitleComp = styled(SubTitle)`
+  order: 0;
+
+  ${device.tablet} {
+    order: -1;
+  }
+`;
+const QuoteActionComp = styled(QuoteAction)`
+  order: 0;
+
+  ${device.tablet} {
+    order: 1;
+  }
 `;
 
 const PaginationNumber = styled(Text)`
@@ -48,12 +67,42 @@ const GridComponent = styled.div`
     padding: 0 0 3em 0;
     width: 100%;
     background-color: ${({ theme }) => theme.color.black};
+
+    display: none;
+  }
+`;
+const GridComponentMobile = styled(GridComponent)`
+  display: none;
+  ${device.tablet} {
+    display: grid;
+    grid-gap: 3em;
+    grid-template: repeat(3, auto) / 1fr;
+
+    order: 1;
+    margin: 0;
+    margin-bottom: 5em;
+    padding: 0 0 3em 0;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.black};
+  }
+`;
+
+const IndexContainer = styled(Container)`
+  ${device.tablet} {
+    width: 100%;
+    justify-content: flex-start;
+    background-color: ${({ theme }) => theme.color.black};
   }
 `;
 
 const ArrowComp = styled(Arrow)`
   ${device.tablet} {
     transform: scale(2);
+  }
+`;
+const DesktopIndexing = styled.div`
+  ${device.tablet} {
+    display: none;
   }
 `;
 
@@ -98,17 +147,15 @@ class OurWorks extends Component {
     const { group, index, pageCount, pathPrefix } = this.props.pathContext;
 
     const maxInnerPages = Math.ceil(group.length / 3);
-    let isMobile = false;
+    /* let isMobile = false;
     if (typeof window !== 'undefined') {
       isMobile = window.innerWidth <= numberValues.tablet;
-    }
-    let mobileGroup;
-    if (isMobile) {
-      mobileGroup = group.slice(
-        this.state.currentInnerPage * 3,
-        this.state.currentInnerPage * 3 + 3
-      );
-    }
+    } */
+    let mobileGroup = group.slice(
+      this.state.currentInnerPage * 3,
+      this.state.currentInnerPage * 3 + 3
+    );
+
     console.log(
       mobileGroup,
       this.state.currentInnerPage * 3,
@@ -127,169 +174,153 @@ class OurWorks extends Component {
       nextUrl = '';
     }
 
-    const groupToUse = isMobile ? mobileGroup : group;
-
+/*     const groupToUse = isMobile ? mobileGroup : group;
+ */
     return (
       <PageLayout>
         <Helmet title="Our Works" />
         <Container flex>
           <GridComponent>
-            {groupToUse.map(element => {
+            {group.map(element => {
               const { frontmatter } = element.node;
               return (
                 <Container key={element.numericId} flex>
-                  {isMobile && (
-                    <Text white bold="bold" size={4} margin={[1, 0, 2, 0]}>
-                      {frontmatter.title}
-                    </Text>
-                  )}
                   <Image
                     src={frontmatter.allImages[0]}
                     width="15em"
-                    mWidth="10em"
+                    mWidth="100%"
                     height="15em"
-                    mHeight="10em"
+                    mHeight="auto"
                   />
                   <ContLink to={`our-works/works/${element.numericId}`} />
                 </Container>
               );
             })}
           </GridComponent>
+          <GridComponentMobile>
+            {mobileGroup.map(element => {
+              const { frontmatter } = element.node;
+              return (
+                <Container key={element.numericId} flex>
+                  <Image
+                    src={frontmatter.allImages[0]}
+                    width="15em"
+                    mWidth="100%"
+                    height="15em"
+                    mHeight="auto"
+                  />
+                  <ContLink to={`our-works/works/${element.numericId}`} />
+                </Container>
+              );
+            })}
+          </GridComponentMobile>
 
-          <Container
+          <IndexContainer
             flex
             row
-            width={isMobile ? '100%' : 'auto'}
+            width='auto'
             height="auto"
-            justify={isMobile ? 'flex-start' : 'center'}
+            justify='center'
             tMargin={[4, 0, 0, 0]}
             tPadding={[3, 2]}
-            backColor={isMobile ? 'black' : 'initial'}
+            backColor='initial'
           >
             <Container margin={[0, 0.5]} width="auto">
               <ArrowComp
-                color={
-                  isMobile
-                    ? this.state.currentInnerPage === 0 && index === 1
-                      ? 'grey'
-                      : 'green'
-                    : index !== 1
-                      ? 'black'
-                      : 'grey'
-                }
+                arrowColors={this.state.currentInnerPage === 0 && index === 1 ? ['grey', 'grey'] : ['black', 'green']}
                 left
-                onClick={isMobile =>
-                  isMobile
-                    ? this.handleArrowClick(
-                        false,
-                        pathPrefix + '/' + previousUrl,
-                        maxInnerPages,
-                        index === 1,
-                        index === pageCount
-                      )
-                    : null
-                }
+                onClick={() => this.handleArrowClick(
+                  false,
+                  pathPrefix + '/' + previousUrl,
+                  maxInnerPages,
+                  index === 1,
+                  index === pageCount
+                )}
               />
-              {!isMobile &&
-                index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
+              {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} onClick={e => e.stopPropagation()} />}
             </Container>
 
-            {!isMobile && (
-              <Fragment>
-                <PaginationNumber
-                  selected={index === 1}
-                  margin={[0, 0.1]}
-                  padding={[0.25, 0.5]}
-                  bold="bold"
-                  size={2.5}
-                  as={Link}
-                  to={`/our-works/`}
-                >
-                  1
+
+            <DesktopIndexing>
+              <PaginationNumber
+                selected={index === 1}
+                margin={[0, 0.1]}
+                padding={[0.25, 0.5]}
+                bold="bold"
+                size={2.5}
+                as={Link}
+                to={`/our-works/`}
+              >
+                1
                 </PaginationNumber>
-                {Array.from(
-                  new Array(pageCount - 2 > 0 ? pageCount : 0),
-                  (x, i) => i + 2
-                ).map(number => {
-                  return (
-                    <PaginationNumber
-                      selected={index === number}
-                      margin={[0, 0.1]}
-                      padding={[0.25, 0.5]}
-                      bold="bold"
-                      size={2.5}
-                      as={Link}
-                      to={`/our-works/${number}`}
-                      key={number}
-                    >
-                      {number}
-                    </PaginationNumber>
-                  );
-                })}
-                {pageCount > 1 && (
+              {Array.from(
+                new Array(pageCount - 2 > 0 ? pageCount : 0),
+                (x, i) => i + 2
+              ).map(number => {
+                return (
                   <PaginationNumber
-                    selected={index === pageCount}
+                    selected={index === number}
                     margin={[0, 0.1]}
                     padding={[0.25, 0.5]}
                     bold="bold"
                     size={2.5}
                     as={Link}
-                    to={`/our-works/${pageCount}`}
+                    to={`/our-works/${number}`}
+                    key={number}
                   >
-                    {pageCount}
+                    {number}
                   </PaginationNumber>
-                )}
-              </Fragment>
-            )}
+                );
+              })}
+              {pageCount > 1 && (
+                <PaginationNumber
+                  selected={index === pageCount}
+                  margin={[0, 0.1]}
+                  padding={[0.25, 0.5]}
+                  bold="bold"
+                  size={2.5}
+                  as={Link}
+                  to={`/our-works/${pageCount}`}
+                >
+                  {pageCount}
+                </PaginationNumber>
+              )}
+            </DesktopIndexing>
+
 
             <Container margin={[0, 0.5]} width="auto">
               <ArrowComp
-                color={
-                  isMobile
-                    ? this.state.currentInnerPage === maxInnerPages - 1 &&
-                      index === pageCount
-                      ? 'grey'
-                      : 'green'
-                    : index < pageCount
-                      ? 'black'
-                      : 'grey'
-                }
-                onClick={isMobile =>
-                  isMobile
-                    ? this.handleArrowClick(
-                        true,
-                        pathPrefix + '/' + nextUrl,
-                        maxInnerPages,
-                        index === 1,
-                        index === pageCount
-                      )
-                    : null
-                }
+                arrowColors={this.state.currentInnerPage === maxInnerPages - 1 && index === pageCount ? ['grey', 'grey'] : ['black', 'green']}
+                onClick={() =>
+                  this.handleArrowClick(
+                    true,
+                    pathPrefix + '/' + nextUrl,
+                    maxInnerPages,
+                    index === 1,
+                    index === pageCount
+                  )}
               />
-              {!isMobile &&
-                index < pageCount && (
-                  <ContLink to={pathPrefix + '/' + nextUrl} />
-                )}
+              {index < pageCount && (
+                <ContLink to={pathPrefix + '/' + nextUrl} onClick={e => e.stopPropagation()} />
+              )}
             </Container>
-          </Container>
+          </IndexContainer>
 
-          <SubTitle
+          <SubTitleComp
             title="What is Lorem Ipsum?"
             size={3}
             margin={[5, 10]}
             tMargin={[5, 5, 0, 5]}
-            style={isMobile ? { order: -1 } : { order: 0 }}
           >
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point
             of using Lorem Ipsum is that it has a more-or-less normal
             distribution of letters, as opposed to using 'Content here, content
             here', making it look like readable English.
-          </SubTitle>
+          </SubTitleComp>
 
-          <QuoteAction
+          <QuoteActionComp
             margin={[5, 0, 0, 0]}
-            style={isMobile ? { order: 1 } : { order: 0 }}
           />
         </Container>
       </PageLayout>

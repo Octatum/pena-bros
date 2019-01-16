@@ -7,9 +7,25 @@ import SingleProduct from './SingleProduct';
 import { numberValues, device } from '../../utils/device';
 import Arrows from '../Arrows';
 
+const AllProductsContainer = styled(Container)`
+  ${device.tablet} {
+    justify-content: center;
+    align-items: flex-end;
+  }
+`;
+const SingleProductComponent = styled(SingleProduct)`
+  ${device.tablet} {
+    background-color: transparent;
+  }
+`;
 const Selection = styled(Container)`
   ${device.tablet} {
     background-color: ${({ theme }) => theme.color.green};
+  }
+`;
+const TabSelection = styled(Container)`
+  ${device.tablet} {
+    background-color: black;
   }
 `;
 
@@ -85,11 +101,6 @@ class Products extends Component {
   }
 
   render() {
-    let isMobile = false;
-    if (typeof window !== 'undefined') {
-      isMobile = window.innerWidth <= numberValues.tablet;
-    }
-
     const current = this.props.data.allFile.edges[this.state.currentViewed].node
       .childMarkdownRemark.frontmatter;
 
@@ -109,32 +120,29 @@ class Products extends Component {
             current={this.state.currentViewed}
             total={this.props.data.allFile.edges.length}
           >
-            <Container
+            <AllProductsContainer
               flex
               row
-              justify={isMobile ? 'center' : 'flex-start'}
+              justify='flex-start'
               width="auto"
               tWidth={`${50 * this.props.data.allFile.edges.length}%`}
               height="auto"
-              align={isMobile ? 'flex-end' : 'initial'}
+              align='initial'
             >
               {this.props.data.allFile.edges.map((_, index) => {
                 const { frontmatter } = _.node.childMarkdownRemark;
                 return (
-                  <Container
+                  <TabSelection
                     flex
                     key={frontmatter.preview}
                     onClick={e => this.clickSelection(e, index)}
-                    backColor={
-                      isMobile
-                        ? 'black'
-                        : this.state.currentViewed === index
-                          ? 'green'
-                          : 'black'
-                    }
+                    backColor={this.state.currentViewed === index ? 'green' : 'black'}
                     padding={[1, 2.5]}
                     tPadding={
                       this.state.currentViewed === index ? [2, 1] : [1, 1]
+                    }
+                    mPadding={
+                      this.state.currentViewed === index ? [1.5, 0.75] : [0.75, 0.75]
                     }
                     width="auto"
                     tWidth="50%"
@@ -147,10 +155,10 @@ class Products extends Component {
                       height="15em"
                       mHeight="auto"
                     />
-                  </Container>
+                  </TabSelection>
                 );
               })}
-            </Container>
+            </AllProductsContainer>
           </Tabs>
 
           <ArrowContainer>
@@ -158,13 +166,13 @@ class Products extends Component {
           </ArrowContainer>
         </Selection>
 
-        <SingleProduct
+        <SingleProductComponent
           height="auto"
           title={current.title}
           preview={current.preview}
           image={current.image}
           description={current.description}
-          backColor={isMobile ? 'transparent' : 'green'}
+          backColor='green'
         />
       </Container>
     );

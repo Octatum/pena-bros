@@ -22,6 +22,7 @@ const TextGreenEdge = styled(Text)`
 
     ::before {
       left: calc(100% - 0.275em);
+      background-color: ${({ theme, tEdgeColor }) => tEdgeColor && theme.color[tEdgeColor]};
     }
   }
 `;

@@ -32,10 +32,28 @@ const ActionLink = styled(Text)`
   }
 
   ${device.tablet} {
-    order: ${({ isreversed }) => (isreversed ? 1 : 0)};
+    order: ${({ reverseOnMobile }) => (reverseOnMobile ? 1 : 0)};
 
     span {
       display: none;
+    }
+  }
+`;
+
+const ArrowContainer = styled(Container)`
+  & > div:last-child {
+    display: initial;
+  }
+  & > div:first-child {
+    display: none;
+  }
+
+  ${device.tablet} { 
+    & > div:first-child {
+      display: ${({ reverseOnMobile }) => reverseOnMobile ? 'initial' : 'none'};
+    }
+    & > div:last-child {
+      display: ${({ reverseOnMobile }) => reverseOnMobile ? 'none' : 'initial'};
     }
   }
 `;
@@ -45,7 +63,8 @@ const ActionButton = ({
   name,
   textColor,
   noAnimate,
-  reverse,
+  onMobileReverse,
+  arrowColors,
   ...props
 }) => {
   return (
@@ -58,7 +77,7 @@ const ActionButton = ({
       {...props}
     >
       <ActionLink
-        isreversed={reverse}
+        reverseOnMobile={onMobileReverse}
         to={linkTo}
         as={Link}
         animate={noAnimate ? 1 : 0}
@@ -69,7 +88,8 @@ const ActionButton = ({
         {name}
         <span>{name}</span>
       </ActionLink>
-      <Container
+      <ArrowContainer
+        reverseOnMobile={onMobileReverse}
         flex
         row
         justify="flex-start"
@@ -78,8 +98,9 @@ const ActionButton = ({
         width="auto"
         height="1em"
       >
-        <Arrows color={textColor} left={reverse} />
-      </Container>
+        <Arrows arrowColors={arrowColors} left />
+        <Arrows arrowColors={arrowColors} />
+      </ArrowContainer>
     </Container>
   );
 };
@@ -89,13 +110,15 @@ ActionButton.propTypes = {
   name: PropTypes.string,
   textColor: PropTypes.string,
   noAnimate: PropTypes.bool,
-  reverse: PropTypes.bool,
+  onMobileReverse: PropTypes.bool,
+  arrowColors: PropTypes.array,
 };
 
 ActionButton.defaultProps = {
   textColor: 'black',
   noAnimate: false,
-  reverse: false,
+  onMobileReverse: true,
+  arrowColors: ['black', 'black'],
 };
 
 export default ActionButton;

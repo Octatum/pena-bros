@@ -12,11 +12,6 @@ const Quote = styled(Container)`
 `;
 
 const QuoteAction = ({ ...props }) => {
-  let isMobile = false;
-  if (typeof window !== 'undefined') {
-    isMobile = window.innerWidth <= numberValues.tablet;
-  }
-
   return (
     <Container
       flex
@@ -50,7 +45,6 @@ const QuoteAction = ({ ...props }) => {
         </Container>
         <ActionButton
           tMargin={[0.5, 0]}
-          reverse={isMobile}
           name="Start!"
           linkTo="/Contact"
         />

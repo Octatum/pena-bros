@@ -1,24 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { Container } from '../Container';
 import { Image } from '../Image';
 import SubTitle from '../SubTitle';
-import { numberValues } from '../../utils/device';
+import { device } from '../../utils/device';
+
+const SingleProdContainer = styled(Container)`
+  ${device.tablet} {
+    div {
+      color: black;
+    }
+  }
+`;
 
 const IndivProd = ({ title, image, description, show, ...props }) => {
-  let isMobile = false;
-  if (typeof window !== 'undefined') {
-    isMobile = window.innerWidth <= numberValues.tablet;
-  }
-
   return (
-    <Container flex show={show} {...props}>
+    <SingleProdContainer flex show={show} {...props}>
       <SubTitle
         size={3}
         title={title}
-        white={!isMobile}
-        edgeColor={isMobile ? 'green' : 'black'}
+        white
+        edgeColor='black'
+        tEdgeColor='green'
         height="auto"
         width="60%"
         tWidth="80%"
@@ -40,7 +45,7 @@ const IndivProd = ({ title, image, description, show, ...props }) => {
       >
         <Image src={image} />
       </Container>
-    </Container>
+    </SingleProdContainer>
   );
 };
 

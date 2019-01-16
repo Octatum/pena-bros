@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { Container } from './Container';
+import { device } from '../utils/device';
 
 const Circle = styled(Container)`
   border: none;
@@ -18,7 +19,11 @@ const ArrowRight = styled.div`
   left: 0.1em;
   position: relative;
 
-  border-left: 1.5em solid ${({ theme, color }) => theme.color[color]};
+  border-left: 1.5em solid ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
+
+  ${device.tablet} {
+    border-left-color: ${({ theme, arrowColors }) => theme.color[arrowColors[1]]};
+  }
 `;
 
 const ArrowLeft = styled.div`
@@ -30,10 +35,14 @@ const ArrowLeft = styled.div`
   left: -0.1em;
   position: relative;
 
-  border-right: 1.5em solid ${({ theme, color }) => theme.color[color]};
+  border-right: 1.5em solid ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
+
+  ${device.tablet} {
+    border-right-color: ${({ theme, arrowColors }) => theme.color[arrowColors[1]]};
+  }
 `;
 
-const Arrow = ({ left, handleClick, color, ...props }) => (
+const Arrow = ({ left, handleClick, arrowColors, ...props }) => (
   <Circle
     flex
     padding={[0.25]}
@@ -43,9 +52,9 @@ const Arrow = ({ left, handleClick, color, ...props }) => (
     width="2.5em"
   >
     {left ? (
-      <ArrowLeft onClick={handleClick} color={color} />
+      <ArrowLeft onClick={handleClick} arrowColors={arrowColors} />
     ) : (
-      <ArrowRight onClick={handleClick} color={color} />
+      <ArrowRight onClick={handleClick} arrowColors={arrowColors} />
     )}
   </Circle>
 );
@@ -53,11 +62,11 @@ const Arrow = ({ left, handleClick, color, ...props }) => (
 Arrow.propTypes = {
   left: PropTypes.bool,
   handleClick: PropTypes.func,
-  color: PropTypes.string,
+  arrowColors: PropTypes.array,
 };
 
 Arrow.defaultProps = {
-  color: 'white',
+  arrowColors: ['black', 'black'],
 };
 
 export default Arrow;
