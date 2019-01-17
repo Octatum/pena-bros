@@ -13,7 +13,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "service"}
-      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Icon", name: "icon", widget: "image"}
       - {label: "Service Name", name: "title", widget: "string"}
       - {label: "Service Image", name: "image", widget: "image"}
       - {label: "Service Description", name: "description", widget: "string"}

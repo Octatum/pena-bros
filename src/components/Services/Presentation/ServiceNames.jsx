@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../../Container';
-import { Text } from '../../Text';
+import { Image } from '../../Image';
 
-const Name = styled(Text)`
+const ServiceContainer = styled(Container)`
   background-color: ${({ theme, isCurrent }) =>
     isCurrent ? theme.color.green : 'black'};
   :hover {
@@ -11,22 +11,19 @@ const Name = styled(Text)`
   }
 `;
 
-const ServiceNames = ({ names, current, handleClick, ...props }) => (
+const ServiceNames = ({ icons, current, handleClick, ...props }) => (
   <Container {...props} backColor="black">
-    {names.map((name, index) => {
+    {icons.map((icon, index) => {
       return (
-        <Name
-          white
-          isCurrent={current === index}
-          onClick={event => handleClick(event, index)}
-          align="center"
-          bold="800"
-          size={9}
-          padding={[0.5, 1]}
-          key={name}
-        >
-          {name}
-        </Name>
+        <ServiceContainer>
+          <Image
+            isCurrent={current === index}
+            onClick={event => handleClick(event, index)}
+            padding={[0.5, 1]}
+            src={icon}
+            key={icon}
+          />
+        </ServiceContainer>
       );
     })}
   </Container>

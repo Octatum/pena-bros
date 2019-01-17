@@ -94,8 +94,8 @@ class ServicesPresentation extends Component {
       current: 0,
     };
 
-    this.names = props.data.map(
-      data => data.node.childMarkdownRemark.frontmatter.name
+    this.icons = props.data.map(
+      data => data.node.childMarkdownRemark.frontmatter.icon
     );
 
     this.handleClick = this.handleClick.bind(this);
@@ -111,7 +111,7 @@ class ServicesPresentation extends Component {
   }
 
   handleHoverClick() {
-    const next = (this.state.current + 1) % this.names.length;
+    const next = (this.state.current + 1) % this.icons.length;
     this.setState({
       current: next,
     });
@@ -120,7 +120,7 @@ class ServicesPresentation extends Component {
   handleHoverClickPrev() {
     const prev =
       this.state.current - 1 < 0
-        ? this.names.length - 1
+        ? this.icons.length - 1
         : this.state.current - 1;
 
     this.setState({
@@ -142,12 +142,12 @@ class ServicesPresentation extends Component {
           <ServiceNameColumn
             handleClick={this.handleClick}
             current={this.state.current}
-            names={this.names}
+            icons={this.icons}
           />
           <ServiceNameColumnMobile
             handleClick={this.handleClick}
             current={0}
-            names={[this.names[this.state.current]]}
+            icons={[this.icons[this.state.current]]}
           />
 
           <ArrowContainer

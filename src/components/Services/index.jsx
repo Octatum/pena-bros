@@ -23,8 +23,8 @@ const Services = () => (
                 relativePath
                 childMarkdownRemark {
                   frontmatter {
-                    name
                     title
+                    icon
                     image
                     description
                   }
