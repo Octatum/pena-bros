@@ -5,7 +5,7 @@ import { Container } from '../../Container';
 import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
 import ActionButton from '../../ActionButton';
-import { numberValues, device } from '../../../utils/device';
+import { device } from '../../../utils/device';
 import Arrows from '../../Arrows';
 
 const ServiceNameColumn = styled(ServiceNames)`

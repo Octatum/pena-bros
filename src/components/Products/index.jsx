@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Container } from '../Container';
 import { Image } from '../Image';
 import SingleProduct from './SingleProduct';
-import { numberValues, device } from '../../utils/device';
+import { device } from '../../utils/device';
 import Arrows from '../Arrows';
 
 const AllProductsContainer = styled(Container)`

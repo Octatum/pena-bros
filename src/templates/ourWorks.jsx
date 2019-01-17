@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Link, navigate } from 'gatsby';
@@ -10,7 +10,7 @@ import { Text } from '../components/Text';
 import { Image } from '../components/Image';
 import Arrow from '../components/Arrows';
 import QuoteAction from '../components/QuoteAction';
-import { device, numberValues } from '../utils/device';
+import { device } from '../utils/device';
 
 const ContLink = styled(Link)`
   position: absolute;
@@ -311,6 +311,7 @@ class OurWorks extends Component {
             size={3}
             margin={[5, 10]}
             tMargin={[5, 5, 0, 5]}
+            mMargin={[5, 2, 0, 2]}
           >
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point

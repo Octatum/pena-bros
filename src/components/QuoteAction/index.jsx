@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Container } from '../Container';
 import { Text } from '../Text';
 import ActionButton from '../ActionButton';
-import { device, numberValues } from '../../utils/device';
 
 const Quote = styled(Container)`
   align-self: flex-end;
