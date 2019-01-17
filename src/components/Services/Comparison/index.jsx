@@ -14,7 +14,7 @@ const Action = styled(ActionButton)`
     top: calc(100% + 0.75em);
     align-self: flex-start;
 
-    * { 
+    * {
       color: ${({ theme }) => theme.color.black};
     }
   }
@@ -38,7 +38,7 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor='white'
+          textColor="white"
           linkTo="our-works"
           name="go to our works"
           onMobileReverse={false}
@@ -54,7 +54,7 @@ const Comparison = ({ data, ...props }) => {
         <Action
           width="auto"
           noAnimate
-          textColor='white'
+          textColor="white"
           linkTo="our-works"
           name="go to our works"
           onMobileReverse={false}

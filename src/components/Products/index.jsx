@@ -43,7 +43,11 @@ const ArrowContainer = styled(Container).attrs({
   }
 
   ${device.tablet} {
+    width: 5em;
     display: flex;
+    div {
+      transform: scale(1);
+    }
   }
 `;
 
@@ -51,6 +55,9 @@ const Tabs = styled(Container)`
   overflow-x: auto;
   width: calc(100% - 14em);
 
+  ${device.tablet} {
+    width: calc(100% - 10em);
+  }
   & > div {
     ${device.tablet} {
       transition: transform 1s ease;
@@ -113,7 +120,11 @@ class Products extends Component {
       >
         <Selection flex row tPadding={[5, 0, 0, 0]}>
           <ArrowContainer>
-            <Arrows left onClick={this.handleSelectPrev} />
+            <Arrows
+              left
+              onClick={this.handleSelectPrev}
+              arrowColors={['white', 'white']}
+            />
           </ArrowContainer>
 
           <Tabs
@@ -123,11 +134,11 @@ class Products extends Component {
             <AllProductsContainer
               flex
               row
-              justify='flex-start'
+              justify="flex-start"
               width="auto"
               tWidth={`${50 * this.props.data.allFile.edges.length}%`}
               height="auto"
-              align='initial'
+              align="initial"
             >
               {this.props.data.allFile.edges.map((_, index) => {
                 const { frontmatter } = _.node.childMarkdownRemark;
@@ -136,13 +147,17 @@ class Products extends Component {
                     flex
                     key={frontmatter.preview}
                     onClick={e => this.clickSelection(e, index)}
-                    backColor={this.state.currentViewed === index ? 'green' : 'black'}
+                    backColor={
+                      this.state.currentViewed === index ? 'green' : 'black'
+                    }
                     padding={[1, 2.5]}
                     tPadding={
                       this.state.currentViewed === index ? [2, 1] : [1, 1]
                     }
                     mPadding={
-                      this.state.currentViewed === index ? [1.5, 0.75] : [0.75, 0.75]
+                      this.state.currentViewed === index
+                        ? [1.5, 0.75]
+                        : [0.75, 0.75]
                     }
                     width="auto"
                     tWidth="50%"
@@ -151,7 +166,7 @@ class Products extends Component {
                   >
                     <Image
                       src={frontmatter.preview}
-                      width="90%"
+                      width="100%"
                       height="15em"
                       mHeight="auto"
                     />
@@ -162,7 +177,10 @@ class Products extends Component {
           </Tabs>
 
           <ArrowContainer>
-            <Arrows onClick={this.handleSelectNext} />
+            <Arrows
+              onClick={this.handleSelectNext}
+              arrowColors={['white', 'white']}
+            />
           </ArrowContainer>
         </Selection>
 
@@ -172,7 +190,7 @@ class Products extends Component {
           preview={current.preview}
           image={current.image}
           description={current.description}
-          backColor='green'
+          backColor="green"
         />
       </Container>
     );

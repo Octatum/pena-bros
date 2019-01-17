@@ -10,20 +10,20 @@ import LocationBanner from './../LocationBanner';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';
 import { Image } from '../Image';
-import { Container } from '../Container';
 
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
 `;
+const ImageComp = styled(Image)`
+  margin: 0 auto;
+`;
 
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
-      <Container flex row margin={[0.5, 0]}>
-        <Image src={PenaLogo} width="200px" />
-      </Container>
+      <ImageComp src={PenaLogo} width="200px" />
       <Navbar />
       <LocationBanner />
       <Helmet

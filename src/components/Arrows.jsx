@@ -19,10 +19,12 @@ const ArrowRight = styled.div`
   left: 0.1em;
   position: relative;
 
-  border-left: 1.5em solid ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
+  border-left: 1.5em solid
+    ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
 
   ${device.tablet} {
-    border-left-color: ${({ theme, arrowColors }) => theme.color[arrowColors[1]]};
+    border-left-color: ${({ theme, arrowColors }) =>
+      theme.color[arrowColors[1]]};
   }
 `;
 
@@ -35,10 +37,12 @@ const ArrowLeft = styled.div`
   left: -0.1em;
   position: relative;
 
-  border-right: 1.5em solid ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
+  border-right: 1.5em solid
+    ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
 
   ${device.tablet} {
-    border-right-color: ${({ theme, arrowColors }) => theme.color[arrowColors[1]]};
+    border-right-color: ${({ theme, arrowColors }) =>
+      theme.color[arrowColors[1]]};
   }
 `;
 

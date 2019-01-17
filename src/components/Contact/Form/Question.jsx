@@ -14,6 +14,7 @@ const Input = styled.input`
   min-width: 15em;
 
   ${device.tablet} {
+    font-size: ${({ size }) => size * 0.5 + 'em'};
     min-width: initial;
     max-width: initial;
     width: calc(100% - 1em);

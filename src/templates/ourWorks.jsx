@@ -92,139 +92,134 @@ const DesktopIndexing = styled.div`
   }
 `;
 
-  const OurWorks = ({ pathContext }) => {
-    const { group, index, pageCount, pathPrefix } = pathContext;
+const OurWorks = ({ pathContext }) => {
+  const { group, index, pageCount, pathPrefix } = pathContext;
 
-    let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
-    let nextUrl =
-      index + 1 >= pageCount ? pageCount.toString() : (index + 1).toString();
+  let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
+  let nextUrl =
+    index + 1 >= pageCount ? pageCount.toString() : (index + 1).toString();
 
-    if (previousUrl === '1') {
-      previousUrl = '';
-    }
-    if (nextUrl === '1') {
-      nextUrl = '';
-    }
+  if (previousUrl === '1') {
+    previousUrl = '';
+  }
+  if (nextUrl === '1') {
+    nextUrl = '';
+  }
 
-    return (
-      <PageLayout>
-        <Helmet title="Our Works" />
-        <Container flex>
-          <GridComponent>
-            {group.map(element => {
-              const { frontmatter } = element.node;
+  return (
+    <PageLayout>
+      <Helmet title="Our Works" />
+      <Container flex>
+        <GridComponent>
+          {group.map(element => {
+            const { frontmatter } = element.node;
+            return (
+              <Container key={element.numericId} flex>
+                <Image
+                  src={frontmatter.allImages[0]}
+                  width="15em"
+                  mWidth="100%"
+                  height="15em"
+                  mHeight="auto"
+                />
+                <ContLink to={`our-works/works/${element.numericId}`} />
+              </Container>
+            );
+          })}
+        </GridComponent>
+
+        <IndexContainer
+          flex
+          row
+          width="auto"
+          height="auto"
+          justify="center"
+          tMargin={[4, 0, 0, 0]}
+          tPadding={[3, 2]}
+          backColor="initial"
+        >
+          <Container margin={[0, 0.5]} mMargin={[0]} width="auto">
+            <ArrowComp
+              arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
+              left
+            />
+            {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
+          </Container>
+
+          <DesktopIndexing>
+            <PaginationNumber
+              selected={index === 1}
+              margin={[0, 0.1]}
+              padding={[0.25, 0.5]}
+              bold="bold"
+              size={2.5}
+              as={Link}
+              to={`/our-works/`}
+            >
+              1
+            </PaginationNumber>
+            {Array.from(
+              new Array(pageCount - 2 > 0 ? pageCount : 0),
+              (x, i) => i + 2
+            ).map(number => {
               return (
-                <Container key={element.numericId} flex>
-                  <Image
-                    src={frontmatter.allImages[0]}
-                    width="15em"
-                    mWidth="100%"
-                    height="15em"
-                    mHeight="auto"
-                  />
-                  <ContLink to={`our-works/works/${element.numericId}`} />
-                </Container>
-              );
-            })}
-          </GridComponent>
-
-          <IndexContainer
-            flex
-            row
-            width='auto'
-            height="auto"
-            justify='center'
-            tMargin={[4, 0, 0, 0]}
-            tPadding={[3, 2]}
-            backColor='initial'
-          >
-            <Container margin={[0, 0.5]} mMargin={[0]} width="auto">
-              <ArrowComp
-                arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
-                left
-              />
-              {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
-            </Container>
-
-
-            <DesktopIndexing>
-              <PaginationNumber
-                selected={index === 1}
-                margin={[0, 0.1]}
-                padding={[0.25, 0.5]}
-                bold="bold"
-                size={2.5}
-                as={Link}
-                to={`/our-works/`}
-              >
-                1
-                </PaginationNumber>
-              {Array.from(
-                new Array(pageCount - 2 > 0 ? pageCount : 0),
-                (x, i) => i + 2
-              ).map(number => {
-                return (
-                  <PaginationNumber
-                    selected={index === number}
-                    margin={[0, 0.1]}
-                    padding={[0.25, 0.5]}
-                    bold="bold"
-                    size={2.5}
-                    as={Link}
-                    to={`/our-works/${number}`}
-                    key={number}
-                  >
-                    {number}
-                  </PaginationNumber>
-                );
-              })}
-              {pageCount > 1 && (
                 <PaginationNumber
-                  selected={index === pageCount}
+                  selected={index === number}
                   margin={[0, 0.1]}
                   padding={[0.25, 0.5]}
                   bold="bold"
                   size={2.5}
                   as={Link}
-                  to={`/our-works/${pageCount}`}
+                  to={`/our-works/${number}`}
+                  key={number}
                 >
-                  {pageCount}
+                  {number}
                 </PaginationNumber>
-              )}
-            </DesktopIndexing>
+              );
+            })}
+            {pageCount > 1 && (
+              <PaginationNumber
+                selected={index === pageCount}
+                margin={[0, 0.1]}
+                padding={[0.25, 0.5]}
+                bold="bold"
+                size={2.5}
+                as={Link}
+                to={`/our-works/${pageCount}`}
+              >
+                {pageCount}
+              </PaginationNumber>
+            )}
+          </DesktopIndexing>
 
+          <Container margin={[0, 0.5]} width="auto">
+            <ArrowComp
+              arrowColors={
+                index === pageCount ? ['grey', 'grey'] : ['black', 'green']
+              }
+            />
+            {index < pageCount && <ContLink to={pathPrefix + '/' + nextUrl} />}
+          </Container>
+        </IndexContainer>
 
-            <Container margin={[0, 0.5]} width="auto">
-              <ArrowComp
-                arrowColors={index === pageCount ? ['grey', 'grey'] : ['black', 'green']}
-              />
-              {index < pageCount && (
-                <ContLink to={pathPrefix + '/' + nextUrl} />
-              )}
-            </Container>
-          </IndexContainer>
+        <SubTitleComp
+          title="What is Lorem Ipsum?"
+          size={3}
+          margin={[5, 10]}
+          tMargin={[3, 5, 0, 5]}
+          mMargin={[3, 2, 0, 2]}
+        >
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a more-or-less normal distribution of
+          letters, as opposed to using 'Content here, content here', making it
+          look like readable English.
+        </SubTitleComp>
 
-          <SubTitleComp
-            title="What is Lorem Ipsum?"
-            size={3}
-            margin={[5, 10]}
-            tMargin={[5, 5, 0, 5]}
-            mMargin={[5, 2, 0, 2]}
-          >
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English.
-          </SubTitleComp>
-
-          <QuoteActionComp
-            margin={[5, 0, 0, 0]}
-          />
-        </Container>
-      </PageLayout>
-    );
-  }
-
+        <QuoteActionComp margin={[5, 0, 0, 0]} />
+      </Container>
+    </PageLayout>
+  );
+};
 
 export default OurWorks;

@@ -42,7 +42,7 @@ const Action = styled(ActionButton)`
   ${device.tablet} {
     left: initial;
     right: 5%;
-    top: 100.5%;
+    top: 101%;
   }
 `;
 
@@ -97,7 +97,6 @@ class ServicesPresentation extends Component {
     this.names = props.data.map(
       data => data.node.childMarkdownRemark.frontmatter.name
     );
-    
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -166,10 +165,16 @@ class ServicesPresentation extends Component {
             row
             justify="space-between"
           >
-            <Arrows left onClick={this.handleHoverClickPrev} arrowColors={['white', 'white']} />
-            <Arrows onClick={this.handleHoverClick} arrowColors={['white', 'white']} />
+            <Arrows
+              left
+              onClick={this.handleHoverClickPrev}
+              arrowColors={['white', 'white']}
+            />
+            <Arrows
+              onClick={this.handleHoverClick}
+              arrowColors={['white', 'white']}
+            />
           </ArrowsContainerMobile>
-
         </Container>
         {this.props.data.map((data, index) => {
           const { frontmatter } = data.node.childMarkdownRemark;

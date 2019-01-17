@@ -152,8 +152,15 @@ class About extends Component {
                 height="auto"
                 justify="flex-end"
               >
-                <Arrows left handleClick={() => this.glide.go('<')} />
-                <Arrows handleClick={() => this.glide.go('>')} />
+                <Arrows
+                  left
+                  handleClick={() => this.glide.go('<')}
+                  arrowColors={['white', 'white']}
+                />
+                <Arrows
+                  handleClick={() => this.glide.go('>')}
+                  arrowColors={['white', 'white']}
+                />
               </ArrowContainer>
             </Slider>
           );

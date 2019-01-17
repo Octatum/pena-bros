@@ -100,7 +100,7 @@ class Navbar extends Component {
   render() {
     return (
       <NavbarContainer flex row backColor="green" display={this.state.isOpen}>
-        <CollapsibleMenu onClick={this.handleClick} >
+        <CollapsibleMenu onClick={this.handleClick}>
           <MenuIcon>
             <Bar1 display={this.state.isOpen} />
             <Bar2 display={this.state.isOpen} />

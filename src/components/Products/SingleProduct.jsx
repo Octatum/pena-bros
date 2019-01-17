@@ -22,13 +22,13 @@ const IndivProd = ({ title, image, description, show, ...props }) => {
         size={3}
         title={title}
         white
-        edgeColor='black'
-        tEdgeColor='green'
+        edgeColor="black"
+        tEdgeColor="green"
         height="auto"
         width="60%"
-        tWidth="80%"
+        tWidth="90%"
         margin={[4, 0]}
-        tMargin={[4, 'auto']}
+        tMargin={[4, 1.5, 4, 'auto']}
       >
         {description}
       </SubTitle>

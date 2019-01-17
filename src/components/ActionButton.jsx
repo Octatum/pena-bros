@@ -48,12 +48,14 @@ const ArrowContainer = styled(Container)`
     display: none;
   }
 
-  ${device.tablet} { 
+  ${device.tablet} {
     & > div:first-child {
-      display: ${({ reverseOnMobile }) => reverseOnMobile ? 'initial' : 'none'};
+      display: ${({ reverseOnMobile }) =>
+        reverseOnMobile ? 'initial' : 'none'};
     }
     & > div:last-child {
-      display: ${({ reverseOnMobile }) => reverseOnMobile ? 'none' : 'initial'};
+      display: ${({ reverseOnMobile }) =>
+        reverseOnMobile ? 'none' : 'initial'};
     }
   }
 `;

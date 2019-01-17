@@ -22,7 +22,8 @@ const TextGreenEdge = styled(Text)`
 
     ::before {
       left: calc(100% - 0.275em);
-      background-color: ${({ theme, tEdgeColor }) => tEdgeColor && theme.color[tEdgeColor]};
+      background-color: ${({ theme, tEdgeColor }) =>
+        tEdgeColor && theme.color[tEdgeColor]};
     }
   }
 `;
@@ -33,7 +34,15 @@ const Title = styled(Text)`
   }
 `;
 
-const SubTitle = ({ children, title, size, edgeColor, white, ...props }) => (
+const SubTitle = ({
+  children,
+  title,
+  size,
+  edgeColor,
+  white,
+  tEdgeColor,
+  ...props
+}) => (
   <Container flex align="flex-start" height="auto" width="auto" {...props}>
     {title && (
       <Title
@@ -55,6 +64,7 @@ const SubTitle = ({ children, title, size, edgeColor, white, ...props }) => (
       bold="lighter"
       white={white}
       edgeColor={edgeColor}
+      tEdgeColor={tEdgeColor}
     >
       {children}
     </TextGreenEdge>
@@ -65,12 +75,14 @@ SubTitle.propTypes = {
   title: PropTypes.string,
   size: PropTypes.number,
   edgeColor: PropTypes.string,
+  tEdgeColor: PropTypes.string,
   white: PropTypes.bool,
 };
 
 SubTitle.defaultProps = {
   size: 1,
   edgeColor: 'green',
+  tEdgeColor: 'green',
   white: false,
 };
 

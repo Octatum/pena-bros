@@ -42,11 +42,7 @@ const QuoteAction = ({ ...props }) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </Container>
-        <ActionButton
-          tMargin={[0.5, 0]}
-          name="Start!"
-          linkTo="/Contact"
-        />
+        <ActionButton tMargin={[0.5, 0]} name="Start!" linkTo="/Contact" />
       </Container>
     </Container>
   );
