@@ -58,13 +58,30 @@ const GridComponent = styled.div`
   grid-auto-flow: row;
 
   ${device.tablet} {
-    grid-gap: 2em 0;
-    grid-template: repeat(3, auto) / 1fr 1fr;
+    grid-gap: 3em;
+    grid-template: repeat(3, auto) / 1fr;
 
     order: 1;
     margin: 0;
     margin-bottom: 5em;
-    padding: 0 1em 3em 1em;
+    padding: 0 0 3em 0;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.black};
+
+    display: none;
+  }
+`;
+const GridComponentMobile = styled(GridComponent)`
+  display: none;
+  ${device.tablet} {
+    display: grid;
+    grid-gap: 3em;
+    grid-template: repeat(3, auto) / 1fr;
+
+    order: 1;
+    margin: 0;
+    margin-bottom: 5em;
+    padding: 0 0 3em 0;
     width: 100%;
     background-color: ${({ theme }) => theme.color.black};
   }
@@ -80,10 +97,7 @@ const IndexContainer = styled(Container)`
 
 const ArrowComp = styled(Arrow)`
   ${device.tablet} {
-    transform: scale(1.75);
-  }
-  ${device.mobile} {
-    transform: scale(1.25);
+    transform: scale(2);
   }
 `;
 const DesktopIndexing = styled.div`
@@ -92,8 +106,62 @@ const DesktopIndexing = styled.div`
   }
 `;
 
-  const OurWorks = ({ pathContext }) => {
-    const { group, index, pageCount, pathPrefix } = pathContext;
+class OurWorks extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentInnerPage: 0,
+    };
+
+    this.handleArrowClick = this.handleArrowClick.bind(this);
+  }
+
+  handleArrowClick(isNext, url, maxInnerPages, isFirst, isLast) {
+    const current = this.state.currentInnerPage;
+    let next = isNext ? current + 1 : current - 1;
+
+    if (next < 0 && !isFirst) {
+      navigate(url);
+    }
+    if (next >= 3 && !isLast) {
+      navigate(url);
+    }
+    if (next >= maxInnerPages) {
+      next = current;
+    }
+
+    if (next < 0) {
+      next = 0;
+    }
+    if (next >= 3) {
+      next = 2;
+    }
+
+    this.setState({
+      currentInnerPage: next,
+    });
+  }
+
+  render() {
+    const { group, index, pageCount, pathPrefix } = this.props.pathContext;
+
+    const maxInnerPages = Math.ceil(group.length / 3);
+    /* let isMobile = false;
+    if (typeof window !== 'undefined') {
+      isMobile = window.innerWidth <= numberValues.tablet;
+    } */
+    let mobileGroup = group.slice(
+      this.state.currentInnerPage * 3,
+      this.state.currentInnerPage * 3 + 3
+    );
+
+    console.log(
+      mobileGroup,
+      this.state.currentInnerPage * 3,
+      this.state.currentInnerPage * 3 + 3
+    );
+    console.log(this.state.currentInnerPage);
 
     let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
     let nextUrl =
@@ -106,6 +174,8 @@ const DesktopIndexing = styled.div`
       nextUrl = '';
     }
 
+/*     const groupToUse = isMobile ? mobileGroup : group;
+ */
     return (
       <PageLayout>
         <Helmet title="Our Works" />
@@ -127,6 +197,23 @@ const DesktopIndexing = styled.div`
               );
             })}
           </GridComponent>
+          <GridComponentMobile>
+            {mobileGroup.map(element => {
+              const { frontmatter } = element.node;
+              return (
+                <Container key={element.numericId} flex>
+                  <Image
+                    src={frontmatter.allImages[0]}
+                    width="15em"
+                    mWidth="100%"
+                    height="15em"
+                    mHeight="auto"
+                  />
+                  <ContLink to={`our-works/works/${element.numericId}`} />
+                </Container>
+              );
+            })}
+          </GridComponentMobile>
 
           <IndexContainer
             flex
@@ -138,12 +225,19 @@ const DesktopIndexing = styled.div`
             tPadding={[3, 2]}
             backColor='initial'
           >
-            <Container margin={[0, 0.5]} mMargin={[0]} width="auto">
+            <Container margin={[0, 0.5]} width="auto">
               <ArrowComp
-                arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
+                arrowColors={this.state.currentInnerPage === 0 && index === 1 ? ['grey', 'grey'] : ['black', 'green']}
                 left
+                onClick={() => this.handleArrowClick(
+                  false,
+                  pathPrefix + '/' + previousUrl,
+                  maxInnerPages,
+                  index === 1,
+                  index === pageCount
+                )}
               />
-              {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
+              {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} onClick={e => e.stopPropagation()} />}
             </Container>
 
 
@@ -196,10 +290,18 @@ const DesktopIndexing = styled.div`
 
             <Container margin={[0, 0.5]} width="auto">
               <ArrowComp
-                arrowColors={index === pageCount ? ['grey', 'grey'] : ['black', 'green']}
+                arrowColors={this.state.currentInnerPage === maxInnerPages - 1 && index === pageCount ? ['grey', 'grey'] : ['black', 'green']}
+                onClick={() =>
+                  this.handleArrowClick(
+                    true,
+                    pathPrefix + '/' + nextUrl,
+                    maxInnerPages,
+                    index === 1,
+                    index === pageCount
+                  )}
               />
               {index < pageCount && (
-                <ContLink to={pathPrefix + '/' + nextUrl} />
+                <ContLink to={pathPrefix + '/' + nextUrl} onClick={e => e.stopPropagation()} />
               )}
             </Container>
           </IndexContainer>
@@ -225,6 +327,6 @@ const DesktopIndexing = styled.div`
       </PageLayout>
     );
   }
-
+}
 
 export default OurWorks;

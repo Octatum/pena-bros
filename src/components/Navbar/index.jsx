@@ -15,6 +15,10 @@ const CollapsibleMenu = styled.div`
     align-self: flex-end;
     width: 100%;
     height: auto;
+    padding: 0.65em 0;
+  }
+  ${device.mobile} {
+    padding: 0.5em 0;
   }
 `;
 
@@ -96,7 +100,7 @@ class Navbar extends Component {
   render() {
     return (
       <NavbarContainer flex row backColor="green" display={this.state.isOpen}>
-        <CollapsibleMenu onClick={this.handleClick}>
+        <CollapsibleMenu onClick={this.handleClick} >
           <MenuIcon>
             <Bar1 display={this.state.isOpen} />
             <Bar2 display={this.state.isOpen} />
