@@ -24,7 +24,6 @@ const Services = () => (
                 childMarkdownRemark {
                   frontmatter {
                     title
-                    icon
                     image
                     description
                   }
