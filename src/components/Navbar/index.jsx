@@ -11,7 +11,7 @@ const CollapsibleMenu = styled.div`
 
   ${device.tablet} {
     display: block;
-    background-color: white;
+    background-color: ${({ theme }) => theme.color.green};
     align-self: flex-end;
     width: 100%;
     height: auto;
@@ -30,7 +30,7 @@ const MenuIcon = styled.div`
 const Bar = styled.div`
   width: 3em;
   height: 0.45em;
-  background-color: black;
+  background-color: ${({ theme }) => theme.color.white};
 
   margin: 0.5em 0;
 
@@ -61,12 +61,14 @@ const NavbarContainer = styled(Container)`
 
   ${Text} {
     text-transform: uppercase;
+    margin: 0 auto;
   }
 
   ${device.tablet} {
     padding: 0;
     background-color: transparent;
     flex-wrap: wrap;
+    border-bottom: ${({ theme, display }) => (!display ? theme.color.green : 'none')} 5px solid;
 
     ${Text} {
       font-weight: normal;
@@ -74,7 +76,7 @@ const NavbarContainer = styled(Container)`
       width: 50%;
       text-align: center;
       padding: 1.75em 0;
-      background-color: black;
+      background-color: ${({ theme }) => theme.color.green};
     }
   }
 `;

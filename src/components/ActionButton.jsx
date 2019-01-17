@@ -98,10 +98,9 @@ const ActionButton = ({
         margin={[0, 0.5]}
         tMargin={[0]}
         width="auto"
-        height="1em"
       >
-        <Arrows arrowColors={arrowColors} left />
-        <Arrows arrowColors={arrowColors} />
+        <Arrows arrowColors={arrowColors} margin={['auto', 0]} left />
+        <Arrows arrowColors={arrowColors} margin={['auto', 0]} />
       </ArrowContainer>
     </Container>
   );

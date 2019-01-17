@@ -18,9 +18,9 @@ const SlideCont = styled(Container)`
   background-image: url(${({ image }) => image});
   background-position: left top;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 
-  height: 40em;
+  height: 800px;
 
   ::before {
     content: '';
@@ -122,7 +122,7 @@ class About extends Component {
                           size={2.5}
                           as={Container}
                           padding={[1]}
-                          width="30%"
+                          width="60%"
                           tWidth="100%"
                           align="right"
                         >

@@ -143,11 +143,11 @@ class IndivWork extends Component {
             padding={[0, 19.5]}
           >
             <Container width="auto">
-              <Arrows color="black" left />
+              <Arrows left />
               <ArrowLink to={`our-works/works/${prev}`} />
             </Container>
             <Container width="auto">
-              <Arrows color="black" />
+              <Arrows />
               <ArrowLink to={`our-works/works/${next}`} />
             </Container>
           </ArrowsContainer>
@@ -197,11 +197,11 @@ class IndivWork extends Component {
               <LeftArrow
                 onClick={() => this.state.slider.go('<')}
                 left
-                color="white"
+                arrowColors={['white', 'white']}
               />
               <RightArrow
                 onClick={() => this.state.slider.go('>')}
-                color="white"
+                arrowColors={['white', 'white']}
               />
             </Container>
           </WorkDescription>

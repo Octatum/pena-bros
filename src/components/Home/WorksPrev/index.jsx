@@ -27,17 +27,18 @@ const Action = styled(ActionButton)`
   }
 `;
 
-const WorksPreview = () => (
-  <Container margin={[5, 0]} flex width="80%" tWidth="100%">
+const WorksPreview = ({ ...props }) => (
+  <Container flex width="80%" tWidth="100%" {...props}>
     <RightAlign
       as={Text}
-      width="50%"
+      width="70%"
       mWidth="100%"
       tWidth="90%"
       bold="800"
       size={9}
       align="right"
       height="auto"
+      padding={[0, 0, 0.5, 0]}
     >
       Lorem Ipsum is simply dummy text
     </RightAlign>

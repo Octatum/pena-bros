@@ -17,10 +17,10 @@ const Slider = styled(Container)`
 const SlideCont = styled(Container)`
   background-image: url(${({ image }) => image});
   background-position: left top;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: no-repeat;  
+  background-size: cover;
 
-  height: 40em;
+  height: 800px;
 
   ::before {
     content: '';
@@ -34,9 +34,11 @@ const SlideCont = styled(Container)`
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     );
+    
   }
 
   ${device.tablet} {
+    height: 600px;
     ::before {
       background-image: none;
       background-color: rgba(0, 0, 0, 0.5);
@@ -71,7 +73,7 @@ class Presentation extends Component {
       startAt: 0,
       perView: 1,
       gap: 0,
-    }).mount();
+    }).mount()
   }
 
   render() {
@@ -102,6 +104,7 @@ class Presentation extends Component {
           }
         `}
         render={data => {
+          console.log(this.height)
           return (
             <Slider id="HomePres" {...this.props} height="auto">
               <div data-glide-el="track" className="glide__track">
@@ -123,7 +126,7 @@ class Presentation extends Component {
                           size={2.5}
                           as={Container}
                           padding={[1]}
-                          width="30%"
+                          width="60%"
                           tWidth="100%"
                           align="left"
                         >
@@ -153,8 +156,8 @@ class Presentation extends Component {
                 height="auto"
                 justify="flex-end"
               >
-                <Arrows left handleClick={() => this.glide.go('<')} />
-                <Arrows handleClick={() => this.glide.go('>')} />
+                <Arrows left handleClick={() => this.glide.go('<')} arrowColors={['white', 'white']} />
+                <Arrows handleClick={() => this.glide.go('>')} arrowColors={['white', 'white']} />
               </ArrowContainer>
             </Slider>
           );

@@ -48,10 +48,10 @@ const HomePage = () => (
         }
       `}
       render={data => (
-        <Quote margin={[5, 0]} tMargin={[0]} size={4} data={data} />
+        <Quote margin={[5, 0]} tMargin={[2, 0]} size={4} data={data} />
       )}
     />
-    <WorksPreview />
+    <WorksPreview margin={[5, 0]} tMargin={[2, 0]} />
     <QuoteAction />
   </Container>
 );

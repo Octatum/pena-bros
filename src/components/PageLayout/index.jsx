@@ -23,9 +23,9 @@ const ImageComp = styled(Image)`
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
-      <ImageComp src={PenaLogo} width="200px" />
-      <Navbar />
+      <ImageComp src={PenaLogo} width="200px" tWidth="150px" />
       <LocationBanner />
+      <Navbar />
       <Helmet
         titleTemplate="%s | Peña Bros"
         meta={[
