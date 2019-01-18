@@ -1,6 +1,6 @@
 ---
 layout: service
-icon: /assets/headliners2.svg
+icon: /assets/airplanes.png
 title: 'This is test #2'
 image: /assets/enduserexperience.png
 description: >-
