@@ -60,6 +60,10 @@ const ArrowContainer = styled(Container)`
   }
 `;
 
+const ArrowResized = styled(Arrows)`
+  transform: scale(0.75);
+`;
+
 const ActionButton = ({
   linkTo,
   name,
@@ -99,8 +103,8 @@ const ActionButton = ({
         tMargin={[0]}
         width="auto"
       >
-        <Arrows arrowColors={arrowColors} margin={['auto', 0]} left />
-        <Arrows arrowColors={arrowColors} margin={['auto', 0]} />
+        <ArrowResized arrowColors={arrowColors} margin={['auto', 0]} left />
+        <ArrowResized arrowColors={arrowColors} margin={['auto', 0]} />
       </ArrowContainer>
     </Container>
   );

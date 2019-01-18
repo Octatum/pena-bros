@@ -123,10 +123,10 @@ class Presentation extends Component {
                       >
                         <Text
                           white
-                          size={2.5}
+                          size={2}
                           as={Container}
                           padding={[1]}
-                          width="60%"
+                          width="45%"
                           tWidth="100%"
                           align="left"
                         >
@@ -136,7 +136,7 @@ class Presentation extends Component {
                           as={Link}
                           to={frontmatter.link === 'About Us' ? '/about' : '/'}
                           bold="bold"
-                          size={2.5}
+                          size={2}
                           white="true"
                           margin={[0, 1]}
                           padding={[0.25, 1.25]}

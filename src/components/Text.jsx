@@ -3,10 +3,9 @@ import { device } from '../utils/device';
 
 const defaultSize = 1;
 const increments = {
-  default: 0.4,
-  laptop: 0.35,
-  tablet: 0.2,
-  mobile: 0.1,
+  default: 0.25,
+  tablet: 0.15,
+  mobile: 0.05,
 };
 
 function setFontSize({ size = 0 }, increment) {
@@ -56,9 +55,6 @@ export const Text = styled.div`
   ${({ padding }) => setPadding(padding)};
   ${({ margin }) => setMargin(margin)};
 
-  ${device.laptop} {
-    font-size: ${props => setFontSize(props, increments.laptop)};
-  }
   ${device.tablet} {
     ${({ tMargin }) => setMargin(tMargin)};
     ${({ tPadding }) => setPadding(tPadding)};

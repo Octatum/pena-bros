@@ -30,7 +30,7 @@ const Comparison = ({ data, ...props }) => {
   return (
     <ComparisonContainer flex row {...props}>
       <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]}>
-        <SubTitle title="What is Lorem Ipsum?" edgeColor="black" white size={3}>
+        <SubTitle title="What is Lorem Ipsum?" edgeColor="black" white size={2}>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </SubTitle>
@@ -46,7 +46,7 @@ const Comparison = ({ data, ...props }) => {
         />
       </Container>
       <Container flex backColor="black" padding={[3]}>
-        <SubTitle title="What is Lorem Ipsum?" edgeColor="green" white size={3}>
+        <SubTitle title="What is Lorem Ipsum?" edgeColor="green" white size={2}>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </SubTitle>

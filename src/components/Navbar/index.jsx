@@ -118,22 +118,22 @@ class Navbar extends Component {
             <Bar3 display={this.state.isOpen} />
           </MenuIcon>
         </CollapsibleMenu>
-        <Text as={Link} to="/" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/" white="true" bold="bold" size={1.25}>
           Home
         </Text>
-        <Text as={Link} to="/about" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/about" white="true" bold="bold" size={1.25}>
           About
         </Text>
-        <Text as={Link} to="/Services" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/Services" white="true" bold="bold" size={1.25}>
           Services
         </Text>
-        <Text as={Link} to="/our-works" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/our-works" white="true" bold="bold" size={1.25}>
           Works
         </Text>
-        <Text as={Link} to="/products" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/products" white="true" bold="bold" size={1.25}>
           Products
         </Text>
-        <Text as={Link} to="/Contact" white="true" bold="bold" size={1.5}>
+        <Text as={Link} to="/Contact" white="true" bold="bold" size={1.25}>
           Contact
         </Text>
       </NavbarContainer>

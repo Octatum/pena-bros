@@ -18,10 +18,6 @@ const ContLink = styled(Link)`
   height: 100%;
   top: 0;
   left: 0;
-
-  ${device.tablet} {
-    display: none;
-  }
 `;
 
 const SubTitleComp = styled(SubTitle)`
@@ -52,7 +48,7 @@ const GridComponent = styled.div`
 
   display: grid;
   grid-template: repeat(3, minmax(10em, 1fr)) / 1fr 1fr 1fr;
-  grid-template: repeat(3, auto) / 1fr 1fr 1fr;
+  grid-template: repeat(2, auto) / 1fr 1fr 1fr;
   grid-gap: 5em;
   place-items: center;
   grid-auto-flow: row;
@@ -117,10 +113,11 @@ const OurWorks = ({ pathContext }) => {
               <Container key={element.numericId} flex>
                 <Image
                   src={frontmatter.allImages[0]}
-                  width="15em"
+                  width="20em"
                   mWidth="100%"
-                  height="15em"
+                  height="20em"
                   mHeight="auto"
+                  fit="cover"
                 />
                 <ContLink to={`our-works/works/${element.numericId}`} />
               </Container>
@@ -152,7 +149,7 @@ const OurWorks = ({ pathContext }) => {
               margin={[0, 0.1]}
               padding={[0.25, 0.5]}
               bold="bold"
-              size={2.5}
+              size={2}
               as={Link}
               to={`/our-works/`}
             >
@@ -168,7 +165,7 @@ const OurWorks = ({ pathContext }) => {
                   margin={[0, 0.1]}
                   padding={[0.25, 0.5]}
                   bold="bold"
-                  size={2.5}
+                  size={2}
                   as={Link}
                   to={`/our-works/${number}`}
                   key={number}
@@ -183,7 +180,7 @@ const OurWorks = ({ pathContext }) => {
                 margin={[0, 0.1]}
                 padding={[0.25, 0.5]}
                 bold="bold"
-                size={2.5}
+                size={2}
                 as={Link}
                 to={`/our-works/${pageCount}`}
               >
@@ -204,7 +201,7 @@ const OurWorks = ({ pathContext }) => {
 
         <SubTitleComp
           title="What is Lorem Ipsum?"
-          size={3}
+          size={2}
           margin={[5, 10]}
           tMargin={[3, 5, 0, 5]}
           mMargin={[3, 2, 0, 2]}

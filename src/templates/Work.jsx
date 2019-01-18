@@ -17,6 +17,7 @@ const LeftArrow = styled(Arrows)`
   position: absolute;
   left: -3em;
   top: 50%;
+  transform: translate(0, -50%);
 
   ${device.tablet} {
     top: initial;

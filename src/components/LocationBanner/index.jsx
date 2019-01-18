@@ -5,11 +5,10 @@ import { Text } from '../Text';
 const Banner = () => (
   <Container backColor="black" flex padding={[1]}>
     <Text align="center">
-      <Text size={2.5} as="span" white bold="bold">
+      <Text as="span" white bold="bold">
         Call Us Today!{' '}
       </Text>
       <Text
-        size={2.5}
         as="span"
         white
         onClick={() => {
@@ -18,11 +17,10 @@ const Banner = () => (
       >
         (210) 647-4200{' '}
       </Text>
-      <Text size={2.5} as="span" white bold="bold">
+      <Text as="span" white bold="bold">
         We are located at:{' '}
       </Text>
-      <Text
-        size={2.5}
+      <Text 
         as="span"
         white
         onClick={() => {

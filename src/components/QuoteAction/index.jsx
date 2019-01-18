@@ -14,14 +14,15 @@ const QuoteAction = ({ ...props }) => {
   return (
     <Container
       flex
-      width="auto"
+      width="100%" 
+      tWidth="auto"
       height="auto"
       margin={[0, 0, 5, 0]}
       tMargin={[0, 1.5, 5, 1.5]}
       {...props}
     >
       <Quote
-        size={9}
+        size={7}
         as={Text}
         bold="800"
         white
@@ -33,7 +34,7 @@ const QuoteAction = ({ ...props }) => {
       </Quote>
       <Container width="auto">
         <Container
-          size={4}
+          size={3}
           as={Text}
           margin={[1.5, 0, 0, 0]}
           bold="lighter"

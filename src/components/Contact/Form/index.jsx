@@ -22,11 +22,11 @@ const FormContainer = styled(Container)`
     'message message-input'
     'submit submit';
   gap: 1.25em;
+  align-items: center;
 
   ${device.tablet} {
     grid-template-columns: 7em auto;
     gap: 0.5em;
-    align-items: center;
     justify-items: start;
   }
 `;
@@ -147,6 +147,7 @@ const GetInTouch = ({ ...props }) => (
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.message}
+          type="textarea"
         />
 
         <SubmitButton

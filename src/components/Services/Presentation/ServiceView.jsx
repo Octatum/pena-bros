@@ -26,7 +26,7 @@ const ServiceView = ({ serviceData, show, ...props }) => (
     justify="space-between"
   >
     <SubTitle
-      size={2.5}
+      size={2}
       title={serviceData.title}
       width="70%"
       tWidth="auto"
