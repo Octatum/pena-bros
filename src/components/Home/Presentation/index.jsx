@@ -104,7 +104,6 @@ class Presentation extends Component {
           }
         `}
         render={data => {
-          console.log(this.height)
           return (
             <Slider id="HomePres" {...this.props} height="auto">
               <div data-glide-el="track" className="glide__track">

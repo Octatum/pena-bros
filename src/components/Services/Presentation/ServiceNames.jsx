@@ -22,10 +22,8 @@ const ServiceNames = ({ icons, current, handleClick, ...props }) => (
           <Image
             src={icon}
             key={icon}
-            width="128px"
-            height="128px"
-            tWidth="64px"
-            tHeight="64px"
+            width="64px"
+            height="64px"
           />
         </ServiceContainer>
       );

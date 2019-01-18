@@ -17,7 +17,7 @@ const LeftArrow = styled(Arrows)`
   position: absolute;
   left: -3em;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -50%) scale(1.25);
 
   ${device.tablet} {
     top: initial;
@@ -86,9 +86,29 @@ class IndivWork extends Component {
     };
 
     this.handleNextImage = this.handleNextImage.bind(this);
+    this.handleArrowClick = this.handleArrowClick.bind(this);
+  }
+  
+  handleArrowClick(index) {
+    const allImagesLength = this.props.data.markdownRemark.frontmatter.allImages.length;
+    let temp = 0;
+    if (index < this.state.currentImage) {
+      temp = (index + allImagesLength) % allImagesLength;
+      
+    }
+    else {
+      temp = index % allImagesLength;
+      
+    }
+
+    this.state.slider.go(`=${temp}`);
+
+    this.setState({
+      currentImage: temp,
+    })
   }
 
-  handleNextImage(move) {
+  handleNextImage() {
     const next = this.state.slider.index;
 
     this.setState({
@@ -119,7 +139,6 @@ class IndivWork extends Component {
   }
 
   render() {
-    console.log(this.state.slider);
 
     const {
       title,
@@ -142,6 +161,7 @@ class IndivWork extends Component {
             height="auto"
             justify="flex-start"
             padding={[0, 19.5]}
+            margin={[2, 0, 0, 0]}
           >
             <Container width="auto">
               <Arrows left />
@@ -165,7 +185,6 @@ class IndivWork extends Component {
 
           <WorkDescription
             flex
-            backColor="green"
             height="auto"
             width="auto"
             padding={[0, 20]}
@@ -173,7 +192,7 @@ class IndivWork extends Component {
             margin={[1, 0, 0, 0]}
             tMargin={[1, 0, 0, 0]}
           >
-            <Image src={allImages[this.state.currentImage]} width="100%" />
+            <Image src={allImages[this.state.currentImage]} width="100%" height="730px" fit="cover"/>
             <Container
               flex
               row
@@ -196,13 +215,14 @@ class IndivWork extends Component {
               </Slider>
 
               <LeftArrow
-                onClick={() => this.state.slider.go('<')}
+                onClick={() => this.handleArrowClick(this.state.currentImage - 1)}
+                arrowColors={['black', 'white']}
                 left
-                arrowColors={['white', 'white']}
               />
               <RightArrow
-                onClick={() => this.state.slider.go('>')}
-                arrowColors={['white', 'white']}
+                onClick={() => this.handleArrowClick(this.state.currentImage + 1)}
+                arrowColors={['black', 'white']}
+
               />
             </Container>
           </WorkDescription>

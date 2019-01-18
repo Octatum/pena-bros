@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 import { Text } from '../Text';
 import { Container } from '../Container';
@@ -65,7 +65,7 @@ const NavbarContainer = styled(Container)`
   top: -1px;
   z-index: 10;
   padding: 0.7em 5em;
-  box-shadow: 0 0 10px 2.5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 20px 0.5px rgba(0, 0, 0, 0.7);
 
   ${Text} {
     text-transform: uppercase;
@@ -109,7 +109,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <NavbarContainer flex row backColor="green" display={this.state.isOpen}>
+      <NavbarContainer flex row backColor="black" display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
         <Logo src={PenaLogo} />
           <MenuIcon>
@@ -118,22 +118,22 @@ class Navbar extends Component {
             <Bar3 display={this.state.isOpen} />
           </MenuIcon>
         </CollapsibleMenu>
-        <Text as={Link} to="/" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/" white="true" bold="bold" size={1}>
           Home
         </Text>
-        <Text as={Link} to="/about" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/about" white="true" bold="bold" size={1}>
           About
         </Text>
-        <Text as={Link} to="/Services" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/Services" white="true" bold="bold" size={1}>
           Services
         </Text>
-        <Text as={Link} to="/our-works" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/our-works" white="true" bold="bold" size={1}>
           Works
         </Text>
-        <Text as={Link} to="/products" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/products" white="true" bold="bold" size={1}>
           Products
         </Text>
-        <Text as={Link} to="/Contact" white="true" bold="bold" size={1.25}>
+        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/Contact" white="true" bold="bold" size={1}>
           Contact
         </Text>
       </NavbarContainer>
@@ -141,4 +141,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withTheme(Navbar);

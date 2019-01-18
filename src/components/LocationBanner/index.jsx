@@ -3,7 +3,7 @@ import { Container } from '../Container';
 import { Text } from '../Text';
 
 const Banner = () => (
-  <Container backColor="black" flex padding={[1]}>
+  <Container backColor="green" flex padding={[1]}>
     <Text align="center">
       <Text as="span" white bold="bold">
         Call Us Today!{' '}

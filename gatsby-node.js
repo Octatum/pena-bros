@@ -57,8 +57,6 @@ exports.createPages = ({
           numericId += 1;
         })
 
-        console.log(edgesWithId)
-
         createPaginatedPages({
           edges: edgesWithId,
           createPage: createPage,
