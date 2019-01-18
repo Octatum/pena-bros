@@ -5,13 +5,15 @@ import styled from 'styled-components';
 import { Text } from '../Text';
 import { Container } from '../Container';
 import { device } from '../../utils/device';
+import PenaLogo from '../../assets/PenaLogo.jpg';
+import { Image } from '../Image';
 
 const CollapsibleMenu = styled.div`
   display: none;
 
   ${device.tablet} {
-    display: block;
-    background-color: ${({ theme }) => theme.color.green};
+    display: flex;
+    background-color: ${({ theme }) => theme.color.white};
     align-self: flex-end;
     width: 100%;
     height: auto;
@@ -21,16 +23,21 @@ const CollapsibleMenu = styled.div`
     padding: 0.5em 0;
   }
 `;
+const Logo = styled(Image)`
+  width: 5em;
+  height: 100%;
+  margin-left: 1.5em;
+`;
 
 const MenuIcon = styled.div`
   max-width: 3em;
-  margin-left: auto;
+  margin: auto;
   margin-right: 1.5em;
 `;
 const Bar = styled.div`
   width: 3em;
-  height: 0.45em;
-  background-color: ${({ theme }) => theme.color.white};
+  height: 0.5em;
+  background-color: ${({ theme }) => theme.color.black};
 
   margin: 0.5em 0;
 
@@ -38,8 +45,8 @@ const Bar = styled.div`
 `;
 const Bar1 = styled(Bar)`
   transform: ${({ display }) =>
-    display ? 'rotate(45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)'};
-  transform-origin: 0% 0%;
+    display ? 'rotate(-45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)'};
+  transform-origin: 100% 0%;
 `;
 const Bar2 = styled(Bar)`
   transform: ${({ display }) =>
@@ -48,8 +55,8 @@ const Bar2 = styled(Bar)`
 `;
 const Bar3 = styled(Bar)`
   transform: ${({ display }) =>
-    display ? 'rotate(-45deg) translate(0, -0.025em)' : 'rotate(0deg)'};
-  transform-origin: 0% 100%;
+    display ? 'rotate(45deg) translate(0, -0.025em)' : 'rotate(0deg)'};
+  transform-origin: 100% 100%;
 `;
 
 const NavbarContainer = styled(Container)`
@@ -68,15 +75,16 @@ const NavbarContainer = styled(Container)`
     padding: 0;
     background-color: transparent;
     flex-wrap: wrap;
-    border-bottom: ${({ theme, display }) => (!display ? theme.color.green : 'none')} 5px solid;
+    box-shadow: 0 0 10px 2.5px rgba(0, 0, 0, 0.7);
 
     ${Text} {
+      color: ${({ theme }) => theme.color.black};
       font-weight: normal;
       display: ${({ display }) => (display ? 'block' : 'none')};
       width: 50%;
       text-align: center;
-      padding: 1.75em 0;
-      background-color: ${({ theme }) => theme.color.green};
+      padding: 1.5em 0;
+      background-color: ${({ theme }) => theme.color.white};
     }
   }
 `;
@@ -103,6 +111,7 @@ class Navbar extends Component {
     return (
       <NavbarContainer flex row backColor="green" display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
+        <Logo src={PenaLogo} />
           <MenuIcon>
             <Bar1 display={this.state.isOpen} />
             <Bar2 display={this.state.isOpen} />

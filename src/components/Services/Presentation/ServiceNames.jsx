@@ -18,7 +18,7 @@ const ServiceNames = ({ icons, current, handleClick, ...props }) => (
   <Container {...props} backColor="black">
     {icons.map((icon, index) => {
       return (
-        <ServiceContainer flex padding={[0.5, 1]} height="auto" width="auto" onClick={event => handleClick(event, index)} isCurrent={current === index} >
+        <ServiceContainer flex padding={[2, 0]} height="auto" width="auto" onClick={event => handleClick(event, index)} isCurrent={current === index} >
           <Image
             src={icon}
             key={icon}

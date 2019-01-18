@@ -10,6 +10,7 @@ import LocationBanner from './../LocationBanner';
 
 import PenaLogo from '../../assets/PenaLogo.jpg';
 import { Image } from '../Image';
+import { device } from '../../utils/device';
 
 const Layout = styled.div`
   display: flex;
@@ -18,6 +19,10 @@ const Layout = styled.div`
 `;
 const ImageComp = styled(Image)`
   margin: 0 auto;
+
+  ${device.tablet} {
+    display: none;
+  }
 `;
 
 const PageLayout = ({ children }) => (
