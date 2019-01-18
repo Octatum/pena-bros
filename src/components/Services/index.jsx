@@ -24,6 +24,7 @@ const Services = () => (
                 childMarkdownRemark {
                   frontmatter {
                     title
+                    icon
                     image
                     description
                   }
@@ -35,6 +36,7 @@ const Services = () => (
       `}
       render={data => (
         <Fragment>
+          <Container backColor="black" width="100%" height="3px" />
           <ServicesPresentation data={data.allFile.edges} />
           <Comparison height="auto" margin={[0, 0, 7, 0]} />
         </Fragment>

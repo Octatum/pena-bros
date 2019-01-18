@@ -9,19 +9,23 @@ const ServiceContainer = styled(Container)`
   :hover {
     background-color: ${({ theme }) => theme.color.green};
   }
+  > * {
+    margin: auto;
+  }
 `;
 
 const ServiceNames = ({ icons, current, handleClick, ...props }) => (
   <Container {...props} backColor="black">
     {icons.map((icon, index) => {
       return (
-        <ServiceContainer>
+        <ServiceContainer flex padding={[0.5, 1]} height="auto" width="auto" onClick={event => handleClick(event, index)} isCurrent={current === index} >
           <Image
-            isCurrent={current === index}
-            onClick={event => handleClick(event, index)}
-            padding={[0.5, 1]}
             src={icon}
             key={icon}
+            width="128px"
+            height="128px"
+            tWidth="64px"
+            tHeight="64px"
           />
         </ServiceContainer>
       );
