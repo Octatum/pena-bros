@@ -65,6 +65,7 @@ const NavbarContainer = styled(Container)`
   top: -1px;
   z-index: 10;
   padding: 0.7em 5em;
+  box-shadow: 0 0 10px 2.5px rgba(0, 0, 0, 0.7);
 
   ${Text} {
     text-transform: uppercase;
@@ -75,7 +76,6 @@ const NavbarContainer = styled(Container)`
     padding: 0;
     background-color: transparent;
     flex-wrap: wrap;
-    box-shadow: 0 0 10px 2.5px rgba(0, 0, 0, 0.7);
 
     ${Text} {
       color: ${({ theme }) => theme.color.black};
