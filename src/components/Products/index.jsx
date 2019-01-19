@@ -90,11 +90,9 @@ class Products extends Component {
   }
 
   handleSelectPrev() {
-    let prev = this.state.currentViewed - 1;
-
-    if (prev < 0) {
-      prev = this.props.data.allFile.edges.length - 1;
-    }
+    let prev =
+      (this.state.currentViewed - 1 + this.props.data.allFile.edges.length) %
+      this.props.data.allFile.edges.length;
 
     this.setState({
       currentViewed: prev,

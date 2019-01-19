@@ -17,7 +17,7 @@ const Slider = styled(Container)`
 const SlideCont = styled(Container)`
   background-image: url(${({ image }) => image});
   background-position: left top;
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
   background-size: cover;
 
   height: 800px;
@@ -34,7 +34,6 @@ const SlideCont = styled(Container)`
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     );
-    
   }
 
   ${device.tablet} {
@@ -73,7 +72,7 @@ class Presentation extends Component {
       startAt: 0,
       perView: 1,
       gap: 0,
-    }).mount()
+    }).mount();
   }
 
   render() {
@@ -155,8 +154,15 @@ class Presentation extends Component {
                 height="auto"
                 justify="flex-end"
               >
-                <Arrows left handleClick={() => this.glide.go('<')} arrowColors={['white', 'white']} />
-                <Arrows handleClick={() => this.glide.go('>')} arrowColors={['white', 'white']} />
+                <Arrows
+                  left
+                  handleClick={() => this.glide.go('<')}
+                  arrowColors={['white', 'white']}
+                />
+                <Arrows
+                  handleClick={() => this.glide.go('>')}
+                  arrowColors={['white', 'white']}
+                />
               </ArrowContainer>
             </Slider>
           );

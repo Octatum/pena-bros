@@ -7,7 +7,7 @@ export const Image = styled.img`
   max-width: ${props => (props.width ? props.width : '100%')};
   margin: 0;
   max-height: 100%;
-  object-fit: ${props => props.fit ? props.fit : 'contain'};
+  object-fit: ${props => (props.fit ? props.fit : 'contain')};
   box-sizing: border-box;
 
   ${device.tablet} {

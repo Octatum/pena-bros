@@ -9,7 +9,10 @@ const Input = styled.input`
   font-size: ${({ size }) => size * 0.75 + 'em'};
   border: none;
   border-bottom: 2px solid black;
-  border-bottom: ${({ type }) => type === 'textarea' ? '1px solid rgba(200, 200, 200, 0.8)' : '2px solid black'};
+  border-bottom: ${({ type }) =>
+    type === 'textarea'
+      ? '1px solid rgba(200, 200, 200, 0.8)'
+      : '2px solid black'};
   width: 100%;
   max-width: 1000px;
   min-width: 150px;
@@ -19,7 +22,7 @@ const Input = styled.input`
     min-width: initial;
     max-width: initial;
     width: calc(100% - 1em);
-    min-height: ${({ type }) => type === 'textarea' ? '5em' : 'initial'};
+    min-height: ${({ type }) => (type === 'textarea' ? '5em' : 'initial')};
   }
 `;
 
@@ -59,6 +62,6 @@ Question.propTypes = {
 
 Question.defaultProps = {
   type: 'input',
-}
+};
 
 export default Question;

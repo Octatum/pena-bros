@@ -111,29 +111,71 @@ class Navbar extends Component {
     return (
       <NavbarContainer flex row backColor="black" display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
-        <Logo src={PenaLogo} />
+          <Logo src={PenaLogo} />
           <MenuIcon>
             <Bar1 display={this.state.isOpen} />
             <Bar2 display={this.state.isOpen} />
             <Bar3 display={this.state.isOpen} />
           </MenuIcon>
         </CollapsibleMenu>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           Home
         </Text>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/about" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/about"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           About
         </Text>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/Services" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/Services"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           Services
         </Text>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/our-works" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/our-works"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           Works
         </Text>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/products" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/products"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           Products
         </Text>
-        <Text as={Link} activeStyle={{ color: this.props.theme.color.green }} to="/Contact" white="true" bold="bold" size={1}>
+        <Text
+          as={Link}
+          activeStyle={{ color: this.props.theme.color.green }}
+          to="/Contact"
+          white="true"
+          bold="bold"
+          size={1}
+        >
           Contact
         </Text>
       </NavbarContainer>

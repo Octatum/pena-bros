@@ -88,7 +88,14 @@ class ImageSlider extends Component {
             {images.map((data, index) => {
               return (
                 <Container flex className="glide__slide" key="data">
-                  <Image src={data} key={data} width="100%" height="448px" mHeight="320px" fit="cover" />
+                  <Image
+                    src={data}
+                    key={data}
+                    width="100%"
+                    height="448px"
+                    mHeight="320px"
+                    fit="cover"
+                  />
                   <LinkTo to={`our-works/works/${index}`} />
                 </Container>
               );

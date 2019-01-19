@@ -20,7 +20,7 @@ const Banner = () => (
       <Text as="span" white bold="bold">
         We are located at:{' '}
       </Text>
-      <Text 
+      <Text
         as="span"
         white
         onClick={() => {

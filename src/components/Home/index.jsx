@@ -52,7 +52,7 @@ const HomePage = () => (
       )}
     />
     <WorksPreview margin={[5, 0]} tMargin={[2, 0]} />
-    <QuoteAction/>
+    <QuoteAction />
   </Container>
 );
 export default HomePage;

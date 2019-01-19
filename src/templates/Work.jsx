@@ -88,24 +88,22 @@ class IndivWork extends Component {
     this.handleNextImage = this.handleNextImage.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
   }
-  
+
   handleArrowClick(index) {
-    const allImagesLength = this.props.data.markdownRemark.frontmatter.allImages.length;
+    const allImagesLength = this.props.data.markdownRemark.frontmatter.allImages
+      .length;
     let temp = 0;
     if (index < this.state.currentImage) {
       temp = (index + allImagesLength) % allImagesLength;
-      
-    }
-    else {
+    } else {
       temp = index % allImagesLength;
-      
     }
 
     this.state.slider.go(`=${temp}`);
 
     this.setState({
       currentImage: temp,
-    })
+    });
   }
 
   handleNextImage() {
@@ -139,7 +137,6 @@ class IndivWork extends Component {
   }
 
   render() {
-
     const {
       title,
       description,
@@ -161,7 +158,7 @@ class IndivWork extends Component {
             height="auto"
             justify="flex-start"
             padding={[0, 19.5]}
-            margin={[2, 0, 0, 0]}
+            margin={[2, 0, 1, 0]}
           >
             <Container width="auto">
               <Arrows left />
@@ -176,9 +173,9 @@ class IndivWork extends Component {
           <Text
             bold="bold"
             size={9}
-            margin={[0, 4.714]}
+            margin={[0, 6.18]}
             tMargin={[1, 0.75, 0, 'auto']}
-            align="right"
+            align="left"
           >
             {title}
           </Text>
@@ -192,7 +189,12 @@ class IndivWork extends Component {
             margin={[1, 0, 0, 0]}
             tMargin={[1, 0, 0, 0]}
           >
-            <Image src={allImages[this.state.currentImage]} width="100%" height="730px" fit="cover"/>
+            <Image
+              src={allImages[this.state.currentImage]}
+              width="100%"
+              height="730px"
+              fit="cover"
+            />
             <Container
               flex
               row
@@ -215,14 +217,17 @@ class IndivWork extends Component {
               </Slider>
 
               <LeftArrow
-                onClick={() => this.handleArrowClick(this.state.currentImage - 1)}
+                onClick={() =>
+                  this.handleArrowClick(this.state.currentImage - 1)
+                }
                 arrowColors={['black', 'white']}
                 left
               />
               <RightArrow
-                onClick={() => this.handleArrowClick(this.state.currentImage + 1)}
+                onClick={() =>
+                  this.handleArrowClick(this.state.currentImage + 1)
+                }
                 arrowColors={['black', 'white']}
-
               />
             </Container>
           </WorkDescription>
