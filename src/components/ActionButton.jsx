@@ -10,33 +10,20 @@ import { device } from '../utils/device';
 
 const ActionLink = styled(Text)`
   position: relative;
-  display: flex;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: ${({ theme }) => `linear-gradient(to right, ${theme.color.green}, ${theme.color.green} 50%, black 50%)`};
+  background-size: 200% 100%;
+  background-position: 100%;
 
-  span {
-    position: absolute;
-
-    left: 0;
-    overflow: hidden;
-    height: 100%;
-    width: 0;
-    font-size: 1em;
-    color: ${({ theme }) => theme.color.green};
-    transition: all 0.5s ease-in;
-    display: inline-block;
-  }
+  transition: all 0.3s cubic-bezier(0.5, 0.1, 0.35, 1);
 
   :hover {
-    span {
-      width: ${({ animate }) => (animate ? 0 : 100)}%;
-    }
+    background-position: 0%;
   }
 
   ${device.tablet} {
     order: ${({ reverseOnMobile }) => (reverseOnMobile ? 1 : 0)};
-
-    span {
-      display: none;
-    }
   }
 `;
 
@@ -92,7 +79,6 @@ const ActionButton = ({
         size={2.5}
       >
         {name}
-        <span>{name}</span>
       </ActionLink>
       <ArrowContainer
         reverseOnMobile={onMobileReverse}
