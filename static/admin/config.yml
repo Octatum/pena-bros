@@ -17,6 +17,14 @@ collections:
       - {label: "Service Name", name: "title", widget: "string"}
       - {label: "Service Image", name: "image", widget: "image"}
       - {label: "Service Description", name: "description", widget: "string"}
+      - label: "Works on Old Cars" 
+        name: "oldCarsWorks" 
+        widget: "list"
+        field: {label: "oldImage", name: "oldImage", widget: "image"}
+      - label: "Works on New Cars" 
+        name: "newCarsWorks" 
+        widget: "list"
+        field: {label: "newImage", name: "newImage", widget: "image"}
 
   - name: "reviews"
     label: "User Reviews"
@@ -60,6 +68,7 @@ collections:
           - {label: "Text", name: "description", widget: "text"}
           - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
           - {label: "Background Image", name: "image", widget: "image"}
+          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
       - name: "pres2"
         label: "Second Slide"
         file: "content/homeSlides/secondSlide.md"
@@ -67,6 +76,7 @@ collections:
           - {label: "Text", name: "description", widget: "text"}
           - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
           - {label: "Background Image", name: "image", widget: "image"}
+          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
       - name: "pres3"
         label: "Third Slide"
         file: "content/homeSlides/thirdSlide.md"
@@ -74,7 +84,8 @@ collections:
           - {label: "Text", name: "description", widget: "text"}
           - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
           - {label: "Background Image", name: "image", widget: "image"}
-      
+          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
+
   - name: "aboutUsPresentation"
     label: "About Us Presentation Slides"
     files: 
