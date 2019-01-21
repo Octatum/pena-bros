@@ -6,5 +6,6 @@ description: >-
   specimen book. 
 link: About Us
 image: /assets/placeholder2.png
+mobileImage: /assets/placeholder3.png
 ---
 
