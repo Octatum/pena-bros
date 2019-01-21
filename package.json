@@ -20,6 +20,7 @@
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.3",
+    "react-paginate": "^6.2.1",
     "styled-components": "^4.0.3",
     "yup": "^0.26.6"
   },

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Link, navigate } from 'gatsby';
+import ReactPaginate from 'react-paginate';
 
 import SubTitle from '../components/SubTitle';
 import PageLayout from '../components/PageLayout';
 import { Container } from '../components/Container';
-import { Text } from '../components/Text';
 import { Image } from '../components/Image';
 import Arrow from '../components/Arrows';
 import QuoteAction from '../components/QuoteAction';
@@ -35,12 +35,6 @@ const QuoteActionComp = styled(QuoteAction)`
   }
 `;
 
-const PaginationNumber = styled(Text)`
-  background-color: ${({ theme, selected }) =>
-    selected ? theme.color.green : ''};
-  color: ${({ theme, selected }) => (selected ? theme.color.white : 'initial')};
-`;
-
 const GridComponent = styled.div`
   width: 75%;
   height: auto;
@@ -66,8 +60,47 @@ const GridComponent = styled.div`
   }
 `;
 
-const IndexContainer = styled(Container)`
+const ReactPaginateContainer = styled(Container)`
+  ul {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      padding: 0.5em;
+
+      &:first-child, &:last-child {
+        padding: 0;
+      }
+
+      a {
+        margin: 0 0.1em;
+        font-weight: bold;
+        font-family: ${({ theme }) => theme.fontFamily.main};
+        font-size: 1.5em;
+      }
+
+      &.selected {
+        color: white;
+        background-color: ${({ theme }) => theme.color.green};
+      }
+    }
+  }
+  
   ${device.tablet} {
+    margin-top: 4em;
+    padding: 3em 2em;
+    display: none;
+  }
+`;
+
+const IndexContainer = styled(Container)`
+  display: none;
+
+  ${device.tablet} {
+    display: flex;
     width: 100%;
     justify-content: flex-start;
     background-color: ${({ theme }) => theme.color.black};
@@ -82,11 +115,15 @@ const ArrowComp = styled(Arrow)`
     transform: scale(1.25);
   }
 `;
-const DesktopIndexing = styled.div`
-  ${device.tablet} {
-    display: none;
+
+function handleChangePage({ selected, ...rest }, prefix, index) {
+  if(selected === 0) {
+    navigate('/' + prefix + '/')
   }
-`;
+  else {
+    navigate('/' + prefix + '/' + (selected + 1))
+  }
+}
 
 const OurWorks = ({ pathContext }) => {
   const { group, index, pageCount, pathPrefix } = pathContext;
@@ -101,7 +138,6 @@ const OurWorks = ({ pathContext }) => {
   if (nextUrl === '1') {
     nextUrl = '';
   }
-
   return (
     <PageLayout>
       <Helmet title="Our Works" />
@@ -125,6 +161,32 @@ const OurWorks = ({ pathContext }) => {
           })}
         </GridComponent>
 
+        <ReactPaginateContainer>
+          <ReactPaginate
+            pageCount={pageCount}
+            pageRangeDisplayed={1}
+            marginPagesDisplayed={1}
+            previousLabel={
+              <ArrowComp
+                arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
+                left
+              />
+            }
+            nextLabel={
+              <ArrowComp
+                arrowColors={
+                  index === pageCount ? ['grey', 'grey'] : ['black', 'green']
+                }
+              />
+            }
+            breakLabel={"..."}
+            onPageChange={(i) => handleChangePage(i, pathPrefix, index)}
+            initialPage={0}
+            forcePage={index - 1}
+            disableInitialCallback={true}
+          />
+        </ReactPaginateContainer>
+
         <IndexContainer
           flex
           row
@@ -142,52 +204,6 @@ const OurWorks = ({ pathContext }) => {
             />
             {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
           </Container>
-
-          <DesktopIndexing>
-            <PaginationNumber
-              selected={index === 1}
-              margin={[0, 0.1]}
-              padding={[0.25, 0.5]}
-              bold="bold"
-              size={2}
-              as={Link}
-              to={`/our-works/`}
-            >
-              1
-            </PaginationNumber>
-            {Array.from(
-              new Array(pageCount - 2 > 0 ? pageCount : 0),
-              (x, i) => i + 2
-            ).map(number => {
-              return (
-                <PaginationNumber
-                  selected={index === number}
-                  margin={[0, 0.1]}
-                  padding={[0.25, 0.5]}
-                  bold="bold"
-                  size={2}
-                  as={Link}
-                  to={`/our-works/${number}`}
-                  key={number}
-                >
-                  {number}
-                </PaginationNumber>
-              );
-            })}
-            {pageCount > 1 && (
-              <PaginationNumber
-                selected={index === pageCount}
-                margin={[0, 0.1]}
-                padding={[0.25, 0.5]}
-                bold="bold"
-                size={2}
-                as={Link}
-                to={`/our-works/${pageCount}`}
-              >
-                {pageCount}
-              </PaginationNumber>
-            )}
-          </DesktopIndexing>
 
           <Container margin={[0, 0.5]} width="auto">
             <ArrowComp
