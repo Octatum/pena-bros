@@ -70,6 +70,7 @@ class Presentation extends Component {
   componentDidMount() {
     this.glide = new Glide('#HomePres', {
       startAt: 0,
+      type: 'carousel',
       perView: 1,
       gap: 0,
     }).mount();
