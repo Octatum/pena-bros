@@ -30,13 +30,13 @@ const Logo = styled(Image)`
 `;
 
 const MenuIcon = styled.div`
-  max-width: 3em;
+  max-width: 2.75em;
   margin: auto;
   margin-right: 1.5em;
 `;
 const Bar = styled.div`
-  width: 3em;
-  height: 0.5em;
+  width: 2.5em;
+  height: 0.3em;
   background-color: ${({ theme }) => theme.color.black};
 
   margin: 0.5em 0;
@@ -45,7 +45,7 @@ const Bar = styled.div`
 `;
 const Bar1 = styled(Bar)`
   transform: ${({ display }) =>
-    display ? 'rotate(-45deg) translate(-0.05em, -0.025em)' : 'rotate(0deg)'};
+    display ? 'rotate(-45deg) translate(-0.25em, -0.2em)' : 'rotate(0deg)'};
   transform-origin: 100% 0%;
 `;
 const Bar2 = styled(Bar)`
@@ -55,7 +55,7 @@ const Bar2 = styled(Bar)`
 `;
 const Bar3 = styled(Bar)`
   transform: ${({ display }) =>
-    display ? 'rotate(45deg) translate(0, -0.025em)' : 'rotate(0deg)'};
+    display ? 'rotate(45deg) translate(-0.09em, 0.25em)' : 'rotate(0deg)'};
   transform-origin: 100% 100%;
 `;
 
