@@ -11,15 +11,19 @@ import { device } from '../utils/device';
 const ActionLink = styled(Text)`
   position: relative;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-image: ${({ theme }) => `linear-gradient(to right, ${theme.color.green}, ${theme.color.green} 50%, black 50%)`};
   background-size: 200% 100%;
   background-position: 100%;
 
   transition: all 0.3s cubic-bezier(0.5, 0.1, 0.35, 1);
+  ${({ animate }) => animate ? {
+    '-webkit-text-fill-color': 'initial' 
+  } : {
+    '-webkit-text-fill-color': 'transparent' 
+  }};
 
   :hover {
-    background-position: 0%;
+    background-position: ${({ animate }) => animate ? '100%' : '0%'};
   }
 
   ${device.tablet} {
@@ -60,6 +64,7 @@ const ActionButton = ({
   arrowColors,
   ...props
 }) => {
+  console.log(textColor);
   return (
     <Container
       flex
