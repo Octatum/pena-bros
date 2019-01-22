@@ -6,6 +6,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
