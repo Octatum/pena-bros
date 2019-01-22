@@ -9,6 +9,7 @@ const ServiceContainer = styled(Container)`
   :hover {
     background-color: ${({ theme }) => theme.color.green};
   }
+  cursor: pointer;
   > * {
     margin: auto;
   }

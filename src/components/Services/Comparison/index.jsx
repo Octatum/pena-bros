@@ -81,8 +81,9 @@ class Comparison extends Component {
 
   render() {
     const { data, current, ...props } = this.props;
+    const frontmatter = data.node.childMarkdownRemark.frontmatter;
 
-    const oldCars = data.node.childMarkdownRemark.frontmatter.oldCarsWorks.map((data, index) => {
+    const oldCars = frontmatter.oldCarsWorks.map((data, index) => {
       return (
         <Image
           src={data}
@@ -94,7 +95,7 @@ class Comparison extends Component {
       )
     })
 
-    const newCars = data.node.childMarkdownRemark.frontmatter.newCarsWorks.map((data, index) => {
+    const newCars = frontmatter.newCarsWorks.map((data, index) => {
       return (
         <Image
           src={data}
@@ -110,9 +111,8 @@ class Comparison extends Component {
     return (
       <ComparisonContainer flex row {...props}>
         <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]} >
-          <SubTitle title="What is Lorem Ipsum?" edgeColor="black" tEdgeColor="black" white size={2}>
-            It is a long established fact that a reader will be distracted by the
-            readable content of a page when looking at its layout.
+          <SubTitle padding={[0,0,3,0]} tPadding={[0]} title={frontmatter.oldCarServiceTitle} edgeColor="black" tEdgeColor="black" white size={2}>
+            {frontmatter.oldCarServicDescription}
           </SubTitle>
 
           <ImagesContainer>
@@ -127,7 +127,7 @@ class Comparison extends Component {
           <ImageSlider id="OldCarsImages" height="auto" >
             <div data-glide-el="track" className="glide__track">
               <Container className="glide__slides" height="auto">
-                {data.node.childMarkdownRemark.frontmatter.oldCarsWorks.map((data, index) => {
+                {frontmatter.oldCarsWorks.map((data, index) => {
                   return (
                     <Container className="glide__slide">
                       <Image
@@ -156,9 +156,8 @@ class Comparison extends Component {
         </Container>
 
         <Container flex backColor="black" padding={[3]}>
-          <SubTitle title="What is Lorem Ipsum?" edgeColor="green" white size={2}>
-            It is a long established fact that a reader will be distracted by the
-            readable content of a page when looking at its layout.
+          <SubTitle padding={[0,0,3,0]} tPadding={[0]} title={frontmatter.newCarServiceTitle} edgeColor="green" white size={2}>
+            {frontmatter.newCarServiceDescription}
           </SubTitle>
 
           <ImagesContainer>
@@ -173,7 +172,7 @@ class Comparison extends Component {
           <ImageSlider id="NewCarsImages" height="auto" >
             <div data-glide-el="track" className="glide__track">
               <Container className="glide__slides" height="auto">
-                {data.node.childMarkdownRemark.frontmatter.newCarsWorks.map((data, index) => {
+                {frontmatter.newCarsWorks.map((data, index) => {
                   return (
                     <Container className="glide__slide">
                       <Image

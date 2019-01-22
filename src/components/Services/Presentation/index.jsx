@@ -72,6 +72,7 @@ const PresContainer = styled(Container)`
 `;
 
 const ArrowContainer = styled(Container)`
+  cursor: pointer;
   ${device.tablet} {
     display: none;
   }

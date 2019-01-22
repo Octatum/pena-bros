@@ -76,6 +76,10 @@ class Services extends Component {
                   frontmatter{
                     oldCarsWorks
                     newCarsWorks
+                    oldCarServiceTitle
+                    oldCarServicDescription
+                    newCarServiceTitle
+                    newCarServiceDescription
                   }
                 }
               }
