@@ -25,6 +25,7 @@ const ServiceNames = ({ icons, current, handleClick, ...props }) => (
           width="auto"
           onClick={event => handleClick(event, index)}
           isCurrent={current === index}
+          key={icon}
         >
           <Image src={icon} key={icon} width="64px" height="64px" />
         </ServiceContainer>

@@ -16,7 +16,11 @@ collections:
       - {label: "Icon", name: "icon", widget: "image"}
       - {label: "Service Name", name: "title", widget: "string"}
       - {label: "Service Image", name: "image", widget: "image"}
-      - {label: "Service Description", name: "description", widget: "string"}
+      - {label: "Service Description", name: "description", widget: "text"}
+      - {label: "Old Car Service Title", name: "oldCarServiceTitle", widget: "string"}
+      - {label: "New Car Service Description", name: "newCarServicDescription", widget: "text"}
+      - {label: "Old Car Service Title", name: "oldCarServiceTitle", widget: "string"}
+      - {label: "New Car Service Description", name: "newCarServiceDescription", widget: "text"}
       - label: "Works on Old Cars" 
         name: "oldCarsWorks" 
         widget: "list"

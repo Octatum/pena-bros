@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 
 import { Container } from '../../Container';
 import ServiceNames from './ServiceNames';
@@ -86,109 +88,76 @@ const ArrowsContainerMobile = styled(Container)`
   }
 `;
 
-class ServicesPresentation extends Component {
-  constructor(props) {
-    super(props);
+const ServicesPresentation = ({ data, current, icons, handleClick, handleHoverClick, handleHoverClickPrev, ...props }) => {
+  return (
+    <PresContainer
+      {...props}
+      flex
+      row
+      justify="flex-start"
+      margin={[0, 0, 5, 0]}
+      height="auto"
+    >
+      <Action name="go to our works" linkTo="/our-works" />
+      <Container width="30%" tWidth="100%" height="auto">
+        <ServiceNameColumn
+          handleClick={handleClick}
+          current={current}
+          icons={icons}
+        />
+        <ServiceNameColumnMobile
+          handleClick={handleClick}
+          current={0}
+          icons={[icons[current]]}
+        />
 
-    this.state = {
-      current: 0,
-    };
-
-    this.icons = props.data.map(
-      data => data.node.childMarkdownRemark.frontmatter.icon
-    );
-
-    this.handleClick = this.handleClick.bind(this);
-
-    this.handleHoverClick = this.handleHoverClick.bind(this);
-    this.handleHoverClickPrev = this.handleHoverClickPrev.bind(this);
-  }
-
-  handleClick(event, index) {
-    this.setState({
-      current: index,
-    });
-  }
-
-  handleHoverClick() {
-    const next = (this.state.current + 1) % this.icons.length;
-    this.setState({
-      current: next,
-    });
-  }
-
-  handleHoverClickPrev() {
-    const prev =
-      this.state.current - 1 < 0
-        ? this.icons.length - 1
-        : this.state.current - 1;
-
-    this.setState({
-      current: prev,
-    });
-  }
-
-  render() {
-    return (
-      <PresContainer
-        flex
-        row
-        justify="flex-start"
-        margin={[0, 0, 5, 0]}
-        height="auto"
-      >
-        <Action name="go to our works" linkTo="/our-works" />
-        <Container width="30%" tWidth="100%" height="auto">
-          <ServiceNameColumn
-            handleClick={this.handleClick}
-            current={this.state.current}
-            icons={this.icons}
+        <ArrowContainer
+          padding={[1]}
+          backColor="black"
+          onClick={() => handleHoverClick(icons.length)}
+          height="auto"
+        >
+          <BottomArrow />
+        </ArrowContainer>
+        <ArrowsContainerMobile
+          height="auto"
+          padding={[0, 1]}
+          flex
+          row
+          justify="space-between"
+        >
+          <Arrows
+            left
+            onClick={() => handleHoverClickPrev(icons.length)}
+            arrowColors={['white', 'white']}
           />
-          <ServiceNameColumnMobile
-            handleClick={this.handleClick}
-            current={0}
-            icons={[this.icons[this.state.current]]}
+          <Arrows
+            onClick={() => handleHoverClick(icons.length)}
+            arrowColors={['white', 'white']}
           />
-
-          <ArrowContainer
-            padding={[1]}
-            backColor="black"
-            onClick={this.handleHoverClick}
-            height="auto"
-          >
-            <BottomArrow />
-          </ArrowContainer>
-          <ArrowsContainerMobile
-            height="auto"
-            padding={[0, 1]}
-            flex
-            row
-            justify="space-between"
-          >
-            <Arrows
-              left
-              onClick={this.handleHoverClickPrev}
-              arrowColors={['white', 'white']}
-            />
-            <Arrows
-              onClick={this.handleHoverClick}
-              arrowColors={['white', 'white']}
-            />
-          </ArrowsContainerMobile>
-        </Container>
-        {this.props.data.map((data, index) => {
-          const { frontmatter } = data.node.childMarkdownRemark;
-          return (
-            <ViewComponent
-              serviceData={frontmatter}
-              show={index === this.state.current}
-              key={frontmatter.title}
-            />
-          );
-        })}
-      </PresContainer>
-    );
-  }
+        </ArrowsContainerMobile>
+      </Container>
+      {data.map((data, index) => {
+        const { frontmatter } = data.node.childMarkdownRemark;
+        return (
+          <ViewComponent
+            serviceData={frontmatter}
+            show={index === current}
+            key={frontmatter.title}
+          />
+        );
+      })}
+    </PresContainer>
+  );
 }
+
+ServicesPresentation.propTypes = {
+  data: PropTypes.array.isRequired,
+  current: PropTypes.number.isRequired, 
+  icons: PropTypes.array, 
+  handleClick: PropTypes.func, 
+  handleHoverClick: PropTypes.func, 
+  handleHoverClickPrev: PropTypes.func,
+};
 
 export default ServicesPresentation;
