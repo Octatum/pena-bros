@@ -69,7 +69,9 @@ class ImageSlider extends Component {
         [breakPoint]: {
           perView: 1,
           type: 'carousel',
-          gap: 0,
+          gap: 0,  
+          swipeThreshold: 80,
+          dragThreshold: 120,
         },
       },
     }).mount();

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Glide from "@glidejs/glide";
+import Glide from '@glidejs/glide';
 import SubTitle from '../../SubTitle';
 import { Container } from '../../Container';
 import { Image } from '../../Image';
@@ -59,7 +59,7 @@ const ArrowsContainer = styled(Container)`
 
 class Comparison extends Component {
   constructor() {
-    super()
+    super();
 
     this.oldCarsSlider = null;
     this.newCarsSlider = null;
@@ -91,9 +91,10 @@ class Comparison extends Component {
           width="250px"
           height="250px"
           fit="cover"
-          key={index} />
-      )
-    })
+          key={index}
+        />
+      );
+    });
 
     const newCars = frontmatter.newCarsWorks.map((data, index) => {
       return (
@@ -103,28 +104,41 @@ class Comparison extends Component {
           width="250px"
           height="250px"
           fit="cover"
-          key={index} />
-      )
-    })
-
+          key={index}
+        />
+      );
+    });
 
     return (
       <ComparisonContainer flex row {...props}>
-        <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]} >
-          <SubTitle padding={[0,0,3,0]} tPadding={[0]} title={frontmatter.oldCarServiceTitle} edgeColor="black" tEdgeColor="black" white size={2}>
+        <Container flex backColor="green" padding={[3]} tMargin={[0, 0, 5, 0]}>
+          <SubTitle
+            padding={[0, 0, 3, 0]}
+            tPadding={[0]}
+            title={frontmatter.oldCarServiceTitle}
+            edgeColor="black"
+            tEdgeColor="black"
+            white
+            size={2}
+          >
             {frontmatter.oldCarServicDescription}
           </SubTitle>
 
-          <ImagesContainer>
-            {oldCars}
-          </ImagesContainer>
+          <ImagesContainer>{oldCars}</ImagesContainer>
 
           <ArrowsContainer width="auto" margin={[2, 0]}>
-            <Arrows onClick={() => this.oldCarsSlider.go('<')} arrowColors={['white', 'white']} left />
-            <Arrows onClick={() => this.oldCarsSlider.go('>')} arrowColors={['white', 'white']} />
+            <Arrows
+              onClick={() => this.oldCarsSlider.go('<')}
+              arrowColors={['white', 'white']}
+              left
+            />
+            <Arrows
+              onClick={() => this.oldCarsSlider.go('>')}
+              arrowColors={['white', 'white']}
+            />
           </ArrowsContainer>
 
-          <ImageSlider id="OldCarsImages" height="auto" >
+          <ImageSlider id="OldCarsImages" height="auto">
             <div data-glide-el="track" className="glide__track">
               <Container className="glide__slides" height="auto">
                 {frontmatter.oldCarsWorks.map((data, index) => {
@@ -136,9 +150,10 @@ class Comparison extends Component {
                         width="100%"
                         height="auto"
                         fit="cover"
-                        key={index} />
+                        key={index}
+                      />
                     </Container>
-                  )
+                  );
                 })}
               </Container>
             </div>
@@ -156,20 +171,32 @@ class Comparison extends Component {
         </Container>
 
         <Container flex backColor="black" padding={[3]}>
-          <SubTitle padding={[0,0,3,0]} tPadding={[0]} title={frontmatter.newCarServiceTitle} edgeColor="green" white size={2}>
+          <SubTitle
+            padding={[0, 0, 3, 0]}
+            tPadding={[0]}
+            title={frontmatter.newCarServiceTitle}
+            edgeColor="green"
+            white
+            size={2}
+          >
             {frontmatter.newCarServiceDescription}
           </SubTitle>
 
-          <ImagesContainer>
-            {newCars}
-          </ImagesContainer>
+          <ImagesContainer>{newCars}</ImagesContainer>
 
           <ArrowsContainer width="auto" margin={[2, 0]}>
-            <Arrows onClick={() => this.newCarsSlider.go('<')} arrowColors={['white', 'white']} left />
-            <Arrows onClick={() => this.newCarsSlider.go('>')} arrowColors={['white', 'white']} />
+            <Arrows
+              onClick={() => this.newCarsSlider.go('<')}
+              arrowColors={['white', 'white']}
+              left
+            />
+            <Arrows
+              onClick={() => this.newCarsSlider.go('>')}
+              arrowColors={['white', 'white']}
+            />
           </ArrowsContainer>
 
-          <ImageSlider id="NewCarsImages" height="auto" >
+          <ImageSlider id="NewCarsImages" height="auto">
             <div data-glide-el="track" className="glide__track">
               <Container className="glide__slides" height="auto">
                 {frontmatter.newCarsWorks.map((data, index) => {
@@ -181,9 +208,10 @@ class Comparison extends Component {
                         width="100%"
                         height="auto"
                         fit="cover"
-                        key={index} />
+                        key={index}
+                      />
                     </Container>
-                  )
+                  );
                 })}
               </Container>
             </div>
@@ -207,6 +235,6 @@ class Comparison extends Component {
 Comparison.propTypes = {
   data: PropTypes.array,
   current: PropTypes.number,
-}
+};
 
 export default Comparison;

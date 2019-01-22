@@ -118,15 +118,15 @@ class Presentation extends Component {
                         align="flex-start"
                         key={frontmatter.image}
                         padding={[5, 5, 7, 5]}
-                        tPadding={[3, 0, 2, 0]}
+                        tPadding={[4, 0, 2, 0]}
                       >
                         <Text
                           white
                           size={2}
                           as={Container}
                           padding={[1]}
-                          width="45%"
-                          tWidth="100%"
+                          width="55%"
+                          tWidth="calc(100% - 4em)"
                           align="left"
                         >
                           {frontmatter.description}

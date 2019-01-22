@@ -71,7 +71,8 @@ const ReactPaginateContainer = styled(Container)`
     li {
       padding: 0.5em;
 
-      &:first-child, &:last-child {
+      &:first-child,
+      &:last-child {
         padding: 0;
       }
 
@@ -88,7 +89,7 @@ const ReactPaginateContainer = styled(Container)`
       }
     }
   }
-  
+
   ${device.tablet} {
     margin-top: 4em;
     padding: 3em 2em;
@@ -117,11 +118,10 @@ const ArrowComp = styled(Arrow)`
 `;
 
 function handleChangePage({ selected, ...rest }, prefix, index) {
-  if(selected === 0) {
-    navigate('/' + prefix + '/')
-  }
-  else {
-    navigate('/' + prefix + '/' + (selected + 1))
+  if (selected === 0) {
+    navigate('/' + prefix + '/');
+  } else {
+    navigate('/' + prefix + '/' + (selected + 1));
   }
 }
 
@@ -168,7 +168,9 @@ const OurWorks = ({ pathContext }) => {
             marginPagesDisplayed={1}
             previousLabel={
               <ArrowComp
-                arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
+                arrowColors={
+                  index === 1 ? ['grey', 'grey'] : ['black', 'green']
+                }
                 left
               />
             }
@@ -179,8 +181,8 @@ const OurWorks = ({ pathContext }) => {
                 }
               />
             }
-            breakLabel={"..."}
-            onPageChange={(i) => handleChangePage(i, pathPrefix, index)}
+            breakLabel={'...'}
+            onPageChange={i => handleChangePage(i, pathPrefix, index)}
             initialPage={0}
             forcePage={index - 1}
             disableInitialCallback={true}

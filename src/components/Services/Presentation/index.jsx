@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-
 import { Container } from '../../Container';
 import ServiceNames from './ServiceNames';
 import ServiceView from './ServiceView';
@@ -89,7 +88,15 @@ const ArrowsContainerMobile = styled(Container)`
   }
 `;
 
-const ServicesPresentation = ({ data, current, icons, handleClick, handleHoverClick, handleHoverClickPrev, ...props }) => {
+const ServicesPresentation = ({
+  data,
+  current,
+  icons,
+  handleClick,
+  handleHoverClick,
+  handleHoverClickPrev,
+  ...props
+}) => {
   return (
     <PresContainer
       {...props}
@@ -150,14 +157,14 @@ const ServicesPresentation = ({ data, current, icons, handleClick, handleHoverCl
       })}
     </PresContainer>
   );
-}
+};
 
 ServicesPresentation.propTypes = {
   data: PropTypes.array.isRequired,
-  current: PropTypes.number.isRequired, 
-  icons: PropTypes.array, 
-  handleClick: PropTypes.func, 
-  handleHoverClick: PropTypes.func, 
+  current: PropTypes.number.isRequired,
+  icons: PropTypes.array,
+  handleClick: PropTypes.func,
+  handleHoverClick: PropTypes.func,
   handleHoverClickPrev: PropTypes.func,
 };
 

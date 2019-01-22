@@ -161,11 +161,11 @@ class IndivWork extends Component {
             margin={[2, 0, 1, 0]}
           >
             <Container width="auto">
-              <Arrows left />
+              <Arrows arrowColors={['green', 'green']} left />
               <ArrowLink to={`our-works/works/${prev}`} />
             </Container>
             <Container width="auto">
-              <Arrows />
+              <Arrows arrowColors={['green', 'green']} />
               <ArrowLink to={`our-works/works/${next}`} />
             </Container>
           </ArrowsContainer>
@@ -220,14 +220,14 @@ class IndivWork extends Component {
                 onClick={() =>
                   this.handleArrowClick(this.state.currentImage - 1)
                 }
-                arrowColors={['black', 'white']}
+                arrowColors={['green', 'white']}
                 left
               />
               <RightArrow
                 onClick={() =>
                   this.handleArrowClick(this.state.currentImage + 1)
                 }
-                arrowColors={['black', 'white']}
+                arrowColors={['green', 'white']}
               />
             </Container>
           </WorkDescription>

@@ -10,7 +10,7 @@ import QuoteAction from '../QuoteAction';
 
 const HomePage = () => (
   <Container flex height="auto">
-    <Presentation />
+    <Presentation margin={[0, 0, 2, 0]} />
     <SubTitle
       size={2.5}
       title="Lorem Ipsum is simply dummy text"

@@ -1,7 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { Container } from '../../Container';
 import { Text } from '../../Text';
+import { device } from '../../../utils/device';
+
+const LeftAlignMobile = styled(Text)`
+  ${device.tablet} {
+    align-self: flex-start;
+  }
+`;
 
 const Quote = ({ author, children, size, width, tWidth, ...props }) => (
   <Container {...props} flex>
@@ -12,9 +20,9 @@ const Quote = ({ author, children, size, width, tWidth, ...props }) => (
       width={width}
       tWidth={tWidth}
     >
-      <Text white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
+      <LeftAlignMobile white bold="800" size={2 * size} margin={[0, 0, 0.5, 0]}>
         {author}
-      </Text>
+      </LeftAlignMobile>
       <Container size={size} as={Text} white align="right" bold="lighter">
         {children}
       </Container>
