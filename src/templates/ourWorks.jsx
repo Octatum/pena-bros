@@ -36,13 +36,13 @@ const QuoteActionComp = styled(QuoteAction)`
 `;
 
 const GridComponent = styled.div`
-  width: 75%;
+  width: calc(100% - 10em);
   height: auto;
   margin: 5em 10em;
 
   display: grid;
   grid-template: repeat(3, minmax(10em, 1fr)) / 1fr 1fr 1fr;
-  grid-template: repeat(2, auto) / 1fr 1fr 1fr;
+  grid-template: repeat(2, 1fr) / 1fr 1fr 1fr;
   grid-gap: 5em;
   place-items: center;
   grid-auto-flow: row;
@@ -149,9 +149,9 @@ const OurWorks = ({ pathContext }) => {
               <Container key={element.numericId} flex>
                 <Image
                   src={frontmatter.allImages[0]}
-                  width="20em"
+                  width="100%"
+                  height="100%"
                   mWidth="100%"
-                  height="20em"
                   mHeight="auto"
                   fit="cover"
                 />
@@ -169,7 +169,7 @@ const OurWorks = ({ pathContext }) => {
             previousLabel={
               <ArrowComp
                 arrowColors={
-                  index === 1 ? ['grey', 'grey'] : ['black', 'green']
+                  index === 1 ? ['gray', 'gray'] : ['black', 'green']
                 }
                 left
               />
@@ -177,7 +177,7 @@ const OurWorks = ({ pathContext }) => {
             nextLabel={
               <ArrowComp
                 arrowColors={
-                  index === pageCount ? ['grey', 'grey'] : ['black', 'green']
+                  index === pageCount ? ['gray', 'gray'] : ['black', 'green']
                 }
               />
             }
@@ -201,7 +201,7 @@ const OurWorks = ({ pathContext }) => {
         >
           <Container margin={[0, 0.5]} mMargin={[0]} width="auto">
             <ArrowComp
-              arrowColors={index === 1 ? ['grey', 'grey'] : ['black', 'green']}
+              arrowColors={index === 1 ? ['gray', 'gray'] : ['black', 'green']}
               left
             />
             {index !== 1 && <ContLink to={pathPrefix + '/' + previousUrl} />}
@@ -210,7 +210,7 @@ const OurWorks = ({ pathContext }) => {
           <Container margin={[0, 0.5]} width="auto">
             <ArrowComp
               arrowColors={
-                index === pageCount ? ['grey', 'grey'] : ['black', 'green']
+                index === pageCount ? ['gray', 'gray'] : ['black', 'green']
               }
             />
             {index < pageCount && <ContLink to={pathPrefix + '/' + nextUrl} />}

@@ -12,14 +12,17 @@ function setFontSize({ size = 0 }, increment) {
   return `${defaultSize + increment * size}em`;
 }
 
-function setColor({ theme, green, gray, white }) {
+function setColor({ theme, green, gray, white, color }) {
   if (green) {
     return theme.color.green;
   }
   if (gray) {
     return 'gray';
   }
-  return white ? 'white' : 'black';
+  if (white) {
+    return 'white'
+  }
+  return theme.color[color];
 }
 
 function setPadding(padding) {

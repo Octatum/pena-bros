@@ -3,24 +3,18 @@ import styled from 'styled-components';
 
 import { Container } from '../../Container';
 import { Text } from '../../Text';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 
 import { navigate } from 'gatsby';
 import Question from './Question';
 import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
 import { device } from '../../../utils/device';
+import { Image } from '../../Image';
 
 const FormContainer = styled(Container)`
   display: grid;
   grid-template-columns: 10em auto;
-  grid-template-areas:
-    'name name-input'
-    'phone phone-input'
-    'mail mail-input'
-    'image image'
-    'message message-input'
-    'submit submit';
   gap: 1.25em;
   align-items: center;
 
@@ -32,9 +26,27 @@ const FormContainer = styled(Container)`
 `;
 
 const FileUploadComp = styled(FileUpload)`
+  grid-column: 1 / -1;
+
   ${device.tablet} {
     flex-direction: column;
     align-items: flex-start;
+  }
+`;
+
+const Input = styled(Text)`
+  border: none;
+  border-bottom: 2px solid black;
+  width: 100%;
+  max-width: 1000px;
+  min-width: 150px;
+  
+  resize: vertical;
+
+  ${device.tablet} {
+    min-width: initial;
+    max-width: initial;
+    width: calc(100% - 1em);
   }
 `;
 
@@ -43,9 +55,35 @@ const SubmitButton = styled(Text)`
   border: none;
   cursor: pointer;
   float: right;
-  grid-area: submit;
   width: auto;
   justify-self: end;
+  grid-column: 1 / -1;
+  grid-row: 0;
+`;
+
+const ErrorMessage = styled(Text).attrs({
+  padding: [1],
+  color: 'red'
+})`
+  background-color: ${({ theme }) => theme.color.lightRed};
+  border-radius: 10px;
+
+  grid-column: 1 / -1;
+`;
+
+const Thumbnail = styled(Image).attrs({
+  width: '100px',
+  height: '100px'
+})`
+  margin-left: 20px;
+  :first-child {
+    margin-left: 0;
+  }
+`;
+
+const ImageContainer = styled(Container)`
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
 `;
 
 function encode(data) {
@@ -60,16 +98,17 @@ const GetInTouch = ({ ...props }) => (
       name: '',
       phone: '',
       mail: '',
-      image: '',
+      images: [],
       message: '',
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
+
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
-          'form-name': 'Contact',
+          'form-name': 'contact',
           values,
         }),
       })
@@ -83,85 +122,104 @@ const GetInTouch = ({ ...props }) => (
           return error => alert(error);
         });
     }}
-    render={({ handleSubmit, handleChange, handleBlur, values }) => (
-      <FormContainer
-        margin={[5, 'auto']}
-        tMargin={[2.5, 'auto']}
-        width="70%"
-        tWidth="100%"
-        as="form"
-        name="contact"
-        method="post"
-        action="/"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}
-        {...props}
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>
-            Don’t fill this out:{' '}
-            <input name="bot-field" onChange={handleChange} />
-          </label>
-        </p>
-        <Question
-          size={3}
-          question="Name: "
-          name="name"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.name}
-        />
-        <Question
-          size={3}
-          question="Phone: "
-          name="phone"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.phone}
-        />
-        <Question
-          size={3}
-          question="Email: "
-          name="mail"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.mail}
-        />
-        <FileUploadComp
-          size={3}
-          text="Attach Image"
-          message="send us a foto of your car's interior"
-          name="image"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.image}
-          style={{ gridArea: 'image' }}
-        />
-        <Question
-          size={3}
-          question="Message: "
-          name="message"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.message}
-          type="textarea"
-        />
+    render={({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => {
+      const fontSize = 3;
+      let reader = undefined;
 
-        <SubmitButton
-          as="button"
-          type="submit"
-          bold="bold"
-          white
-          size={2.75}
-          padding={[0.35, 1.25]}
-          align="center"
+      return (
+        <FormContainer
+          margin={[5, 'auto']}
+          tMargin={[2.5, 'auto']}
+          width="70%"
+          tWidth="100%"
+          as="form"
+          name="contact"
+          method="post"
+          action="/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          {...props}
         >
-          Send
-        </SubmitButton>
-      </FormContainer>
-    )}
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Don’t fill this out:{' '}
+              <input name="bot-field" onChange={handleChange} />
+            </label>
+          </p>
+
+          <Text size={fontSize} bold="bold">Name: </Text>
+          <Input size={fontSize} as="input" type="text" name='name' onChange={handleChange} onBlur={handleBlur} value={values.name} />
+          {errors.name && touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+
+          <Text size={fontSize} bold="bold">Phone: </Text>
+          <Input size={fontSize} as="input" type="text" name='phone' onChange={handleChange} onBlur={handleBlur} value={values.phone} />
+          {errors.phone && touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
+
+          <Text size={fontSize} bold="bold">Email: </Text>
+          <Input size={fontSize} as="input" type="text" name='mail' onChange={handleChange} onBlur={handleBlur} value={values.mail} />
+          {errors.mail && touched.mail && <ErrorMessage>{errors.mail}</ErrorMessage>}
+
+          <Field
+            name="images"
+            value={values.images}
+            render={({ field, form }) => (
+              <FileUploadComp
+                {...field}
+                size={fontSize}
+                text="Attach Images"
+                message="send us a photo of your car's interior"
+                name="images"
+                onBlur={handleBlur}
+                value={values.images}
+                onChange={e => {
+                  if (e.target.files && e.target.files.length === 0) { return ; }
+
+                  let allImages = [];
+                  for (let i = 0; i < e.target.files.length; i++) {
+                    let file = e.target.files[i];
+                    let temp = {
+                      name: file.name,
+                    }
+                    reader = new FileReader();
+                    reader.onload = function (item) {
+                      temp.data = item.target.result;
+                    };
+                    allImages.push(temp)
+                    reader.readAsDataURL(file);
+                  }
+                  form.setFieldValue('images', allImages);
+                }}
+              />
+
+            )}
+          />
+          {values.images.length > 0 && <ImageContainer flex row justify="flex-start">
+            {values.images.map((imageData) => {
+              return <Thumbnail key={imageData.data} src={imageData.data} />
+            })}
+          </ImageContainer>}
+          {errors.images && touched.images && <ErrorMessage>{errors.images}</ErrorMessage>}
+
+          <Text size={fontSize} bold="bold">Message: </Text>
+          <Input size={fontSize} as="textarea" name='message' onChange={handleChange} onBlur={handleBlur} value={values.message} />
+
+          <SubmitButton
+            as="button"
+            type="submit"
+            bold="bold"
+            white
+            size={2.75}
+            padding={[0.35, 1.25]}
+            align="center"
+          >
+            Send
+          </SubmitButton>
+        </FormContainer>
+      )
+    }
+    }
   />
 );
 

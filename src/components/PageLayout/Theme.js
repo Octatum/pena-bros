@@ -3,7 +3,9 @@ export const globalTheme = {
     green: '#37A802',
     black: 'black',
     white: 'white',
-    grey: '#ccc',
+    gray: '#ccc',
+    lightRed: '#ffd6cc',
+    red: 'red',
   },
   fontFamily: {
     main: 'Open Sans',

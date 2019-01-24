@@ -16,6 +16,7 @@ const Input = styled.input`
   width: 100%;
   max-width: 1000px;
   min-width: 150px;
+  font-family: ${({ theme }) => theme.fontFamily.main};
 
   ${device.tablet} {
     font-size: ${({ size }) => size * 0.5 + 'em'};
@@ -40,13 +41,12 @@ const Question = ({
       {question}
     </Text>
     <Input
-      as={type ? type : null}
+      as={type}
       size={size}
       name={name}
       onChange={handleChange}
       onBlur={handleBlur}
-      defaultValue={value}
-      type={type}
+      value={value}
     />
   </Fragment>
 );
