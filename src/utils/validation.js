@@ -1,4 +1,4 @@
-import { string, object, mixed } from 'yup';
+import { string, object, mixed, array } from 'yup';
 
 export const validation = object().shape({
   name: string().required('Please fill your name'),
@@ -7,6 +7,6 @@ export const validation = object().shape({
   mail: string()
     .email('Email address is not valid')
     .required('Please write your email so we can contact you'),
-  image: mixed().required('We need an image of the car'),
-  message: string().required('Required'),
+  images: array().required('We need an image of the car'),
+  message: string().required('Please describe the services you wnat to be provided'),
 });

@@ -6,7 +6,6 @@ import { Text } from '../../Text';
 import { Formik, Field } from 'formik';
 
 import { navigate } from 'gatsby';
-import Question from './Question';
 import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
 import { device } from '../../../utils/device';
@@ -40,7 +39,7 @@ const Input = styled(Text)`
   width: 100%;
   max-width: 1000px;
   min-width: 150px;
-  
+  min-height: ${({ minHeight }) => minHeight ? minHeight : 'initial'};
   resize: vertical;
 
   ${device.tablet} {
@@ -103,7 +102,7 @@ const GetInTouch = ({ ...props }) => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-
+      console.log(values)
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -125,6 +124,7 @@ const GetInTouch = ({ ...props }) => (
     render={({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => {
       const fontSize = 3;
       let reader = undefined;
+      console.log(errors)
 
       return (
         <FormContainer
@@ -203,8 +203,9 @@ const GetInTouch = ({ ...props }) => (
           {errors.images && touched.images && <ErrorMessage>{errors.images}</ErrorMessage>}
 
           <Text size={fontSize} bold="bold">Message: </Text>
-          <Input size={fontSize} as="textarea" name='message' onChange={handleChange} onBlur={handleBlur} value={values.message} />
-
+          <Input size={fontSize} minHeight="5em" as="textarea" name='message' onChange={handleChange} onBlur={handleBlur} value={values.message} />
+          {errors.message && touched.message && <ErrorMessage>{errors.message}</ErrorMessage>}
+          
           <SubmitButton
             as="button"
             type="submit"
