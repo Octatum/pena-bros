@@ -102,13 +102,13 @@ const GetInTouch = ({ ...props }) => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-      console.log(values)
+      console.log(values, actions)
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'contact',
-          values,
+          ...values,
         }),
       })
         .then(() => {
@@ -124,7 +124,6 @@ const GetInTouch = ({ ...props }) => (
     render={({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => {
       const fontSize = 3;
       let reader = undefined;
-      console.log(errors)
 
       return (
         <FormContainer
