@@ -6,7 +6,6 @@ import { Link } from 'gatsby';
 import { Container } from './Container';
 import { Text } from './Text';
 import Arrows from './Arrows';
-import { device } from '../utils/device';
 
 const ActionLink = styled(Text)`
   position: relative;
@@ -31,29 +30,11 @@ const ActionLink = styled(Text)`
   :hover {
     background-position: ${({ animate }) => (animate ? '100%' : '0%')};
   }
-
-  ${device.tablet} {
-    order: ${({ reverseOnMobile }) => (reverseOnMobile ? 1 : 0)};
-  }
 `;
 
 const ArrowContainer = styled(Container)`
   & > div:last-child {
     display: initial;
-  }
-  & > div:first-child {
-    display: none;
-  }
-
-  ${device.tablet} {
-    & > div:first-child {
-      display: ${({ reverseOnMobile }) =>
-        reverseOnMobile ? 'initial' : 'none'};
-    }
-    & > div:last-child {
-      display: ${({ reverseOnMobile }) =>
-        reverseOnMobile ? 'none' : 'initial'};
-    }
   }
 `;
 
@@ -66,7 +47,6 @@ const ActionButton = ({
   name,
   textColor,
   noAnimate,
-  onMobileReverse,
   arrowColors,
   ...props
 }) => {
@@ -80,7 +60,6 @@ const ActionButton = ({
       {...props}
     >
       <ActionLink
-        reverseOnMobile={onMobileReverse}
         to={linkTo}
         as={Link}
         animate={noAnimate ? 1 : 0}
@@ -91,7 +70,6 @@ const ActionButton = ({
         {name}
       </ActionLink>
       <ArrowContainer
-        reverseOnMobile={onMobileReverse}
         flex
         row
         justify="flex-start"
@@ -99,7 +77,6 @@ const ActionButton = ({
         tMargin={[0]}
         width="auto"
       >
-        <ArrowResized arrowColors={arrowColors} margin={['auto', 0]} left />
         <ArrowResized arrowColors={arrowColors} margin={['auto', 0]} />
       </ArrowContainer>
     </Container>
@@ -111,14 +88,12 @@ ActionButton.propTypes = {
   name: PropTypes.string,
   textColor: PropTypes.string,
   noAnimate: PropTypes.bool,
-  onMobileReverse: PropTypes.bool,
   arrowColors: PropTypes.array,
 };
 
 ActionButton.defaultProps = {
   textColor: 'black',
   noAnimate: false,
-  onMobileReverse: true,
   arrowColors: ['black', 'black'],
 };
 

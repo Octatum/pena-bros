@@ -71,9 +71,13 @@ const ErrorMessage = styled(Text).attrs({
 `;
 
 const Thumbnail = styled(Image).attrs({
-  width: '100px',
-  height: '100px'
 })`
+  width: 100px;
+  min-width: 100px;
+
+  height: 100px;
+  min-height: 100px;
+  
   margin-left: 20px;
   :first-child {
     margin-left: 0;
