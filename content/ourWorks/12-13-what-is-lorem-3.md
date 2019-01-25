@@ -10,5 +10,6 @@ allImages:
   - /assets/product2.png
   - /assets/product2.png
 createDate: Dec-18
+priority: '1'
 ---
 
