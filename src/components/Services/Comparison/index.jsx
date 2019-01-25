@@ -91,7 +91,6 @@ class Comparison extends Component {
           width="250px"
           height="250px"
           fit="cover"
-          key={index}
         />
       );
     });
@@ -104,7 +103,6 @@ class Comparison extends Component {
           width="250px"
           height="250px"
           fit="cover"
-          key={index}
         />
       );
     });
@@ -150,7 +148,6 @@ class Comparison extends Component {
                         width="100%"
                         height="auto"
                         fit="cover"
-                        key={index}
                       />
                     </Container>
                   );
@@ -208,7 +205,6 @@ class Comparison extends Component {
                         width="100%"
                         height="auto"
                         fit="cover"
-                        key={index}
                       />
                     </Container>
                   );

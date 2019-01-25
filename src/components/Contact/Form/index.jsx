@@ -5,7 +5,6 @@ import { Container } from '../../Container';
 import { Text } from '../../Text';
 import { Formik, Field } from 'formik';
 
-import { navigate } from 'gatsby';
 import FileUpload from './FileUpload';
 import { validation } from '../../../utils/validation';
 import { device } from '../../../utils/device';
@@ -106,19 +105,18 @@ const GetInTouch = ({ ...props }) => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-      console.log(values, actions)
+      console.log(encode(JSON.stringify(values)))
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'contact',
-          ...values,
         }),
       })
         .then(() => {
           alert('Your message was sent!');
           actions.setSubmitting(false);
-          navigate('/');
+         // navigate('/');
         })
         .catch(() => {
           actions.setSubmitting(false);

@@ -55,12 +55,13 @@ collections:
     label: "Our Works"
     folder: "content/ourWorks"
     create: true
-    slug: "{{month}}-{{day}}-{{slug}}"
+    slug: "{{month}}-{{day}}-{{hour}}-{{slug}}"
     fields: 
     - {label: "Work Title", name: "title", widget: "string"}
     - {label: "Work Description", name: "description", widget: "text"}
     - {label: "Work Images", name: "allImages", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
-    - {label: "Creation Date", name: "createDate", widget: "date", format: "MMM-YY"}
+    - {label: "Creation Date", name: "createDate", widget: "datetime", format: "DD-MMM-YY-HH"}
+    - {label: "Sorting Priority", name: "priority", width: "number", default: 1}
 
   - name: "homePresentation"
     label: "Home Presentation Slides"

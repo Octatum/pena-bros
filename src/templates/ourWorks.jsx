@@ -41,15 +41,15 @@ const GridComponent = styled.div`
   margin: 5em 10em;
 
   display: grid;
-  grid-template: repeat(3, minmax(10em, 1fr)) / 1fr 1fr 1fr;
-  grid-template: repeat(2, 1fr) / 1fr 1fr 1fr;
+  
+  grid-template: repeat(2, minmax(20em, 25em)) / 1fr 1fr 1fr;
   grid-gap: 5em;
   place-items: center;
   grid-auto-flow: row;
 
   ${device.tablet} {
     grid-gap: 2em 0;
-    grid-template: repeat(3, auto) / 1fr 1fr;
+    grid-template: repeat(3, 25em) / 1fr 1fr;
 
     order: 1;
     margin: 0;
@@ -57,6 +57,9 @@ const GridComponent = styled.div`
     padding: 0 1em 3em 1em;
     width: 100%;
     background-color: ${({ theme }) => theme.color.black};
+  }
+  ${device.mobile} {
+    grid-template: repeat(3, 10em) / 1fr 1fr;
   }
 `;
 
@@ -150,7 +153,7 @@ const OurWorks = ({ pathContext }) => {
                 <Image
                   src={frontmatter.allImages[0]}
                   width="100%"
-                  height="100%"
+                  height="auto"
                   mWidth="100%"
                   mHeight="auto"
                   fit="cover"
