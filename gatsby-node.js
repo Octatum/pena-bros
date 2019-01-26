@@ -18,27 +18,38 @@ exports.createPages = ({
             filter: { fileAbsolutePath: {regex : "\/ourWorks/"} }
             sort: { fields: [frontmatter___createDate], order: DESC}
           ) {
-            edges {
-              node {
-                frontmatter {
-                  title
-                  description
-                  createDate
-                  allImages
+            group(field: frontmatter___createDate) {
+              edges {
+                node {
+                  frontmatter {
+                    title
+                    description
+                    createDate
+                    allImages
+                    priority
+                  }
                 }
               }
-            }
+            }            
           }
         }
     `).then(result => {
         if (result.errors) {
           reject(result.errors)
         }
-        let edgesWithId = [...result.data.allMarkdownRemark.edges];
+        let edgesWithId = result.data.allMarkdownRemark
+          .group.map(a => {
+            return a.edges
+              .sort((a, b) => {
+                return a.node.frontmatter.priority - b.node.frontmatter.priority
+              })
+          });
+        
+        edgesWithId = edgesWithId.reduce((acc, curr) => acc.concat(curr), [])
 
         let numericId = 0;
         // Create blog post pages.
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+        edgesWithId.forEach(edge => {
           const {
             frontmatter
           } = edge.node;

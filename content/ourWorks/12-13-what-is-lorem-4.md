@@ -10,6 +10,6 @@ allImages:
   - /assets/product1.png
   - /assets/product1.png
 createDate: 18-Jan-19-00
-priority: '1'
+priority: '2'
 ---
 
