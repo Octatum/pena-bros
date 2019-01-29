@@ -57,6 +57,7 @@ const Tabs = styled(Container)`
 
   ${device.tablet} {
     width: calc(100% - 10em);
+    overflow: hidden;
   }
   & > div {
     ${device.tablet} {
