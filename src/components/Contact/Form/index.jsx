@@ -38,7 +38,7 @@ const Input = styled(Text)`
   width: 100%;
   max-width: 1000px;
   min-width: 150px;
-  min-height: ${({ minHeight }) => minHeight ? minHeight : 'initial'};
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : 'initial')};
   resize: vertical;
 
   ${device.tablet} {
@@ -61,7 +61,7 @@ const SubmitButton = styled(Text)`
 
 const ErrorMessage = styled(Text).attrs({
   padding: [1],
-  color: 'red'
+  color: 'red',
 })`
   background-color: ${({ theme }) => theme.color.lightRed};
   border-radius: 10px;
@@ -69,14 +69,13 @@ const ErrorMessage = styled(Text).attrs({
   grid-column: 1 / -1;
 `;
 
-const Thumbnail = styled(Image).attrs({
-})`
+const Thumbnail = styled(Image).attrs({})`
   width: 100px;
   min-width: 100px;
 
   height: 100px;
   min-height: 100px;
-  
+
   margin-left: 20px;
   :first-child {
     margin-left: 0;
@@ -105,7 +104,7 @@ const GetInTouch = ({ ...props }) => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-      console.log(encode(JSON.stringify(values)))
+      console.log(encode(JSON.stringify(values)));
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -116,14 +115,21 @@ const GetInTouch = ({ ...props }) => (
         .then(() => {
           alert('Your message was sent!');
           actions.setSubmitting(false);
-         // navigate('/');
+          // navigate('/');
         })
         .catch(() => {
           actions.setSubmitting(false);
           return error => alert(error);
         });
     }}
-    render={({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => {
+    render={({
+      handleSubmit,
+      handleChange,
+      handleBlur,
+      values,
+      errors,
+      touched,
+    }) => {
       const fontSize = 3;
       let reader = undefined;
 
@@ -150,17 +156,50 @@ const GetInTouch = ({ ...props }) => (
             </label>
           </p>
 
-          <Text size={fontSize} bold="bold">Name: </Text>
-          <Input size={fontSize} as="input" type="text" name='name' onChange={handleChange} onBlur={handleBlur} value={values.name} />
-          {errors.name && touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+          <Text size={fontSize} bold="bold">
+            Name:{' '}
+          </Text>
+          <Input
+            size={fontSize}
+            as="input"
+            type="text"
+            name="name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.name}
+          />
+          {errors.name &&
+            touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
 
-          <Text size={fontSize} bold="bold">Phone: </Text>
-          <Input size={fontSize} as="input" type="text" name='phone' onChange={handleChange} onBlur={handleBlur} value={values.phone} />
-          {errors.phone && touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
+          <Text size={fontSize} bold="bold">
+            Phone:{' '}
+          </Text>
+          <Input
+            size={fontSize}
+            as="input"
+            type="text"
+            name="phone"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.phone}
+          />
+          {errors.phone &&
+            touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
 
-          <Text size={fontSize} bold="bold">Email: </Text>
-          <Input size={fontSize} as="input" type="text" name='mail' onChange={handleChange} onBlur={handleBlur} value={values.mail} />
-          {errors.mail && touched.mail && <ErrorMessage>{errors.mail}</ErrorMessage>}
+          <Text size={fontSize} bold="bold">
+            Email:{' '}
+          </Text>
+          <Input
+            size={fontSize}
+            as="input"
+            type="text"
+            name="mail"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.mail}
+          />
+          {errors.mail &&
+            touched.mail && <ErrorMessage>{errors.mail}</ErrorMessage>}
 
           <Field
             name="images"
@@ -175,38 +214,53 @@ const GetInTouch = ({ ...props }) => (
                 onBlur={handleBlur}
                 value={values.images}
                 onChange={e => {
-                  if (e.target.files && e.target.files.length === 0) { return ; }
+                  if (e.target.files && e.target.files.length === 0) {
+                    return;
+                  }
 
                   let allImages = [];
                   for (let i = 0; i < e.target.files.length; i++) {
                     let file = e.target.files[i];
                     let temp = {
                       name: file.name,
-                    }
+                    };
                     reader = new FileReader();
-                    reader.onload = function (item) {
+                    reader.onload = function(item) {
                       temp.data = item.target.result;
                     };
-                    allImages.push(temp)
+                    allImages.push(temp);
                     reader.readAsDataURL(file);
                   }
                   form.setFieldValue('images', allImages);
                 }}
               />
-
             )}
           />
-          {values.images.length > 0 && <ImageContainer flex row justify="flex-start">
-            {values.images.map((imageData) => {
-              return <Thumbnail key={imageData.data} src={imageData.data} />
-            })}
-          </ImageContainer>}
-          {errors.images && touched.images && <ErrorMessage>{errors.images}</ErrorMessage>}
+          {values.images.length > 0 && (
+            <ImageContainer flex row justify="flex-start">
+              {values.images.map(imageData => {
+                return <Thumbnail key={imageData.data} src={imageData.data} />;
+              })}
+            </ImageContainer>
+          )}
+          {errors.images &&
+            touched.images && <ErrorMessage>{errors.images}</ErrorMessage>}
 
-          <Text size={fontSize} bold="bold">Message: </Text>
-          <Input size={fontSize} minHeight="5em" as="textarea" name='message' onChange={handleChange} onBlur={handleBlur} value={values.message} />
-          {errors.message && touched.message && <ErrorMessage>{errors.message}</ErrorMessage>}
-          
+          <Text size={fontSize} bold="bold">
+            Message:{' '}
+          </Text>
+          <Input
+            size={fontSize}
+            minHeight="5em"
+            as="textarea"
+            name="message"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.message}
+          />
+          {errors.message &&
+            touched.message && <ErrorMessage>{errors.message}</ErrorMessage>}
+
           <SubmitButton
             as="button"
             type="submit"
@@ -219,9 +273,8 @@ const GetInTouch = ({ ...props }) => (
             Send
           </SubmitButton>
         </FormContainer>
-      )
-    }
-    }
+      );
+    }}
   />
 );
 

@@ -15,9 +15,15 @@ const Input = styled.input`
   margin: 0;
 `;
 
-const FileUpload = ({ text, message, handleChange,
-  handleBlur, name, value, ...props }) => {
-
+const FileUpload = ({
+  text,
+  message,
+  handleChange,
+  handleBlur,
+  name,
+  value,
+  ...props
+}) => {
   return (
     <Container as={Text} flex row justify="flex-start" {...props}>
       <Container backColor="green" padding={[0.5, 1.25]} width="auto">
@@ -46,7 +52,6 @@ const FileUpload = ({ text, message, handleChange,
       </Text>
     </Container>
   );
-}
-
+};
 
 export default FileUpload;

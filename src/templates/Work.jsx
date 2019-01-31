@@ -161,16 +161,22 @@ class IndivWork extends Component {
             margin={[2, 0, 1, 0]}
           >
             <Container width="auto">
-              <Arrows 
-                arrowColors={workId === 0 ? ['gray','gray'] : ['green', 'green']} 
-                left 
-                />
+              <Arrows
+                arrowColors={
+                  workId === 0 ? ['gray', 'gray'] : ['green', 'green']
+                }
+                left
+              />
               <ArrowLink to={`our-works/works/${prev}`} />
             </Container>
             <Container width="auto">
-              <Arrows 
-                arrowColors={workId + 1 === this.props.pageContext.maxPosts ? ['gray','gray'] : ['green', 'green']} 
-                />
+              <Arrows
+                arrowColors={
+                  workId + 1 === this.props.pageContext.maxPosts
+                    ? ['gray', 'gray']
+                    : ['green', 'green']
+                }
+              />
               <ArrowLink to={`our-works/works/${next}`} />
             </Container>
           </ArrowsContainer>

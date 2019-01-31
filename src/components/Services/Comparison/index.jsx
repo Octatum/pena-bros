@@ -85,25 +85,13 @@ class Comparison extends Component {
 
     const oldCars = frontmatter.oldCarsWorks.map((data, index) => {
       return (
-        <Image
-          src={data}
-          key={data}
-          width="250px"
-          height="250px"
-          fit="cover"
-        />
+        <Image src={data} key={data} width="250px" height="250px" fit="cover" />
       );
     });
 
     const newCars = frontmatter.newCarsWorks.map((data, index) => {
       return (
-        <Image
-          src={data}
-          key={data}
-          width="250px"
-          height="250px"
-          fit="cover"
-        />
+        <Image src={data} key={data} width="250px" height="250px" fit="cover" />
       );
     });
 

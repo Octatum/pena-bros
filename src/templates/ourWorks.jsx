@@ -41,7 +41,7 @@ const GridComponent = styled.div`
   margin: 5em 10em;
 
   display: grid;
-  
+
   grid-template: repeat(2, minmax(20em, 25em)) / 1fr 1fr 1fr;
   grid-gap: 5em;
   place-items: center;

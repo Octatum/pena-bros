@@ -20,7 +20,7 @@ function setColor({ theme, green, gray, white, color }) {
     return 'gray';
   }
   if (white) {
-    return 'white'
+    return 'white';
   }
   return theme.color[color];
 }
