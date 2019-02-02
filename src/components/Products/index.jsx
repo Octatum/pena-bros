@@ -109,7 +109,7 @@ class Products extends Component {
   render() {
     const current = this.props.data.allFile.edges[this.state.currentViewed].node
       .childMarkdownRemark.frontmatter;
-
+    return <p>1</p>
     return (
       <Container
         margin={[5, 3]}
@@ -195,7 +195,7 @@ class Products extends Component {
     );
   }
 }
-
+/* 
 export default props => (
   <StaticQuery
     query={graphql`
@@ -224,3 +224,4 @@ export default props => (
     render={data => <Products data={data} {...props} />}
   />
 );
+ */
