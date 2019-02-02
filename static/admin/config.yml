@@ -49,10 +49,10 @@ collections:
       - {label: "Product Name", name: "title", widget: "string"}
       - {label: "Preview Image", name: "preview", widget: "image"}
       - label: "Product Description"
-        name: "description"
+        name: "descriptionList"
         widget: "list"
         fields: 
-          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Title", name: "descriptionTitle", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
       - {label: "Product Image", name: "image", widget: "image"}
 
