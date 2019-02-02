@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import PageLayout from '../components/PageLayout';
 
 import QuoteAction from '../components/QuoteAction';
-import About from '../components/About/index2';
+import About from '../components/About';
 
 const AboutPage = () => (
   <PageLayout>

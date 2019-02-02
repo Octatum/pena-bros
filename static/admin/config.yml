@@ -48,7 +48,12 @@ collections:
     fields:
       - {label: "Product Name", name: "title", widget: "string"}
       - {label: "Preview Image", name: "preview", widget: "image"}
-      - {label: "Product Description", name: "description", widget: "text"}
+      - label: "Product Description"
+        name: "description"
+        widget: "list"
+        field: 
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
       - {label: "Product Image", name: "image", widget: "image"}
 
   - name: "ourWorks"
@@ -90,28 +95,3 @@ collections:
           - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
           - {label: "Background Image", name: "image", widget: "image"}
           - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
-
-  - name: "aboutUsPresentation"
-    label: "About Us Presentation Slides"
-    files: 
-      - name: "pres1"
-        label: "First Slide"
-        file: "content/aboutUsSlides/firstSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}
-      - name: "pres2"
-        label: "Second Slide"
-        file: "content/aboutUsSlides/secondSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}
-      - name: "pres3"
-        label: "Third Slide"
-        file: "content/aboutUsSlides/thirdSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}

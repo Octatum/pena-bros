@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
-import { graphql, StaticQuery } from 'gatsby';
-import Glide from '@glidejs/glide';
-
-import Arrows from '../Arrows';
-
 import { Container } from '../Container';
+
+import placeholder from './assets/placeholder2.png';
+import placeholder2 from './assets/placeholder3.png';
 import { Text } from '../Text';
-import { device } from '../../utils/device';
+import { Image } from '../Image';
+import SubTitle from '../SubTitle';
 
-const Slider = styled(Container)`
-  overflow-x: hidden;
-`;
-
-const SlideCont = styled(Container)`
-  background-image: url(${({ image }) => image});
-  background-position: left top;
+const BackgroundContainer = styled(Container)`
+  background-image: ${({ background }) => `url(${background})`};
   background-repeat: no-repeat;
-  background-size: cover;
-
-  height: 800px;
+  background-size: 100% 100%;
+  background-position: center center;
 
   ::before {
     content: '';
@@ -36,138 +28,80 @@ const SlideCont = styled(Container)`
     );
   }
 
-  ${device.tablet} {
-    ::before {
-      background-image: none;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+  > * {
+    position: relative;
   }
 `;
 
-const Button = styled(Text)`
+const GreenBackground = styled(Container)`
   background-color: ${({ theme }) => theme.color.green};
-  z-index: 0;
 `;
 
-const ArrowContainer = styled(Container)`
-  position: absolute;
-  right: 7em;
-  top: 1em;
-
-  ${device.tablet} {
-    right: 1em;
-  }
+const LeftEdgeContainer = styled(Container)`
+  border-left: 10px solid ${({ theme }) => theme.color.green};
+  padding-top: 2em;
+  padding-bottom: 5em;
+  padding-left: 10px;
 `;
 
-class About extends Component {
-  constructor() {
-    super();
-    this.glide = null;
-  }
+const AboutUs = ({ className, ...props }) => (
+  <Container {...props}>
+    <BackgroundContainer
+      flex
+      justify="center"
+      align="flex-end"
+      height="600px"
+      tHeight="400px"
+      className={className}
+      background={placeholder}
+    >
+      <Container
+        flex
+        width="50%"
+        tWidth="70%"
+        height="auto"
+        align="flex-end"
+        padding={[0, 10]}
+        tPadding={[0]}
+        tMargin={['auto', 2.5,2.5,2.5]}
+      >
+        <Text white align="right" bold="bold" size={7}>
+          About Us
+        </Text>
+        <Text white align="right" bold="light" size={2}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Exercitationem alias impedit, cupiditate expedita at officia.
+        </Text>
+      </Container>
+    </BackgroundContainer>
 
-  componentDidMount() {
-    this.glide = new Glide('#AboutUsPres', {
-      startAt: 0,
-      perView: 1,
-      gap: 0,
-    }).mount();
-  }
+    <LeftEdgeContainer margin={[10, 'auto', 0, 5]} tMargin={[0]} tMargin={[5, 2, 0, 2]} width="70%" tWidth="auto">
+      <Text size={8} bold="bold">
+        Lorem ipsum dolor sit amet.
+      </Text>
+      <Text size={4}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A recusandae
+        sit dolorem delectus, nemo placeat?
+      </Text>
+    </LeftEdgeContainer>
 
-  render() {
-    return (
-      <StaticQuery
-        query={graphql`
-          query getAboutUsSlides {
-            allFile(
-              filter: {
-                sourceInstanceName: { eq: "aboutUsSlides" }
-                name: { ne: ".gitkeep" }
-              }
-            ) {
-              edges {
-                node {
-                  name
-                  relativePath
-                  childMarkdownRemark {
-                    frontmatter {
-                      description
-                      link
-                      image
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `}
-        render={data => {
-          return (
-            <Slider id="AboutUsPres" {...this.props} height="auto">
-              <div data-glide-el="track" className="glide__track">
-                <Container className="glide__slides" height="100%">
-                  {data.allFile.edges.map((_, index) => {
-                    const { frontmatter } = _.node.childMarkdownRemark;
-                    return (
-                      <SlideCont
-                        image={frontmatter.image}
-                        className="glide__slide"
-                        flex
-                        align="flex-end"
-                        key={frontmatter.image}
-                        padding={[5, 5, 7, 5]}
-                        tPadding={[3, 0, 2, 0]}
-                      >
-                        <Text
-                          white
-                          size={2}
-                          as={Container}
-                          padding={[1]}
-                          width="45%"
-                          tWidth="100%"
-                          align="right"
-                        >
-                          {frontmatter.description}
-                        </Text>
-                        <Button
-                          as={Link}
-                          to={frontmatter.link === 'About Us' ? '/about' : '/'}
-                          bold="bold"
-                          size={2}
-                          white="true"
-                          margin={[0, 1]}
-                          padding={[0.25, 1.25]}
-                          width="auto"
-                        >
-                          {frontmatter.link}
-                        </Button>
-                      </SlideCont>
-                    );
-                  })}
-                </Container>
-              </div>
-              <ArrowContainer
-                flex
-                row
-                width="auto"
-                height="auto"
-                justify="flex-end"
-              >
-                <Arrows
-                  left
-                  handleClick={() => this.glide.go('<')}
-                  arrowColors={['white', 'white']}
-                />
-                <Arrows
-                  handleClick={() => this.glide.go('>')}
-                  arrowColors={['white', 'white']}
-                />
-              </ArrowContainer>
-            </Slider>
-          );
-        }}
-      />
-    );
-  }
-}
+    <GreenBackground flex align="center" justify="center" padding={[5, 15, 2, 15]} tPadding={[5, 2.5]}>
+      <Text size={7} white bold="lighter" align="center">
+        <Text as="span" bold="bold" >Maecenas nec lacus </Text>
+        mollis erat laoreet egestas. Morbi vitae blandit velit, at vehicula
+        risus. Nullam bibendum eros vitae congue congue. Etiam elementum
+        facilisis orci, in fermentum dolor venenatis id. Donec ac ante sem.
+        Etiam fermentum tempor velit, sollicitudin imperdiet leo varius eget.
+      </Text>
+      <Container width="5em" height="5px" backColor="white" margin={[2, 0]} />
+    </GreenBackground>
 
-export default About;
+    <Image src={placeholder2} width="100%" height="700px" tHeight="500px" fit="cover" />
+
+    <Container backColor="black" margin={[0, 10]} tMargin={[0]} width="auto" style={{ top: '-3px' }} padding={[3, 5, 5, 5]} tPadding={[3.5, 2]}>
+      <SubTitle size={3} white title="Lorem Ipsum">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi nostrum fuga inventore aliquam labore dolores, nihil accusantium expedita ratione non!</SubTitle>
+    </Container>
+  </Container>
+);
+
+export default AboutUs;
