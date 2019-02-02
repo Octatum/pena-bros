@@ -35,7 +35,7 @@ collections:
     folder: "content/reviews"
     create: true
     slug: "{{month}}-{{day}}-{{slug}}"
-    fields:
+    field:
       - {label: "Layout", name: "layout", widget: "hidden", default: "review"}
       - {label: "Author", name: "title", widget: "string"}
       - {label: "Review", name: "review", widget: "string"}
