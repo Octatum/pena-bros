@@ -8,7 +8,7 @@ import QuoteAction from '../components/QuoteAction';
 const ProductPage = () => (
   <PageLayout>
     <Helmet title="Our Products" />
-   {/*  <Products /> */}
+    <Products />
     <QuoteAction />
   </PageLayout>
 );

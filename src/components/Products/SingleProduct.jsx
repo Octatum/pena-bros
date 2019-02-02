@@ -15,23 +15,26 @@ const SingleProdContainer = styled(Container)`
   }
 `;
 
-const IndivProd = ({ title, image, description, show, ...props }) => {
+const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
   return (
     <SingleProdContainer flex show={show} {...props}>
-      <SubTitle
-        size={3}
-        title={title}
-        white
-        edgeColor="black"
-        tEdgeColor="green"
-        height="auto"
-        width="60%"
-        tWidth="90%"
-        margin={[4, 0]}
-        tMargin={[4, 1.5, 4, 'auto']}
-      >
-        {description}
-      </SubTitle>
+      {descriptionList.map(data => (
+        <SubTitle 
+          size={3}
+          title={data.descriptionTitle}
+          white
+          edgeColor="black"
+          tEdgeColor="green"
+          height="auto"
+          width="60%"
+          tWidth="90%"
+          margin={[4,0]}
+          tMargin={[1,1.4,4,'auto']}
+          key={data.descriptionTitle}
+          >
+          {data.description}
+        </SubTitle>
+      ))}
       <Container
         flex
         backColor="white"
@@ -52,7 +55,7 @@ const IndivProd = ({ title, image, description, show, ...props }) => {
 IndivProd.propTypes = {
   title: PropTypes.string,
   image: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.array,
   show: PropTypes.bool,
 };
 
