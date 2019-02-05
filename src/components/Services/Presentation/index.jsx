@@ -112,6 +112,7 @@ const ServicesPresentation = ({
           handleClick={handleClick}
           current={current}
           icons={icons}
+          names={data.map(edge => edge.node.name)}
         />
         <ServiceNameColumnMobile
           handleClick={handleClick}

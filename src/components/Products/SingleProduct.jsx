@@ -37,7 +37,7 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
       ))}
       <Container
         flex
-        backColor="white"
+        backColor="transparent"
         padding={[2, 8]}
         tPadding={[0]}
         width="95%"
