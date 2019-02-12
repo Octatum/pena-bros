@@ -1,11 +1,7 @@
 ---
 description: >-
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-  when an unknown printer took a galley of type and scrambled it to make a type
-  specimen book. the industry's standard dummy text ever since the 1500s, when
-  an unknown printer took a galley of type and scrambled it to make a type
-  specimen book. 
+  Pena Brothers Upholstery has over 32 years’ experience helping South Texans keep their cars comfortable, clean and looking good. We are family owned and operated. Our services include Headliner repair, convertible top service and installation, seat repair and upgrades, door panels, carpet, armrest, etc..  Stop by call or email us , we will be happy to help you! 
+
 link: About Us
 image: /assets/placeholder.png
 mobileImage: /assets/placeholder4.png
