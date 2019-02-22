@@ -39,7 +39,7 @@ const GreenBackground = styled(Container)`
 
 const LeftEdgeContainer = styled(Container)`
   border-left: 10px solid ${({ theme }) => theme.color.green};
-  padding-top: 2em;
+  padding-top: 1em;
   padding-bottom: 5em;
   padding-left: 10px;
 `;

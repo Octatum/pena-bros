@@ -99,12 +99,12 @@ class Services extends Component {
                   handleHoverClickPrev={this.handleHoverClickPrev}
                   current={this.state.current}
                 />
-                <Comparison
+                {/* <Comparison
                   height="auto"
                   margin={[0, 0, 7, 0]}
                   data={data.allFile.Comparison[this.state.current]}
                   current={this.state.current}
-                />
+                /> */}
               </Fragment>
             );
           }}
