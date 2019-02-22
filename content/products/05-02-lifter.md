@@ -1,6 +1,6 @@
 ---
 title: LIFTER-1
-preview: /assets/lexol-logo.png
+preview: /assets/lifter_logo.png
 descriptionList:
   - description: >-
       One of the most impressive products we carry is the LIFTER-1 carpet stain remover.  From the moment you apply it to a stain, you will notice a difference as it practically dissolves most stains.  Coffee, oil, grease, pet stains, dark soda etc.…  Comes with cap that doubles as a scrub brush!
