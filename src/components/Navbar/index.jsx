@@ -89,6 +89,17 @@ const NavbarContainer = styled(Container)`
   }
 `;
 
+const ActiveLink = styled(Text)`
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+  }
+  .active {
+    color: ${({ theme }) => theme.color.green};
+  }
+`;
+
 class Navbar extends Component {
   constructor() {
     super();
@@ -148,16 +159,19 @@ class Navbar extends Component {
         >
           Services
         </Text>
-        <Text
-          as={Link}
-          activeStyle={{ color: this.props.theme.color.green }}
-          to="/our-works"
+        <ActiveLink
           white="true"
           bold="bold"
           size={1}
         >
-          Works
-        </Text>
+          <Link
+            activeStyle={{ color: this.props.theme.color.green }}
+            getProps={({ isPartiallyCurrent }) => isPartiallyCurrent ? { className: 'active' } : null}
+            to="/our-works"
+          >
+            Works
+          </Link>
+        </ActiveLink>
         <Text
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
