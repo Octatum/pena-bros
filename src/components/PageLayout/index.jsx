@@ -11,6 +11,7 @@ import LocationBanner from './../LocationBanner';
 import PenaLogo from '../../assets/PenaLogo.jpg';
 import { Image } from '../Image';
 import { device } from '../../utils/device';
+import { Container } from '../Container';
 
 const Layout = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const Layout = styled.div`
 `;
 const ImageComp = styled(Image)`
   margin: 0 auto;
+  padding: 2em 2em;
 
   ${device.tablet} {
     display: none;
@@ -28,9 +30,11 @@ const ImageComp = styled(Image)`
 const PageLayout = ({ children }) => (
   <ThemeProvider theme={globalTheme}>
     <Layout>
-      <ImageComp src={PenaLogo} width="200px" tWidth="150px" />
       <LocationBanner />
-      <Navbar />
+      <Container flex row>
+        {/* <ImageComp src={PenaLogo} width="200px" tWidth="150px" /> */}
+        <Navbar />
+      </Container>
       <Helmet
         titleTemplate="%s | Peña Bros"
         meta={[

@@ -29,6 +29,12 @@ const Logo = styled(Image)`
   margin-left: 1.5em;
 `;
 
+const DesktopImage = styled(Image)`
+  ${device.tablet} {
+    display: none;
+  }
+`;
+
 const MenuIcon = styled.div`
   max-width: 2.75em;
   margin: auto;
@@ -65,7 +71,7 @@ const NavbarContainer = styled(Container)`
   top: -1px;
   z-index: 10;
   padding: 0.7em 5em;
-  box-shadow: 0 5px 20px 0.5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 10px -4px rgba(0, 0, 0, 0.5);
 
   ${Text} {
     text-transform: uppercase;
@@ -120,7 +126,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <NavbarContainer flex row backColor="black" display={this.state.isOpen}>
+      <NavbarContainer flex row  display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
           <Logo src={PenaLogo} />
           <MenuIcon>
@@ -133,7 +139,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -143,7 +149,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/about"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -153,14 +159,15 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/Services"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
           Services
         </Text>
+        <DesktopImage src={PenaLogo} height="200px" />
         <ActiveLink
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -176,7 +183,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/products"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -186,7 +193,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/Contact"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
