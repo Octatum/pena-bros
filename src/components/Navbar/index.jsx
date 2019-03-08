@@ -30,6 +30,8 @@ const Logo = styled(Image)`
 `;
 
 const DesktopImage = styled(Image)`
+  transition: max-height ease-in-out 0.25s;
+  max-height: ${({ scrolled }) => scrolled ? '100px' : '200px'};
   ${device.tablet} {
     display: none;
   }
@@ -126,7 +128,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <NavbarContainer flex row  display={this.state.isOpen}>
+      <NavbarContainer flex row backColor="white" display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
           <Logo src={PenaLogo} />
           <MenuIcon>
@@ -165,7 +167,9 @@ class Navbar extends Component {
         >
           Services
         </Text>
-        <DesktopImage src={PenaLogo} height="200px" />
+
+        <DesktopImage src={PenaLogo} scrolled={this.props.isScrolled} />        
+        
         <ActiveLink
           color="black"
           bold="bold"
