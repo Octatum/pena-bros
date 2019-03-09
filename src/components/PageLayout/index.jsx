@@ -35,7 +35,7 @@ const PageLayout = ({ children }) => {
             rel="stylesheet"
           />
         </Helmet>
-        <Waypoint scrollableAncestor={window} onPositionChange={({ currentPosition }) => currentPosition === 'above' ? setScrolled(true) : setScrolled(false)}/>
+        <Waypoint onPositionChange={({ currentPosition }) => currentPosition === 'above' ? setScrolled(true) : setScrolled(false)}/>
           <div>{children}</div>
         
       </Layout>
