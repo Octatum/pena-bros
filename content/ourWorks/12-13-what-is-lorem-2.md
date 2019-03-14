@@ -11,5 +11,6 @@ allImages:
   - /assets/product3.png
 createDate: 18-Jan-19-00
 priority: '1'
+category: Auto Carpet
 ---
 

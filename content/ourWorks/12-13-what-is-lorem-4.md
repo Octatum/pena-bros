@@ -11,5 +11,6 @@ allImages:
   - /assets/product1.png
 createDate: 18-Jan-19-00
 priority: '2'
+category: Door Panel
 ---
 

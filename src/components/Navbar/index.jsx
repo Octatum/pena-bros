@@ -29,6 +29,14 @@ const Logo = styled(Image)`
   margin-left: 1.5em;
 `;
 
+const DesktopImage = styled(Image)`
+  transition: max-height ease-in-out 0.25s;
+  max-height: ${({ scrolled }) => scrolled ? '100px' : '200px'};
+  ${device.tablet} {
+    display: none;
+  }
+`;
+
 const MenuIcon = styled.div`
   max-width: 2.75em;
   margin: auto;
@@ -65,7 +73,7 @@ const NavbarContainer = styled(Container)`
   top: -1px;
   z-index: 10;
   padding: 0.7em 5em;
-  box-shadow: 0 5px 20px 0.5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 10px -4px rgba(0, 0, 0, 0.5);
 
   ${Text} {
     text-transform: uppercase;
@@ -89,6 +97,17 @@ const NavbarContainer = styled(Container)`
   }
 `;
 
+const ActiveLink = styled(Text)`
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+  }
+  .active {
+    color: ${({ theme }) => theme.color.green};
+  }
+`;
+
 class Navbar extends Component {
   constructor() {
     super();
@@ -109,7 +128,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <NavbarContainer flex row backColor="black" display={this.state.isOpen}>
+      <NavbarContainer flex row backColor="white" display={this.state.isOpen}>
         <CollapsibleMenu onClick={this.handleClick}>
           <Logo src={PenaLogo} />
           <MenuIcon>
@@ -122,7 +141,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -132,7 +151,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/about"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -142,27 +161,33 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/Services"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
           Services
         </Text>
-        <Text
-          as={Link}
-          activeStyle={{ color: this.props.theme.color.green }}
-          to="/our-works"
-          white="true"
+
+        <DesktopImage src={PenaLogo} scrolled={this.props.isScrolled} />        
+        
+        <ActiveLink
+          color="black"
           bold="bold"
           size={1}
         >
-          Works
-        </Text>
+          <Link
+            activeStyle={{ color: this.props.theme.color.green }}
+            getProps={({ isPartiallyCurrent }) => isPartiallyCurrent ? { className: 'active' } : null}
+            to="/our-works"
+          >
+            Works
+          </Link>
+        </ActiveLink>
         <Text
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/products"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >
@@ -172,7 +197,7 @@ class Navbar extends Component {
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
           to="/Contact"
-          white="true"
+          color="black"
           bold="bold"
           size={1}
         >

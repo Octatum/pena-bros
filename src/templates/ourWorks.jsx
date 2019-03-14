@@ -11,6 +11,7 @@ import { Image } from '../components/Image';
 import Arrow from '../components/Arrows';
 import QuoteAction from '../components/QuoteAction';
 import { device } from '../utils/device';
+import { Text } from '../components/Text';
 
 const ContLink = styled(Link)`
   position: absolute;
@@ -38,7 +39,7 @@ const QuoteActionComp = styled(QuoteAction)`
 const GridComponent = styled.div`
   width: calc(100% - 10em);
   height: auto;
-  margin: 5em 10em;
+  margin: 0 10em 5em 10em;
 
   display: grid;
 
@@ -128,8 +129,33 @@ function handleChangePage({ selected, ...rest }, prefix, index) {
   }
 }
 
+const ActiveLink = styled(Text)`
+  position: relative;
+  padding-left: 15px;
+  padding-bottom: 30px;
+
+  .active {
+    font-weight: bold;
+  }
+`;
+
+const GreenEdge = styled(Container)`
+  background-color: ${({ theme }) => theme.color.green};
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+
+  display: none;
+
+  .active ~ & {
+    display: block;
+  }
+`;
+
 const OurWorks = ({ pathContext }) => {
-  const { group, index, pageCount, pathPrefix } = pathContext;
+  const { group, index, pageCount, pathPrefix, additionalContext } = pathContext;
 
   let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
   let nextUrl =
@@ -145,6 +171,24 @@ const OurWorks = ({ pathContext }) => {
     <PageLayout>
       <Helmet title="Our Works" />
       <Container flex>
+        <Container flex row margin={[3, 0, 0, 0]}>
+          <ActiveLink color="black">
+            <Link to={`our-works`} style={{ color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }} activeClassName="active">
+              All
+            </Link>
+            <GreenEdge />
+          </ActiveLink>
+          {Object.entries(additionalContext.categoriasFixed).map(arr => {
+            return (
+              <ActiveLink color="black" key={arr[0]}>
+                <Link to={`our-works/${arr[1]}`} style={{ color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }} activeClassName="active">
+                  {arr[0]}
+                </Link>
+                <GreenEdge />
+              </ActiveLink>
+            )
+          })}
+        </Container>
         <GridComponent>
           {group.map(element => {
             const { frontmatter } = element.node;
@@ -158,7 +202,7 @@ const OurWorks = ({ pathContext }) => {
                   mHeight="auto"
                   fit="cover"
                 />
-                <ContLink to={`our-works/works/${element.numericId}`} />
+                <ContLink to={`our-works/works/${additionalContext.categoriasFixed[frontmatter.category]}/${frontmatter.title}`} />
               </Container>
             );
           })}

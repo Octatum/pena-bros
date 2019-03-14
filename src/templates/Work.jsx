@@ -142,11 +142,13 @@ class IndivWork extends Component {
       description,
       allImages,
     } = this.props.data.markdownRemark.frontmatter;
-    const workId = this.props.pageContext.numberId;
-    const prev = workId - 1 <= 0 ? 0 : workId - 1;
-    const next =
-      workId + 1 >= this.props.pageContext.maxPosts ? workId : workId + 1;
 
+    const {
+      sitePath,
+      prev,
+      next
+    } = this.props.pageContext;
+    
     return (
       <PageLayout>
         <Helmet title={title} />
@@ -163,21 +165,19 @@ class IndivWork extends Component {
             <Container width="auto">
               <Arrows
                 arrowColors={
-                  workId === 0 ? ['gray', 'gray'] : ['green', 'green']
+                  prev === '' ? ['gray', 'gray'] : ['green', 'green']
                 }
                 left
               />
-              <ArrowLink to={`our-works/works/${prev}`} />
+              {prev && <ArrowLink to={sitePath + (prev ? prev : title)} />}
             </Container>
             <Container width="auto">
               <Arrows
                 arrowColors={
-                  workId + 1 === this.props.pageContext.maxPosts
-                    ? ['gray', 'gray']
-                    : ['green', 'green']
+                  next === '' ? ['gray', 'gray'] : ['green', 'green']
                 }
               />
-              <ArrowLink to={`our-works/works/${next}`} />
+              {next && <ArrowLink to={sitePath + (next ? next : title)} />}
             </Container>
           </ArrowsContainer>
 
