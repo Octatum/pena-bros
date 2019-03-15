@@ -19,7 +19,7 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
   return (
     <SingleProdContainer flex show={show} {...props}>
       {descriptionList.map(data => (
-        <SubTitle 
+        <SubTitle
           size={3}
           title={data.descriptionTitle}
           white
@@ -28,10 +28,10 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
           height="auto"
           width="60%"
           tWidth="90%"
-          margin={[4,0]}
-          tMargin={[1,1.4,4,'auto']}
+          margin={[4, 0]}
+          tMargin={[1, 1.4, 4, 'auto']}
           key={data.descriptionTitle}
-          >
+        >
           {data.description}
         </SubTitle>
       ))}

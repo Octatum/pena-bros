@@ -16,7 +16,13 @@ const ServiceContainer = styled(Container)`
   }
 `;
 
-const ServiceNames = ({ icons, names = [], current, handleClick, ...props }) => {
+const ServiceNames = ({
+  icons,
+  names = [],
+  current,
+  handleClick,
+  ...props
+}) => {
   return (
     <Container {...props} backColor="black">
       {icons.map((icon, index) => {
@@ -31,12 +37,14 @@ const ServiceNames = ({ icons, names = [], current, handleClick, ...props }) => 
             key={icon}
           >
             <Image src={icon} key={icon} width="64px" height="64px" />
-            <Text white padding={[1, 0]}>{names[index]}</Text>
+            <Text white padding={[1, 0]}>
+              {names[index]}
+            </Text>
           </ServiceContainer>
         );
       })}
     </Container>
   );
-}
+};
 
 export default ServiceNames;

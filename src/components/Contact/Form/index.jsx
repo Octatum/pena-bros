@@ -168,8 +168,9 @@ const GetInTouch = ({ ...props }) => (
             onBlur={handleBlur}
             value={values.name}
           />
-          {errors.name &&
-            touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+          {errors.name && touched.name && (
+            <ErrorMessage>{errors.name}</ErrorMessage>
+          )}
 
           <Text size={fontSize} bold="bold">
             Phone:{' '}
@@ -183,8 +184,9 @@ const GetInTouch = ({ ...props }) => (
             onBlur={handleBlur}
             value={values.phone}
           />
-          {errors.phone &&
-            touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
+          {errors.phone && touched.phone && (
+            <ErrorMessage>{errors.phone}</ErrorMessage>
+          )}
 
           <Text size={fontSize} bold="bold">
             Email:{' '}
@@ -198,8 +200,9 @@ const GetInTouch = ({ ...props }) => (
             onBlur={handleBlur}
             value={values.mail}
           />
-          {errors.mail &&
-            touched.mail && <ErrorMessage>{errors.mail}</ErrorMessage>}
+          {errors.mail && touched.mail && (
+            <ErrorMessage>{errors.mail}</ErrorMessage>
+          )}
 
           <Field
             name="images"
@@ -243,8 +246,9 @@ const GetInTouch = ({ ...props }) => (
               })}
             </ImageContainer>
           )}
-          {errors.images &&
-            touched.images && <ErrorMessage>{errors.images}</ErrorMessage>}
+          {errors.images && touched.images && (
+            <ErrorMessage>{errors.images}</ErrorMessage>
+          )}
 
           <Text size={fontSize} bold="bold">
             Message:{' '}
@@ -258,8 +262,9 @@ const GetInTouch = ({ ...props }) => (
             onBlur={handleBlur}
             value={values.message}
           />
-          {errors.message &&
-            touched.message && <ErrorMessage>{errors.message}</ErrorMessage>}
+          {errors.message && touched.message && (
+            <ErrorMessage>{errors.message}</ErrorMessage>
+          )}
 
           <SubmitButton
             as="button"

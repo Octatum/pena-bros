@@ -143,12 +143,8 @@ class IndivWork extends Component {
       allImages,
     } = this.props.data.markdownRemark.frontmatter;
 
-    const {
-      sitePath,
-      prev,
-      next
-    } = this.props.pageContext;
-    
+    const { sitePath, prev, next } = this.props.pageContext;
+
     return (
       <PageLayout>
         <Helmet title={title} />

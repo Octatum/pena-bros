@@ -16,12 +16,12 @@ const Layout = styled.div`
 `;
 
 const PageLayout = ({ children }) => {
-  const [isScrolled, setScrolled] = useState(false)
+  const [isScrolled, setScrolled] = useState(false);
   return (
     <ThemeProvider theme={globalTheme}>
       <Layout>
         <LocationBanner />
-        <Navbar isScrolled={isScrolled}/>
+        <Navbar isScrolled={isScrolled} />
         <Helmet
           titleTemplate="%s | Peña Bros"
           meta={[
@@ -35,13 +35,16 @@ const PageLayout = ({ children }) => {
             rel="stylesheet"
           />
         </Helmet>
-        <Waypoint onPositionChange={({ currentPosition }) => currentPosition === 'above' ? setScrolled(true) : setScrolled(false)}/>
-          <div>{children}</div>
-        
+        <Waypoint
+          onPositionChange={({ currentPosition }) =>
+            currentPosition === 'above' ? setScrolled(true) : setScrolled(false)
+          }
+        />
+        <div>{children}</div>
       </Layout>
     </ThemeProvider>
   );
-}
+};
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,

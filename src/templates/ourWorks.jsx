@@ -155,7 +155,13 @@ const GreenEdge = styled(Container)`
 `;
 
 const OurWorks = ({ pathContext }) => {
-  const { group, index, pageCount, pathPrefix, additionalContext } = pathContext;
+  const {
+    group,
+    index,
+    pageCount,
+    pathPrefix,
+    additionalContext,
+  } = pathContext;
 
   let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
   let nextUrl =
@@ -173,7 +179,16 @@ const OurWorks = ({ pathContext }) => {
       <Container flex>
         <Container flex row margin={[3, 0, 0, 0]}>
           <ActiveLink color="black">
-            <Link to={`our-works`} style={{ color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }} activeClassName="active">
+            <Link
+              to={`our-works`}
+              style={{
+                color: 'inherit',
+                fontSize: 'inherit',
+                fontFamily: 'inherit',
+                textDecoration: 'none',
+              }}
+              activeClassName="active"
+            >
               All
             </Link>
             <GreenEdge />
@@ -181,12 +196,21 @@ const OurWorks = ({ pathContext }) => {
           {Object.entries(additionalContext.categoriasFixed).map(arr => {
             return (
               <ActiveLink color="black" key={arr[0]}>
-                <Link to={`our-works/${arr[1]}`} style={{ color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }} activeClassName="active">
+                <Link
+                  to={`our-works/${arr[1]}`}
+                  style={{
+                    color: 'inherit',
+                    fontSize: 'inherit',
+                    fontFamily: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                  activeClassName="active"
+                >
                   {arr[0]}
                 </Link>
                 <GreenEdge />
               </ActiveLink>
-            )
+            );
           })}
         </Container>
         <GridComponent>
@@ -202,7 +226,11 @@ const OurWorks = ({ pathContext }) => {
                   mHeight="auto"
                   fit="cover"
                 />
-                <ContLink to={`our-works/works/${additionalContext.categoriasFixed[frontmatter.category]}/${frontmatter.title}`} />
+                <ContLink
+                  to={`our-works/works/${
+                    additionalContext.categoriasFixed[frontmatter.category]
+                  }/${frontmatter.title}`}
+                />
               </Container>
             );
           })}

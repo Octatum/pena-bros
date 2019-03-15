@@ -31,7 +31,7 @@ const Logo = styled(Image)`
 
 const DesktopImage = styled(Image)`
   transition: max-height ease-in-out 0.25s;
-  max-height: ${({ scrolled }) => scrolled ? '100px' : '200px'};
+  max-height: ${({ scrolled }) => (scrolled ? '5em' : '10em')};
   ${device.tablet} {
     display: none;
   }
@@ -168,16 +168,14 @@ class Navbar extends Component {
           Services
         </Text>
 
-        <DesktopImage src={PenaLogo} scrolled={this.props.isScrolled} />        
-        
-        <ActiveLink
-          color="black"
-          bold="bold"
-          size={1}
-        >
+        <DesktopImage src={PenaLogo} scrolled={this.props.isScrolled} />
+
+        <ActiveLink color="black" bold="bold" size={1}>
           <Link
             activeStyle={{ color: this.props.theme.color.green }}
-            getProps={({ isPartiallyCurrent }) => isPartiallyCurrent ? { className: 'active' } : null}
+            getProps={({ isPartiallyCurrent }) =>
+              isPartiallyCurrent ? { className: 'active' } : null
+            }
             to="/our-works"
           >
             Works
