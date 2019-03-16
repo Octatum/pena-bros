@@ -31,7 +31,7 @@ const Logo = styled(Image)`
 
 const DesktopImage = styled(Image)`
   transition: max-height ease-in-out 0.25s;
-  max-height: ${({ scrolled }) => (scrolled ? '5em' : '10em')};
+  max-height: ${({ scrolled }) => (scrolled ? '5em' : '8em')};
   ${device.tablet} {
     display: none;
   }
@@ -46,10 +46,8 @@ const Bar = styled.div`
   width: 2.5em;
   height: 0.3em;
   background-color: ${({ theme }) => theme.color.black};
-
   margin: 0.5em 0;
-
-  transition: all 0.5s ease;
+  transition: all 0.4s ease-in-out;
 `;
 const Bar1 = styled(Bar)`
   transform: ${({ display }) =>
@@ -160,7 +158,7 @@ class Navbar extends Component {
         <Text
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
-          to="/Services"
+          to="/services"
           color="black"
           bold="bold"
           size={1}
@@ -194,7 +192,7 @@ class Navbar extends Component {
         <Text
           as={Link}
           activeStyle={{ color: this.props.theme.color.green }}
-          to="/Contact"
+          to="/contact"
           color="black"
           bold="bold"
           size={1}

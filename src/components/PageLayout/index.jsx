@@ -8,6 +8,7 @@ import { globalTheme } from './Theme';
 import Navbar from '../Navbar';
 import LocationBanner from './../LocationBanner';
 import { Waypoint } from 'react-waypoint';
+import Footer from '../Footer';
 
 const Layout = styled.div`
   display: flex;
@@ -36,11 +37,13 @@ const PageLayout = ({ children }) => {
           />
         </Helmet>
         <Waypoint
+          topOffset={'20%'}
           onPositionChange={({ currentPosition }) =>
-            currentPosition === 'above' ? setScrolled(true) : setScrolled(false)
+            setScrolled(currentPosition === 'above')
           }
         />
-        <div>{children}</div>
+        {children}
+        <Footer />
       </Layout>
     </ThemeProvider>
   );

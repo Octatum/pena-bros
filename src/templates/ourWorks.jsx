@@ -131,26 +131,19 @@ function handleChangePage({ selected, ...rest }, prefix, index) {
 
 const ActiveLink = styled(Text)`
   position: relative;
-  padding-left: 15px;
-  padding-bottom: 30px;
+  padding-bottom: 0.6em;
+  font-weight: bold;
 
   .active {
-    font-weight: bold;
-  }
-`;
-
-const GreenEdge = styled(Container)`
-  background-color: ${({ theme }) => theme.color.green};
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 100%;
-
-  display: none;
-
-  .active ~ & {
-    display: block;
+    ::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background: ${({ theme }) => theme.color.green};
+      height: 0.3em;
+    }
   }
 `;
 
@@ -191,7 +184,6 @@ const OurWorks = ({ pathContext }) => {
             >
               All
             </Link>
-            <GreenEdge />
           </ActiveLink>
           {Object.entries(additionalContext.categoriasFixed).map(arr => {
             return (
@@ -208,7 +200,6 @@ const OurWorks = ({ pathContext }) => {
                 >
                   {arr[0]}
                 </Link>
-                <GreenEdge />
               </ActiveLink>
             );
           })}

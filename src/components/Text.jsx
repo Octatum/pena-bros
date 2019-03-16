@@ -3,7 +3,7 @@ import { device } from '../utils/device';
 
 const defaultSize = 1;
 const increments = {
-  default: 0.25,
+  default: 0.15,
   tablet: 0.15,
   mobile: 0.05,
 };

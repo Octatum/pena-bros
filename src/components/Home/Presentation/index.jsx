@@ -20,7 +20,7 @@ const SlideCont = styled(Container)`
   background-repeat: no-repeat;
   background-size: cover;
 
-  height: 600px;
+  height: 500px;
 
   ::before {
     content: '';

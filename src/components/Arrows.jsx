@@ -14,12 +14,12 @@ const ArrowRight = styled.div`
   cursor: pointer;
   width: 0;
   height: 0;
-  border-top: 0.9em solid transparent;
-  border-bottom: 0.9em solid transparent;
+  border-top: 0.7em solid transparent;
+  border-bottom: 0.7em solid transparent;
   left: 0.1em;
   position: relative;
 
-  border-left: 1.5em solid
+  border-left: 1.2em solid
     ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
 
   ${device.tablet} {
@@ -32,12 +32,12 @@ const ArrowLeft = styled.div`
   cursor: pointer;
   width: 0;
   height: 0;
-  border-top: 0.9em solid transparent;
-  border-bottom: 0.9em solid transparent;
+  border-top: 0.7em solid transparent;
+  border-bottom: 0.7em solid transparent;
   left: -0.1em;
   position: relative;
 
-  border-right: 1.5em solid
+  border-right: 1.2em solid
     ${({ theme, arrowColors }) => theme.color[arrowColors[0]]};
 
   ${device.tablet} {

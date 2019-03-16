@@ -11,7 +11,7 @@ import SubTitle from '../SubTitle';
 const BackgroundContainer = styled(Container)`
   background-image: ${({ background }) => `url(${background})`};
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center center;
 
   ::before {
@@ -50,8 +50,8 @@ const AboutUs = ({ className, ...props }) => (
       flex
       justify="center"
       align="flex-end"
-      height="600px"
-      tHeight="400px"
+      height="300px"
+      tHeight="300px"
       className={className}
       background={placeholder}
     >
@@ -75,16 +75,16 @@ const AboutUs = ({ className, ...props }) => (
     </BackgroundContainer>
 
     <LeftEdgeContainer
-      margin={[10, 'auto', 0, 5]}
+      margin={[5, 'auto', 0, 5]}
       tMargin={[0]}
       tMargin={[5, 2, 0, 2]}
       width="70%"
       tWidth="auto"
     >
-      <Text size={8} bold="bold">
+      <Text size={6} bold="bold">
         Peña Bros Upholstery
       </Text>
-      <Text size={4}>
+      <Text size={2}>
         Peña Brothers Upholstery was established in 1986 by Rudy G. Peña as a
         family upholstery business. We have had many successful years in the
         automotive interior business in Leon Valley Texas.
@@ -99,10 +99,10 @@ const AboutUs = ({ className, ...props }) => (
       flex
       align="center"
       justify="center"
-      padding={[5, 15, 2, 15]}
+      padding={[3, 15, 1, 15]}
       tPadding={[5, 2.5]}
     >
-      <Text size={7} white bold="lighter" align="center">
+      <Text size={4} white bold="lighter" align="center">
         <Text as="span" bold="bold">
           Pena Bros. Upholstery Co. &nbsp;
         </Text>
@@ -117,8 +117,8 @@ const AboutUs = ({ className, ...props }) => (
     <Image
       src={placeholder2}
       width="100%"
-      height="700px"
-      tHeight="500px"
+      height="400px"
+      tHeight="400px"
       fit="cover"
     />
 
@@ -131,7 +131,7 @@ const AboutUs = ({ className, ...props }) => (
       padding={[3, 5, 5, 5]}
       tPadding={[3.5, 2]}
     >
-      <SubTitle size={3} white title="Who are we?">
+      <SubTitle size={2} white title="Who are we?">
         Pena Brothers is owned and managed by Rudy G. Pena- President, his son
         Rudy “Steven” Pena Sales Manager, Brother Roy G. Pena shop supervisor
         and Quality control, Ms. Diana Estrada business office manager. The

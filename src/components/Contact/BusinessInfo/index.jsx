@@ -10,7 +10,7 @@ import phone from './../assets/phone.svg';
 const BusinessInfo = () => (
   <Container
     flex
-    padding={[2, 1]}
+    padding={[1]}
     width="75%"
     tWidth="auto"
     margin={['auto']}

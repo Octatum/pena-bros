@@ -17,7 +17,7 @@ const AllQuoteContainer = styled(Container)`
 
 const LeftMark = styled(Image)`
   align-self: flex-start;
-  width: 12em;
+  width: 8em;
   position: absolute;
   left: 1em;
   top: 0;
@@ -29,7 +29,7 @@ const LeftMark = styled(Image)`
 
 const RightMark = styled(Image)`
   align-self: flex-end;
-  width: 10em;
+  width: 8em;
   position: absolute;
   right: 1em;
   bottom: 0;

@@ -94,7 +94,7 @@ class ImageSlider extends Component {
                     src={data}
                     key={data}
                     width="100%"
-                    height="448px"
+                    height="320px"
                     mHeight="320px"
                     fit="cover"
                   />

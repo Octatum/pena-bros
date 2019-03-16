@@ -130,12 +130,12 @@ const GetInTouch = ({ ...props }) => (
       errors,
       touched,
     }) => {
-      const fontSize = 3;
+      const fontSize = 2;
       let reader = undefined;
 
       return (
         <FormContainer
-          margin={[5, 'auto']}
+          margin={[2, 'auto']}
           tMargin={[2.5, 'auto']}
           width="70%"
           tWidth="100%"
