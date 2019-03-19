@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Container';
 
-import placeholder from './assets/placeholder2.png';
-import placeholder2 from './assets/placeholder3.png';
+import placeholder from './assets/placeholder3.jpg';
+import placeholder2 from './assets/placeholder2.jpg';
 import { Text } from '../Text';
 import { Image } from '../Image';
 import SubTitle from '../SubTitle';
@@ -12,7 +12,7 @@ const BackgroundContainer = styled(Container)`
   background-image: ${({ background }) => `url(${background})`};
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
 
   ::before {
     content: '';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, StaticQuery, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import { Container } from '../Container';
 import SubTitle from '../SubTitle';
