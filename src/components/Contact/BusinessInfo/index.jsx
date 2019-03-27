@@ -18,7 +18,7 @@ const BusinessInfo = () => (
   >
     <BusinessCard image={phone}>(210) 647-4200</BusinessCard>
     <BusinessCard image={location}>
-      5305 Bandera Road San Antonio, TX 78238
+      5305 Bandera Road San Antonio, TX
     </BusinessCard>
   </Container>
 );

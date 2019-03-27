@@ -11,6 +11,24 @@ const homePage = {
     { name: 'subtext1', type: 'string', title: 'Subtext 1' },
     { name: 'subtext2', type: 'text', title: 'Subtext 2' },
     {
+      title: 'Works',
+      name: 'works',
+      type: 'array',
+      options: {
+        editModal: 'popover',
+      },
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'ourWorks',
+            },
+          ],
+        },
+      ],
+    },
+    {
       title: 'Customer reviews',
       name: 'customerReviews',
       type: 'array',

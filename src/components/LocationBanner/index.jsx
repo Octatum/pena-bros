@@ -30,19 +30,7 @@ const Banner = () => (
         }}
         style={{ cursor: 'pointer', textDecoration: 'underline' }}
       >
-        5305 Bandera Rd, San Antonio, TX 78238, USA
-      </Text>
-      <Text
-        as="span"
-        white
-        bold="bold"
-        onClick={() => {
-          window.open('https://goo.gl/maps/U2PqXeHfHcJ2', '_blank');
-        }}
-        style={{ cursor: 'pointer' }}
-      >
-        {' '}
-        Click here{' '}
+        5305 Bandera Rd, San Antonio, TX
       </Text>
     </Text>
   </Container>
