@@ -29,7 +29,11 @@ const HomePage = props => {
         size={3}
         data={homepageData.customerReviews}
       />
-      <WorksPreview margin={[5, 0]} tMargin={[2, 0]} />
+      <WorksPreview
+        works={homepageData.works}
+        margin={[5, 0]}
+        tMargin={[2, 0]}
+      />
       <QuoteAction quote={homepageData.quote} />
     </Container>
   );

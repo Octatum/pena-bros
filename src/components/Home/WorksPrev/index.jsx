@@ -1,14 +1,14 @@
 import React from 'react';
-import { graphql, StaticQuery, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import { Flex, Box } from '@rebass/grid';
+import GatsbyLink from 'gatsby-link';
 
 import { Container } from '../../Container';
+import Image from 'gatsby-image';
 import { Text } from '../../Text';
-
-import ImageSlider from './ImageSlider';
-
 import ActionButton from '../../ActionButton';
 import { device } from '../../../utils/device';
+import { cleanString } from '../../../utils/lib';
 
 const RightAlign = styled(Container)`
   align-self: flex-end;
@@ -27,24 +27,8 @@ const Action = styled(ActionButton)`
   }
 `;
 
-const WorksPreview = ({ ...props }) => {
-  const data = useStaticQuery(graphql`
-    query getPrevWorks {
-      allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/ourWorks/" } }
-        sort: { fields: [frontmatter___createDate], order: DESC }
-        limit: 3
-      ) {
-        edges {
-          node {
-            frontmatter {
-              allImages
-            }
-          }
-        }
-      }
-    }
-  `);
+const WorksPreview = props => {
+  const { works } = props;
 
   return (
     <Container flex width="80%" tWidth="100%" {...props}>
@@ -61,12 +45,22 @@ const WorksPreview = ({ ...props }) => {
       >
         Lorem Ipsum is simply dummy text
       </RightAlign>
-      <ImageSlider
-        images={data.allMarkdownRemark.edges.map(
-          data => data.node.frontmatter.allImages[0]
-        )}
-        margin={[0, 0, 2, 0]}
-      />
+
+      <Flex style={{ width: '100%' }} justifyContent="space-between">
+        {works.map(data => {
+          const cleanTitle = cleanString(data.title);
+          const cleanCategory = cleanString(data.category);
+          return (
+            <Box
+              width={0.3}
+              as={GatsbyLink}
+              to={`/our-works/works/${cleanCategory}/${cleanTitle}`}
+            >
+              <Image fluid={data.cover.asset.fluid} style={{ width: '100%' }} />
+            </Box>
+          );
+        })}
+      </Flex>
       <Action name="go to our works" linkTo="our-works" width="auto" />
     </Container>
   );

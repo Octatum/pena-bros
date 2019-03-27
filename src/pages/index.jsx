@@ -38,6 +38,18 @@ const IndexPage = () => {
           review
         }
 
+        works {
+          title
+          category
+          cover {
+            asset {
+              fluid(maxWidth: 500, maxHeight: 500) {
+                ...GatsbySanityImageFluid_noBase64
+              }
+            }
+          }
+        }
+
         quote
       }
     }
