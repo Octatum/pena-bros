@@ -8,48 +8,29 @@ import Quote from './Quote';
 import WorksPreview from './WorksPrev';
 import QuoteAction from '../QuoteAction';
 
-const HomePage = () => {
-  const data = useStaticQuery(graphql`
-    query getQuotes {
-      allFile(
-        filter: {
-          sourceInstanceName: { eq: "reviews" }
-          name: { ne: ".gitkeep" }
-        }
-      ) {
-        edges {
-          node {
-            name
-            relativePath
-            childMarkdownRemark {
-              frontmatter {
-                title
-                review
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+const HomePage = props => {
+  const { data: homepageData } = props;
+
   return (
     <Container flex height="auto">
       <Presentation margin={[0, 0, 2, 0]} />
       <SubTitle
         size={2.5}
-        title="Lorem Ipsum is simply dummy text"
+        title={homepageData.subtext1}
         margin={[2, 'auto']}
         width="75%"
         tWidth="90%"
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        {homepageData.subtext2}
       </SubTitle>
-      <Quote margin={[5, 0]} tMargin={[2, 0]} size={3} data={data} />
+      <Quote
+        margin={[5, 0]}
+        tMargin={[2, 0]}
+        size={3}
+        data={homepageData.customerReviews}
+      />
       <WorksPreview margin={[5, 0]} tMargin={[2, 0]} />
-      <QuoteAction />
+      <QuoteAction quote={homepageData.quote} />
     </Container>
   );
 };

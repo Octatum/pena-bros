@@ -1,10 +1,8 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Container } from '../Container';
-import { StaticQuery, graphql } from 'gatsby';
 
 import QuoteAction from '../QuoteAction';
 import ServicesPresentation from './Presentation';
-import Comparison from './Comparison';
 
 class Services extends Component {
   constructor(props) {
@@ -43,71 +41,19 @@ class Services extends Component {
   }
 
   render() {
+    const { data } = this.props;
+
+    const icons = data.edges.map(({ node }) => node.icon);
+
     return (
       <Container>
-        <StaticQuery
-          query={graphql`
-            query getServices {
-              allFile(
-                filter: {
-                  sourceInstanceName: { eq: "services" }
-                  name: { ne: ".gitkeep" }
-                }
-              ) {
-                Presentation: edges {
-                  node {
-                    name
-                    relativePath
-                    childMarkdownRemark {
-                      frontmatter {
-                        title
-                        icon
-                        image
-                        description
-                      }
-                    }
-                  }
-                }
-                Comparison: edges {
-                  node {
-                    childMarkdownRemark {
-                      frontmatter {
-                        oldCarsWorks
-                        newCarsWorks
-                        oldCarServiceTitle
-                        oldCarServicDescription
-                        newCarServiceTitle
-                        newCarServiceDescription
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          `}
-          render={data => {
-            const icons = data.allFile.Presentation.map(
-              data => data.node.childMarkdownRemark.frontmatter.icon
-            );
-            return (
-              <Fragment>
-                <ServicesPresentation
-                  data={data.allFile.Presentation}
-                  icons={icons}
-                  handleClick={this.handleClick}
-                  handleHoverClick={this.handleHoverClick}
-                  handleHoverClickPrev={this.handleHoverClickPrev}
-                  current={this.state.current}
-                />
-                {/* <Comparison
-                  height="auto"
-                  margin={[0, 0, 7, 0]}
-                  data={data.allFile.Comparison[this.state.current]}
-                  current={this.state.current}
-                /> */}
-              </Fragment>
-            );
-          }}
+        <ServicesPresentation
+          data={data}
+          icons={icons}
+          handleClick={this.handleClick}
+          handleHoverClick={this.handleHoverClick}
+          handleHoverClickPrev={this.handleHoverClickPrev}
+          current={this.state.current}
         />
         <QuoteAction />
       </Container>

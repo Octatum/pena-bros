@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Container } from '../../Container';
 import { Image } from '../../Image';
 import SubTitle from '../../SubTitle';
+import GatsbyImage from 'gatsby-image';
 
 const View = styled(Container)`
   display: ${({ display }) => (display ? 'flex' : 'none')};
@@ -17,27 +18,34 @@ const ImageCenter = styled(Image)`
   object-fit: fill;
 `;
 
-const ServiceView = ({ serviceData, show, ...props }) => (
-  <View
-    {...props}
-    display={show ? 1 : 0}
-    flex
-    align="flex-start"
-    justify="space-between"
-  >
-    <SubTitle
-      size={2}
-      title={serviceData.title}
-      width="70%"
-      tWidth="auto"
-      tMargin={[1]}
-      margin={[4, 7]}
+const ServiceView = ({ serviceData, show, ...props }) => {
+  console.log({ serviceData });
+
+  return (
+    <View
+      {...props}
+      display={show ? 1 : 0}
+      flex
+      align="flex-start"
+      justify="space-between"
     >
-      {serviceData.description}
-    </SubTitle>
-    <ImageCenter src={serviceData.image} />
-  </View>
-);
+      <SubTitle
+        size={2}
+        title={serviceData.title}
+        width="70%"
+        tWidth="auto"
+        tMargin={[1]}
+        margin={[4, 7]}
+      >
+        {serviceData.description}
+      </SubTitle>
+      <ImageCenter
+        as={GatsbyImage}
+        fluid={serviceData.serviceImage.asset.fluid}
+      />
+    </View>
+  );
+};
 
 ServiceView.propTypes = {
   serviceData: PropTypes.object.isRequired,

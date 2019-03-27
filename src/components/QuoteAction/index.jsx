@@ -10,7 +10,12 @@ const Quote = styled(Container)`
   width: auto;
 `;
 
-const QuoteAction = ({ ...props }) => {
+const defaultQuote =
+  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+
+const QuoteAction = props => {
+  const { quote = defaultQuote } = props;
+
   return (
     <Container
       flex
@@ -40,8 +45,7 @@ const QuoteAction = ({ ...props }) => {
           bold="lighter"
           height="auto"
         >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          {quote}
         </Container>
         <ActionButton tMargin={[0.5, 0]} name="Start!" linkTo="/contact" />
       </Container>

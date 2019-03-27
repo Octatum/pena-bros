@@ -104,7 +104,6 @@ const GetInTouch = ({ ...props }) => (
     }}
     validationSchema={validation}
     onSubmit={(values, actions) => {
-      console.log(encode(JSON.stringify(values)));
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

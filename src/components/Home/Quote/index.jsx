@@ -70,22 +70,19 @@ class Quote extends Component {
             tMargin={[0, 0, 6, 0]}
             className="glide__slides"
           >
-            {this.props.data.allFile.edges.map((data, index) => {
-              const { frontmatter } = data.node.childMarkdownRemark;
-              return (
-                <IndivQuote
-                  key={frontmatter.title}
-                  size={this.props.size}
-                  className="glide__slide"
-                  author={frontmatter.title}
-                  width="calc(100% - 25em)"
-                  tWidth="100%"
-                  height="auto"
-                >
-                  {frontmatter.review}
-                </IndivQuote>
-              );
-            })}
+            {this.props.data.map(review => (
+              <IndivQuote
+                key={review.name}
+                size={this.props.size}
+                className="glide__slide"
+                author={review.name}
+                width="calc(100% - 25em)"
+                tWidth="100%"
+                height="auto"
+              >
+                {review.review}
+              </IndivQuote>
+            ))}
           </Container>
         </div>
         <RightMark src={final} />

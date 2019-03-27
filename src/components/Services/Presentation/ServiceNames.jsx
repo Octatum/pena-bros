@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import GatsbyImage from 'gatsby-image';
 import { Container } from '../../Container';
 import { Image } from '../../Image';
 import { Text } from '../../Text';
@@ -25,24 +26,27 @@ const ServiceNames = ({
 }) => {
   return (
     <Container {...props} backColor="black">
-      {icons.map((icon, index) => {
-        return (
-          <ServiceContainer
-            flex
-            padding={[2, 0]}
-            height="auto"
-            width="auto"
-            onClick={event => handleClick(event, index)}
-            isCurrent={current === index}
-            key={icon}
-          >
-            <Image src={icon} key={icon} width="64px" height="64px" />
-            <Text white padding={[1, 0]}>
-              {names[index]}
-            </Text>
-          </ServiceContainer>
-        );
-      })}
+      {icons.map((icon, index) => (
+        <ServiceContainer
+          flex
+          padding={[2, 0]}
+          height="auto"
+          width="auto"
+          onClick={event => handleClick(event, index)}
+          isCurrent={current === index}
+          key={icon.asset.fixed.src}
+        >
+          <Image
+            as={GatsbyImage}
+            fixed={icon.asset.fixed}
+            width="64px"
+            height="64px"
+          />
+          <Text white padding={[1, 0]}>
+            {names[index]}
+          </Text>
+        </ServiceContainer>
+      ))}
     </Container>
   );
 };

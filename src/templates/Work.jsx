@@ -90,8 +90,7 @@ class IndivWork extends Component {
   }
 
   handleArrowClick(index) {
-    const allImagesLength = this.props.data.markdownRemark.frontmatter.allImages
-      .length;
+    const allImagesLength = this.props.data.sanityOurWorks.images.length;
     let temp = 0;
     if (index < this.state.currentImage) {
       temp = (index + allImagesLength) % allImagesLength;
@@ -137,11 +136,7 @@ class IndivWork extends Component {
   }
 
   render() {
-    const {
-      title,
-      description,
-      allImages,
-    } = this.props.data.markdownRemark.frontmatter;
+    const { title, description, images } = this.props.data.sanityOurWorks;
 
     const { sitePath, prev, next } = this.props.pageContext;
 
@@ -197,7 +192,7 @@ class IndivWork extends Component {
             tMargin={[1, 0, 0, 0]}
           >
             <Image
-              src={allImages[this.state.currentImage]}
+              src={images[this.state.currentImage].asset.url}
               width="100%"
               height="730px"
               fit="cover"
@@ -212,10 +207,10 @@ class IndivWork extends Component {
               <Slider id="IndividualWorkImages" height="auto">
                 <div data-glide-el="track" className="glide__track">
                   <Container className="glide__slides" height="auto">
-                    {allImages.map((data, _) => {
+                    {images.map((data, _) => {
                       return (
                         <Container className="glide__slide">
-                          <Images src={data} key={data} />
+                          <Images src={data.asset.url} key={data} />
                         </Container>
                       );
                     })}
@@ -260,14 +255,14 @@ class IndivWork extends Component {
 export default IndivWork;
 
 export const getWorkQuery = graphql`
-  query getWork($title: String, $date: String) {
-    markdownRemark(
-      frontmatter: { title: { eq: $title }, createDate: { eq: $date } }
-    ) {
-      frontmatter {
-        title
-        description
-        allImages
+  query getWork($title: String) {
+    sanityOurWorks(title: { eq: $title }) {
+      title
+      description
+      images {
+        asset {
+          url
+        }
       }
     }
   }

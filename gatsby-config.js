@@ -8,52 +8,60 @@ module.exports = {
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'rxn53wuu',
+        dataset: 'production',
+        watchMode: true,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: []
+        plugins: [],
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/services`,
-        name: 'services'
+        name: 'services',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/reviews`,
-        name: 'reviews'
+        name: 'reviews',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/homeSlides`,
-        name: 'homeSlides'
+        name: 'homeSlides',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/aboutUsSlides`,
-        name: 'aboutUsSlides'
+        name: 'aboutUsSlides',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/products`,
-        name: 'OurProducts'
+        name: 'OurProducts',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/ourWorks`,
-        name: 'ourWorks'
+        name: 'ourWorks',
       },
     },
   ],
-}
+};

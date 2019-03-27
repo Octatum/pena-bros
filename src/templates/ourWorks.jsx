@@ -12,6 +12,7 @@ import Arrow from '../components/Arrows';
 import QuoteAction from '../components/QuoteAction';
 import { device } from '../utils/device';
 import { Text } from '../components/Text';
+import { cleanString } from '../utils/lib';
 
 const ContLink = styled(Link)`
   position: absolute;
@@ -206,11 +207,13 @@ const OurWorks = ({ pathContext }) => {
         </Container>
         <GridComponent>
           {group.map(element => {
-            const { frontmatter } = element.node;
+            console.log({ element });
+            const { category, title, cover } = element.node || element;
+            const route = cleanString(title);
             return (
-              <Container key={element.numericId} flex>
+              <Container key={title} flex>
                 <Image
-                  src={frontmatter.allImages[0]}
+                  src={cover.asset.url}
                   width="100%"
                   height="auto"
                   mWidth="100%"
@@ -219,8 +222,8 @@ const OurWorks = ({ pathContext }) => {
                 />
                 <ContLink
                   to={`our-works/works/${
-                    additionalContext.categoriasFixed[frontmatter.category]
-                  }/${frontmatter.title}`}
+                    additionalContext.categoriasFixed[category]
+                  }/${route}`}
                 />
               </Container>
             );

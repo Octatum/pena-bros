@@ -97,6 +97,8 @@ const ServicesPresentation = ({
   handleHoverClickPrev,
   ...props
 }) => {
+  const names = data.edges.map(({ node }) => node.title);
+
   return (
     <PresContainer
       {...props}
@@ -112,9 +114,7 @@ const ServicesPresentation = ({
           handleClick={handleClick}
           current={current}
           icons={icons}
-          names={data.map(
-            edge => edge.node.childMarkdownRemark.frontmatter.title
-          )}
+          names={names}
         />
         <ServiceNameColumnMobile
           handleClick={handleClick}
@@ -148,16 +148,13 @@ const ServicesPresentation = ({
           />
         </ArrowsContainerMobile>
       </Container>
-      {data.map((data, index) => {
-        const { frontmatter } = data.node.childMarkdownRemark;
-        return (
-          <ViewComponent
-            serviceData={frontmatter}
-            show={index === current}
-            key={frontmatter.title}
-          />
-        );
-      })}
+      {data.edges.map(({ node }, index) => (
+        <ViewComponent
+          serviceData={node}
+          show={index === current}
+          key={node.title}
+        />
+      ))}
     </PresContainer>
   );
 };

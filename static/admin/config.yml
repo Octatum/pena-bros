@@ -6,96 +6,167 @@ media_folder: static/assets
 public_folder: assets
 
 collections:
-  - name: "services"
-    label: "Offered Services"
-    folder: "content/services"
+  - name: 'services'
+    label: 'Offered Services'
+    folder: 'content/services'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "service"}
-      - {label: "Icon", name: "icon", widget: "image"}
-      - {label: "Service Name", name: "title", widget: "string"}
-      - {label: "Service Image", name: "image", widget: "image"}
-      - {label: "Service Description", name: "description", widget: "text"}
-      - {label: "Old Car Service Title", name: "oldCarServiceTitle", widget: "string"}
-      - {label: "Old Car Service Description", name: "oldCarServicDescription", widget: "text"}
-      - {label: "New Car Service Title", name: "newCarServiceTitle", widget: "string"}
-      - {label: "New Car Service Description", name: "newCarServiceDescription", widget: "text"}
-      - label: "Works on Old Cars" 
-        name: "oldCarsWorks" 
-        widget: "list"
-        field: {label: "oldImage", name: "oldImage", widget: "image"}
-      - label: "Works on New Cars" 
-        name: "newCarsWorks" 
-        widget: "list"
-        field: {label: "newImage", name: "newImage", widget: "image"}
+      - {
+          label: 'Layout',
+          name: 'layout',
+          widget: 'hidden',
+          default: 'service',
+        }
+      - { label: 'Icon', name: 'icon', widget: 'image' }
+      - { label: 'Service Name', name: 'title', widget: 'string' }
+      - { label: 'Service Image', name: 'image', widget: 'image' }
+      - { label: 'Service Description', name: 'description', widget: 'text' }
+      - {
+          label: 'Old Car Service Title',
+          name: 'oldCarServiceTitle',
+          widget: 'string',
+        }
+      - {
+          label: 'Old Car Service Description',
+          name: 'oldCarServicDescription',
+          widget: 'text',
+        }
+      - {
+          label: 'New Car Service Title',
+          name: 'newCarServiceTitle',
+          widget: 'string',
+        }
+      - {
+          label: 'New Car Service Description',
+          name: 'newCarServiceDescription',
+          widget: 'text',
+        }
+      - label: 'Works on Old Cars'
+        name: 'oldCarsWorks'
+        widget: 'list'
+        field: { label: 'oldImage', name: 'oldImage', widget: 'image' }
+      - label: 'Works on New Cars'
+        name: 'newCarsWorks'
+        widget: 'list'
+        field: { label: 'newImage', name: 'newImage', widget: 'image' }
 
-  - name: "reviews"
-    label: "User Reviews"
-    folder: "content/reviews"
+  - name: 'reviews'
+    label: 'User Reviews'
+    folder: 'content/reviews'
     create: true
-    slug: "{{month}}-{{day}}-{{slug}}"
+    slug: '{{month}}-{{day}}-{{slug}}'
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "review"}
-      - {label: "Author", name: "title", widget: "string"}
-      - {label: "Review", name: "review", widget: "string"}
-  
-  - name: "products"
-    label: "Our Products"
-    folder: "content/products"
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'review' }
+      - { label: 'Author', name: 'title', widget: 'string' }
+      - { label: 'Review', name: 'review', widget: 'string' }
+
+  - name: 'products'
+    label: 'Our Products'
+    folder: 'content/products'
     create: true
-    slug: "{{month}}-{{day}}-{{slug}}"
+    slug: '{{month}}-{{day}}-{{slug}}'
     fields:
-      - {label: "Product Name", name: "title", widget: "string"}
-      - {label: "Preview Image", name: "preview", widget: "image"}
-      - label: "Product Description"
-        name: "descriptionList"
-        widget: "list"
-        fields: 
-          - {label: "Title", name: "descriptionTitle", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-      - {label: "Product Image", name: "image", widget: "image"}
+      - { label: 'Product Name', name: 'title', widget: 'string' }
+      - { label: 'Preview Image', name: 'preview', widget: 'image' }
+      - label: 'Product Description'
+        name: 'descriptionList'
+        widget: 'list'
+        fields:
+          - { label: 'Title', name: 'descriptionTitle', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Product Image', name: 'image', widget: 'image' }
 
-  - name: "ourWorks"
-    label: "Our Works"
-    folder: "content/ourWorks"
+  - name: 'ourWorks'
+    label: 'Our Works'
+    folder: 'content/ourWorks'
     create: true
-    slug: "{{month}}-{{day}}-{{hour}}-{{slug}}"
-    fields: 
-    - {label: "Work Title", name: "title", widget: "string"}
-    - {label: "Work Description", name: "description", widget: "text"}
-    - {label: "Work Images", name: "allImages", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
-    - {label: "Creation Date", name: "createDate", widget: "datetime", format: "DD-MMM-YY-HH"}
-    - {label: "Sorting Priority", name: "priority", widget: "number", default: 1}
-    - label: "Work Category"
-      name: "category"
-      widget: "select"
-      options: ["Auto Carpet", "Convertible Top", "Door Panel", "Headliner", "Rod Wire", "Leather Interiors"]
+    slug: '{{month}}-{{day}}-{{hour}}-{{slug}}'
+    fields:
+      - { label: 'Work Title', name: 'title', widget: 'string' }
+      - { label: 'Work Description', name: 'description', widget: 'text' }
+      - {
+          label: 'Work Images',
+          name: 'allImages',
+          widget: 'list',
+          field: { label: 'Image', name: 'image', widget: 'image' },
+        }
+      - {
+          label: 'Creation Date',
+          name: 'createDate',
+          widget: 'datetime',
+          format: 'DD-MMM-YY-HH',
+        }
+      - {
+          label: 'Sorting Priority',
+          name: 'priority',
+          widget: 'number',
+          default: 1,
+        }
+      - label: 'Work Category'
+        name: 'category'
+        widget: 'select'
+        options:
+          [
+            'Auto Carpet',
+            'Convertible Top',
+            'Door Panel',
+            'Headliner',
+            'Rod Wire',
+            'Leather Interiors',
+          ]
 
-  - name: "homePresentation"
-    label: "Home Presentation Slides"
-    files: 
-      - name: "pres1"
-        label: "First Slide"
-        file: "content/homeSlides/firstSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}
-          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
-      - name: "pres2"
-        label: "Second Slide"
-        file: "content/homeSlides/secondSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}
-          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
-      - name: "pres3"
-        label: "Third Slide"
-        file: "content/homeSlides/thirdSlide.md"
-        fields: 
-          - {label: "Text", name: "description", widget: "text"}
-          - {label: "Button Link", name: "link", widget: "select", options: ["About Us", "About Us", "About Us"]}
-          - {label: "Background Image", name: "image", widget: "image"}
-          - {label: "Mobile Background Image", name: "mobileImage", widget: "image"}
+  - name: 'homePresentation'
+    label: 'Home Presentation Slides'
+    files:
+      - name: 'pres1'
+        label: 'First Slide'
+        file: 'content/homeSlides/firstSlide.md'
+        fields:
+          - { label: 'Text', name: 'description', widget: 'text' }
+          - {
+              label: 'Button Link',
+              name: 'link',
+              widget: 'select',
+              options: ['About Us', 'About Us', 'About Us'],
+            }
+          - { label: 'Background Image', name: 'image', widget: 'image' }
+          - {
+              label: 'Mobile Background Image',
+              name: 'mobileImage',
+              widget: 'image',
+            }
+      - name: 'pres2'
+        label: 'Second Slide'
+        file: 'content/homeSlides/secondSlide.md'
+        fields:
+          - { label: 'Text', name: 'description', widget: 'text' }
+          - {
+              label: 'Button Link',
+              name: 'link',
+              widget: 'select',
+              options: ['About Us', 'About Us', 'About Us'],
+            }
+          - { label: 'Background Image', name: 'image', widget: 'image' }
+          - {
+              label: 'Mobile Background Image',
+              name: 'mobileImage',
+              widget: 'image',
+            }
+      - name: 'pres3'
+        label: 'Third Slide'
+        file: 'content/homeSlides/thirdSlide.md'
+        fields:
+          - { label: 'Text', name: 'description', widget: 'text' }
+          - {
+              label: 'Button Link',
+              name: 'link',
+              widget: 'select',
+              options: ['About Us', 'About Us', 'About Us'],
+            }
+          - { label: 'Background Image', name: 'image', widget: 'image' }
+          - {
+              label: 'Mobile Background Image',
+              name: 'mobileImage',
+              widget: 'image',
+            }
