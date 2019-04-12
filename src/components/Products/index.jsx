@@ -200,7 +200,7 @@ export default props => (
   <StaticQuery
     query={graphql`
     query getAllProducts {
-      allSanityProducts {
+      allSanityProducts(limit: 4) {
         edges {
           node {
             id
