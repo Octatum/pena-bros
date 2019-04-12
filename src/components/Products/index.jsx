@@ -109,8 +109,6 @@ class Products extends Component {
 
   render() {
     const current = this.props.data.allSanityProducts.edges[this.state.currentViewed].node;
-    console.log(this.props);
-    console.log('current', current)
 
     return (
       <Container
