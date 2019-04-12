@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import GatsbyImage from 'gatsby-image';
 
 import { Container } from '../Container';
-import { Image } from '../Image';
 import SubTitle from '../SubTitle';
 import { device } from '../../utils/device';
 
@@ -15,13 +15,12 @@ const SingleProdContainer = styled(Container)`
   }
 `;
 
-const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
+const IndivProd = ({ title, image, description, show, ...props }) => {
   return (
     <SingleProdContainer flex show={show} {...props}>
-      {descriptionList.map(data => (
         <SubTitle
           size={3}
-          title={data.descriptionTitle}
+          title={title}
           white
           edgeColor="black"
           tEdgeColor="green"
@@ -30,11 +29,9 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
           tWidth="90%"
           margin={[4, 0]}
           tMargin={[1, 1.4, 4, 'auto']}
-          key={data.descriptionTitle}
         >
-          {data.description}
+          {description}
         </SubTitle>
-      ))}
       <Container
         flex
         backColor="transparent"
@@ -46,7 +43,7 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
         margin={[0, 0, 3, 'auto']}
         tMargin={[0]}
       >
-        <Image src={image} />
+        <GatsbyImage style={{ width: "100%", maxWidth: '1000px' }} fluid={image.asset.fluid} />
       </Container>
     </SingleProdContainer>
   );
@@ -54,8 +51,8 @@ const IndivProd = ({ title, image, descriptionList, show, ...props }) => {
 
 IndivProd.propTypes = {
   title: PropTypes.string,
-  image: PropTypes.string,
-  description: PropTypes.array,
+  image: PropTypes.object,
+  description: PropTypes.string,
   show: PropTypes.bool,
 };
 

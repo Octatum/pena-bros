@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import GatsbyImage from "gatsby-image"
 import styled from 'styled-components';
 import { Container } from '../Container';
 import { Image } from '../Image';
@@ -83,7 +84,7 @@ class Products extends Component {
 
   handleSelectNext() {
     let next =
-      (this.state.currentViewed + 1) % this.props.data.allFile.edges.length;
+      (this.state.currentViewed + 1) % this.props.data.allSanityProducts.edges.length;
 
     this.setState({
       currentViewed: next,
@@ -92,8 +93,8 @@ class Products extends Component {
 
   handleSelectPrev() {
     let prev =
-      (this.state.currentViewed - 1 + this.props.data.allFile.edges.length) %
-      this.props.data.allFile.edges.length;
+      (this.state.currentViewed - 1 + this.props.data.allSanityProducts.edges.length) %
+      this.props.data.allSanityProducts.edges.length;
 
     this.setState({
       currentViewed: prev,
@@ -107,8 +108,9 @@ class Products extends Component {
   }
 
   render() {
-    const current = this.props.data.allFile.edges[this.state.currentViewed].node
-      .childMarkdownRemark.frontmatter;
+    const current = this.props.data.allSanityProducts.edges[this.state.currentViewed].node;
+    console.log(this.props);
+    console.log('current', current)
 
     return (
       <Container
@@ -128,23 +130,24 @@ class Products extends Component {
 
           <Tabs
             current={this.state.currentViewed}
-            total={this.props.data.allFile.edges.length}
+            total={this.props.data.allSanityProducts.edges.length}
           >
             <AllProductsContainer
               flex
               row
               justify="flex-start"
               width="auto"
-              tWidth={`${50 * this.props.data.allFile.edges.length}%`}
+              tWidth={`${50 * this.props.data.allSanityProducts.edges.length}%`}
               height="auto"
               align="initial"
             >
-              {this.props.data.allFile.edges.map((_, index) => {
-                const { frontmatter } = _.node.childMarkdownRemark;
+              {this.props.data.allSanityProducts.edges.map((_, index) => {
+                const { id, logo } = _.node;
+                console.log(id, logo)
                 return (
                   <TabSelection
                     flex
-                    key={frontmatter.preview}
+                    key={id}
                     onClick={e => this.clickSelection(e, index)}
                     backColor={
                       this.state.currentViewed === index ? 'green' : 'black'
@@ -163,11 +166,8 @@ class Products extends Component {
                     height="auto"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Image
-                      src={frontmatter.preview}
-                      width="100%"
-                      height="15em"
-                      mHeight="auto"
+                    <GatsbyImage
+                      fixed={logo.asset.fixed}
                     />
                   </TabSelection>
                 );
@@ -185,10 +185,10 @@ class Products extends Component {
 
         <SingleProductComponent
           height="auto"
-          title={current.title}
-          preview={current.preview}
-          image={current.image}
-          descriptionList={current.descriptionList}
+          title={current.productName}
+          preview={current.logo}
+          image={current.productImage}
+          description={current.productDescription}
           backColor="green"
         />
       </Container>
@@ -199,30 +199,31 @@ class Products extends Component {
 export default props => (
   <StaticQuery
     query={graphql`
-      query getProducts {
-        allFile(
-          filter: {
-            sourceInstanceName: { eq: "OurProducts" }
-            name: { ne: ".gitkeep" }
-          }
-        ) {
-          edges {
-            node {
-              childMarkdownRemark {
-                frontmatter {
-                  title
-                  preview
-                  image
-                  descriptionList {
-                    descriptionTitle
-                    description
-                  }
+    query getAllProducts {
+      allSanityProducts {
+        edges {
+          node {
+            id
+            logo {
+              asset {
+                fixed(width: 100) {
+                  ...GatsbySanityImageFixed_noBase64
                 }
               }
             }
+            productDescription
+            productImage {
+              asset {
+                fluid(maxWidth: 1000, maxHeight: 500) {
+                  ...GatsbySanityImageFluid_noBase64
+                }
+              }
+            }
+            productName
           }
         }
       }
+    }
     `}
     render={data => <Products data={data} {...props} />}
   />

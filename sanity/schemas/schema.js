@@ -7,6 +7,7 @@ import homePage, { customerQuote } from './homePage';
 import slideshow, { slide } from './slideshow';
 import works from './works';
 import services from './services';
+import products from './products';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -17,5 +18,6 @@ export default createSchema({
     ...[homePage, customerQuote, slideshow, slide],
     ...[works],
     ...[services],
+    ...[products],
   ]),
 });
