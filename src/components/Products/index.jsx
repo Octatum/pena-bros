@@ -54,10 +54,8 @@ const ArrowContainer = styled(Container).attrs({
 
 const Tabs = styled(Container)`
   overflow-x: auto;
-  width: calc(100% - 14em);
 
   ${device.tablet} {
-    width: calc(100% - 10em);
     overflow: hidden;
   }
   & > div {
@@ -162,6 +160,10 @@ class Products extends Component {
                     width="auto"
                     tWidth="50%"
                     height="auto"
+                    tHeight={
+                      this.state.currentViewed === index ? '200px' : '150px'
+                    }
+                    tMargin={0}
                     style={{ cursor: 'pointer' }}
                   >
                     <GatsbyImage
@@ -204,7 +206,7 @@ export default props => (
             id
             logo {
               asset {
-                fixed(width: 100) {
+                fixed(width: 150) {
                   ...GatsbySanityImageFixed_noBase64
                 }
               }
