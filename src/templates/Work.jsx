@@ -240,6 +240,7 @@ class IndivWork extends Component {
             margin={[0, 19.8]}
             tMargin={[0, 3, 5, 'auto']}
             width="80%"
+            style={{ maxWidth: '750px' }}
             edgeColor="green"
           >
             {description}
