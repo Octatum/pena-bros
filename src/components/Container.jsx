@@ -48,7 +48,7 @@ export const Container = styled.div`
   position: relative;
   box-sizing: border-box;
   width: ${props => (props.width ? props.width : '100%')};
-  height: ${props => (props.height ? props.height : '100%')};
+  height: ${props => (props.height ? props.height : 'auto')};
 
   ${background};
   ${displayType};

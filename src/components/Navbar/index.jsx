@@ -25,7 +25,6 @@ const CollapsibleMenu = styled.div`
 `;
 const Logo = styled(Image)`
   width: 5em;
-  height: 100%;
   margin-left: 1.5em;
 `;
 

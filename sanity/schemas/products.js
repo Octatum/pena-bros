@@ -1,29 +1,29 @@
 const products = {
-  title: 'Productos',
+  title: 'Products',
   name: 'products',
   type: 'document',
   fields: [
     {
-      title: 'Nombre de producto',
+      title: 'Name',
       name: 'productName',
       type: 'string',
     },
     {
-      title: 'Descripción de producto',
+      title: 'Description',
       name: 'productDescription',
       type: 'text',
     },
     {
-      title: 'Logo de producto',
+      title: 'Logo',
       name: 'logo',
       type: 'image',
     },
     {
-      title: 'Imágen de producto',
+      title: 'Body image',
       name: 'productImage',
       type: 'image',
     },
   ],
-}
+};
 
 export default products;
