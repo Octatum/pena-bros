@@ -9,12 +9,12 @@ const Banner = () => (
         Call Us Today!{' '}
       </Text>
       <Text
-        as="span"
+        as="a"
         white
-        onClick={() => {
-          window.open(`tel:2106474200`);
-        }}
-        style={{ cursor: 'pointer', textDecoration: 'underline' }}
+        target="_blank"
+        href="tel:2106474200"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'underline' }}
       >
         (210) 647-4200
       </Text>
@@ -23,12 +23,12 @@ const Banner = () => (
         We are located at:{' '}
       </Text>
       <Text
-        as="span"
+        as="a"
         white
-        onClick={() => {
-          window.open('https://goo.gl/maps/U2PqXeHfHcJ2', '_blank');
-        }}
-        style={{ cursor: 'pointer', textDecoration: 'underline' }}
+        target="_blank"
+        href="https://goo.gl/maps/U2PqXeHfHcJ2"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'underline' }}
       >
         5305 Bandera Rd, San Antonio, TX
       </Text>
