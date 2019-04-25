@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import GatsbyImage from "gatsby-image"
+import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import { Container } from '../Container';
 import { Image } from '../Image';
@@ -82,7 +82,8 @@ class Products extends Component {
 
   handleSelectNext() {
     let next =
-      (this.state.currentViewed + 1) % this.props.data.allSanityProducts.edges.length;
+      (this.state.currentViewed + 1) %
+      this.props.data.allSanityProducts.edges.length;
 
     this.setState({
       currentViewed: next,
@@ -91,7 +92,9 @@ class Products extends Component {
 
   handleSelectPrev() {
     let prev =
-      (this.state.currentViewed - 1 + this.props.data.allSanityProducts.edges.length) %
+      (this.state.currentViewed -
+        1 +
+        this.props.data.allSanityProducts.edges.length) %
       this.props.data.allSanityProducts.edges.length;
 
     this.setState({
@@ -106,7 +109,9 @@ class Products extends Component {
   }
 
   render() {
-    const current = this.props.data.allSanityProducts.edges[this.state.currentViewed].node;
+    const current = this.props.data.allSanityProducts.edges[
+      this.state.currentViewed
+    ].node;
 
     return (
       <Container
@@ -139,7 +144,6 @@ class Products extends Component {
             >
               {this.props.data.allSanityProducts.edges.map((_, index) => {
                 const { id, logo } = _.node;
-                console.log(id, logo)
                 return (
                   <TabSelection
                     flex
@@ -166,9 +170,7 @@ class Products extends Component {
                     tMargin={0}
                     style={{ cursor: 'pointer' }}
                   >
-                    <GatsbyImage
-                      fixed={logo.asset.fixed}
-                    />
+                    <GatsbyImage fixed={logo.asset.fixed} />
                   </TabSelection>
                 );
               })}
@@ -199,31 +201,31 @@ class Products extends Component {
 export default props => (
   <StaticQuery
     query={graphql`
-    query getAllProducts {
-      allSanityProducts(limit: 4) {
-        edges {
-          node {
-            id
-            logo {
-              asset {
-                fixed(width: 150) {
-                  ...GatsbySanityImageFixed_noBase64
+      query getAllProducts {
+        allSanityProducts(limit: 4) {
+          edges {
+            node {
+              id
+              logo {
+                asset {
+                  fixed(width: 150) {
+                    ...GatsbySanityImageFixed_noBase64
+                  }
                 }
               }
-            }
-            productDescription
-            productImage {
-              asset {
-                fluid(maxWidth: 1000, maxHeight: 500) {
-                  ...GatsbySanityImageFluid_noBase64
+              productDescription
+              productImage {
+                asset {
+                  fluid(maxWidth: 1000, maxHeight: 500) {
+                    ...GatsbySanityImageFluid_noBase64
+                  }
                 }
               }
+              productName
             }
-            productName
           }
         }
       }
-    }
     `}
     render={data => <Products data={data} {...props} />}
   />

@@ -19,8 +19,6 @@ const ImageCenter = styled(Image)`
 `;
 
 const ServiceView = ({ serviceData, show, ...props }) => {
-  console.log({ serviceData });
-
   return (
     <View
       {...props}

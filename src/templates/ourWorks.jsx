@@ -207,7 +207,6 @@ const OurWorks = ({ pathContext }) => {
         </Container>
         <GridComponent>
           {group.map(element => {
-            console.log({ element });
             const { category, title, cover } = element.node || element;
             const route = cleanString(title);
             return (
