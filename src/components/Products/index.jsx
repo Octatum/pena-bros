@@ -109,6 +109,7 @@ class Products extends Component {
   }
 
   render() {
+    console.log(this.props.data);
     const current = this.props.data.allSanityProducts.edges[
       this.state.currentViewed
     ].node;

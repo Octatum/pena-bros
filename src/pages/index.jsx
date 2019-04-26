@@ -10,19 +10,12 @@ const IndexPage = () => {
     {
       sanityHomePage(subtext1: { ne: null }) {
         id
-        slides {
+        homeSlideshow {
           slides {
             image {
               asset {
-                fixed {
-                  base64
-                  aspectRatio
-                  width
-                  height
+                fluid(maxWidth: 1500) {
                   src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
                 }
               }
             }

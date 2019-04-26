@@ -1,7 +1,7 @@
-export const globalTheme = {
+const globalTheme = {
   color: {
     green: '#37A802',
-    black: 'black',
+    black: '#111',
     white: 'white',
     gray: '#ccc',
     lightRed: '#ffd6cc',
@@ -11,3 +11,8 @@ export const globalTheme = {
     main: 'Open Sans',
   },
 };
+
+globalTheme.colors = globalTheme.color;
+globalTheme.fonts = globalTheme.fontFamily;
+
+export { globalTheme };

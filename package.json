@@ -23,9 +23,11 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.16",
     "react-markdown": "^4.0.6",
     "react-paginate": "^6.3.0",
     "react-waypoint": "^9.0.1",
+    "rebass": "^3.1.0",
     "styled-components": "^4.2.0",
     "yup": "^0.26.10"
   },

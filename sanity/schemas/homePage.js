@@ -5,7 +5,7 @@ const homePage = {
   fields: [
     {
       title: 'Slideshow',
-      name: 'slides',
+      name: 'homeSlideshow',
       type: 'slideshow',
     },
     { name: 'subtext1', type: 'string', title: 'Subtext 1' },

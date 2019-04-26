@@ -16,8 +16,9 @@ const CollapsibleMenu = styled.div`
     background-color: ${({ theme }) => theme.color.white};
     align-self: flex-end;
     width: 100%;
-    height: auto;
+    height: initial;
     padding: 0.65em 0;
+    height: 100px;
   }
   ${device.mobile} {
     padding: 0.5em 0;
