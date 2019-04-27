@@ -109,7 +109,6 @@ class Products extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     const current = this.props.data.allSanityProducts.edges[
       this.state.currentViewed
     ].node;
@@ -199,35 +198,4 @@ class Products extends Component {
   }
 }
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query getAllProducts {
-        allSanityProducts(limit: 4) {
-          edges {
-            node {
-              id
-              logo {
-                asset {
-                  fixed(width: 150) {
-                    ...GatsbySanityImageFixed_noBase64
-                  }
-                }
-              }
-              productDescription
-              productImage {
-                asset {
-                  fluid(maxWidth: 1000, maxHeight: 500) {
-                    ...GatsbySanityImageFluid_noBase64
-                  }
-                }
-              }
-              productName
-            }
-          }
-        }
-      }
-    `}
-    render={data => <Products data={data} {...props} />}
-  />
-);
+export default Products;
