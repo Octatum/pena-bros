@@ -81,9 +81,7 @@ class Products extends Component {
   }
 
   handleSelectNext() {
-    let next =
-      (this.state.currentViewed + 1) %
-      this.props.data.allSanityProducts.edges.length;
+    let next = (this.state.currentViewed + 1) % this.props.data.length;
 
     this.setState({
       currentViewed: next,
@@ -92,10 +90,8 @@ class Products extends Component {
 
   handleSelectPrev() {
     let prev =
-      (this.state.currentViewed -
-        1 +
-        this.props.data.allSanityProducts.edges.length) %
-      this.props.data.allSanityProducts.edges.length;
+      (this.state.currentViewed - 1 + this.props.data.length) %
+      this.props.data.length;
 
     this.setState({
       currentViewed: prev,
@@ -109,9 +105,7 @@ class Products extends Component {
   }
 
   render() {
-    const current = this.props.data.allSanityProducts.edges[
-      this.state.currentViewed
-    ].node;
+    const current = this.props.data[this.state.currentViewed];
 
     return (
       <Container
@@ -131,19 +125,19 @@ class Products extends Component {
 
           <Tabs
             current={this.state.currentViewed}
-            total={this.props.data.allSanityProducts.edges.length}
+            total={this.props.data.length}
           >
             <AllProductsContainer
               flex
               row
               justify="flex-start"
               width="auto"
-              tWidth={`${50 * this.props.data.allSanityProducts.edges.length}%`}
+              tWidth={`${50 * this.props.data.length}%`}
               height="auto"
               align="initial"
             >
-              {this.props.data.allSanityProducts.edges.map((_, index) => {
-                const { id, logo } = _.node;
+              {this.props.data.map((_, index) => {
+                const { name: id, logo } = _;
                 return (
                   <TabSelection
                     flex
@@ -187,10 +181,10 @@ class Products extends Component {
 
         <SingleProductComponent
           height="auto"
-          title={current.productName}
+          title={current.name}
           preview={current.logo}
-          image={current.productImage}
-          description={current.productDescription}
+          image={current.image}
+          description={current.description}
           backColor="green"
         />
       </Container>

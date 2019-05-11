@@ -6,24 +6,24 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 const ServicesPage = () => {
   const data = useStaticQuery(graphql`
-    query Services {
-      allSanityServices {
-        edges {
-          node {
-            title
-            icon {
-              asset {
-                fixed(width: 64) {
-                  ...GatsbySanityImageFixed_noBase64
-                }
+    query {
+      sanityServicePage {
+        title
+        getAQuote
+        services {
+          title
+          icon {
+            asset {
+              fixed(width: 64) {
+                ...GatsbySanityImageFixed_noBase64
               }
             }
-            description
-            serviceImage {
-              asset {
-                fluid(maxWidth: 1300) {
-                  ...GatsbySanityImageFluid
-                }
+          }
+          description
+          serviceImage {
+            asset {
+              fluid(maxWidth: 1300) {
+                ...GatsbySanityImageFluid
               }
             }
           }
@@ -34,8 +34,8 @@ const ServicesPage = () => {
 
   return (
     <PageLayout>
-      <Helmet title="Services" />
-      <Services data={data.allSanityServices} />
+      <Helmet title={data.sanityServicePage.title} />
+      <Services data={data} />
     </PageLayout>
   );
 };

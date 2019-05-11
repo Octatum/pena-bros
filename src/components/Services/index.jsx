@@ -41,21 +41,21 @@ class Services extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const data = this.props.data.sanityServicePage;
 
-    const icons = data.edges.map(({ node }) => node.icon);
+    const icons = data.services.map(node => node.icon);
 
     return (
       <Container>
         <ServicesPresentation
-          data={data}
+          data={data.services}
           icons={icons}
           handleClick={this.handleClick}
           handleHoverClick={this.handleHoverClick}
           handleHoverClickPrev={this.handleHoverClickPrev}
           current={this.state.current}
         />
-        <QuoteAction />
+        <QuoteAction quote={data.getAQuote} />
       </Container>
     );
   }

@@ -97,7 +97,7 @@ const ServicesPresentation = ({
   handleHoverClickPrev,
   ...props
 }) => {
-  const names = data.edges.map(({ node }) => node.title);
+  const names = data.map(node => node.title);
 
   return (
     <PresContainer
@@ -148,7 +148,7 @@ const ServicesPresentation = ({
           />
         </ArrowsContainerMobile>
       </Container>
-      {data.edges.map(({ node }, index) => (
+      {data.map((node, index) => (
         <ViewComponent
           serviceData={node}
           show={index === current}

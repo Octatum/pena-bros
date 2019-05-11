@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import { Link, navigate } from 'gatsby';
+import { Link, navigate, useStaticQuery, graphql } from 'gatsby';
 import ReactPaginate from 'react-paginate';
 
 import SubTitle from '../components/SubTitle';
@@ -148,7 +148,7 @@ const ActiveLink = styled(Text)`
   }
 `;
 
-const OurWorks = ({ pathContext }) => {
+const OurWorks = ({ pathContext, ...props }) => {
   const {
     group,
     index,
@@ -156,6 +156,24 @@ const OurWorks = ({ pathContext }) => {
     pathPrefix,
     additionalContext,
   } = pathContext;
+
+  const pageData = useStaticQuery(graphql`
+    query {
+      sanityWorksPage {
+        title
+        bottomText
+        bottomContent
+        getAQuote
+      }
+    }
+  `);
+
+  const {
+    title,
+    bottomText,
+    bottomContent,
+    getAQuote,
+  } = pageData.sanityWorksPage;
 
   let previousUrl = index - 1 <= 1 ? '' : (index - 1).toString();
   let nextUrl =
@@ -169,7 +187,7 @@ const OurWorks = ({ pathContext }) => {
   }
   return (
     <PageLayout>
-      <Helmet title="Our Works" />
+      <Helmet title={title} />
       <Container flex>
         <Container flex row margin={[3, 0, 0, 0]}>
           <ActiveLink color="black">
@@ -286,20 +304,16 @@ const OurWorks = ({ pathContext }) => {
         </IndexContainer>
 
         <SubTitleComp
-          title="What is Lorem Ipsum?"
+          title={bottomText}
           size={2}
           margin={[5, 10]}
           tMargin={[3, 5, 0, 5]}
           mMargin={[3, 2, 0, 2]}
         >
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English.
+          {bottomContent}
         </SubTitleComp>
 
-        <QuoteActionComp margin={[5, 0, 0, 0]} />
+        <QuoteActionComp quote={getAQuote} margin={[5, 0, 2, 0]} />
       </Container>
     </PageLayout>
   );
