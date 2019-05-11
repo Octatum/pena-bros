@@ -6,12 +6,14 @@ const works = {
     {
       title: 'Title',
       name: 'title',
+      validation: Rule => Rule.required(),
       type: 'string',
     },
     {
       title: 'Description',
       name: 'description',
       type: 'text',
+      validation: Rule => Rule.required(),
     },
     {
       title: 'Cover image',
@@ -20,6 +22,7 @@ const works = {
       options: {
         hotspot: true,
       },
+      validation: Rule => Rule.required(),
     },
     {
       title: 'Images',
@@ -33,6 +36,7 @@ const works = {
           },
         },
       ],
+      validation: Rule => Rule.required(),
     },
     {
       title: 'Creation date',
@@ -47,6 +51,7 @@ const works = {
     {
       title: 'Category',
       name: 'category',
+      validation: Rule => Rule.required(),
       type: 'string',
       options: {
         list: [
@@ -63,3 +68,35 @@ const works = {
 };
 
 export default works;
+
+export const worksPage = {
+  title: 'Works page',
+  name: 'worksPage',
+  type: 'document',
+  fields: [
+    {
+      title: 'Title',
+      name: 'title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
+      title: 'Bottom text',
+      name: 'bottomText',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
+      title: 'Bottom content',
+      name: 'bottomContent',
+      type: 'text',
+      validation: Rule => Rule.required(),
+    },
+    {
+      title: 'Get a quote text',
+      name: 'getAQuote',
+      type: 'text',
+      validation: Rule => Rule.required(),
+    },
+  ],
+};
