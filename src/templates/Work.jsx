@@ -12,6 +12,7 @@ import { Text } from '../components/Text';
 import { Image } from '../components/Image';
 import QuoteAction from '../components/QuoteAction';
 import { numberValues, device } from '../utils/device';
+import { cleanString } from '../utils/lib';
 
 const LeftArrow = styled(Arrows)`
   position: absolute;
@@ -138,7 +139,13 @@ class IndivWork extends Component {
   render() {
     const { title, description, images } = this.props.data.sanityOurWorks;
 
-    const { sitePath, prev, next } = this.props.pageContext;
+    const {
+      sitePath,
+      prev: previousUrl,
+      next: nextUrl,
+    } = this.props.pageContext;
+    const next = cleanString(nextUrl);
+    const prev = cleanString(previousUrl);
 
     return (
       <PageLayout>
