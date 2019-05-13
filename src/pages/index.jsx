@@ -48,6 +48,8 @@ const IndexPage = () => {
     }
   `);
 
+  console.log({ data });
+
   return (
     <Layout>
       <Helmet title="Home" />
