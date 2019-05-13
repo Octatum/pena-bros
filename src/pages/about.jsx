@@ -21,7 +21,7 @@ export default AboutPage;
 
 export const query = graphql`
   query {
-    sanityAboutPage {
+    sanityAboutPage(title: { ne: null }) {
       title
       text1
       text2

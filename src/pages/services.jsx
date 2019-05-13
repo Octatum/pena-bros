@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 const ServicesPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      sanityServicePage {
+      sanityServicePage(title: { ne: null }) {
         title
         getAQuote
         services {

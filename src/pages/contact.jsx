@@ -19,7 +19,7 @@ export default ContactPage;
 
 export const query = graphql`
   query {
-    sanityContactPage {
+    sanityContactPage(title: { ne: null }) {
       title
       address
       phone

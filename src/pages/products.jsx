@@ -21,7 +21,7 @@ export default ProductPage;
 
 export const query = graphql`
   query getAllProducts {
-    sanityProductsPage {
+    sanityProductsPage(title: { ne: null }) {
       title
       products {
         description
