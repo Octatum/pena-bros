@@ -29,13 +29,7 @@ const PageLayout = ({ children }) => {
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
-        >
-          <html lang="en" />
-          <link
-            href="https://fastcdn.org/Glide.js/2.0.4/css/glide.core.min.css"
-            rel="stylesheet"
-          />
-        </Helmet>
+        />
         <Waypoint
           topOffset={'20%'}
           onPositionChange={({ currentPosition }) =>

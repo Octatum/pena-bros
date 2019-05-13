@@ -1,24 +1,65 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
-import Glide from '@glidejs/glide';
+import Gallery from 'react-image-gallery';
 import PageLayout from '../components/PageLayout';
 import Arrows from '../components/Arrows';
 import Subtitle from '../components/SubTitle';
 import { Container } from '../components/Container';
 import { Text } from '../components/Text';
-import { Image } from '../components/Image';
 import QuoteAction from '../components/QuoteAction';
-import { numberValues, device } from '../utils/device';
+import { device } from '../utils/device';
+import { Box, Flex } from 'rebass';
 import { cleanString } from '../utils/lib';
+
+const ImageGalleryWrapper = styled(Box)`
+  .image-gallery-thumbnails {
+    padding-top: 8px;
+
+    .image-gallery-thumbnails-container {
+      ${({ imagesLength }) => imagesLength < 4 && 'text-align: left;'}
+
+      .image-gallery-thumbnail-inner > img {
+        max-height: 100px;
+      }
+    }
+  }
+
+  .image-gallery-thumbnail {
+    width: 27%;
+    min-width: 200px;
+    box-sizing: border-box;
+  }
+
+  .image-gallery-swipe,
+  .image-gallery-thumbnails-wrapper.bottom {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .image-gallery-slide-wrapper {
+    > span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    ${device.tablet} {
+      width: 100%;
+    }
+  }
+`;
 
 const LeftArrow = styled(Arrows)`
   position: absolute;
-  left: -3em;
-  top: 50%;
-  transform: translate(0, -50%) scale(1.25);
+  bottom: -100px;
+  transform: translate(0, -50%) scale(1.25) rotate(0.5turn);
 
   ${device.tablet} {
     top: initial;
@@ -30,7 +71,8 @@ const LeftArrow = styled(Arrows)`
 `;
 const RightArrow = styled(LeftArrow)`
   left: initial;
-  right: -3em;
+  right: 0;
+  transform: translate(0, -50%) scale(1.25);
 
   ${device.tablet} {
     right: initial;
@@ -46,218 +88,115 @@ const ArrowLink = styled(Link)`
   opacity: 0;
 `;
 
-const Images = styled(Image)`
-  width: 100%;
-`;
+function renderLeftNav(onClick, disabled) {
+  return (
+    <LeftArrow
+      className="image-gallery-custom-left-nav"
+      disabled={disabled}
+      onClick={onClick}
+      arrowColors={['green', 'green']}
+    />
+  );
+}
 
-const Slider = styled(Container)`
-  overflow-x: hidden;
-`;
+function renderRightNav(onClick, disabled) {
+  return (
+    <RightArrow
+      className="image-gallery-custom-right-nav"
+      disabled={disabled}
+      onClick={onClick}
+      dataRotate
+      arrowColors={['green', 'green']}
+    />
+  );
+}
 
-const WorkDescription = styled(Container)`
-  > ${Image} {
-    ${device.tablet} {
-      display: none;
-    }
-  }
-
-  ${device.tablet} {
-    background-color: transparent;
-  }
-
-  & ~ * {
-    ${device.tablet} {
-      top: -3px;
-    }
-  }
-`;
 const ArrowsContainer = styled(Container)`
   ${device.tablet} {
     display: none;
   }
 `;
 
-class IndivWork extends Component {
-  constructor() {
-    super();
+function IndivWork(props) {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [slider, setCurrentSlider] = useState(null);
+  const { title, description, images } = props.data.sanityOurWorks;
 
-    this.state = {
-      currentImage: 0,
-      slider: null,
-    };
+  const imageGalleryProps = {
+    items: images.map(item => ({
+      original: item.asset.url,
+      thumbnail: item.asset.url,
+    })),
+    showPlayButton: false,
+    showFullscreenButton: false,
+    lazyLoad: true,
+    renderLeftNav,
+    renderRightNav,
+  };
 
-    this.handleNextImage = this.handleNextImage.bind(this);
-    this.handleArrowClick = this.handleArrowClick.bind(this);
-  }
+  const { sitePath, prev: previousUrl, next: nextUrl } = props.pageContext;
+  const next = cleanString(nextUrl);
+  const prev = cleanString(previousUrl);
 
-  handleArrowClick(index) {
-    const allImagesLength = this.props.data.sanityOurWorks.images.length;
-    let temp = 0;
-    if (index < this.state.currentImage) {
-      temp = (index + allImagesLength) % allImagesLength;
-    } else {
-      temp = index % allImagesLength;
-    }
-
-    this.state.slider.go(`=${temp}`);
-
-    this.setState({
-      currentImage: temp,
-    });
-  }
-
-  handleNextImage() {
-    const next = this.state.slider.index;
-
-    this.setState({
-      currentImage: next,
-    });
-  }
-
-  componentDidMount() {
-    const glide = new Glide('#IndividualWorkImages', {
-      startAt: 0,
-      perView: 4,
-      gap: 50,
-      breakpoints: {
-        [numberValues.tablet]: {
-          perView: 1,
-          gap: 0,
-        },
-      },
-    });
-
-    glide.on(['run.after'], this.handleNextImage);
-
-    glide.mount();
-
-    this.setState({
-      slider: glide,
-    });
-  }
-
-  render() {
-    const { title, description, images } = this.props.data.sanityOurWorks;
-
-    const {
-      sitePath,
-      prev: previousUrl,
-      next: nextUrl,
-    } = this.props.pageContext;
-    const next = cleanString(nextUrl);
-    const prev = cleanString(previousUrl);
-
-    return (
-      <PageLayout>
-        <Helmet title={title} />
-        <Container>
-          <ArrowsContainer
-            flex
-            row
-            width="auto"
-            height="auto"
-            justify="flex-start"
-            padding={[0, 19.5]}
-            margin={[2, 0, 1, 0]}
-          >
-            <Container width="auto">
-              <Arrows
-                arrowColors={
-                  prev === '' ? ['gray', 'gray'] : ['green', 'green']
-                }
-                left
-              />
-              {prev && <ArrowLink to={sitePath + (prev ? prev : title)} />}
-            </Container>
-            <Container width="auto">
-              <Arrows
-                arrowColors={
-                  next === '' ? ['gray', 'gray'] : ['green', 'green']
-                }
-              />
-              {next && <ArrowLink to={sitePath + (next ? next : title)} />}
-            </Container>
-          </ArrowsContainer>
-
-          <Text
-            bold="bold"
-            size={9}
-            margin={[0, 6.18]}
-            tMargin={[1, 0.75, 0, 'auto']}
-            align="left"
-          >
-            {title}
-          </Text>
-
-          <WorkDescription
-            flex
-            height="auto"
-            width="auto"
-            padding={[0, 20]}
-            tPadding={[0]}
-            margin={[1, 0, 0, 0]}
-            tMargin={[1, 0, 0, 0]}
-          >
-            <Image
-              src={images[this.state.currentImage].asset.url}
-              width="100%"
-              height="730px"
-              fit="cover"
+  return (
+    <PageLayout>
+      <Helmet title={title} />
+      <Container>
+        <ArrowsContainer
+          flex
+          row
+          width="auto"
+          height="auto"
+          justify="flex-start"
+          padding={[0, 19.5]}
+          margin={[2, 0, 1, 0]}
+        >
+          <Container width="auto">
+            <Arrows
+              arrowColors={prev === '' ? ['gray', 'gray'] : ['green', 'green']}
+              left
             />
-            <Container
-              flex
-              row
-              justify="space-between"
-              margin={[2, 0]}
-              tMargin={[0]}
-            >
-              <Slider id="IndividualWorkImages" height="auto">
-                <div data-glide-el="track" className="glide__track">
-                  <Container className="glide__slides" height="auto">
-                    {images.map((data, _) => {
-                      return (
-                        <Container className="glide__slide">
-                          <Images src={data.asset.url} key={data} />
-                        </Container>
-                      );
-                    })}
-                  </Container>
-                </div>
-              </Slider>
+            {prev && <ArrowLink to={sitePath + (prev ? prev : title)} />}
+          </Container>
+          <Container width="auto">
+            <Arrows
+              arrowColors={next === '' ? ['gray', 'gray'] : ['green', 'green']}
+            />
+            {next && <ArrowLink to={sitePath + (next ? next : title)} />}
+          </Container>
+        </ArrowsContainer>
 
-              <LeftArrow
-                onClick={() =>
-                  this.handleArrowClick(this.state.currentImage - 1)
-                }
-                arrowColors={['green', 'white']}
-                left
-              />
-              <RightArrow
-                onClick={() =>
-                  this.handleArrowClick(this.state.currentImage + 1)
-                }
-                arrowColors={['green', 'white']}
-              />
-            </Container>
-          </WorkDescription>
+        <Text
+          bold="bold"
+          size={9}
+          margin={[0, 6.18]}
+          tMargin={[1, 0.75, 0, 'auto']}
+          align="left"
+        >
+          {title}
+        </Text>
+        <Flex alignItems="center" justifyContent="center">
+          <ImageGalleryWrapper py={4} style={{ maxWidth: 800 }}>
+            <Gallery {...imageGalleryProps} />
+          </ImageGalleryWrapper>
+        </Flex>
 
-          <Subtitle
-            bold="lighter"
-            size={3}
-            margin={[0, 19.8]}
-            tMargin={[0, 3, 5, 'auto']}
-            width="80%"
-            style={{ maxWidth: '750px' }}
-            edgeColor="green"
-          >
-            {description}
-          </Subtitle>
+        <Subtitle
+          bold="lighter"
+          size={3}
+          margin={[0, 22]}
+          tMargin={[0, 3, 5, 'auto']}
+          width="80%"
+          style={{ maxWidth: '670px' }}
+          edgeColor="green"
+        >
+          <div style={{ textAlign: 'justify' }}>{description}</div>
+        </Subtitle>
 
-          <QuoteAction margin={[5, 0]} />
-        </Container>
-      </PageLayout>
-    );
-  }
+        <QuoteAction margin={[5, 0]} />
+      </Container>
+    </PageLayout>
+  );
 }
 
 export default IndivWork;
