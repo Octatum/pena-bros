@@ -1,4 +1,4 @@
-export function cleanString(string) {
+export function cleanString(string = '') {
   return string
     .replace(' ', '_')
     .toLowerCase()
