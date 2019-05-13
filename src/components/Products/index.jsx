@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import { Container } from '../Container';

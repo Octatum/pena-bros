@@ -159,7 +159,7 @@ const OurWorks = ({ pathContext, ...props }) => {
 
   const pageData = useStaticQuery(graphql`
     query {
-      sanityWorksPage {
+      sanityWorksPage(title: { ne: null }) {
         title
         bottomText
         bottomContent
