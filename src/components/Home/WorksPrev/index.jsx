@@ -29,6 +29,7 @@ const Action = styled(ActionButton)`
 
 const WorksPreview = props => {
   const { works } = props;
+  console.log({ works });
 
   return (
     <Flex width={1} justifyContent="center">
