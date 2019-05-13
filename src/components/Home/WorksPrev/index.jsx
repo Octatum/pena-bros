@@ -58,10 +58,7 @@ const WorksPreview = props => {
                 as={GatsbyLink}
                 to={`/our-works/works/${cleanCategory}/${cleanTitle}`}
               >
-                <Image
-                  fluid={data.cover.asset.fluid}
-                  style={{ width: '100%' }}
-                />
+                <img src={data._rawCover.asset.url} style={{ width: '100%' }} />
               </Box>
             );
           })}

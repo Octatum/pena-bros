@@ -31,24 +31,12 @@ const IndexPage = () => {
           review
         }
 
-        works {
-          title
-          category
-          cover {
-            asset {
-              fluid(maxWidth: 500, maxHeight: 500) {
-                ...GatsbySanityImageFluid_noBase64
-              }
-            }
-          }
-        }
+        works: _rawWorks(resolveReferences: { maxDepth: 5 })
 
         quote
       }
     }
   `);
-
-  console.log({ data });
 
   return (
     <Layout>

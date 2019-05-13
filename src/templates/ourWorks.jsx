@@ -148,7 +148,7 @@ const ActiveLink = styled(Text)`
   }
 `;
 
-const OurWorks = ({ pathContext, ...props }) => {
+const OurWorks = ({ pathContext }) => {
   const {
     group,
     index,
