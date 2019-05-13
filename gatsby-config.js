@@ -12,14 +12,8 @@ module.exports = {
       options: {
         projectId: 'rxn53wuu',
         dataset: 'production',
-        watchMode: true,
       },
     },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [],
-      },
-    },
+    'gatsby-transformer-remark',
   ],
 };
